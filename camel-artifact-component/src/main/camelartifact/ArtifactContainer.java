@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Collection;
 import java.util.List;
-import java.util.Vector; //TODO: Is there a reason to use this obsolete class?
+import java.util.Vector;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Map;
@@ -191,7 +191,7 @@ public class ArtifactContainer {
 	}
 
 	/**
-	 * TODO: We may need here a function to start the artifacts
+	 * TODO: Cleber: We may need here a function to start the artifacts
 	 */
 	public void startAllAgents() {
 		Enumeration<SimpleArtifact> e = getAgents().elements();
@@ -208,7 +208,7 @@ public class ArtifactContainer {
 	}
 
 	/**
-	 * TODO: We need here a function to read Camel and get updated values for the artifact variables
+	 * TODO: Cleber: We need here a function to read Camel and get updated values for the artifact variables
 	 */
 	public void getCamelpercepts(Collection content, String receiver, String annotations, String updateMode,
 			Set<String> nafFunctors, String persistent) {

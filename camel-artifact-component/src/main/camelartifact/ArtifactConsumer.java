@@ -23,7 +23,7 @@ import org.apache.camel.Processor;
 import org.apache.camel.impl.DefaultConsumer;
 
 /**
- * TODO: Consume artifacts stuffs 
+ * TODO: Cleber: Consume artifacts stuffs 
  */
 public class ArtifactConsumer extends DefaultConsumer {
     private final ArtifactEndpoint endpoint;

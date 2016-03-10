@@ -37,7 +37,7 @@ public class ArtifactProducer extends DefaultProducer {
 	}
 
 	/**
-	 * TODO: Get new values from the route and deliver to the artifact
+	 * TODO: Cleber: Get new values from the route and deliver to the artifact
 	 */
 	public void process(Exchange exchange) throws Exception {
 		
