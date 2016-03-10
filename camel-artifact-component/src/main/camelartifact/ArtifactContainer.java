@@ -43,9 +43,9 @@ import java.util.Collections;
  * Everything must be remade for artifacts stuffs
  */
 public class ArtifactContainer {
-	protected static Vector<SimpleArtifact> agentList = new Vector<SimpleArtifact>();
-	private Set<String> agentNames = new HashSet<String>();
-	private Map<String, String> agentTypes = new HashMap<String, String>();
+	protected static Vector<SimpleArtifact> artifactList = new Vector<SimpleArtifact>();
+	private Set<String> artifactNames = new HashSet<String>();
+	private Map<String, String> artifactTypes = new HashMap<String, String>();
 
 	public ArtifactContainer(ClassLoader cldr, Package pkg) {
 		this(new SingletonContainerNamingStrategy(), cldr, pkg);
@@ -154,10 +154,10 @@ public class ArtifactContainer {
 								qualifiedName(containerId, name));
 					} catch (URISyntaxException e) {
 					} // Should never happen for a classpath resource URI ???
-					if (ag != null && !agentNames.contains(name)) {
-						agentList.add(ag);
-						agentNames.add(name);
-						agentTypes.put(name, (String) typeSpec.get("type"));
+					if (ag != null && !artifactNames.contains(name)) {
+						artifactList.add(ag);
+						artifactNames.add(name);
+						artifactTypes.put(name, (String) typeSpec.get("type"));
 					} else {
 						// TODO: Use a logger
 						System.out.println("Warning: Agent name '" + name + "' has already been used");
@@ -179,11 +179,11 @@ public class ArtifactContainer {
 	}
 
 	public Set<String> getAgentNames() {
-		return agentNames;
+		return artifactNames;
 	}
 
 	public Map<String, String> getAgentTypes() {
-		return agentTypes;
+		return artifactTypes;
 	}
 
 	public void createAgent() {
@@ -193,7 +193,7 @@ public class ArtifactContainer {
 	/**
 	 * TODO: Cleber: We may need here a function to start the artifacts
 	 */
-	public void startAllAgents() {
+	public void startAllArtifacts() {
 		Enumeration<SimpleArtifact> e = getArtifacts().elements();
 
 		while (e.hasMoreElements()) {
@@ -204,17 +204,14 @@ public class ArtifactContainer {
 	}
 
 	public static Vector<SimpleArtifact> getArtifacts() {
-		return agentList;
+		return artifactList;
 	}
 
 	/**
 	 * TODO: Cleber: We need here a function to read Camel and get updated values for the artifact variables
 	 */
-	public void getCamelpercepts(Collection content, String receiver, String annotations, String updateMode,
-			Set<String> nafFunctors, String persistent) {
+	public void getCamelWritingOperations(Collection content) {
 	}
-
-
 
 	private String qualifiedName(String containerId, String name) {
 		// Prepend containerId if it has a non-empty name, indicating there may

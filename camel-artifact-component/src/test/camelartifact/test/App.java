@@ -1,6 +1,8 @@
 package camelartifact.test;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
 
@@ -24,20 +26,26 @@ public class App {
 			public void configure() {
 				from("timer:test?period=200").transform(simple("tick(${property.CamelTimerCounter})"))
 						//.to("file:data/inbox?delay=5000");
-				.to("artifact:shopfloor/loader")
+				.to("artifact:shopfloor/loader").process(new Processor() {
+					public void process(Exchange exchange) throws Exception 
+					{
+						Long counter = exchange.getProperty(Exchange.CONTENT_ENCODING, Long.class);
+					}
+				})
                 .to("mock:result");
 
 			}
 		});
 
 		// start routing
+		System.out.println("Starting camel...");
 		camel.start();
 		System.out.println("Starting router...");
 
-		// Start the agents after starting the routes
-		container.startAllAgents();
+		// Start the artifacts after starting the routes
+		container.startAllArtifacts();
 
-		System.out.println("... ready.");
+		System.out.println("Ready!");
 	}
 }
 

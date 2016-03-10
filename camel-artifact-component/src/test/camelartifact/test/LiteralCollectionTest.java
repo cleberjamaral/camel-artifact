@@ -39,7 +39,7 @@ public class LiteralCollectionTest {
 		System.out.println("Starting router...");
 
 		// Start the agents after starting the routes
-		container.startAllAgents();
+		container.startAllArtifacts();
 
 		System.out.println("... ready.");
 	}
