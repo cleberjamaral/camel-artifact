@@ -3,6 +3,7 @@ package camelartifact.test;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
+
 import camelartifact.*;
 
 public class App {
@@ -14,14 +15,18 @@ public class App {
 
 		container = new ArtifactContainer(App.class.getClassLoader(), App.class.getPackage());
 		final CamelContext camel = new DefaultCamelContext();
-		camel.addComponent("agent", new ArtifactComponent(container));
+		camel.addComponent("artifact", new ArtifactComponent(container));
+		
 
 		/* Create the routes */
 		camel.addRoutes(new RouteBuilder() {
 			@Override
 			public void configure() {
 				from("timer:test?period=200").transform(simple("tick(${property.CamelTimerCounter})"))
-						.to("agent:percept?persistent=false&updateMode=replace");
+						//.to("file:data/inbox?delay=5000");
+				.to("artifact:shopfloor/loader")
+                .to("mock:result");
+
 			}
 		});
 
@@ -35,3 +40,4 @@ public class App {
 		System.out.println("... ready.");
 	}
 }
+

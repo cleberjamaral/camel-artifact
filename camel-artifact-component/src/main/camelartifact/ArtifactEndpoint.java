@@ -19,12 +19,9 @@
 
 package camelartifact;
 
-import java.util.Collections;
 import java.util.Enumeration;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.camel.Consumer;
 import org.apache.camel.Processor;
@@ -32,177 +29,101 @@ import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultEndpoint;
 
 /**
- * TODO: Some functions and variables are related with jason agents, must replace by cartago artifacts stuffs
+ * TODO: Cleber: Some functions and variables are related with jason agents, must replace by cartago artifacts stuffs
  */
 public class ArtifactEndpoint extends DefaultEndpoint {
 
-	private String ilf;
-	private String sender;
-	private String receiver;
-	private String actionName;
-	private String actor;
-	private String annotations;
-	private String uriOption;
-	private String match;
-	private String replace;
-	private String updateMode;
-	private String naf;
-	private Set<String> nafFunctors;
-	private String persistent;
-	private String resultHeaderMap;
-	private ArtifactComponent agent_component;
+	private String uriContextPath; /*Which contains workspace and artifact*/
+	private String workspace;
+	private String artifact;
+	private ArtifactComponent artifact_component;
+	private final Map<String, String> artifactProperties = new TreeMap<String, String>();
+	public static final String VALUE = "value";
 
 	public ArtifactEndpoint() {
 	}
 
 	public ArtifactEndpoint(String uri, ArtifactComponent component) {
 		super(uri, component);
-		agent_component = component;
-		setUriOption();
-		// defaults
-		persistent = "false";
-		updateMode = "add";
-		naf = "";
-		annotations = "";
-		nafFunctors = new HashSet<String>();
+		artifact_component = component;
+		setUriContextPath();
 	}
 
-	public void setResultHeaderMap(String resultHeaderMap) {
-		this.resultHeaderMap = resultHeaderMap;
-	}
-
-	public String getResultHeaderMap() {
-		return resultHeaderMap;
-	}
-
-	public void setUpdateMode(String updateMode) {
-		this.updateMode = updateMode;
-	}
-
-	public String getUpdateMode() {
-		return updateMode;
-	}
-
-	public void setNaf(String naf) {
-		this.naf = naf;
-	}
-
-	public String getNaf() {
-		return naf;
-	}
-
-	public Set<String> getNafFunctors() {
-		return getNafFunctors(getNaf());
-	}
-
-	public Set<String> getNafFunctors(String naf) {
-		if (naf == null) {
-			return Collections.EMPTY_SET;
-		} else {
-			String[] nafFunctorArray = naf.trim().split(",");
-			for (int i = 0; i < nafFunctorArray.length; i++) {
-				nafFunctors.add(nafFunctorArray[i].trim());
-			}
-			return nafFunctors;
-		}
-	}
-
-	public void setPersistent(String persistent) {
-		this.persistent = persistent;
-	}
-
-	public String getPersistent() {
-		return persistent;
-	}
-
-	public void setMatch(String match) {
-		this.match = match;
-	}
-
-	public String getMatch() {
-		return match;
-	}
-
-	public void setReplace(String replace) {
-		this.replace = replace;
-	}
-
-	public String getReplace() {
-		return replace;
-	}
-
-	public void setIlloc_force(String ilf) {
-		this.ilf = ilf;
-	}
-
-	public String getIlloc_force() {
-		return ilf;
-	}
-
-	public void setSender(String sender) {
-		this.sender = sender;
-	}
-
-	public String getSender() {
-		return sender;
-	}
-
-	public void setReceiver(String receiver) {
-		this.receiver = receiver;
-	}
-
-	public String getReceiver() {
-		return receiver;
-	}
-
-	public void setActionName(String actionName) {
-		this.actionName = actionName;
-	}
-
-	public String getActionName() {
-		return actionName;
-	}
-
-	public void setActor(String actor) {
-		this.actor = actor;
-	}
-
-	public String getActor() {
-		return actor;
-	}
-
-	public void setAnnotations(String a) {
-		this.annotations = a;
-	}
-
-	public String getAnnotations() {
-		return annotations;
+	public Map<String, String> getArtifactProperties() {
+		return artifactProperties;
 	}
 
 	/**
-	 * Identifies whether the uri refers to a message, action, or percept
+	 * TODO Cleber: talk with Cranefield, it seems to be very 
+	 * different the conception of agent and opc endpoints. 
+	 * This last one seems to have only one connection with 
+	 * the server and treat almost everything as variable
+	 * So actually, the context sounds to be more interesting
+	 * if we use to address the workspace and the artifact,
+	 * than, we can use operation to read and write doing like:
+	 * tag=value means write and tag=_ means read (may be we 
+	 * gotta avoid "?" for this function)
+	 *  
+	 * This uri concept is still not very clear, how the variables
+	 * are transmited? like opcda, sounds that there is only configuration
+	 * params, it is not very clear how tags are transmitted:
+	 * String uriString = "opcda2:opcdaTest/Simulation Items/Random/String?delay=1000&
+	 * host=" + host + "&clsId=" + clsid + "&username=" + user + "&password=" + password + "&domain=" + domain;
+	 *   
+	 * Identifies the context (contextpath) of URI which can be
+	 * WRITE or READ, for producer and consumer respectively
 	 */
-	private void setUriOption() {
+	private void setUriContextPath() {
 
 		String uri = this.getEndpointUri().substring(this.getEndpointUri().indexOf(":"));
 		if (uri.contains("?"))
-			uriOption = uri.substring(0, uri.indexOf("?"));
+			uriContextPath = uri.substring(0, uri.indexOf("?"));
 		else
-			uriOption = uri;
+			uriContextPath = uri;
+		
+		String uriContextPathLessColonSlashs = uriContextPath.substring(uriContextPath.indexOf("://")+3,uriContextPath.length());
+		if (uriContextPathLessColonSlashs.contains("/"))
+		{
+			setWorkspace(uriContextPathLessColonSlashs.substring(0, uriContextPathLessColonSlashs.indexOf("/")));
+			setArtifact(uriContextPathLessColonSlashs.substring(uriContextPathLessColonSlashs.indexOf("/")+1,uriContextPathLessColonSlashs.length()));
+		}
+		else
+		{
+			setArtifact(uriContextPathLessColonSlashs);
+		}
 	}
 
-	public String getUriOption() {
-		return uriOption;
+	public String getUriContextPath() {
+		return uriContextPath;
 	}
 
+	public String getWorkspace() {
+		return workspace;
+	}
+
+	private void setWorkspace(String workspace) {
+		this.workspace = workspace;
+	}
+
+	public String getArtifact() {
+		return artifact;
+	}
+
+	private void setArtifact(String artifact) {
+		this.artifact = artifact;
+	}
+
+	/**
+	 * TODO Cleber: check with Cranefield how it works inside, sounds a little magic (consumer and producer) 
+	 */
 	public Producer createProducer() throws Exception {
-		return new ArtifactProducer(this, agent_component);
+		return new ArtifactProducer(this, artifact_component);
 	}
 
 	public Consumer createConsumer(Processor processor) throws Exception {
 		ArtifactConsumer cons = new ArtifactConsumer(this, processor);
 
-		Enumeration<SimpleArtifact> e = ArtifactContainer.getAgents().elements();
+		Enumeration<SimpleArtifact> e = ArtifactContainer.getArtifacts().elements();
 
 		while (e.hasMoreElements()) {
 			SimpleArtifact j = e.nextElement();
@@ -215,68 +136,4 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 		return true;
 	}
 
-	/**
-	 * @param bodyContent
-	 * @return Matcher Create the matcher object using message content and uri
-	 *         information
-	 */
-	public Matcher getBodyMatcher(String bodyContent) {
-		if (this.match != null) {
-			Pattern pattern = Pattern.compile(this.match + "(?:\\[.+\\])?"); // This
-																				// appends
-																				// an
-																				// extra
-																				// pattern
-																				// to
-																				// allow
-																				// for
-																				// Jason
-																				// annotations
-																				// on
-																				// body
-																				// content
-			Matcher matcher = pattern.matcher(bodyContent);
-			return matcher;
-		} else {
-			if (this.replace != null)
-				throw new IllegalArgumentException("replace cannot have a value when match is not specified");
-			return null;
-		}
-	}
-
-	/**
-	 * @param matcher
-	 * @param bodyContent
-	 * @return String Match and replace message content, using the uri
-	 *         information
-	 */
-	public String getReplacedContent(Matcher matcher, String bodyContent) {
-		System.out.println();
-		if (matcher == null)
-			return bodyContent;
-
-		String matchedString;
-
-		if (this.replace != null) {
-
-			matchedString = matcher.replaceFirst(this.replace);
-			/*
-			 * String[] replaces = this.replace.split(","); StringBuilder
-			 * sbuilder = new StringBuilder(); for (int
-			 * i=0;i<replaces.length;i++) { Pattern pattern =
-			 * Pattern.compile("\\$([1-9][0-9]*)"); Matcher m =
-			 * pattern.matcher(replaces[i]); String replaceS = "";
-			 * if(m.matches()) { int g = Integer.parseInt(m.group(1)); replaceS
-			 * = matcher.group(g);
-			 * 
-			 * } else replaceS = replace; sbuilder.append(replaceS + ":");
-			 * 
-			 * } matchedString = sbuilder.toString();
-			 */
-
-		} else
-			matchedString = bodyContent;
-
-		return matchedString;
-	}
 }

@@ -57,7 +57,7 @@ public class ArtifactContainer {
 		Map<String, List<Map>> agentTypeSpecs = new HashMap<String, List<Map>>();
 		boolean iniFileExists = true;
 		try {
-			URL iniFileURL = cldr.getResource(pkg.getName().replace('.', '/') + "/agents.ini");
+			URL iniFileURL = cldr.getResource(pkg.getName().replace('.', '/') + "/artifacts.ini");
 			if (iniFileURL == null)
 				throw new IOException("");
 			BufferedReader reader = new BufferedReader(new InputStreamReader(iniFileURL.openStream()));
@@ -76,7 +76,7 @@ public class ArtifactContainer {
 					} catch (NumberFormatException e) {
 						// TODO: Use a logger
 						System.out.println(
-								"Invalid number of agents ('" + nstring + "') in agents.ini. Substituting '1'.");
+								"Invalid number of artifacts ('" + nstring + "') in artifacts.ini. Substituting '1'.");
 						typeSpec.put("n", 1);
 					}
 					if (typeSpec.containsKey("src")) {
@@ -194,7 +194,7 @@ public class ArtifactContainer {
 	 * TODO: Cleber: We may need here a function to start the artifacts
 	 */
 	public void startAllAgents() {
-		Enumeration<SimpleArtifact> e = getAgents().elements();
+		Enumeration<SimpleArtifact> e = getArtifacts().elements();
 
 		while (e.hasMoreElements()) {
 			SimpleArtifact j = e.nextElement();
@@ -203,7 +203,7 @@ public class ArtifactContainer {
 		}
 	}
 
-	public static Vector<SimpleArtifact> getAgents() {
+	public static Vector<SimpleArtifact> getArtifacts() {
 		return agentList;
 	}
 
