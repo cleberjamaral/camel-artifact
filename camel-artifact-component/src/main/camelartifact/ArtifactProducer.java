@@ -45,11 +45,13 @@ public class ArtifactProducer extends DefaultProducer {
 	ArtifactEndpoint endpoint;
 	ArtifactComponent bdi_component;
 
-	public ArtifactProducer(ArtifactEndpoint endpoint,
-			ArtifactComponent bdi_component) {
+	//public ArtifactProducer(ArtifactEndpoint endpoint, ArtifactComponent bdi_component) {
+	public ArtifactProducer(ArtifactEndpoint endpoint) {
 		super(endpoint);
+		System.out.println("Creating artifact producer endpoint...");
 		this.endpoint = endpoint;
 		this.bdi_component = bdi_component;
+		System.out.println("Artifact producer endpoint created successfully!");
 	}
 
 	/**
@@ -61,7 +63,10 @@ public class ArtifactProducer extends DefaultProducer {
 	 * TODO Cleber: is it correct? percept is an context path?  
 	 * TODO Cleber: Get new values from the route and deliver to the artifact
 	 */
+	@Override
 	public void process(Exchange exchange) throws Exception {
+		System.out.println("Setting up artifact producer process...");
+		
         System.out.println(exchange.getIn().getBody());    
 
 		Map<String, String> data = exchange.getIn().getBody(Map.class);
@@ -75,6 +80,7 @@ public class ArtifactProducer extends DefaultProducer {
 			
 			if (verboseDebug) System.out.println("Verbose:Process: "+tagName+" : "+value.toString()+" : "+artifactProperty.toString());
 
+			System.out.println("Artifact producer process successfully setted up!");
 		}
 	
 	}

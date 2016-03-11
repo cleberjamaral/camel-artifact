@@ -49,6 +49,10 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 		setUriContextPath();
 	}
 
+    public ArtifactEndpoint(String endpointUri) {
+        super(endpointUri);
+    }
+
 	public Map<String, String> getArtifactProperties() {
 		return artifactProperties;
 	}
@@ -116,8 +120,10 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 	/**
 	 * TODO Cleber: check with Cranefield how it works inside, sounds a little magic (consumer and producer) 
 	 */
+	@Override
 	public Producer createProducer() throws Exception {
-		return new ArtifactProducer(this, artifact_component);
+		//return new ArtifactProducer(this, artifact_component);
+		return new ArtifactProducer(this);
 	}
 
 	public Consumer createConsumer(Processor processor) throws Exception {

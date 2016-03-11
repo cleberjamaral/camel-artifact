@@ -22,21 +22,16 @@ public class App {
 
 		/* Create the routes */
 		camel.addRoutes(new RouteBuilder() {
-			@Override
+			//@Override
 			public void configure() {
 				from("timer:test?period=200").transform(simple("tick(${property.CamelTimerCounter})"))
 						//.to("file:data/inbox?delay=5000");
-				.to("artifact:shopfloor/loader").process(new Processor() {
-					public void process(Exchange exchange) throws Exception 
-					{
-						Long counter = exchange.getProperty(Exchange.CONTENT_ENCODING, Long.class);
-					}
-				})
+				.to("artifact:shopfloor/loader")
                 .to("mock:result");
 
 			}
 		});
-
+		
 		// start routing
 		System.out.println("Starting camel...");
 		camel.start();
