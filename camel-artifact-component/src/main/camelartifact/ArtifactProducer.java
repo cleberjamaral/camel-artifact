@@ -1,6 +1,6 @@
 /**
- * @author Roloff, Mario Lucio 
  * @author Cranefield, Stephen
+ * @author Roloff, Mario Lucio 
  * @author Amaral, Cleber Jorge
  * 
  * Based on and with acknowledgments:
@@ -43,14 +43,12 @@ public class ArtifactProducer extends DefaultProducer {
 	static boolean verboseDebug = true;
 	
 	ArtifactEndpoint endpoint;
-	ArtifactComponent bdi_component;
 
 	//public ArtifactProducer(ArtifactEndpoint endpoint, ArtifactComponent bdi_component) {
 	public ArtifactProducer(ArtifactEndpoint endpoint) {
 		super(endpoint);
 		System.out.println("Creating artifact producer endpoint...");
 		this.endpoint = endpoint;
-		this.bdi_component = bdi_component;
 		System.out.println("Artifact producer endpoint created successfully!");
 	}
 
@@ -63,22 +61,25 @@ public class ArtifactProducer extends DefaultProducer {
 	 * TODO Cleber: is it correct? percept is an context path?  
 	 * TODO Cleber: Get new values from the route and deliver to the artifact
 	 */
-	@Override
+	//@Override
 	public void process(Exchange exchange) throws Exception {
 		System.out.println("Setting up artifact producer process...");
 		
-        System.out.println(exchange.getIn().getBody());    
+		//Map<String, String> data = exchange.getIn().getBody(Map.class);
 
-		Map<String, String> data = exchange.getIn().getBody(Map.class);
+        System.out.println(exchange.getIn().getBody());
+        
+//		for (String tagName : data.keySet()) 
+		{
+//			String value = data.get(tagName);
 
-		for (String tagName : data.keySet()) {
-			String value = data.get(tagName);
+	        //System.out.println(String.format("Tag '%s' with value '%s' is being processed.", tagName, value));
+//			log.info(String.format("Tag '%s' with value '%s' is being processed.", tagName, value));
 
-			String artifactProperty = endpoint.getArtifactProperties().get(tagName);
+//			String artifactProperty = endpoint.getArtifactProperties().get(tagName);
 			
-			log.info(String.format("Tag '%s' with value '%s' is being processed.", tagName, value));
 			
-			if (verboseDebug) System.out.println("Verbose:Process: "+tagName+" : "+value.toString()+" : "+artifactProperty.toString());
+//			if (verboseDebug) System.out.println("Verbose:Process: "+tagName+" : "+value.toString()+" : "+artifactProperty.toString());
 
 			System.out.println("Artifact producer process successfully setted up!");
 		}
