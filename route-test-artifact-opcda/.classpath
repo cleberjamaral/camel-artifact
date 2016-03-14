@@ -8,5 +8,8 @@
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar"/>
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/junit/junit/4.11/junit-4.11.jar"/>
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/com/summitsystemsinc/camel/opc/camel-opc_da2/1.0-SNAPSHOT/camel-opc_da2-1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/openscada/jinterop/org.openscada.jinterop.core/1.1.0.v20130529/org.openscada.jinterop.core-1.1.0.v20130529.jar"/>
+	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/openscada/utgard/org.openscada.opc.lib/1.1.0.v20130529/org.openscada.opc.lib-1.1.0.v20130529.jar"/>
+	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/openscada/utgard/org.openscada.opc.dcom/1.1.0.v20130529/org.openscada.opc.dcom-1.1.0.v20130529.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
