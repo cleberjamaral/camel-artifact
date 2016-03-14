@@ -77,6 +77,18 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 	 * String uriString = "opcda2:opcdaTest/Simulation Items/Random/String?delay=1000&
 	 * host=" + host + "&clsId=" + clsid + "&username=" + user + "&password=" + password + "&domain=" + domain;
 	 *   
+	 * A message to be processed should be something like
+	 * Some examples of commons URIs:
+	 * "file:data/inbox?delay=5000" based on "scheme:context_path?options"
+	 * "agent:percept?persistent=false&updateMode=replace"
+	 * "timer:test?period=200" 
+	 * 
+	 * On this first approach the proposed URI was "artifact:shopfloor/loader"
+	 * which means "://artifact:workspace/artifact_name?options"
+	 * In a meeting with Cranefield another concept was proposed by him:
+	 * On consumer side: "://artifact:operation?...", "://artifact:property?..."
+	 * On producer side: "://artifact:event?...", "://artifact:property?..."
+	 *   
 	 * Identifies the context (contextpath) of URI which can be
 	 * WRITE or READ, for producer and consumer respectively
 	 */

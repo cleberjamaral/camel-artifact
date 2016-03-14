@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/camel-artifact-component"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/apache/camel/camel-core/2.12.3/camel-core-2.12.3.jar"/>
+	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/apache/camel/camel-test/2.12.3/camel-test-2.12.3.jar"/>
+	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar"/>
+	<classpathentry kind="lib" path="/home/cleber/.m2/repository/junit/junit/4.11/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="/home/cleber/.m2/repository/com/summitsystemsinc/camel/opc/camel-opc_da2/1.0-SNAPSHOT/camel-opc_da2-1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

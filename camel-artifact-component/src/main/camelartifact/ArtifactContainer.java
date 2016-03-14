@@ -146,6 +146,15 @@ public class ArtifactContainer {
 			}
 			for (Map typeSpec : typeSpecs) {
 				Integer n = (Integer) typeSpec.get("n");
+				
+				/**
+				 * The implementation of SimpleArtifact class is probably wrong for
+				 * for this implementation of a camel component, but it is the 
+				 * part of the project that is making the route run, since the 
+				 * simpleartifact is creating a thread the following link sent by
+				 * Cranefield should helps
+				 * http://camel.apache.org/running-camel-standalone-and-have-it-keep-running.html
+				 */
 				SimpleArtifact ag = null;
 				for (int i = 1; i <= n; i++) {
 					String src = (String) typeSpec.get("src");

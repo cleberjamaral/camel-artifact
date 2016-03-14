@@ -53,33 +53,27 @@ public class ArtifactProducer extends DefaultProducer {
 	}
 
 	/**
-	 * A message to be processed should be something like
-	 * "artifact:tag_name:write=some_value" Some examples of commons URIs:
-	 * "file:data/inbox?delay=5000" based on "scheme:context_path?options"
-	 * "agent:percept?persistent=false&updateMode=replace"
-	 * "timer:test?period=200" 
-	 * TODO Cleber: is it correct? percept is an context path?  
 	 * TODO Cleber: Get new values from the route and deliver to the artifact
 	 */
 	//@Override
 	public void process(Exchange exchange) throws Exception {
 		System.out.println("Setting up artifact producer process...");
 		
-		//Map<String, String> data = exchange.getIn().getBody(Map.class);
+		Map<String, String> data = exchange.getIn().getBody(Map.class);
 
-        System.out.println(exchange.getIn().getBody());
+        System.out.println("Data body: "+ exchange.getIn().getBody());
         
-//		for (String tagName : data.keySet()) 
+		for (String tagName : data.keySet()) 
 		{
-//			String value = data.get(tagName);
+			String value = data.get(tagName);
 
 	        //System.out.println(String.format("Tag '%s' with value '%s' is being processed.", tagName, value));
-//			log.info(String.format("Tag '%s' with value '%s' is being processed.", tagName, value));
+			log.info(String.format("Tag '%s' with value '%s' is being processed.", tagName, value));
 
-//			String artifactProperty = endpoint.getArtifactProperties().get(tagName);
+			String artifactProperty = endpoint.getArtifactProperties().get(tagName);
 			
 			
-//			if (verboseDebug) System.out.println("Verbose:Process: "+tagName+" : "+value.toString()+" : "+artifactProperty.toString());
+			if (verboseDebug) System.out.println("Verbose:Process: "+tagName+" : "+value.toString()+" : "+artifactProperty.toString());
 
 			System.out.println("Artifact producer process successfully setted up!");
 		}
