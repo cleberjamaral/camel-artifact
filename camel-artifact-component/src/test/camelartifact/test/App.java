@@ -30,14 +30,10 @@ import camelartifact.*;
 
 public class App {
 
-	static ArtifactContainer container;
-	static String containerId;
-
 	public static void main(String[] args) throws Exception {
 
-		container = new ArtifactContainer(App.class.getClassLoader(), App.class.getPackage());
 		final CamelContext camel = new DefaultCamelContext();
-		camel.addComponent("artifact", new ArtifactComponent(container));
+		camel.addComponent("artifact", new ArtifactComponent());
 		
 
 		/* Create the routes */
@@ -45,10 +41,8 @@ public class App {
 			@Override
 			public void configure() {
 				from("timer:test?period=200").transform(simple("tick(${property.CamelTimerCounter})"))
-						//.to("file:data/inbox?delay=5000");
 				.to("artifact:shopfloor/loader")
                 .to("mock:result");
-				
 				from("artifact:shopfloor/loader").to("log:ArtifactTest?level=info").to("mock:result");
 
 			}
@@ -59,8 +53,16 @@ public class App {
 		camel.start();
 		System.out.println("Starting router...");
 
-		// Start the artifacts after starting the routes
-		container.startAllArtifacts();
+		Thread thread = new Thread() {
+			public void run() {
+				try {
+					System.out.println("Running...");
+					while (true) ;
+				} catch (Exception e) {
+				}
+			}
+		};
+		thread.start();
 
 		System.out.println("Ready!");
 	}

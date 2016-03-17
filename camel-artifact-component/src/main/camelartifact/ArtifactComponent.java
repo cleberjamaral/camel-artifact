@@ -28,16 +28,11 @@ import org.apache.camel.Endpoint;
 import org.apache.camel.impl.DefaultComponent;
 
 public class ArtifactComponent extends DefaultComponent {	
-	private ArtifactContainer container;
-	public ArtifactComponent(ArtifactContainer container)
+
+	public ArtifactComponent()
 	{
-		this.container = container;
 	}
 	
-	public ArtifactContainer getContainer()
-	{
-		return this.container;
-	}
     protected Endpoint createEndpoint(String uri, String remaining, Map<String, Object> parameters) throws Exception {    	
         Endpoint endpoint = new ArtifactEndpoint(uri, this);
         setProperties(endpoint, parameters);

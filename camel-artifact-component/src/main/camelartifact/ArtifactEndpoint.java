@@ -140,13 +140,14 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 
 	public Consumer createConsumer(Processor processor) throws Exception {
 		ArtifactConsumer cons = new ArtifactConsumer(this, processor);
-
+/*
 		Enumeration<SimpleArtifact> e = ArtifactContainer.getArtifacts().elements();
 
 		while (e.hasMoreElements()) {
 			SimpleArtifact j = e.nextElement();
 			j.addToMyConsumers(cons);
 		}
+		*/
 		return cons;
 	}
 
