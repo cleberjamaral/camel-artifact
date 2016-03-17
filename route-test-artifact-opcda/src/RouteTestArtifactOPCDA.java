@@ -20,7 +20,7 @@ public class RouteTestArtifactOPCDA extends CamelTestSupport{
 	static String user = "cleber";
 	static String password = "tna24hps";
 	static String clsid = "f8582cf2-88fb-11d0-b850-00c0f0104305";
-	static String host = "localhost";
+	static String host = "139.80.75.139";
     
 	public static void main(String[] args) throws Exception {
 
@@ -33,8 +33,11 @@ public class RouteTestArtifactOPCDA extends CamelTestSupport{
 		camel.addRoutes(new RouteBuilder() {
             @Override
             public void configure() {
-                String uriString = "opcda2:opcdaTest/Simulation Items/Random?delay=1000&host=" + host + "&clsId=" + clsid + "&username=" + user + "&password=" + password + "&domain=" + domain;
-                from(uriString).to("log:OPCTest?level=info").to("mock:result").to("artifact:shopfloor/loader");
+                String uriString = "opcda2:Matrikon.OPC.Simulation.1?delay=1000&host=" + host + "&clsId=" + clsid + "&username=" + user + "&password=" + password + "&domain=" + domain;
+                from(uriString)
+                //from("timer:test?period=200").transform(simple("tick(${property.CamelTimerCounter})"))
+                .to("artifact:shopfloor/loader");
+                //to("log:OPCTest?level=info").to("mock:result")
             }
 		});
 		

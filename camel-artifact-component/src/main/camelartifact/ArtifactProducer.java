@@ -55,13 +55,11 @@ public class ArtifactProducer extends DefaultProducer {
 	/**
 	 * TODO Cleber: Get new values from the route and deliver to the artifact
 	 */
-	//@Override
 	public void process(Exchange exchange) throws Exception {
 		System.out.println("Setting up artifact producer process...");
-		
 		Map<String, String> data = exchange.getIn().getBody(Map.class);
-
         System.out.println("Data body: "+ exchange.getIn().getBody());
+		/*
         
 		for (String tagName : data.keySet()) 
 		{
@@ -77,6 +75,6 @@ public class ArtifactProducer extends DefaultProducer {
 
 			System.out.println("Artifact producer process successfully setted up!");
 		}
-	
+	*/
 	}
 }

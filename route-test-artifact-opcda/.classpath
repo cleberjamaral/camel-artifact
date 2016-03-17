@@ -2,6 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/camel-artifact-component"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/camel-opc">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="camel-opc"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/apache/camel/camel-core/2.12.3/camel-core-2.12.3.jar"/>
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/apache/camel/camel-test/2.12.3/camel-test-2.12.3.jar"/>
@@ -11,5 +16,9 @@
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/openscada/jinterop/org.openscada.jinterop.core/1.1.0.v20130529/org.openscada.jinterop.core-1.1.0.v20130529.jar"/>
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/openscada/utgard/org.openscada.opc.lib/1.1.0.v20130529/org.openscada.opc.lib-1.1.0.v20130529.jar"/>
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/openscada/utgard/org.openscada.opc.dcom/1.1.0.v20130529/org.openscada.opc.dcom-1.1.0.v20130529.jar"/>
+	<classpathentry kind="lib" path="/home/cleber/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/slf4j/slf4j-simple/1.6.6/slf4j-simple-1.6.6.jar"/>
+	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/samba/jcifs/jcifs/1.3.3/jcifs-1.3.3.jar"/>
+	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/openscada/jinterop/org.openscada.jinterop.deps/1.1.0.v20130529/org.openscada.jinterop.deps-1.1.0.v20130529.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
