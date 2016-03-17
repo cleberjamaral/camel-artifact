@@ -84,6 +84,9 @@
   <build>
     <defaultGoal>install</defaultGoal>
 
+    <sourceDirectory>${basedir}/src/main/camelartifact/</sourceDirectory>
+    <outputDirectory>${basedir}/target/classes</outputDirectory>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

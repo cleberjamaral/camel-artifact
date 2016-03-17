@@ -1,4 +1,6 @@
 
+import java.util.logging.Level;
+
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
@@ -7,12 +9,12 @@ import org.apache.camel.test.junit4.CamelTestSupport;
 import com.summit.camel.opc.Opcda2Component;
 
 import camelartifact.ArtifactComponent;
-import camelartifact.ArtifactContainer;
-import camelartifact.test.App;
+//import camelartifact.ArtifactContainer;
+//import camelartifact.test.App;
 
 public class RouteTestArtifactOPCDA extends CamelTestSupport{
 
-	static ArtifactContainer container;
+	//static ArtifactContainer container;
 	static Opcda2Component opcda2;
 	static String containerId;
 	
@@ -24,9 +26,10 @@ public class RouteTestArtifactOPCDA extends CamelTestSupport{
     
 	public static void main(String[] args) throws Exception {
 
-	    container = new ArtifactContainer(App.class.getClassLoader(), App.class.getPackage());
+	    //container = new ArtifactContainer(App.class.getClassLoader(), App.class.getPackage());
 		final CamelContext camel = new DefaultCamelContext();
-		camel.addComponent("artifact", new ArtifactComponent(container));
+		//camel.addComponent("artifact", new ArtifactComponent(container));
+		camel.addComponent("artifact", new ArtifactComponent(null));
 		camel.addComponent("opcda2", new Opcda2Component());
 		
 		/* Create the routes */
@@ -47,7 +50,17 @@ public class RouteTestArtifactOPCDA extends CamelTestSupport{
 		System.out.println("Starting router...");
 
 		// Start the artifacts after starting the routes
-		container.startAllArtifacts();
+		//container.startAllArtifacts();
+		Thread thread = new Thread() {
+			public void run() {
+				try {
+					System.out.println("Running...");
+					while (true) ;
+				} catch (Exception e) {
+				}
+			}
+		};
+		thread.start();
 
 		System.out.println("Ready!");
 	}
