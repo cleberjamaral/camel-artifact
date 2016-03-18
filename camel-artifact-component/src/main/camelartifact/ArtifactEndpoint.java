@@ -138,16 +138,16 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 		return new ArtifactProducer(this);
 	}
 
+	/**
+	 * This component is prepared to create multiples consumers, but its
+	 * is not managing this list in a container (for example). It must be 
+	 * managed by an artifact camel
+	 * @param processor
+	 * @return consumer
+	 * TODO Cleber: create artifact "camel" managing consumers list 
+	 */
 	public Consumer createConsumer(Processor processor) throws Exception {
 		ArtifactConsumer cons = new ArtifactConsumer(this, processor);
-/*
-		Enumeration<SimpleArtifact> e = ArtifactContainer.getArtifacts().elements();
-
-		while (e.hasMoreElements()) {
-			SimpleArtifact j = e.nextElement();
-			j.addToMyConsumers(cons);
-		}
-		*/
 		return cons;
 	}
 

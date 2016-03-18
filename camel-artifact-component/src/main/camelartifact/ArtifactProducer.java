@@ -24,6 +24,7 @@ package camelartifact;
 
 import static camelartifact.ArtifactEndpoint.VALUE;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.camel.Exchange;
@@ -56,25 +57,16 @@ public class ArtifactProducer extends DefaultProducer {
 	 * TODO Cleber: Get new values from the route and deliver to the artifact
 	 */
 	public void process(Exchange exchange) throws Exception {
-		System.out.println("Setting up artifact producer process...");
-		Map<String, String> data = exchange.getIn().getBody(Map.class);
-        System.out.println("Data body: "+ exchange.getIn().getBody());
-		/*
-        
-		for (String tagName : data.keySet()) 
-		{
-			String value = data.get(tagName);
+		/**
+		 * Getinstance of artifact
+		 * Create new event objects in the concurrentqueue to 
+		 * call linkedop step by step  
+		 */
+		Map<String, String> data = new HashMap<String, String>();
+		data = exchange.getIn().getBody(Map.class);
 
-	        //System.out.println(String.format("Tag '%s' with value '%s' is being processed.", tagName, value));
-			log.info(String.format("Tag '%s' with value '%s' is being processed.", tagName, value));
-
-			String artifactProperty = endpoint.getArtifactProperties().get(tagName);
-			
-			
-			if (verboseDebug) System.out.println("Verbose:Process: "+tagName+" : "+value.toString()+" : "+artifactProperty.toString());
-
-			System.out.println("Artifact producer process successfully setted up!");
-		}
-	*/
+		//String data = (String) exchange.getIn().getBody();
+		System.out.println("Content received by producer: "+data.toString());
+				
 	}
 }
