@@ -42,14 +42,16 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 	private ArtifactComponent artifact_component;
 	private final Map<String, String> artifactProperties = new TreeMap<String, String>();
 	public static final String VALUE = "value";
+	private CamelArtifact camelartif;
 
 	public ArtifactEndpoint() {
 	}
 
-	public ArtifactEndpoint(String uri, ArtifactComponent component) {
+	public ArtifactEndpoint(String uri, ArtifactComponent component, CamelArtifact camelartif) {
 		super(uri, component);
 		artifact_component = component;
 		setUriContextPath();
+		this.camelartif = camelartif;
 	}
 
     public ArtifactEndpoint(String endpointUri) {
@@ -118,6 +120,10 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 
 	public String getWorkspace() {
 		return workspace;
+	}
+
+	public CamelArtifact getCamelArtifact() {
+		return camelartif;
 	}
 
 	private void setWorkspace(String workspace) {

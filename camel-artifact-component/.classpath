@@ -5,7 +5,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/apache/camel/camel-core/2.12.3/camel-core-2.12.3.jar"/>
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/net/sf/corn/corn-cps/1.1.7/corn-cps-1.1.7.jar"/>
-	<classpathentry kind="lib" path="/home/cleber/Desktop/jacamo-0.5/lib/cartago.jar"/>
+	<classpathentry kind="lib" path="/home/cleber/Desktop/jacamo-0.5/lib/cartago.jar" sourcepath="/cartago-2.0.1"/>
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar"/>
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/junit/junit/4.11/junit-4.11.jar"/>
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/apache/camel/camel-test/2.12.3/camel-test-2.12.3.jar"/>

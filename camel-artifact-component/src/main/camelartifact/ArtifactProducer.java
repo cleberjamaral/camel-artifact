@@ -22,16 +22,18 @@
 
 package camelartifact;
 
-import static camelartifact.ArtifactEndpoint.VALUE;
-
 import java.util.HashMap;
 import java.util.Map;
+import java.lang.reflect.*;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultProducer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import camelartifact.CamelArtifact;
+import cartago.Artifact;
 
 
 /**
@@ -40,6 +42,8 @@ import org.slf4j.LoggerFactory;
 public class ArtifactProducer extends DefaultProducer {
 	
 	private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactEndpoint.class);
+	
+	private CamelArtifact camelartif = null;
 
 	static boolean verboseDebug = true;
 	
@@ -51,6 +55,8 @@ public class ArtifactProducer extends DefaultProducer {
 		System.out.println("Creating artifact producer endpoint...");
 		this.endpoint = endpoint;
 		System.out.println("Artifact producer endpoint created successfully!");
+		
+		camelartif = endpoint.getCamelArtifact();
 	}
 
 	/**
@@ -63,10 +69,58 @@ public class ArtifactProducer extends DefaultProducer {
 		 * call linkedop step by step  
 		 */
 		Map<String, String> data = new HashMap<String, String>();
+/*		
+		if route give an operation{
+			use route op
+		} else
+		{
+			operation = exchange.getIn().getHeader
+		}
+		
+*/
 		data = exchange.getIn().getBody(Map.class);
-
+		
+		//camelartif = CamelArtifact.getInstance();
+		
+//		try {
+//			System.out.println("Invoking...");
+//			Class<?> clazz = Class.forName("camelartifact.CamelArtifact");
+//			Class[] argTypes = new Class[] {String.class};
+//			Method writeinputtst = clazz.getMethod("writeinputtst", argTypes);
+//			System.out.println("Method found "+writeinputtst.toString());
+//			
+//			writeinputtst.invoke(null, data.toString());
+//		} catch (NoSuchMethodException e) {
+//			// TODO Auto-generated catch block
+//			System.out.println("Method NOT found "+e.toString());
+//			e.printStackTrace();
+//		}
+		
+		
+		
+		//camelartif = CamelArtifact;
+		
+		//Testing methods... begin
 		//String data = (String) exchange.getIn().getBody();
+		System.out.println("Callint test...");
+		camelartif.writeinputtst(data.toString());
 		System.out.println("Content received by producer: "+data.toString());
+		camelartif.writeinput(data.toString());
+		//Testing methods... end
+
+		
+		String artifactName = exchange.getIn().getHeader("ArtifactName").toString();
+		if (artifactName == null) {
+			// Log or print error - no artifact name found
+			return;
+		}
+		String operationName = exchange.getIn().getHeader("OperationName").toString();
+		if (operationName == null) {
+			// Log or print error - no operation name found
+			return;
+		}		
+		
+		camelartif.callLinkedArtifactOperation(artifactName, operationName, exchange.getIn().getBody());
 				
 	}
 }

@@ -27,15 +27,24 @@ import java.util.Map;
 import org.apache.camel.Endpoint;
 import org.apache.camel.impl.DefaultComponent;
 
-public class ArtifactComponent extends DefaultComponent {	
+public class ArtifactComponent extends DefaultComponent {
+	
+	private CamelArtifact camelartif;
 
-	public ArtifactComponent()
+	public ArtifactComponent(CamelArtifact camelartif)
 	{
+		this.camelartif = camelartif;
 	}
 	
+	public CamelArtifact getArtifact()
+	{
+		return this.camelartif;
+	}	
+	
     protected Endpoint createEndpoint(String uri, String remaining, Map<String, Object> parameters) throws Exception {    	
-        Endpoint endpoint = new ArtifactEndpoint(uri, this);
+        Endpoint endpoint = new ArtifactEndpoint(uri, this, this.camelartif);
         setProperties(endpoint, parameters);
+        
         return endpoint;
     }      
 }

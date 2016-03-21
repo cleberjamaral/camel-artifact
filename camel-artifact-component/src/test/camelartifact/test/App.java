@@ -32,8 +32,10 @@ public class App {
 
 	public static void main(String[] args) throws Exception {
 
+		final CamelArtifact camelartif = new CamelArtifact();
+		
 		final CamelContext camel = new DefaultCamelContext();
-		camel.addComponent("artifact", new ArtifactComponent());
+		camel.addComponent("artifact", new ArtifactComponent(camelartif));
 		
 
 		/* Create the routes */
