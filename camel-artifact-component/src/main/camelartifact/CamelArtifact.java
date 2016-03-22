@@ -41,35 +41,42 @@ import cartago.*;
  */
 public class CamelArtifact extends Artifact {
 
+	private boolean listenCamelRoutes = false;
+
 	/**
 	 * Singleton implementation
-
-	private static CamelArtifact instance = null;
-
-	protected CamelArtifact() {
-	}
-
-	public static CamelArtifact getInstance() {
-		if (instance == null) {
-			instance = new CamelArtifact();
-			System.out.println("CamelArtifact: Singleton instance created!");
-		} else {
-			System.out
-					.println("CamelArtifact: Returning existing singleton instance.");
-		}
-		return instance;
-	}
-
+	 * 
+	 * private static CamelArtifact instance = null;
+	 * 
+	 * protected CamelArtifact() { }
+	 * 
+	 * public static CamelArtifact getInstance() { if (instance == null) {
+	 * instance = new CamelArtifact();
+	 * System.out.println("CamelArtifact: Singleton instance created!"); } else
+	 * { System.out
+	 * .println("CamelArtifact: Returning existing singleton instance."); }
+	 * return instance; }
 	 */
 
 	void init(int initialValue) {
 		defineObsProperty("count", initialValue);
 	}
-	
+
+	@OPERATION
+	void setListenCamelRoute(boolean value) {
+		listenCamelRoutes = value;
+		System.out.println("Camel Artifact 'listenCamelRoutes' changed to "
+				+ value);
+	}
+
+	public boolean getListenCamelRoute() {
+		return listenCamelRoutes;
+	}
+
 	@OPERATION
 	void inc() {
 		ObsProperty prop = getObsProperty("count");
-		prop.updateValue(prop.intValue()+1);
+		prop.updateValue(prop.intValue() + 1);
 		signal("tick");
 	}
 
@@ -81,42 +88,40 @@ public class CamelArtifact extends Artifact {
 	@OPERATION
 	void writeinput(String datainput) {
 		try {
-			System.out
-					.println("Camel artifact is trying to writeinput by out-1: "
-							+ datainput.toString());
+			System.out.println("Camel artifact writeinput by out-1: "
+					+ datainput.toString());
 			execLinkedOp("out-1", "writeinputAr", "tst");
-			System.out
-					.println("Camel artifact is trying to writeinput by in-1: "
-							+ datainput.toString());
-			execLinkedOp("in-1", "writeinputAr", "tst");
+
+			// System.out.println("Camel artifact writeinput by in-1: "
+			// + datainput.toString());
+			// execLinkedOp("in-1", "writeinputAr", "tst");
+			//
 			System.out.println("Writeinput in-1 and out-1 done: "
 					+ datainput.toString());
+
 		} catch (OperationException e) {
 			System.out.println("writeinput ERROR! " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
-	
-	public void writeinputtst(String datainput) {
-		try {
-			System.out.println("executing test out-1 " + datainput);
-
-			System.out.println("key:" + getOpKey("writeinputtst", 1));
-//			ArtifactId aid = lookupArtifact("assembler");
-//			execLinkedOp(aid, "writeinputteste",
-//					datainput);
-			execLinkedOp("out-1", "writeinputteste", datainput);
-
-			System.out.println("executing test in-1." + datainput);
-			execLinkedOp("in-1", "writeinputteste", datainput);
-		} catch (Exception ex) {
-			System.out.println("executing ERROR! " + ex.getMessage());
-			ex.printStackTrace();
-		}
-	}
 
 	@OPERATION
-	void callLinkedArtifactOperation(String artifactName, String operationName, Object parameters){
+	void callLinkedArtifactOperation(String artifactName, String operationName,
+			Object parameters) {
+
+		System.out.println("CamelArtif writeinput by " + artifactName + ", op: "
+				+ operationName);
 		
+		ArtifactId aid;
+		try {
+			aid = lookupArtifact(artifactName);
+			System.out.println("assembler id: " + aid.getName() + ", " + aid.getId()
+					+ ", " + aid.getArtifactType() + ", " + aid.toString());
+
+			execLinkedOp(aid, operationName, "tst");
+		} catch (OperationException e) {
+			e.printStackTrace();
+		}
+
 	}
 }

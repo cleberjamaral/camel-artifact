@@ -34,28 +34,31 @@ import org.slf4j.LoggerFactory;
 
 import camelartifact.CamelArtifact;
 import cartago.Artifact;
-
+import cartago.OperationException;
 
 /**
  * TODO: Produce artifacts stuffs
  */
 public class ArtifactProducer extends DefaultProducer {
-	
-	private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactEndpoint.class);
-	
+
+	private static final transient Logger LOG = LoggerFactory
+			.getLogger(ArtifactEndpoint.class);
+
 	private CamelArtifact camelartif = null;
+	private Map<String, Map <String, Object>> opQueue = new HashMap<String, Map <String, Object>>();
 
 	static boolean verboseDebug = true;
-	
+
 	ArtifactEndpoint endpoint;
 
-	//public ArtifactProducer(ArtifactEndpoint endpoint, ArtifactComponent bdi_component) {
+	// public ArtifactProducer(ArtifactEndpoint endpoint, ArtifactComponent
+	// bdi_component) {
 	public ArtifactProducer(ArtifactEndpoint endpoint) {
 		super(endpoint);
 		System.out.println("Creating artifact producer endpoint...");
 		this.endpoint = endpoint;
 		System.out.println("Artifact producer endpoint created successfully!");
-		
+
 		camelartif = endpoint.getCamelArtifact();
 	}
 
@@ -63,64 +66,67 @@ public class ArtifactProducer extends DefaultProducer {
 	 * TODO Cleber: Get new values from the route and deliver to the artifact
 	 */
 	public void process(Exchange exchange) throws Exception {
-		/**
-		 * Getinstance of artifact
-		 * Create new event objects in the concurrentqueue to 
-		 * call linkedop step by step  
-		 */
-		Map<String, String> data = new HashMap<String, String>();
-/*		
-		if route give an operation{
-			use route op
-		} else
-		{
-			operation = exchange.getIn().getHeader
-		}
-		
-*/
-		data = exchange.getIn().getBody(Map.class);
-		
-		//camelartif = CamelArtifact.getInstance();
-		
-//		try {
-//			System.out.println("Invoking...");
-//			Class<?> clazz = Class.forName("camelartifact.CamelArtifact");
-//			Class[] argTypes = new Class[] {String.class};
-//			Method writeinputtst = clazz.getMethod("writeinputtst", argTypes);
-//			System.out.println("Method found "+writeinputtst.toString());
-//			
-//			writeinputtst.invoke(null, data.toString());
-//		} catch (NoSuchMethodException e) {
-//			// TODO Auto-generated catch block
-//			System.out.println("Method NOT found "+e.toString());
-//			e.printStackTrace();
-//		}
-		
-		
-		
-		//camelartif = CamelArtifact;
-		
-		//Testing methods... begin
-		//String data = (String) exchange.getIn().getBody();
-		System.out.println("Callint test...");
-		camelartif.writeinputtst(data.toString());
-		System.out.println("Content received by producer: "+data.toString());
-		camelartif.writeinput(data.toString());
-		//Testing methods... end
 
-		
-		String artifactName = exchange.getIn().getHeader("ArtifactName").toString();
-		if (artifactName == null) {
-			// Log or print error - no artifact name found
-			return;
+		/**
+		 * Getinstance of artifact Create new event objects in the
+		 * concurrentqueue to call linkedop step by step
+		 */
+
+		if (camelartif.getListenCamelRoute()) {
+
+			try {
+
+				/*
+				 * if route give an operation{ use route op } else { operation =
+				 * exchange.getIn().getHeader }
+				 */
+				// Testing methods... begin
+				Map<String, Object> data = new HashMap<String, Object>();
+				data = exchange.getIn().getBody(Map.class);
+
+				System.out.println("Content received by producer: "
+						+ data.toString());
+
+				String artifactName = exchange.getIn()
+						.getHeader("ArtifactName").toString();
+
+				if (artifactName == null) {
+					System.out
+							.println("Error on header, ArtifactName received: "
+									+ artifactName);
+					throw new Exception("No artifact name found!");
+				}
+
+				/**
+				 * TODO Cleber: Check with Cranefield, I think we can
+				 * have the operations in the body, which has in short
+				 * <operations, parameters>
+				 */
+				String operationName = exchange.getIn()
+						.getHeader("OperationName").toString();
+				if (operationName == null) {
+					System.out
+							.println("Error on header, OperationName received: "
+									+ operationName);
+					throw new Exception("No operation name found!");
+				}
+
+				for (String opName : data.keySet()) {
+					/**
+					 * Add to the queue the new operations
+					 */
+					opQueue.put(artifactName, data);
+				}
+
+				camelartif.callLinkedArtifactOperation(artifactName,
+						"writeinputAr", exchange.getIn().getBody());
+
+				// camelartif.writeinput(data.toString());
+				// Testing methods... end
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		String operationName = exchange.getIn().getHeader("OperationName").toString();
-		if (operationName == null) {
-			// Log or print error - no operation name found
-			return;
-		}		
-		
-		camelartif.callLinkedArtifactOperation(artifactName, operationName, exchange.getIn().getBody());
-				
 	}
 }
