@@ -43,25 +43,6 @@ public class CamelArtifact extends Artifact {
 
 	private boolean listenCamelRoutes = false;
 
-	/**
-	 * Singleton implementation
-	 * 
-	 * private static CamelArtifact instance = null;
-	 * 
-	 * protected CamelArtifact() { }
-	 * 
-	 * public static CamelArtifact getInstance() { if (instance == null) {
-	 * instance = new CamelArtifact();
-	 * System.out.println("CamelArtifact: Singleton instance created!"); } else
-	 * { System.out
-	 * .println("CamelArtifact: Returning existing singleton instance."); }
-	 * return instance; }
-	 */
-
-	void init(int initialValue) {
-		defineObsProperty("count", initialValue);
-	}
-
 	@OPERATION
 	void setListenCamelRoute(boolean value) {
 		listenCamelRoutes = value;
