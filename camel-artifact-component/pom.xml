@@ -1,114 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+>
 
-  <modelVersion>4.0.0</modelVersion>
-  
-  <groupId>nz.ac.otago.infosci.camelartifact.component</groupId>
-  <artifactId>camelartifact</artifactId>
-  <packaging>jar</packaging>
-  <version>0.0.1</version>
+	<modelVersion>4.0.0</modelVersion>
 
-  <name>Camel Artifact Component</name>
+	<groupId>nz.ac.otago.infosci.camelartifact.component</groupId>
+	<artifactId>camelartifact</artifactId>
+	<packaging>jar</packaging>
+	<version>0.0.1</version>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <camel-version>2.12.3</camel-version>
-    
-  </properties>
-  <dependencies>
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-core</artifactId>
-      <version>${camel-version}</version>
-    </dependency>
-    <!-- logging -->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.6.6</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.6.6</version>
-    </dependency>
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.17</version>
-    </dependency>
+	<name>Camel Artifact Component</name>
 
-    <!-- testing -->
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-test</artifactId>
-      <version>${camel-version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-	<groupId>junit</groupId>
-	<artifactId>junit-dep</artifactId>
-	<version>4.5</version>
-    </dependency>
-<dependency>
-    <groupId>net.sf.corn</groupId>
-    <artifactId>corn-cps</artifactId>
-    <version>1.1.7</version>
-</dependency>     
-<dependency>
-	<groupId>commons-lang</groupId>
-	<artifactId>commons-lang</artifactId>
-	<version>2.3</version>
-</dependency>            
-<dependency>
-    <groupId>org.apache.camel</groupId>
-    <artifactId>camel-cxf</artifactId>
-    <version>${camel-version}</version>
-</dependency>
-<dependency>
-    <groupId>org.apache.camel</groupId>
-    <artifactId>camel-script</artifactId>
-    <version>${camel-version}</version>
-  </dependency>
-  
-<dependency>
-    <groupId>net.sf.cartago</groupId>
-    <artifactId>cartago</artifactId>
-    <version>2.0.1</version>
-    <scope>system</scope>
-    <systemPath>/home/cleber/Desktop/jacamo-0.5/lib/cartago.jar</systemPath>
-</dependency>
-  </dependencies>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8
+		</project.reporting.outputEncoding>
+		<camel-version>2.12.3</camel-version>
+	</properties>
 
-  <build>
-    <defaultGoal>install</defaultGoal>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+			<version>${camel-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-test</artifactId>
+			<version>${camel-version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.corn</groupId>
+			<artifactId>corn-cps</artifactId>
+			<version>1.1.7</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.3</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.cartago</groupId>
+			<artifactId>cartago</artifactId>
+			<version>2.0.1</version>
+			<scope>system</scope>
+			<systemPath>/home/cleber/Desktop/jacamo-0.5/lib/cartago.jar
+			</systemPath>
+		</dependency>
+	</dependencies>
 
-    <sourceDirectory>${basedir}/src/main/camelartifact/</sourceDirectory>
-    <outputDirectory>${basedir}/target/classes</outputDirectory>
-
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.5.1</version>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>2.4</version>
-        <configuration>
-          <includes>
-            <include>**/*</include>
-          </includes>
-        </configuration>
-      </plugin>
-
-    </plugins>    
-  </build>   
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<sourceDirectory>${basedir}/src/main/camelartifact/</sourceDirectory>
+		<outputDirectory>${basedir}/target/classes</outputDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<includes>
+						<include>**/*</include>
+					</includes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>2.19.1</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
 </project>

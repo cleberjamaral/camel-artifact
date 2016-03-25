@@ -33,6 +33,8 @@ import org.apache.camel.impl.DefaultEndpoint;
 
 /**
  * TODO: Cleber: Some functions and variables are related with jason agents, must replace by cartago artifacts stuffs
+ * In case of "INOUT" messages we can use setExchangePattern(ExchangePattern exchangePattern) of org.apache.camel.support.ServiceSupport
+ * 
  */
 public class ArtifactEndpoint extends DefaultEndpoint {
 
