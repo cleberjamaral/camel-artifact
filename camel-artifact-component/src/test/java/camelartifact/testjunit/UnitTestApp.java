@@ -1,4 +1,4 @@
-package camelartifact.test;
+package camelartifact.testjunit;
 
 import org.junit.Assert;
 import org.junit.Test;

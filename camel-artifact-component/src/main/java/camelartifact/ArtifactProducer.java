@@ -24,7 +24,6 @@ package camelartifact;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.lang.reflect.*;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultProducer;
@@ -33,8 +32,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import camelartifact.CamelArtifact;
-import cartago.Artifact;
-import cartago.OperationException;
 
 /**
  * TODO: Produce artifacts stuffs
@@ -42,12 +39,10 @@ import cartago.OperationException;
 public class ArtifactProducer extends DefaultProducer {
 
 	private static final transient Logger LOG = LoggerFactory
-			.getLogger(ArtifactEndpoint.class);
+			.getLogger(ArtifactProducer.class);
 
 	private CamelArtifact camelartif = null;
 	private Map<String, Map<String, Object>> opQueue = new HashMap<String, Map<String, Object>>();
-
-	static boolean verboseDebug = true;
 
 	ArtifactEndpoint endpoint;
 
@@ -55,9 +50,9 @@ public class ArtifactProducer extends DefaultProducer {
 	// bdi_component) {
 	public ArtifactProducer(ArtifactEndpoint endpoint) {
 		super(endpoint);
-		System.out.println("Creating artifact producer endpoint...");
+		LOG.trace("Creating artifact producer endpoint...");
 		this.endpoint = endpoint;
-		System.out.println("Artifact producer endpoint created successfully!");
+		LOG.info("Artifact producer endpoint created successfully!");
 
 		camelartif = endpoint.getCamelArtifact();
 	}
@@ -85,16 +80,14 @@ public class ArtifactProducer extends DefaultProducer {
 				Map<String, Object> data = new HashMap<String, Object>();
 				data = exchange.getIn().getBody(Map.class);
 
-				System.out.println("Producer received: "
-						+ data.toString());
+				LOG.debug("Producer received: " + data.toString());
 
 				String artifactName = exchange.getIn()
 						.getHeader("ArtifactName").toString();
 
 				if (artifactName == null) {
-					System.out
-							.println("Error on header, ArtifactName received: "
-									+ artifactName);
+					LOG.error("Error on header, ArtifactName received: "
+							+ artifactName);
 					throw new Exception("No artifact name found!");
 				}
 
@@ -106,9 +99,8 @@ public class ArtifactProducer extends DefaultProducer {
 				String operationName = exchange.getIn()
 						.getHeader("OperationName").toString();
 				if (operationName == null) {
-					System.out
-							.println("Error on header, OperationName received: "
-									+ operationName);
+					LOG.error("Error on header, OperationName received: "
+							+ operationName);
 					throw new Exception("No operation name found!");
 				}
 

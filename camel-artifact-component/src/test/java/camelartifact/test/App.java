@@ -30,9 +30,9 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.impl.DefaultCamelContext;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import camelartifact.*;
 
@@ -47,28 +47,26 @@ import camelartifact.*;
  */
 public class App {
 
+	private static final transient Logger LOG = LoggerFactory
+			.getLogger(App.class);
 	private static final int expectedMsgsCount = 3;
 	private static int msgCount = expectedMsgsCount;
 
 	public static void main(String[] args) throws Exception {
-		
+
 		System.exit(runSimulation());
 	}
 
 	public static int runSimulation() throws Exception, InterruptedException {
 		CamelArtifact camelartif = new CamelArtifact();
-		
+
 		// Add routes and start camel
-		System.out.println("Adding routes and starting camel...");
+		LOG.debug("Adding routes and starting camel...");
 		CamelContext camelContext = new DefaultCamelContext();
 		camelContext
 				.addComponent("artifact", new ArtifactComponent(camelartif));
 		camelContext.addRoutes(createRoutes());
 		camelContext.start();
-
-		MockEndpoint timerMock = camelContext.getEndpoint("mock:timerMock",
-				MockEndpoint.class);
-		timerMock.expectedMessageCount(expectedMsgsCount);
 
 		/**
 		 * This method should be called to say: start listening the route, so
@@ -76,19 +74,19 @@ public class App {
 		 */
 		camelartif.setListenCamelRoute(true);
 
-		System.out.println("Running testing loop...");
+		LOG.debug("Running testing loop...");
 		ProducerTemplate template = camelContext.createProducerTemplate();
 		while (msgCount > 0) {
 			template.sendBody("direct:start", "");
 			msgCount--;
 		}
-		System.out.println("Testing loop finished!");
+		LOG.info("Testing loop finished!");
 
 		camelartif = null;
-		
+
 		camelContext.stop();
-		timerMock.assertIsSatisfied();
 		
+		//return 0 means successful!
 		return 0;
 	}
 
@@ -100,7 +98,7 @@ public class App {
 				from("direct:start").process(new Processor() {
 					public void process(Exchange exchange) throws Exception {
 
-						System.out.println("Processing msgs...");
+						LOG.trace("Processing msgs...");
 
 						/**
 						 * Delivering a MAP of operations based on two strings
@@ -115,7 +113,7 @@ public class App {
 						throwData.put("setValue", msgCount);
 						exchange.getIn().setBody(throwData);
 					}
-				}).to("mock:timerMock").to("artifact:cartago");
+				}).to("artifact:cartago");
 			}
 		};
 	}

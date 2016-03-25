@@ -75,7 +75,7 @@
 
 	<build>
 		<defaultGoal>install</defaultGoal>
-		<sourceDirectory>${basedir}/src/main/camelartifact/</sourceDirectory>
+		<sourceDirectory>${basedir}/src/main/java/camelartifact/</sourceDirectory>
 		<outputDirectory>${basedir}/target/classes</outputDirectory>
 		<plugins>
 			<plugin>

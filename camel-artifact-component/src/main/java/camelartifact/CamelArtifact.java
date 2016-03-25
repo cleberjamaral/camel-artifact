@@ -22,6 +22,9 @@
 
 package camelartifact;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import cartago.*;
 //import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -37,6 +40,9 @@ import cartago.*;
  */
 public class CamelArtifact extends Artifact {
 
+	// Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
+	private static final transient Logger LOG = LoggerFactory
+			.getLogger(CamelArtifact.class);
 	private boolean listenCamelRoutes = false;
 	ReadCmd cmd;
 	boolean receiving;
@@ -58,8 +64,7 @@ public class CamelArtifact extends Artifact {
 		// cmd.exec();
 
 		listenCamelRoutes = value;
-		System.out.println("Camel Artifact 'listenCamelRoutes' changed to "
-				+ listenCamelRoutes);
+		LOG.trace("Camel Artifact 'listenCamelRoutes' is " + listenCamelRoutes);
 	}
 
 	public boolean getListenCamelRoute() {
@@ -88,25 +93,25 @@ public class CamelArtifact extends Artifact {
 			ArtifactId aid;
 			try {
 
-				System.out.println("receiveMsg to " + artifactName + ", op "
+				LOG.debug("receiveMsg to " + artifactName + ", op "
 						+ operationName);
 
 				aid = lookupArtifact(artifactName);
 
-				System.out.println("Artifact ID:" + aid.toString() + ", this "
+				LOG.debug("Artifact ID:" + aid.toString() + ", this "
 						+ this.getId().toString());
 
 				/**
 				 * The received message is addressed to other artifact
 				 */
 				if (this.getId() != aid) {
-					System.out.println("receiveMsg 3...");
+					LOG.debug("receiveMsg 3...");
 					callLinkedArtifactOperation(artifactName, operationName,
 							parameters);
 				} else {
 					// Call internal operation
 				}
-				System.out.println("receiveMsg 4...");
+				LOG.debug("receiveMsg 4...");
 
 			} catch (OperationException e) {
 				e.printStackTrace();
@@ -126,15 +131,14 @@ public class CamelArtifact extends Artifact {
 	void callLinkedArtifactOperation(String artifactName, String operationName,
 			Object parameters) {
 
-		System.out.println("CamelArtif " + artifactName + ", op: "
-				+ operationName + ", params: " + parameters.toString());
+		LOG.debug("CamelArtif " + artifactName + ", op: " + operationName
+				+ ", params: " + parameters.toString());
 
 		ArtifactId aid;
 		try {
 			aid = lookupArtifact(artifactName);
-			System.out.println("artifact id: " + aid.getName() + ", "
-					+ aid.getId() + ", " + aid.getArtifactType() + ", "
-					+ aid.toString());
+			LOG.debug("artifact id: " + aid.getName() + ", " + aid.getId()
+					+ ", " + aid.getArtifactType() + ", " + aid.toString());
 
 			String tst = "";
 			execLinkedOp(aid, operationName, tst);
@@ -142,16 +146,12 @@ public class CamelArtifact extends Artifact {
 			e.printStackTrace();
 		}
 	}
-/*
-	@OPERATION
-	void receiveMessage(OpFeedbackParam msg, OpFeedbackParam sender) {
-		if (getListenCamelRoute()) {
-			await(cmd);
-			//msg.set(cmd.getMsg());
-			//sender.set(cmd.getSender());
-		}
-	}
-*/
+
+	/*
+	 * @OPERATION void receiveMessage(OpFeedbackParam msg, OpFeedbackParam
+	 * sender) { if (getListenCamelRoute()) { await(cmd);
+	 * //msg.set(cmd.getMsg()); //sender.set(cmd.getSender()); } }
+	 */
 	@OPERATION
 	void startReceiving() {
 		receiving = true;
@@ -161,11 +161,12 @@ public class CamelArtifact extends Artifact {
 	@INTERNAL_OPERATION
 	void receiving() {
 		if (getListenCamelRoute()) {
-		while (true) {
-			await(cmd);
-			// signal("new_msg", cmd.getMsg(), cmd.getSender());
+			while (true) {
+				await(cmd);
+				// signal("new_msg", cmd.getMsg(), cmd.getSender());
 
-		}}
+			}
+		}
 	}
 
 	@OPERATION
@@ -185,7 +186,7 @@ public class CamelArtifact extends Artifact {
 				if (msgReceived) {
 					msgReceived = false;
 
-					System.out.println("MSG!!!!");
+					LOG.debug("MSG!!!!");
 
 					int tst = 1;
 					callLinkedArtifactOperation("counter", "writeinputAr", tst);
