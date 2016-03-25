@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="java/" kind="src" path="src/test"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/main"/>
-	<classpathentry kind="src" path="java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/apache/camel/camel-core/2.12.3/camel-core-2.12.3.jar"/>
 	<classpathentry kind="lib" path="/home/cleber/.m2/repository/net/sf/corn/corn-cps/1.1.7/corn-cps-1.1.7.jar"/>
