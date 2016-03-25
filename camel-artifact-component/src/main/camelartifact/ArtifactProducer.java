@@ -45,7 +45,7 @@ public class ArtifactProducer extends DefaultProducer {
 			.getLogger(ArtifactEndpoint.class);
 
 	private CamelArtifact camelartif = null;
-	private Map<String, Map <String, Object>> opQueue = new HashMap<String, Map <String, Object>>();
+	private Map<String, Map<String, Object>> opQueue = new HashMap<String, Map<String, Object>>();
 
 	static boolean verboseDebug = true;
 
@@ -72,7 +72,8 @@ public class ArtifactProducer extends DefaultProducer {
 		 * concurrentqueue to call linkedop step by step
 		 */
 
-		if (camelartif.getListenCamelRoute()) {
+		if (camelartif.getListenCamelRoute()) 
+		{
 
 			try {
 
@@ -84,7 +85,7 @@ public class ArtifactProducer extends DefaultProducer {
 				Map<String, Object> data = new HashMap<String, Object>();
 				data = exchange.getIn().getBody(Map.class);
 
-				System.out.println("Content received by producer: "
+				System.out.println("Producer received: "
 						+ data.toString());
 
 				String artifactName = exchange.getIn()
@@ -98,9 +99,9 @@ public class ArtifactProducer extends DefaultProducer {
 				}
 
 				/**
-				 * TODO Cleber: Check with Cranefield, I think we can
-				 * have the operations in the body, which has in short
-				 * <operations, parameters>
+				 * TODO Cleber: Check with Cranefield, I think we can have the
+				 * operations in the body, which has in short <operations,
+				 * parameters>
 				 */
 				String operationName = exchange.getIn()
 						.getHeader("OperationName").toString();
@@ -118,8 +119,8 @@ public class ArtifactProducer extends DefaultProducer {
 					opQueue.put(artifactName, data);
 				}
 
-				camelartif.callLinkedArtifactOperation(artifactName,
-						"writeinputAr", exchange.getIn().getBody());
+				camelartif.receiveMsg(artifactName, operationName, exchange
+						.getIn().getBody());
 
 				// camelartif.writeinput(data.toString());
 				// Testing methods... end

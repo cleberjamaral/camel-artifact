@@ -23,31 +23,43 @@
 package camelartifact;
 
 import cartago.*;
+//import java.util.concurrent.ConcurrentLinkedQueue;
 
 //TODO Cleber: Ask Cranefield how to make testing class to run on mvn
 
 /**
- * Artifact out ports TODO Cleber: Ask Cranefield, is it necessary to be in
- * Interface too? Is it part of the class and inherited?
- */
-@ARTIFACT_INFO(outports = { @OUTPORT(name = "out-1"), @OUTPORT(name = "in-1") })
-/**
- * @author cleber 
+ * @author cleber
  * 
- * The plan is to have an artifact "camel" other artifacts would
- * use it as a way to print and read messages from a camel route, but I
- * am not sure how to do it. At this beginning I am assuming that the
- * app should do the route and the linkedoperation with among artifacts
+ *         The plan is to have an artifact "camel" other artifacts would use it
+ *         as a way to print and read messages from a camel route, but I am not
+ *         sure how to do it. At this beginning I am assuming that the app
+ *         should do the route and the linkedoperation with among artifacts
  */
 public class CamelArtifact extends Artifact {
 
 	private boolean listenCamelRoutes = false;
+	ReadCmd cmd;
+	boolean receiving;
 
+	// protected ConcurrentLinkedQueue<OpRequest> incomingOpQueue = new
+	// ConcurrentLinkedQueue<OpRequest>();
+
+	/**
+	 * Since it is an operation, means it can be accessed by agents It is also
+	 * public to be accessed by java code of a host class
+	 * 
+	 * @param value
+	 */
 	@OPERATION
-	void setListenCamelRoute(boolean value) {
+	public void setListenCamelRoute(boolean value) {
+
+		cmd = new ReadCmd();
+		receiving = false;
+		// cmd.exec();
+
 		listenCamelRoutes = value;
 		System.out.println("Camel Artifact 'listenCamelRoutes' changed to "
-				+ value);
+				+ listenCamelRoutes);
 	}
 
 	public boolean getListenCamelRoute() {
@@ -59,50 +71,132 @@ public class CamelArtifact extends Artifact {
 		ObsProperty prop = getObsProperty("count");
 		prop.updateValue(prop.intValue() + 1);
 		signal("tick");
+
+		// Like Jomi said for example this can sendToCamel();
 	}
 
 	/**
-	 * This operation is writing the received data (from camel) to the port. In
-	 * this case the application must declare a @LINK method called writeinput
-	 * to receive the related data
+	 * Some message was received by the route
 	 */
 	@OPERATION
-	void writeinput(String datainput) {
-		try {
-			System.out.println("Camel artifact writeinput by out-1: "
-					+ datainput.toString());
-			execLinkedOp("out-1", "writeinputAr", "tst");
+	void receiveMsg(String artifactName, String operationName, Object parameters) {
 
-			// System.out.println("Camel artifact writeinput by in-1: "
-			// + datainput.toString());
-			// execLinkedOp("in-1", "writeinputAr", "tst");
-			//
-			System.out.println("Writeinput in-1 and out-1 done: "
-					+ datainput.toString());
+		boolean testingArtifactsDirectly = false;
 
-		} catch (OperationException e) {
-			System.out.println("writeinput ERROR! " + e.getMessage());
-			e.printStackTrace();
+		if (testingArtifactsDirectly) {
+
+			ArtifactId aid;
+			try {
+
+				System.out.println("receiveMsg to " + artifactName + ", op "
+						+ operationName);
+
+				aid = lookupArtifact(artifactName);
+
+				System.out.println("Artifact ID:" + aid.toString() + ", this "
+						+ this.getId().toString());
+
+				/**
+				 * The received message is addressed to other artifact
+				 */
+				if (this.getId() != aid) {
+					System.out.println("receiveMsg 3...");
+					callLinkedArtifactOperation(artifactName, operationName,
+							parameters);
+				} else {
+					// Call internal operation
+				}
+				System.out.println("receiveMsg 4...");
+
+			} catch (OperationException e) {
+				e.printStackTrace();
+			}
+		} else {
+			cmd.setMsgReceived(true);
 		}
+
 	}
 
+	/**
+	 * This operation is sending received data (from camel) to the destination
+	 * artifact. In this case the application must declare a @LINK method
+	 * according with operatioName and parameters received
+	 */
 	@OPERATION
 	void callLinkedArtifactOperation(String artifactName, String operationName,
 			Object parameters) {
 
-		System.out.println("CamelArtif writeinput by " + artifactName + ", op: "
-				+ operationName);
-		
+		System.out.println("CamelArtif " + artifactName + ", op: "
+				+ operationName + ", params: " + parameters.toString());
+
 		ArtifactId aid;
 		try {
 			aid = lookupArtifact(artifactName);
-			System.out.println("assembler id: " + aid.getName() + ", " + aid.getId()
-					+ ", " + aid.getArtifactType() + ", " + aid.toString());
+			System.out.println("artifact id: " + aid.getName() + ", "
+					+ aid.getId() + ", " + aid.getArtifactType() + ", "
+					+ aid.toString());
 
-			execLinkedOp(aid, operationName, "tst");
+			String tst = "";
+			execLinkedOp(aid, operationName, tst);
 		} catch (OperationException e) {
 			e.printStackTrace();
 		}
+	}
+/*
+	@OPERATION
+	void receiveMessage(OpFeedbackParam msg, OpFeedbackParam sender) {
+		if (getListenCamelRoute()) {
+			await(cmd);
+			//msg.set(cmd.getMsg());
+			//sender.set(cmd.getSender());
+		}
+	}
+*/
+	@OPERATION
+	void startReceiving() {
+		receiving = true;
+		execInternalOp("receiving");
+	}
 
+	@INTERNAL_OPERATION
+	void receiving() {
+		if (getListenCamelRoute()) {
+		while (true) {
+			await(cmd);
+			// signal("new_msg", cmd.getMsg(), cmd.getSender());
+
+		}}
+	}
+
+	@OPERATION
+	void stopReceiving() {
+		receiving = false;
+	}
+
+	class ReadCmd implements IBlockingCmd {
+
+		private boolean msgReceived;
+
+		public ReadCmd() {
+		}
+
+		public void exec() {
+			try {
+				if (msgReceived) {
+					msgReceived = false;
+
+					System.out.println("MSG!!!!");
+
+					int tst = 1;
+					callLinkedArtifactOperation("counter", "writeinputAr", tst);
+				}
+
+			} catch (Exception ex) {
+			}
+		}
+
+		public void setMsgReceived(boolean value) {
+			msgReceived = value;
+		}
 	}
 }
