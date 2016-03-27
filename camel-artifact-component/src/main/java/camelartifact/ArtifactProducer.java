@@ -81,6 +81,7 @@ public class ArtifactProducer extends DefaultProducer {
 				data = exchange.getIn().getBody(Map.class);
 
 				LOG.debug("Producer received: " + data.toString());
+				System.out.println("Producer received: " + data.toString());
 
 				String artifactName = exchange.getIn()
 						.getHeader("ArtifactName").toString();
