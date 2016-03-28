@@ -27,11 +27,19 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.impl.ScheduledPollConsumer;
 
+import resources.SimpleLogger;
+
 /**
  * TODO Cleber: Consume artifacts stuffs 
  */
 public class ArtifactConsumer extends ScheduledPollConsumer {
-    private final ArtifactEndpoint endpoint;
+
+	//For JaCaMo project, use SimpleLogger instead of log4j
+	// Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
+	//private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
+	private static SimpleLogger LOG = new SimpleLogger();
+
+	private final ArtifactEndpoint endpoint;
 
     public ArtifactConsumer(ArtifactEndpoint endpoint, Processor processor) {
         super(endpoint, processor);

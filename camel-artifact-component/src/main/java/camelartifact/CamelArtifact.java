@@ -25,6 +25,8 @@ package camelartifact;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import resources.SimpleLogger;
+
 import cartago.*;
 //import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -40,9 +42,11 @@ import cartago.*;
  */
 public class CamelArtifact extends Artifact {
 
+	//For JaCaMo project, use SimpleLogger instead of log4j
 	// Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
-	private static final transient Logger LOG = LoggerFactory
-			.getLogger(CamelArtifact.class);
+	//private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
+	private static SimpleLogger LOG = new SimpleLogger();
+	
 	private boolean listenCamelRoutes = false;
 	ReadCmd cmd;
 	boolean receiving;

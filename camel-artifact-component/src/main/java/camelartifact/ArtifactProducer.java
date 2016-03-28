@@ -31,6 +31,8 @@ import org.apache.camel.impl.DefaultProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import resources.SimpleLogger;
+
 import camelartifact.CamelArtifact;
 
 /**
@@ -38,8 +40,10 @@ import camelartifact.CamelArtifact;
  */
 public class ArtifactProducer extends DefaultProducer {
 
-	private static final transient Logger LOG = LoggerFactory
-			.getLogger(ArtifactProducer.class);
+	//For JaCaMo project, use SimpleLogger instead of log4j
+	// Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
+	//private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
+	private static SimpleLogger LOG = new SimpleLogger();
 
 	private CamelArtifact camelartif = null;
 	private Map<String, Map<String, Object>> opQueue = new HashMap<String, Map<String, Object>>();
@@ -81,7 +85,6 @@ public class ArtifactProducer extends DefaultProducer {
 				data = exchange.getIn().getBody(Map.class);
 
 				LOG.debug("Producer received: " + data.toString());
-				System.out.println("Producer received: " + data.toString());
 
 				String artifactName = exchange.getIn()
 						.getHeader("ArtifactName").toString();
