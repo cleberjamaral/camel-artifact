@@ -24,11 +24,14 @@ package camelartifact;
 
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.camel.Consumer;
 import org.apache.camel.Processor;
 import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultEndpoint;
+
+import cartago.Op;
 
 /**
  * TODO: Cleber: Some functions and variables are related with jason agents, must replace by cartago artifacts stuffs
@@ -43,6 +46,7 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 	private ArtifactComponent artifact_component;
 	private final Map<String, String> artifactProperties = new TreeMap<String, String>();
 	public static final String VALUE = "value";
+	private ConcurrentLinkedQueue OpQueue;
 	private CamelArtifact camelartif;
 
 	public ArtifactEndpoint() {
@@ -53,6 +57,13 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 		artifact_component = component;
 		setUriContextPath();
 		this.camelartif = camelartif;
+	}
+	
+	public ArtifactEndpoint(String uri, ArtifactComponent component, ConcurrentLinkedQueue OpQueue) {
+		super(uri, component);
+		artifact_component = component;
+		setUriContextPath();
+		this.OpQueue = OpQueue;
 	}
 
     public ArtifactEndpoint(String endpointUri) {
@@ -123,10 +134,14 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 		return workspace;
 	}
 
+	public ConcurrentLinkedQueue getOpQueue() {
+		return OpQueue;
+	}
+	
 	public CamelArtifact getCamelArtifact() {
 		return camelartif;
 	}
-
+	
 	private void setWorkspace(String workspace) {
 		this.workspace = workspace;
 	}

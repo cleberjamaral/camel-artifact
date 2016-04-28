@@ -23,13 +23,20 @@
 package camelartifact;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.camel.Endpoint;
 import org.apache.camel.impl.DefaultComponent;
 
 public class ArtifactComponent extends DefaultComponent {
 	
+	private ConcurrentLinkedQueue OpQueue;
 	private CamelArtifact camelartif;
+
+	public ArtifactComponent(ConcurrentLinkedQueue OpQueue)
+	{
+		this.OpQueue = OpQueue;
+	}
 
 	public ArtifactComponent(CamelArtifact camelartif)
 	{
@@ -42,6 +49,7 @@ public class ArtifactComponent extends DefaultComponent {
 	}	
 	
     protected Endpoint createEndpoint(String uri, String remaining, Map<String, Object> parameters) throws Exception {    	
+        //Endpoint endpoint = new ArtifactEndpoint(uri, this, this.OpQueue);
         Endpoint endpoint = new ArtifactEndpoint(uri, this, this.camelartif);
         setProperties(endpoint, parameters);
         

@@ -24,6 +24,7 @@ package camelartifact.test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
@@ -51,6 +52,8 @@ public class App {
 			.getLogger(App.class);
 	private static final int expectedMsgsCount = 3;
 	private static int msgCount = expectedMsgsCount;
+	//protected static ConcurrentLinkedQueue incomingOpQueue;
+	
 
 	public static void main(String[] args) throws Exception {
 
@@ -63,8 +66,8 @@ public class App {
 		// Add routes and start camel
 		LOG.debug("Adding routes and starting camel...");
 		CamelContext camelContext = new DefaultCamelContext();
-		camelContext
-				.addComponent("artifact", new ArtifactComponent(camelartif));
+		//camelContext.addComponent("artifact", new ArtifactComponent(incomingOpQueue));
+		camelContext.addComponent("artifact", new ArtifactComponent(camelartif));
 		camelContext.addRoutes(createRoutes());
 		camelContext.start();
 
@@ -112,6 +115,7 @@ public class App {
 						throwData.put("inc", null);
 						throwData.put("setValue", msgCount);
 						exchange.getIn().setBody(throwData);
+						LOG.trace("msg processed!");
 					}
 				}).to("artifact:cartago");
 			}

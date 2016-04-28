@@ -25,28 +25,29 @@ package camelartifact;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import resources.SimpleLogger;
+//import resources.SimpleLogger;
 
 import cartago.*;
-//import java.util.concurrent.ConcurrentLinkedQueue;
 
-//TODO Cleber: Ask Cranefield how to make testing class to run on mvn
+//import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * @author cleber
  * 
- *         The plan is to have an artifact "camel" other artifacts would use it
- *         as a way to print and read messages from a camel route, but I am not
- *         sure how to do it. At this beginning I am assuming that the app
- *         should do the route and the linkedoperation with among artifacts
+ *         This "camel-artifact" should exists in a MAS project to allow
+ *         communication between artifacts and extenal sources. It can also be a
+ *         router, sending and receiving messages from other (linked) artifacts.
  */
 public class CamelArtifact extends Artifact {
 
-	//For JaCaMo project, use SimpleLogger instead of log4j
-	// Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
-	//private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
-	private static SimpleLogger LOG = new SimpleLogger();
-	
+	/**
+	 *  Setting looging engine. For JaCaMo project, use SimpleLogger instead of log4j
+	 *  Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
+	 */
+	// 
+	private static final transient Logger LOG = LoggerFactory.getLogger(CamelArtifact.class);
+	//private static SimpleLogger LOG = new SimpleLogger();
+
 	private boolean listenCamelRoutes = false;
 	ReadCmd cmd;
 	boolean receiving;

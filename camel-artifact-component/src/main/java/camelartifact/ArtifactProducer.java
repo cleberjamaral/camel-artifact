@@ -31,7 +31,7 @@ import org.apache.camel.impl.DefaultProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import resources.SimpleLogger;
+//import resources.SimpleLogger;
 
 import camelartifact.CamelArtifact;
 
@@ -42,16 +42,14 @@ public class ArtifactProducer extends DefaultProducer {
 
 	//For JaCaMo project, use SimpleLogger instead of log4j
 	// Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
-	//private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
-	private static SimpleLogger LOG = new SimpleLogger();
+	private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
+	//private static SimpleLogger LOG = new SimpleLogger();
 
 	private CamelArtifact camelartif = null;
 	private Map<String, Map<String, Object>> opQueue = new HashMap<String, Map<String, Object>>();
 
 	ArtifactEndpoint endpoint;
 
-	// public ArtifactProducer(ArtifactEndpoint endpoint, ArtifactComponent
-	// bdi_component) {
 	public ArtifactProducer(ArtifactEndpoint endpoint) {
 		super(endpoint);
 		LOG.trace("Creating artifact producer endpoint...");
@@ -71,7 +69,7 @@ public class ArtifactProducer extends DefaultProducer {
 		 * concurrentqueue to call linkedop step by step
 		 */
 
-		if (camelartif.getListenCamelRoute()) 
+		//if (camelartif.getListenCamelRoute()) 
 		{
 
 			try {
