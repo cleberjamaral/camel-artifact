@@ -28,29 +28,30 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import org.apache.camel.Endpoint;
 import org.apache.camel.impl.DefaultComponent;
 
+
 public class ArtifactComponent extends DefaultComponent {
 	
-	private ConcurrentLinkedQueue OpQueue;
-	private CamelArtifact camelartif;
+	private ConcurrentLinkedQueue incomingOpQueue;
+	//private CamelArtifact camelartif;
 
-	public ArtifactComponent(ConcurrentLinkedQueue OpQueue)
+	public ArtifactComponent(ConcurrentLinkedQueue<OpRequest> incomingOpQueue)
 	{
-		this.OpQueue = OpQueue;
+		this.incomingOpQueue = incomingOpQueue;
 	}
 
 	public ArtifactComponent(CamelArtifact camelartif)
 	{
-		this.camelartif = camelartif;
+		//this.camelartif = camelartif;
 	}
 	
-	public CamelArtifact getArtifact()
+	//public CamelArtifact getArtifact()
 	{
-		return this.camelartif;
+		//return this.camelartif;
 	}	
 	
     protected Endpoint createEndpoint(String uri, String remaining, Map<String, Object> parameters) throws Exception {    	
-        //Endpoint endpoint = new ArtifactEndpoint(uri, this, this.OpQueue);
-        Endpoint endpoint = new ArtifactEndpoint(uri, this, this.camelartif);
+        Endpoint endpoint = new ArtifactEndpoint(uri, this, this.incomingOpQueue);
+        //Endpoint endpoint = new ArtifactEndpoint(uri, this, this.camelartif);
         setProperties(endpoint, parameters);
         
         return endpoint;

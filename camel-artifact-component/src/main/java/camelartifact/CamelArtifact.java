@@ -29,7 +29,8 @@ import org.slf4j.LoggerFactory;
 
 import cartago.*;
 
-//import java.util.concurrent.ConcurrentLinkedQueue;
+//Operation queue
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * @author cleber
@@ -38,22 +39,21 @@ import cartago.*;
  *         communication between artifacts and extenal sources. It can also be a
  *         router, sending and receiving messages from other (linked) artifacts.
  */
+
 public class CamelArtifact extends Artifact {
 
 	/**
-	 *  Setting looging engine. For JaCaMo project, use SimpleLogger instead of log4j
-	 *  Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
+	 * Setting logging engine. For JaCaMo project, use SimpleLogger instead of
+	 * log4j Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
 	 */
-	// 
-	private static final transient Logger LOG = LoggerFactory.getLogger(CamelArtifact.class);
-	//private static SimpleLogger LOG = new SimpleLogger();
+	//
+	private static final transient Logger LOG = LoggerFactory
+			.getLogger(CamelArtifact.class);
+	// private static SimpleLogger LOG = new SimpleLogger();
+	protected static ConcurrentLinkedQueue<OpRequest> incomingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
 
 	private boolean listenCamelRoutes = false;
-	ReadCmd cmd;
 	boolean receiving;
-
-	// protected ConcurrentLinkedQueue<OpRequest> incomingOpQueue = new
-	// ConcurrentLinkedQueue<OpRequest>();
 
 	/**
 	 * Since it is an operation, means it can be accessed by agents It is also
@@ -64,12 +64,40 @@ public class CamelArtifact extends Artifact {
 	@OPERATION
 	public void setListenCamelRoute(boolean value) {
 
-		cmd = new ReadCmd();
 		receiving = false;
-		// cmd.exec();
 
 		listenCamelRoutes = value;
 		LOG.trace("Camel Artifact 'listenCamelRoutes' is " + listenCamelRoutes);
+
+		Thread thread = new Thread() {
+
+			public void run() {
+				try {
+					OpRequest newOp;
+					LOG.debug("Waiting for a message in the queue...");
+					while (true) {
+						if ((newOp = incomingOpQueue.poll()) != null) {
+							LOG.debug("A message was founded in the queue! Artifact:"
+									+ newOp.getArtifactName()
+									+ ", op:"
+									+ newOp.getOpName()
+									+ ", body "
+									+ newOp.getParams().toString());
+
+							// callLinkedArtifactOperation("counter",
+							// "writeinputAr", tst);
+						}
+					}
+				} catch (Exception ex) {
+				}
+			}
+		};
+		thread.start();
+
+	}
+	
+	public ConcurrentLinkedQueue<OpRequest> getIncomingOpQueue() {
+		return incomingOpQueue;
 	}
 
 	public boolean getListenCamelRoute() {
@@ -122,7 +150,7 @@ public class CamelArtifact extends Artifact {
 				e.printStackTrace();
 			}
 		} else {
-			cmd.setMsgReceived(true);
+			//cmd.setMsgReceived(true);
 		}
 
 	}
@@ -151,58 +179,5 @@ public class CamelArtifact extends Artifact {
 			e.printStackTrace();
 		}
 	}
-
-	/*
-	 * @OPERATION void receiveMessage(OpFeedbackParam msg, OpFeedbackParam
-	 * sender) { if (getListenCamelRoute()) { await(cmd);
-	 * //msg.set(cmd.getMsg()); //sender.set(cmd.getSender()); } }
-	 */
-	@OPERATION
-	void startReceiving() {
-		receiving = true;
-		execInternalOp("receiving");
-	}
-
-	@INTERNAL_OPERATION
-	void receiving() {
-		if (getListenCamelRoute()) {
-			while (true) {
-				await(cmd);
-				// signal("new_msg", cmd.getMsg(), cmd.getSender());
-
-			}
-		}
-	}
-
-	@OPERATION
-	void stopReceiving() {
-		receiving = false;
-	}
-
-	class ReadCmd implements IBlockingCmd {
-
-		private boolean msgReceived;
-
-		public ReadCmd() {
-		}
-
-		public void exec() {
-			try {
-				if (msgReceived) {
-					msgReceived = false;
-
-					LOG.debug("MSG!!!!");
-
-					int tst = 1;
-					callLinkedArtifactOperation("counter", "writeinputAr", tst);
-				}
-
-			} catch (Exception ex) {
-			}
-		}
-
-		public void setMsgReceived(boolean value) {
-			msgReceived = value;
-		}
-	}
+	
 }

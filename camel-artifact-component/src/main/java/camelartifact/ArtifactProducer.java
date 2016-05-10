@@ -22,14 +22,17 @@
 
 package camelartifact;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultProducer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 //import resources.SimpleLogger;
 
@@ -46,7 +49,8 @@ public class ArtifactProducer extends DefaultProducer {
 	//private static SimpleLogger LOG = new SimpleLogger();
 
 	private CamelArtifact camelartif = null;
-	private Map<String, Map<String, Object>> opQueue = new HashMap<String, Map<String, Object>>();
+	//private Map<String, Map<String, Object>> opQueue = new HashMap<String, Map<String, Object>>();
+	private ConcurrentLinkedQueue<OpRequest> incomingOpQueue;
 
 	ArtifactEndpoint endpoint;
 
@@ -56,7 +60,8 @@ public class ArtifactProducer extends DefaultProducer {
 		this.endpoint = endpoint;
 		LOG.info("Artifact producer endpoint created successfully!");
 
-		camelartif = endpoint.getCamelArtifact();
+		//camelartif = endpoint.getCamelArtifact();
+		incomingOpQueue = endpoint.getIncomingOpQueue();
 	}
 
 	/**
@@ -75,21 +80,13 @@ public class ArtifactProducer extends DefaultProducer {
 			try {
 
 				/*
-				 * if route give an operation{ use route op } else { operation =
-				 * exchange.getIn().getHeader }
+				 * The default message 
 				 */
-				// Testing methods... begin
-				Map<String, Object> data = new HashMap<String, Object>();
-				data = exchange.getIn().getBody(Map.class);
+				LOG.debug("Producer received: " + exchange.getIn().getBody(Map.class).toString());
 
-				LOG.debug("Producer received: " + data.toString());
-
-				String artifactName = exchange.getIn()
-						.getHeader("ArtifactName").toString();
-
+				String artifactName = exchange.getIn().getHeader("ArtifactName").toString();
 				if (artifactName == null) {
-					LOG.error("Error on header, ArtifactName received: "
-							+ artifactName);
+					LOG.error("Error on header, ArtifactName received: " + artifactName);
 					throw new Exception("No artifact name found!");
 				}
 
@@ -98,23 +95,20 @@ public class ArtifactProducer extends DefaultProducer {
 				 * operations in the body, which has in short <operations,
 				 * parameters>
 				 */
-				String operationName = exchange.getIn()
-						.getHeader("OperationName").toString();
+				String operationName = exchange.getIn().getHeader("OperationName").toString();
 				if (operationName == null) {
-					LOG.error("Error on header, OperationName received: "
-							+ operationName);
+					LOG.error("Error on header, OperationName received: "+ operationName);
 					throw new Exception("No operation name found!");
 				}
 
-				for (String opName : data.keySet()) {
-					/**
-					 * Add to the queue the new operations
-					 */
-					opQueue.put(artifactName, data);
-				}
+				OpRequest newOp = new OpRequest();
+				newOp.setArtifactName(artifactName);
+				newOp.setOpName(operationName);
+				LOG.debug("Added in the queue: " + artifactName + ": " + operationName);
+				newOp.setParams(exchange.getIn().getBody(Map.class));
+				incomingOpQueue.add(newOp);
 
-				camelartif.receiveMsg(artifactName, operationName, exchange
-						.getIn().getBody());
+				//camelartif.receiveMsg(artifactName, operationName, exchange.getIn().getBody());
 
 				// camelartif.writeinput(data.toString());
 				// Testing methods... end
@@ -124,4 +118,4 @@ public class ArtifactProducer extends DefaultProducer {
 			}
 		}
 	}
-}
+}				

@@ -31,6 +31,7 @@ import org.apache.camel.Processor;
 import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultEndpoint;
 
+
 import cartago.Op;
 
 /**
@@ -46,24 +47,24 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 	private ArtifactComponent artifact_component;
 	private final Map<String, String> artifactProperties = new TreeMap<String, String>();
 	public static final String VALUE = "value";
-	private ConcurrentLinkedQueue OpQueue;
+	private ConcurrentLinkedQueue<OpRequest> incomingOpQueue;
 	private CamelArtifact camelartif;
 
 	public ArtifactEndpoint() {
 	}
-
+/*
 	public ArtifactEndpoint(String uri, ArtifactComponent component, CamelArtifact camelartif) {
 		super(uri, component);
 		artifact_component = component;
 		setUriContextPath();
 		this.camelartif = camelartif;
 	}
-	
-	public ArtifactEndpoint(String uri, ArtifactComponent component, ConcurrentLinkedQueue OpQueue) {
+	*/
+	public ArtifactEndpoint(String uri, ArtifactComponent component, ConcurrentLinkedQueue<OpRequest> incomingOpQueue) {
 		super(uri, component);
 		artifact_component = component;
 		setUriContextPath();
-		this.OpQueue = OpQueue;
+		this.incomingOpQueue = incomingOpQueue;
 	}
 
     public ArtifactEndpoint(String endpointUri) {
@@ -134,8 +135,8 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 		return workspace;
 	}
 
-	public ConcurrentLinkedQueue getOpQueue() {
-		return OpQueue;
+	public ConcurrentLinkedQueue<OpRequest> getIncomingOpQueue() {
+		return incomingOpQueue;
 	}
 	
 	public CamelArtifact getCamelArtifact() {

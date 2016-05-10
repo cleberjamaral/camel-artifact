@@ -68,7 +68,7 @@
 			<artifactId>cartago</artifactId>
 			<version>2.0.1</version>
 			<scope>system</scope>
-			<systemPath>/home/cleber/Desktop/jacamo-0.5/lib/cartago.jar
+			<systemPath>${basedir}/lib/cartago.jar
 			</systemPath>
 		</dependency>
 	</dependencies>
@@ -77,6 +77,16 @@
 		<defaultGoal>install</defaultGoal>
 		<sourceDirectory>${basedir}/src/main/java/camelartifact/</sourceDirectory>
 		<outputDirectory>${basedir}/target/classes</outputDirectory>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources/</directory>
+				<includes>
+					<include>*.properties</include>
+				</includes>
+			</resource>
+		</resources>
+		<!-- 
+		-->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

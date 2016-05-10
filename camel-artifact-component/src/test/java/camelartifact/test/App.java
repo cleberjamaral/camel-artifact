@@ -52,8 +52,6 @@ public class App {
 			.getLogger(App.class);
 	private static final int expectedMsgsCount = 3;
 	private static int msgCount = expectedMsgsCount;
-	//protected static ConcurrentLinkedQueue incomingOpQueue;
-	
 
 	public static void main(String[] args) throws Exception {
 
@@ -66,8 +64,10 @@ public class App {
 		// Add routes and start camel
 		LOG.debug("Adding routes and starting camel...");
 		CamelContext camelContext = new DefaultCamelContext();
-		//camelContext.addComponent("artifact", new ArtifactComponent(incomingOpQueue));
-		camelContext.addComponent("artifact", new ArtifactComponent(camelartif));
+		camelContext.addComponent("artifact",
+				new ArtifactComponent(camelartif.getIncomingOpQueue()));
+		// camelContext.addComponent("artifact", new
+		// ArtifactComponent(camelartif));
 		camelContext.addRoutes(createRoutes());
 		camelContext.start();
 
@@ -88,8 +88,8 @@ public class App {
 		camelartif = null;
 
 		camelContext.stop();
-		
-		//return 0 means successful!
+
+		// return 0 means successful!
 		return 0;
 	}
 
@@ -107,13 +107,12 @@ public class App {
 						 * Delivering a MAP of operations based on two strings
 						 * (key, value)
 						 */
-						exchange.getIn().setHeader("ArtifactName",
-								"NoArtifactInThisTest");
+						exchange.getIn().setHeader("ArtifactName", "NotInTest");
 						exchange.getIn().setHeader("OperationName", "inc");
 
 						Map<String, Object> throwData = new HashMap<String, Object>();
-						throwData.put("inc", null);
-						throwData.put("setValue", msgCount);
+						throwData.put("inc_param", null);
+						throwData.put("setValue", (Object) msgCount);
 						exchange.getIn().setBody(throwData);
 						LOG.trace("msg processed!");
 					}

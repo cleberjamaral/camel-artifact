@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
-	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/apache/camel/camel-core/2.12.3/camel-core-2.12.3.jar"/>
-	<classpathentry kind="lib" path="/home/cleber/.m2/repository/net/sf/corn/corn-cps/1.1.7/corn-cps-1.1.7.jar"/>
-	<classpathentry kind="lib" path="/home/cleber/Desktop/jacamo-0.5/lib/cartago.jar" sourcepath="/cartago-2.0.1"/>
-	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar"/>
-	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/apache/camel/camel-test/2.12.3/camel-test-2.12.3.jar"/>
-	<classpathentry kind="lib" path="/home/cleber/.m2/repository/junit/junit/4.7/junit-4.7.jar"/>
-	<classpathentry kind="lib" path="/home/cleber/.m2/repository/org/slf4j/slf4j-log4j12/1.6.6/slf4j-log4j12-1.6.6.jar"/>
-	<classpathentry kind="lib" path="/home/cleber/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="lib/camel-core-2.12.3.jar"/>
+	<classpathentry kind="lib" path="lib/camel-test-2.12.3.jar"/>
+	<classpathentry kind="lib" path="lib/cartago.jar" sourcepath="/cartago-2.0.1"/>
+	<classpathentry kind="lib" path="lib/corn-cps-1.1.7.jar"/>
+	<classpathentry kind="lib" path="lib/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.7.5.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.6.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
