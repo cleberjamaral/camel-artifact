@@ -31,81 +31,62 @@ import org.apache.camel.Processor;
 import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultEndpoint;
 
-
-import cartago.Op;
-
 /**
- * TODO: Cleber: Some functions and variables are related with jason agents, must replace by cartago artifacts stuffs
- * In case of "INOUT" messages we can use setExchangePattern(ExchangePattern exchangePattern) of org.apache.camel.support.ServiceSupport
+ * TODO: Cleber: Some functions and variables are related with jason agents, must replace by cartago artifacts stuffs In
+ * case of "INOUT" messages we can use setExchangePattern(ExchangePattern exchangePattern) of
+ * org.apache.camel.support.ServiceSupport
  * 
  */
 public class ArtifactEndpoint extends DefaultEndpoint {
 
-	private String uriContextPath; /*Which contains workspace and artifact*/
+	private String uriContextPath; /* Which contains workspace and artifact */
 	private String workspace;
 	private String artifact;
-	private ArtifactComponent artifact_component;
+
 	private final Map<String, String> artifactProperties = new TreeMap<String, String>();
 	public static final String VALUE = "value";
 	private ConcurrentLinkedQueue<OpRequest> incomingOpQueue;
-	private CamelArtifact camelartif;
 
 	public ArtifactEndpoint() {
 	}
-/*
-	public ArtifactEndpoint(String uri, ArtifactComponent component, CamelArtifact camelartif) {
-		super(uri, component);
-		artifact_component = component;
-		setUriContextPath();
-		this.camelartif = camelartif;
-	}
-	*/
+
 	public ArtifactEndpoint(String uri, ArtifactComponent component, ConcurrentLinkedQueue<OpRequest> incomingOpQueue) {
 		super(uri, component);
-		artifact_component = component;
 		setUriContextPath();
 		this.incomingOpQueue = incomingOpQueue;
 	}
 
-    public ArtifactEndpoint(String endpointUri) {
-        super(endpointUri);
-    }
+	@SuppressWarnings("deprecation")
+	public ArtifactEndpoint(String endpointUri) {
+		super(endpointUri);
+	}
 
 	public Map<String, String> getArtifactProperties() {
 		return artifactProperties;
 	}
 
 	/**
-	 * TODO Cleber: talk with Cranefield, it seems to be very 
-	 * different the conception of agent and opc endpoints. 
-	 * This last one seems to have only one connection with 
-	 * the server and treat almost everything as variable
-	 * So actually, the context sounds to be more interesting
-	 * if we use to address the workspace and the artifact,
-	 * than, we can use operation to read and write doing like:
-	 * tag=value means write and tag=_ means read (may be we 
-	 * gotta avoid "?" for this function)
-	 *  
-	 * This uri concept is still not very clear, how the variables
-	 * are transmited? like opcda, sounds that there is only configuration
-	 * params, it is not very clear how tags are transmitted:
-	 * String uriString = "opcda2:opcdaTest/Simulation Items/Random/String?delay=1000&
-	 * host=" + host + "&clsId=" + clsid + "&username=" + user + "&password=" + password + "&domain=" + domain;
-	 *   
-	 * A message to be processed should be something like
-	 * Some examples of commons URIs:
-	 * "file:data/inbox?delay=5000" based on "scheme:context_path?options"
-	 * "agent:percept?persistent=false&updateMode=replace"
-	 * "timer:test?period=200" 
+	 * TODO Cleber: talk with Cranefield, it seems to be very different the conception of agent and opc endpoints. This
+	 * last one seems to have only one connection with the server and treat almost everything as variable So actually,
+	 * the context sounds to be more interesting if we use to address the workspace and the artifact, than, we can use
+	 * operation to read and write doing like: tag=value means write and tag=_ means read (may be we gotta avoid "?" for
+	 * this function)
 	 * 
-	 * On this first approach the proposed URI was "artifact:shopfloor/loader"
-	 * which means "://artifact:workspace/artifact_name?options"
-	 * In a meeting with Cranefield another concept was proposed by him:
-	 * On consumer side: "://artifact:operation?...", "://artifact:property?..."
-	 * On producer side: "://artifact:event?...", "://artifact:property?..."
-	 *   
-	 * Identifies the context (contextpath) of URI which can be
-	 * WRITE or READ, for producer and consumer respectively
+	 * This uri concept is still not very clear, how the variables are transmited? like opcda, sounds that there is only
+	 * configuration params, it is not very clear how tags are transmitted: String uriString =
+	 * "opcda2:opcdaTest/Simulation Items/Random/String?delay=1000&
+	 * host=" + host + "&clsId=" + clsid + "&username=" + user + "&password=" + password + "&domain=" + domain;
+	 * 
+	 * A message to be processed should be something like Some examples of commons URIs: "file:data/inbox?delay=5000"
+	 * based on "scheme:context_path?options" "agent:percept?persistent=false&updateMode=replace"
+	 * "timer:test?period=200"
+	 * 
+	 * On this first approach the proposed URI was "artifact:shopfloor/loader" which means
+	 * "://artifact:workspace/artifact_name?options" In a meeting with Cranefield another concept was proposed by him:
+	 * On consumer side: "://artifact:operation?...", "://artifact:property?..." On producer side:
+	 * "://artifact:event?...", "://artifact:property?..."
+	 * 
+	 * Identifies the context (contextpath) of URI which can be WRITE or READ, for producer and consumer respectively
 	 */
 	private void setUriContextPath() {
 
@@ -114,15 +95,14 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 			uriContextPath = uri.substring(0, uri.indexOf("?"));
 		else
 			uriContextPath = uri;
-		
-		String uriContextPathLessColonSlashs = uriContextPath.substring(uriContextPath.indexOf("://")+3,uriContextPath.length());
-		if (uriContextPathLessColonSlashs.contains("/"))
-		{
+
+		String uriContextPathLessColonSlashs = uriContextPath.substring(uriContextPath.indexOf("://") + 3,
+				uriContextPath.length());
+		if (uriContextPathLessColonSlashs.contains("/")) {
 			setWorkspace(uriContextPathLessColonSlashs.substring(0, uriContextPathLessColonSlashs.indexOf("/")));
-			setArtifact(uriContextPathLessColonSlashs.substring(uriContextPathLessColonSlashs.indexOf("/")+1,uriContextPathLessColonSlashs.length()));
-		}
-		else
-		{
+			setArtifact(uriContextPathLessColonSlashs.substring(uriContextPathLessColonSlashs.indexOf("/") + 1,
+					uriContextPathLessColonSlashs.length()));
+		} else {
 			setArtifact(uriContextPathLessColonSlashs);
 		}
 	}
@@ -138,11 +118,7 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 	public ConcurrentLinkedQueue<OpRequest> getIncomingOpQueue() {
 		return incomingOpQueue;
 	}
-	
-	public CamelArtifact getCamelArtifact() {
-		return camelartif;
-	}
-	
+
 	private void setWorkspace(String workspace) {
 		this.workspace = workspace;
 	}
@@ -157,17 +133,15 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 
 	@Override
 	public Producer createProducer() throws Exception {
-		//return new ArtifactProducer(this, artifact_component);
 		return new ArtifactProducer(this);
 	}
 
 	/**
-	 * This component is prepared to create multiples consumers, but its
-	 * is not managing this list in a container (for example). It must be 
-	 * managed by an artifact camel
+	 * This component is prepared to create multiples consumers, but its is not managing this list in a container (for
+	 * example). It must be managed by an external class
+	 * 
 	 * @param processor
 	 * @return consumer
-	 * TODO Cleber: create artifact "camel" managing consumers list 
 	 */
 	public Consumer createConsumer(Processor processor) throws Exception {
 		ArtifactConsumer cons = new ArtifactConsumer(this, processor);

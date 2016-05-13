@@ -22,36 +22,35 @@
 
 package camelartifact;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultProducer;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/**
+ * For JaCaMo project, use SimpleLogger instead of log4j
+ * Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
+ */
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
-
-//import resources.SimpleLogger;
-
-import camelartifact.CamelArtifact;
+import simplelogger.SimpleLogger;
 
 /**
- * TODO: Produce artifacts stuffs
+ * @author Cleber
+ * 
+ *         Produce side of CamelArtifact class. This is the side responsible for receive new messages from the route and
+ *         deliver it to the artifact. The message can come in any format from some consumer, the app is responsible for
+ *         this "translation" to "artifact world" what means that messages must be converted in operations calls to be
+ *         performed by artifacts.
  */
 public class ArtifactProducer extends DefaultProducer {
 
-	//For JaCaMo project, use SimpleLogger instead of log4j
-	// Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
-	private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
-	//private static SimpleLogger LOG = new SimpleLogger();
-
-	private CamelArtifact camelartif = null;
-	//private Map<String, Map<String, Object>> opQueue = new HashMap<String, Map<String, Object>>();
+	// See import comments for detalis about LOG
+	// private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
+	private static SimpleLogger LOG = new SimpleLogger();
 	private ConcurrentLinkedQueue<OpRequest> incomingOpQueue;
-
 	ArtifactEndpoint endpoint;
 
 	public ArtifactProducer(ArtifactEndpoint endpoint) {
@@ -60,62 +59,49 @@ public class ArtifactProducer extends DefaultProducer {
 		this.endpoint = endpoint;
 		LOG.info("Artifact producer endpoint created successfully!");
 
-		//camelartif = endpoint.getCamelArtifact();
 		incomingOpQueue = endpoint.getIncomingOpQueue();
 	}
 
 	/**
-	 * TODO Cleber: Get new values from the route and deliver to the artifact
+	 * Get a new message from the route and try to add it as an OperationRequest to be performed by some artifact. The
+	 * expected message has in the reader two fields: "ArtifactName" and "OperationName" This message also has in the
+	 * body a set of object that represents parameters of the related operation
 	 */
 	public void process(Exchange exchange) throws Exception {
 
-		/**
-		 * Getinstance of artifact Create new event objects in the
-		 * concurrentqueue to call linkedop step by step
-		 */
+		try {
 
-		//if (camelartif.getListenCamelRoute()) 
-		{
+			// LOG.debug("Producer received: " + exchange.getIn().getBody(List.class).toString());
+			String artifactName = exchange.getIn().getHeader("ArtifactName").toString();
+			String operationName = exchange.getIn().getHeader("OperationName").toString();
+			LOG.debug("OperationRequest received! Artifact: " + artifactName + ", " + operationName);
 
-			try {
-
-				/*
-				 * The default message 
-				 */
-				LOG.debug("Producer received: " + exchange.getIn().getBody(Map.class).toString());
-
-				String artifactName = exchange.getIn().getHeader("ArtifactName").toString();
-				if (artifactName == null) {
-					LOG.error("Error on header, ArtifactName received: " + artifactName);
-					throw new Exception("No artifact name found!");
-				}
-
-				/**
-				 * TODO Cleber: Check with Cranefield, I think we can have the
-				 * operations in the body, which has in short <operations,
-				 * parameters>
-				 */
-				String operationName = exchange.getIn().getHeader("OperationName").toString();
-				if (operationName == null) {
-					LOG.error("Error on header, OperationName received: "+ operationName);
-					throw new Exception("No operation name found!");
-				}
-
-				OpRequest newOp = new OpRequest();
-				newOp.setArtifactName(artifactName);
-				newOp.setOpName(operationName);
-				LOG.debug("Added in the queue: " + artifactName + ": " + operationName);
-				newOp.setParams(exchange.getIn().getBody(Map.class));
-				incomingOpQueue.add(newOp);
-
-				//camelartif.receiveMsg(artifactName, operationName, exchange.getIn().getBody());
-
-				// camelartif.writeinput(data.toString());
-				// Testing methods... end
-
-			} catch (Exception e) {
-				e.printStackTrace();
+			// A null artifact is forbidden, there is no meaning and nobody to call
+			if (artifactName == null) {
+				LOG.error("Error on header, ArtifactName received: " + artifactName);
+				throw new Exception("No artifact name found!");
 			}
+
+			// A null operation is forbidden, there is no meaning and nothing to call
+			if (operationName == null) {
+				LOG.error("Error on header, OperationName received: " + operationName);
+				throw new Exception("No operation name found!");
+			}
+
+			// Add in the queue a neu OperationRequest to be performed by related artifact
+			OpRequest newOp = new OpRequest();
+			newOp.setArtifactName(artifactName);
+			newOp.setOpName(operationName);
+			
+			newOp.setParams(exchange.getIn().getBody(List.class));
+			
+			LOG.debug("Adding in the queue: " + artifactName + ": " + operationName);
+			LOG.debug("Parameters details: " + newOp.getParams().toString());
+			incomingOpQueue.add(newOp);
+			LOG.debug("Message added in the queue!");
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
-}				
+}

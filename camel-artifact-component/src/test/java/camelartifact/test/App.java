@@ -22,9 +22,8 @@
 
 package camelartifact.test;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
@@ -38,18 +37,16 @@ import org.slf4j.LoggerFactory;
 import camelartifact.*;
 
 /**
- * This simple testing app is creating artificial operations for the
- * CamelArtifact. Since it is not a MultiAgent System project, actually our
- * camel artifact is not running as an artifact (in an environment with Agents,
- * etc) It is only a Java class processing testing methods.
+ * This simple testing app is creating artificial operations for the CamelArtifact. Since it is not a MultiAgent System
+ * project, actually our camel artifact is not running as an artifact (in an environment with Agents, etc) It is only a
+ * Java class processing testing methods.
  * 
  * @author cleber
  * 
  */
 public class App {
 
-	private static final transient Logger LOG = LoggerFactory
-			.getLogger(App.class);
+	private static final transient Logger LOG = LoggerFactory.getLogger(App.class);
 	private static final int expectedMsgsCount = 3;
 	private static int msgCount = expectedMsgsCount;
 
@@ -59,23 +56,20 @@ public class App {
 	}
 
 	public static int runSimulation() throws Exception, InterruptedException {
+		
 		CamelArtifact camelartif = new CamelArtifact();
 
 		// Add routes and start camel
 		LOG.debug("Adding routes and starting camel...");
 		CamelContext camelContext = new DefaultCamelContext();
-		camelContext.addComponent("artifact",
-				new ArtifactComponent(camelartif.getIncomingOpQueue()));
-		// camelContext.addComponent("artifact", new
-		// ArtifactComponent(camelartif));
+		camelContext.addComponent("artifact", new ArtifactComponent(camelartif.getIncomingOpQueue()));
 		camelContext.addRoutes(createRoutes());
 		camelContext.start();
 
 		/**
-		 * This method should be called to say: start listening the route, so
-		 * the producer will process the messages
+		 * This method should be called to say: start listening the route, so the producer will process the messages
 		 */
-		camelartif.setListenCamelRoute(true);
+		camelartif.setListenCamelRoute(false);
 
 		LOG.debug("Running testing loop...");
 		ProducerTemplate template = camelContext.createProducerTemplate();
@@ -103,16 +97,13 @@ public class App {
 
 						LOG.trace("Processing msgs...");
 
-						/**
-						 * Delivering a MAP of operations based on two strings
-						 * (key, value)
-						 */
 						exchange.getIn().setHeader("ArtifactName", "NotInTest");
 						exchange.getIn().setHeader("OperationName", "inc");
 
-						Map<String, Object> throwData = new HashMap<String, Object>();
-						throwData.put("inc_param", null);
-						throwData.put("setValue", (Object) msgCount);
+						List<Object> throwData = new ArrayList<Object>();
+						throwData.add("inc_param");
+						throwData.add(null);
+						throwData.add(msgCount);
 						exchange.getIn().setBody(throwData);
 						LOG.trace("msg processed!");
 					}
