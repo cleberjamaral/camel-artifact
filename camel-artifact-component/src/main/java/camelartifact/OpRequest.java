@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author cleber
+ * @author Cleber
  * 
  *         This OpRequest class represents the request messages that came from
  *         the route and must be executed by the artifacts. Main fields:
@@ -37,9 +37,14 @@ import java.util.List;
  */
 
 public class OpRequest {
+
 	private String artifactName;
 	private String opName;
-	private List<Object> params = new ArrayList<Object>();
+	private List<Object> params;
+
+	OpRequest() {
+		this.params = new ArrayList<Object>();
+	}
 
 	/**
 	 * Get the name of the artifact that this operation is addressed
@@ -97,8 +102,9 @@ public class OpRequest {
 	 * @param params
 	 *            represents the arguments of an operation
 	 */
-	public void setParams(Object... params) {
-		for (Object obj : params)
+	public void setParams(List<Object> params) {
+		for (Object obj : params) {
 			this.params.add(obj);
+		}
 	}
 }

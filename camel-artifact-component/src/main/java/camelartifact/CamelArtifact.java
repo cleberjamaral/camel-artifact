@@ -46,7 +46,8 @@ import simplelogger.SimpleLogger;
 public class CamelArtifact extends Artifact {
 
 	// See import comments for detalis about LOG
-	// private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
+	// private static final transient Logger LOG =
+	// LoggerFactory.getLogger(ArtifactProducer.class);
 	private static SimpleLogger LOG = new SimpleLogger();
 	protected static ConcurrentLinkedQueue<OpRequest> incomingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
 	private boolean listenCamelRoutes = false;
@@ -73,8 +74,6 @@ public class CamelArtifact extends Artifact {
 							LOG.debug("A message was founded in the queue! Artifact:" + newOp.getArtifactName()
 									+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
 							receiveMsg(newOp.getArtifactName(), newOp.getOpName(), newOp.getParams());
-							LOG.debug("tst2...");
-
 						}
 					}
 				} catch (Exception ex) {
@@ -93,14 +92,6 @@ public class CamelArtifact extends Artifact {
 		return listenCamelRoutes;
 	}
 
-	@INTERNAL_OPERATION 
-	void inc() {
-		LOG.debug("Inc function was called, a tick signal is going to be send.");
-		//ObsProperty prop = getObsProperty("count");
-		//prop.updateValue(prop.intValue() + 1);
-		//signal("tick");
-	}
-
 	/**
 	 * Some message was received by the route
 	 */
@@ -109,7 +100,9 @@ public class CamelArtifact extends Artifact {
 
 		try {
 
-			// Lookup command is here used to get the ArtifactID by the artifactName received
+			/**
+			 * Lookup command is here used to get the ArtifactID by the artifactName received
+			 */
 			ArtifactId aid = lookupArtifact(artifactName);
 
 			/**
@@ -119,26 +112,28 @@ public class CamelArtifact extends Artifact {
 
 				LOG.debug("The message is being forwarded to another artifact called: " + aid.toString());
 				callLinkedArtifactOperation(artifactName, operationName, parameters);
-				
+
 			} else {
 
-				//To avoid error, if the parameters are null so, the InternalOp cannot receive it
-				
-				
-				//TODO: Cleber it is wrong!!! Check why the list is comming with one null element, may be "else" code will not work  
-				if (parameters.size() <= 1)
-				{
-					LOG.debug("Executing "+operationName+ "without parameters.");
+				/**
+				 * To avoid error, if the parameters are null so, the InternalOp cannot receive it The list o Objects
+				 * inside of OpRequest is always created, but if is empty none Objects was received
+				 */
+				if (parameters.isEmpty()) {
+					LOG.debug("Executing " + operationName + " without parameters.");
 					execInternalOp(operationName);
+				} else {
+					/**
+					 * It is expect that the called InternalOp has the number and type of parameters declared, example:
+					 * operationName = inc; parameters[] = {"testString", 4}. So, the inc() @INTERNAL_OPERATION may
+					 * looks like: inc(String st, int i)
+					 */
+					LOG.debug("Executing " + operationName + " with following parameters: " + parameters);
+					execInternalOp(operationName, parameters.toArray());
 				}
-				else
-				{
-					LOG.debug("Executing "+operationName+ " with following parameters: "+parameters+"   "+parameters.size());
-					execInternalOp(operationName,parameters);
-				}
-				
+
 			}
-			LOG.debug("tst.....");
+
 		} catch (OperationException e) {
 			LOG.error("Error receiving a message!");
 			e.printStackTrace();
@@ -151,18 +146,31 @@ public class CamelArtifact extends Artifact {
 	 * must declare a @LINK method according with operatioName and parameters received
 	 */
 	@OPERATION
-	void callLinkedArtifactOperation(String artifactName, String operationName, Object parameters) {
+	void callLinkedArtifactOperation(String artifactName, String operationName, List<Object> parameters) {
 
 		LOG.debug("CamelArtif " + artifactName + ", op: " + operationName + ", params: " + parameters.toString());
 
 		ArtifactId aid;
 		try {
 			aid = lookupArtifact(artifactName);
-			LOG.debug("artifact id: " + aid.getName() + ", " + aid.getId() + ", " + aid.getArtifactType() + ", "
-					+ aid.toString());
+			LOG.debug("artifact name/id/type: " + aid.getName() + "/" + aid.getId() + "/" + aid.getArtifactType());
 
-			String tst = "";
-			execLinkedOp(aid, operationName, tst);
+			/**
+			 * To avoid error, if the parameters are null the InternalOp will receive it The list o Objects inside of
+			 * OpRequest is always created, but if is empty none Objects was received
+			 */
+			if (parameters.isEmpty()) {
+				LOG.debug("Forwarding " + operationName + " without parameters.");
+				execLinkedOp(aid, operationName);
+			} else {
+				/**
+				 * execLinkedOp is waiting for a set of objects, not a list o objects (ArtifactId aid, String opName,
+				 * Object... params)
+				 */
+				LOG.debug("Forwarding " + operationName + " with following parameters: " + parameters);
+				execLinkedOp(aid, operationName, parameters.toArray());
+			}
+
 		} catch (OperationException e) {
 			e.printStackTrace();
 		}

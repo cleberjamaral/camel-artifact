@@ -89,14 +89,19 @@ public class ArtifactProducer extends DefaultProducer {
 			}
 
 			// Add in the queue a neu OperationRequest to be performed by related artifact
+			LOG.debug("Adding in the queue: " + artifactName + ": " + operationName);
 			OpRequest newOp = new OpRequest();
 			newOp.setArtifactName(artifactName);
 			newOp.setOpName(operationName);
 			
-			newOp.setParams(exchange.getIn().getBody(List.class));
+			//Do not add a null object!
+			if (exchange.getIn().getBody(List.class) != null)
+			{
+				List<Object> body = exchange.getIn().getBody(List.class);
+				newOp.setParams(body);
+				LOG.debug("Parameters details: " + newOp.getParams().toString());
+			}
 			
-			LOG.debug("Adding in the queue: " + artifactName + ": " + operationName);
-			LOG.debug("Parameters details: " + newOp.getParams().toString());
 			incomingOpQueue.add(newOp);
 			LOG.debug("Message added in the queue!");
 

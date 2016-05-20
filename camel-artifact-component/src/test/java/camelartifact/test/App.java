@@ -101,9 +101,12 @@ public class App {
 						exchange.getIn().setHeader("OperationName", "inc");
 
 						List<Object> throwData = new ArrayList<Object>();
-						throwData.add("inc_param");
-						throwData.add(null);
-						throwData.add(msgCount);
+						Object obj1 = new Object();
+						obj1 = "inc_param";
+						throwData.add(obj1);
+						Object obj3 = new Object();
+						obj3 = msgCount;
+						throwData.add(obj3);
 						exchange.getIn().setBody(throwData);
 						LOG.trace("msg processed!");
 					}
