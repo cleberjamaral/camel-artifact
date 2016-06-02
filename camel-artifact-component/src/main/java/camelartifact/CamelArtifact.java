@@ -31,9 +31,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;//Operation queue
  * For JaCaMo project, use SimpleLogger instead of log4j
  * Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
  */
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import simplelogger.SimpleLogger;
 
 /**
@@ -50,8 +49,8 @@ import simplelogger.SimpleLogger;
 public class CamelArtifact extends Artifact {
 
 	// See import comments for detalis about LOG
-	// private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
-	private static SimpleLogger LOG = new SimpleLogger();
+	private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
+	//private static SimpleLogger LOG = new SimpleLogger();
 	protected static ConcurrentLinkedQueue<OpRequest> incomingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
 	protected static ConcurrentLinkedQueue<OpRequest> outgoingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
 	private boolean listenCamelRoutes = false;

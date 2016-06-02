@@ -37,8 +37,8 @@ import simplelogger.SimpleLogger;
  * For JaCaMo project, use SimpleLogger instead of log4j
  * Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
  */
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Cleber
@@ -53,8 +53,8 @@ import simplelogger.SimpleLogger;
 public class ArtifactConsumer extends ScheduledPollConsumer {
 
 	// See import comments for detalis about LOG
-	// private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
-	private static SimpleLogger LOG = new SimpleLogger();
+	private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactConsumer.class);
+	//private static SimpleLogger LOG = new SimpleLogger();
 	private ConcurrentLinkedQueue<OpRequest> outgoingOpQueue;
 	private final ArtifactEndpoint endpoint;
 
