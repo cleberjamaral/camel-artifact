@@ -40,16 +40,20 @@ import simplelogger.SimpleLogger;
  * @author cleber
  * 
  *         This "camel-artifact" should exists in a MAS project to allow communication between artifacts and external
- *         sources. It can also be a router, sending and receiving messages from other (linked) artifacts.
+ *         sources. It can also be a router, sending and receiving messages from other (linked) artifacts. For this
+ *         there are two queue lists for messages that the artifact received and for the ones to me send. Here the
+ *         meaning adopted is: "Incoming" refers to packets which originate elsewhere and arrive at the artifact, while
+ *         "outgoing" refers to packets which originate at the artifact and arrive elsewhere.
+ *         http://serverfault.com/questions/443038/what-does-incoming-and-outgoing-traffic-mean
  */
 
 public class CamelArtifact extends Artifact {
 
 	// See import comments for detalis about LOG
-	// private static final transient Logger LOG =
-	// LoggerFactory.getLogger(ArtifactProducer.class);
+	// private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
 	private static SimpleLogger LOG = new SimpleLogger();
 	protected static ConcurrentLinkedQueue<OpRequest> incomingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
+	protected static ConcurrentLinkedQueue<OpRequest> outgoingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
 	private boolean listenCamelRoutes = false;
 
 	/**
@@ -68,15 +72,17 @@ public class CamelArtifact extends Artifact {
 			public void run() {
 				try {
 					OpRequest newOp;
-					LOG.debug("Waiting for a message in the queue...");
+					LOG.debug("Listening by reading the incoming queue...");
 					while (value) {
 						if ((newOp = incomingOpQueue.poll()) != null) {
-							LOG.debug("A message was founded in the queue! Artifact:" + newOp.getArtifactName()
+							LOG.debug("A message was founded in the incoming queue! Artifact:" + newOp.getArtifactName()
 									+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
 							receiveMsg(newOp.getArtifactName(), newOp.getOpName(), newOp.getParams());
 						}
 					}
+					LOG.debug("Listening process stopped!");
 				} catch (Exception ex) {
+					LOG.error("Error on listening incoming queue!");
 				}
 			}
 		};
@@ -86,6 +92,10 @@ public class CamelArtifact extends Artifact {
 
 	public ConcurrentLinkedQueue<OpRequest> getIncomingOpQueue() {
 		return incomingOpQueue;
+	}
+
+	public ConcurrentLinkedQueue<OpRequest> getOutgoingOpQueue() {
+		return outgoingOpQueue;
 	}
 
 	public boolean getListenCamelRoute() {
@@ -174,6 +184,30 @@ public class CamelArtifact extends Artifact {
 		} catch (OperationException e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Add a message to the outgoing queue
+	 */
+	@OPERATION
+	public void sendMsg(String artifactName, String operationName, List<Object> parameters) {
+
+		try {
+			LOG.debug("A message is being send to camel route...");
+			
+			OpRequest newOp = new OpRequest();
+			newOp.setArtifactName(artifactName);
+			newOp.setOpName(operationName);
+			newOp.setParams(parameters);
+			outgoingOpQueue.add(newOp);
+			
+			LOG.debug("Message added in the outgoing queue!");
+			
+		} catch (Exception e) {
+			LOG.error("Error adding a message in the outgoing queue!");
+			e.printStackTrace();
+		}
+
 	}
 
 }

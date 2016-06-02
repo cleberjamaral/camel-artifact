@@ -30,6 +30,11 @@ import org.apache.camel.Consumer;
 import org.apache.camel.Processor;
 import org.apache.camel.Producer;
 import org.apache.camel.impl.DefaultEndpoint;
+import org.apache.camel.impl.ScheduledPollEndpoint;
+import org.apache.camel.spi.UriEndpoint;
+import org.apache.camel.spi.UriParam;
+
+import simplelogger.SimpleLogger;
 
 /**
  * TODO: Cleber: Some functions and variables are related with jason agents, must replace by cartago artifacts stuffs In
@@ -37,23 +42,30 @@ import org.apache.camel.impl.DefaultEndpoint;
  * org.apache.camel.support.ServiceSupport
  * 
  */
-public class ArtifactEndpoint extends DefaultEndpoint {
+@UriEndpoint(scheme = "artifact")
+public class ArtifactEndpoint extends ScheduledPollEndpoint {
+
+	// See import comments for detalis about LOG
+	// private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
+	private static SimpleLogger LOG = new SimpleLogger();
 
 	private String uriContextPath; /* Which contains workspace and artifact */
 	private String workspace;
-	private String artifact;
 
 	private final Map<String, String> artifactProperties = new TreeMap<String, String>();
 	public static final String VALUE = "value";
 	private ConcurrentLinkedQueue<OpRequest> incomingOpQueue;
+	private ConcurrentLinkedQueue<OpRequest> outgoingOpQueue;
 
 	public ArtifactEndpoint() {
 	}
 
-	public ArtifactEndpoint(String uri, ArtifactComponent component, ConcurrentLinkedQueue<OpRequest> incomingOpQueue) {
+	public ArtifactEndpoint(String uri, ArtifactComponent component, ConcurrentLinkedQueue<OpRequest> incomingOpQueue,
+			ConcurrentLinkedQueue<OpRequest> outgoingOpQueue) {
 		super(uri, component);
 		setUriContextPath();
 		this.incomingOpQueue = incomingOpQueue;
+		this.outgoingOpQueue = outgoingOpQueue;
 	}
 
 	@SuppressWarnings("deprecation")
@@ -96,15 +108,14 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 		else
 			uriContextPath = uri;
 
+		LOG.debug("uriContextPath:" + uriContextPath);
+		
 		String uriContextPathLessColonSlashs = uriContextPath.substring(uriContextPath.indexOf("://") + 3,
 				uriContextPath.length());
 		if (uriContextPathLessColonSlashs.contains("/")) {
 			setWorkspace(uriContextPathLessColonSlashs.substring(0, uriContextPathLessColonSlashs.indexOf("/")));
-			setArtifact(uriContextPathLessColonSlashs.substring(uriContextPathLessColonSlashs.indexOf("/") + 1,
-					uriContextPathLessColonSlashs.length()));
-		} else {
-			setArtifact(uriContextPathLessColonSlashs);
 		}
+		LOG.debug("uriContextPathLessColonSlashs:" + uriContextPathLessColonSlashs);
 	}
 
 	public String getUriContextPath() {
@@ -119,22 +130,24 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 		return incomingOpQueue;
 	}
 
+	public ConcurrentLinkedQueue<OpRequest> getOutgoingOpQueue() {
+		return outgoingOpQueue;
+	}
+
 	private void setWorkspace(String workspace) {
 		this.workspace = workspace;
-	}
-
-	public String getArtifact() {
-		return artifact;
-	}
-
-	private void setArtifact(String artifact) {
-		this.artifact = artifact;
 	}
 
 	@Override
 	public Producer createProducer() throws Exception {
 		return new ArtifactProducer(this);
 	}
+
+	@UriParam
+	private String tst_param = "tst";
+
+	@UriParam
+	private int length = 10;
 
 	/**
 	 * This component is prepared to create multiples consumers, but its is not managing this list in a container (for
@@ -145,6 +158,7 @@ public class ArtifactEndpoint extends DefaultEndpoint {
 	 */
 	public Consumer createConsumer(Processor processor) throws Exception {
 		ArtifactConsumer cons = new ArtifactConsumer(this, processor);
+		configureConsumer(cons);
 		return cons;
 	}
 

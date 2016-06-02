@@ -21,50 +21,75 @@
  */
 package camelartifact;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.impl.ScheduledPollConsumer;
 
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import resources.SimpleLogger;
+import simplelogger.SimpleLogger;
 
 /**
- * TODO Cleber: Consume artifacts stuffs 
+ * For JaCaMo project, use SimpleLogger instead of log4j
+ * Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
+ */
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+
+/**
+ * @author Cleber
+ * 
+ *         Consumer side of CamelArtifact class. This is the side responsible for transmissions of artifact messages to
+ *         the route, which will be delivered to any camel endpoint (to a producer). The message to be send is in
+ *         "OpRequest" format, which is mainly formed by an artifact identification, operation and parameters. Here the
+ *         meaning adopted is: "Incoming" refers to packets which originate elsewhere and arrive at the artifact, while
+ *         "outgoing" refers to packets which originate at the artifact and arrive elsewhere.
+ *         http://serverfault.com/questions/443038/what-does-incoming-and-outgoing-traffic-mean
  */
 public class ArtifactConsumer extends ScheduledPollConsumer {
 
-	//For JaCaMo project, use SimpleLogger instead of log4j
-	// Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
-	//private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
-	//private static SimpleLogger LOG = new SimpleLogger();
-
+	// See import comments for detalis about LOG
+	// private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
+	private static SimpleLogger LOG = new SimpleLogger();
+	private ConcurrentLinkedQueue<OpRequest> outgoingOpQueue;
 	private final ArtifactEndpoint endpoint;
 
     public ArtifactConsumer(ArtifactEndpoint endpoint, Processor processor) {
         super(endpoint, processor);
         this.endpoint = endpoint;
+        
+        outgoingOpQueue = endpoint.getOutgoingOpQueue();
     }
     
     @Override
     protected int poll() throws Exception {
         Exchange exchange = endpoint.createExchange();
 
-        // create a message body
-        Date now = new Date();
-        exchange.getIn().setBody("Hello World! The time is " + now);
-
         try {
+        	
             // send message to next processor in the route
-            getProcessor().process(exchange);
-            return 1; // number of messages polled
+			OpRequest newOp;
+			if ((newOp = outgoingOpQueue.poll()) != null) {
+				LOG.debug("A message was founded in the outgoing queue! Artifact:" + newOp.getArtifactName()
+						+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
+				exchange.getIn().setHeader("ArtifactName", newOp.getArtifactName());
+				exchange.getIn().setHeader("OperationName", newOp.getOpName());
+				exchange.getIn().setBody(newOp.getParams());
+	            getProcessor().process(exchange);
+	            return 1; // number of messages polled
+			}
+            return 0; // number of messages polled
+			
         } finally {
-            // log exception if an exception occurred and was not handled
-            if (exchange.getException() != null) {
-                getExceptionHandler().handleException("Error processing exchange", exchange, exchange.getException());
-            }
+			// log exception if an exception occurred and was not handled
+			if (exchange.getException() != null) {
+				getExceptionHandler().handleException("Out: Error processing exchange", exchange,
+						exchange.getException());
+			}
         }
     }
     

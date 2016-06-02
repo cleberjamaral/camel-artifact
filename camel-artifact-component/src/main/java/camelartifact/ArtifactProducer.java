@@ -40,10 +40,12 @@ import simplelogger.SimpleLogger;
 /**
  * @author Cleber
  * 
- *         Produce side of CamelArtifact class. This is the side responsible for receive new messages from the route and
- *         deliver it to the artifact. The message can come in any format from some consumer, the app is responsible for
- *         this "translation" to "artifact world" what means that messages must be converted in operations calls to be
- *         performed by artifacts.
+ *         Producer side of CamelArtifact class. This is the side responsible for receive new messages from the route
+ *         and deliver it to the artifact. The message can come in any format from some consumer, the app is responsible
+ *         for this "translation" to "artifact world" what means that messages must be converted in operations calls to
+ *         be performed by artifacts. Here the meaning adopted is: "Incoming" refers to packets which originate
+ *         elsewhere and arrive at the artifact, while "outgoing" refers to packets which originate at the artifact and
+ *         arrive elsewhere. http://serverfault.com/questions/443038/what-does-incoming-and-outgoing-traffic-mean
  */
 public class ArtifactProducer extends DefaultProducer {
 
@@ -71,10 +73,9 @@ public class ArtifactProducer extends DefaultProducer {
 
 		try {
 
-			// LOG.debug("Producer received: " + exchange.getIn().getBody(List.class).toString());
 			String artifactName = exchange.getIn().getHeader("ArtifactName").toString();
 			String operationName = exchange.getIn().getHeader("OperationName").toString();
-			LOG.debug("OperationRequest received! Artifact: " + artifactName + ", " + operationName);
+			LOG.debug("InOpRequest received! Artifact: " + artifactName + ", " + operationName);
 
 			// A null artifact is forbidden, there is no meaning and nobody to call
 			if (artifactName == null) {
@@ -89,7 +90,7 @@ public class ArtifactProducer extends DefaultProducer {
 			}
 
 			// Add in the queue a neu OperationRequest to be performed by related artifact
-			LOG.debug("Adding in the queue: " + artifactName + ": " + operationName);
+			LOG.debug("Adding in the inQueue: " + artifactName + ": " + operationName);
 			OpRequest newOp = new OpRequest();
 			newOp.setArtifactName(artifactName);
 			newOp.setOpName(operationName);
@@ -97,16 +98,18 @@ public class ArtifactProducer extends DefaultProducer {
 			//Do not add a null object!
 			if (exchange.getIn().getBody(List.class) != null)
 			{
-				List<Object> body = exchange.getIn().getBody(List.class);
+				@SuppressWarnings("unchecked") //List.class is a raw type, this warning is not critical
+				List<Object> body = (List<Object>) exchange.getIn().getBody(List.class);
 				newOp.setParams(body);
 				LOG.debug("Parameters details: " + newOp.getParams().toString());
 			}
 			
 			incomingOpQueue.add(newOp);
-			LOG.debug("Message added in the queue!");
+			LOG.debug("Message added in the incoming queue!");
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			LOG.error("Out: Error processing exchange");
 		}
 	}
 }

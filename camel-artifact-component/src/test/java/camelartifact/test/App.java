@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.ProducerTemplate;
@@ -62,7 +63,7 @@ public class App {
 		// Add routes and start camel
 		LOG.debug("Adding routes and starting camel...");
 		CamelContext camelContext = new DefaultCamelContext();
-		camelContext.addComponent("artifact", new ArtifactComponent(camelartif.getIncomingOpQueue()));
+		camelContext.addComponent("artifact", new ArtifactComponent(camelartif.getIncomingOpQueue(),camelartif.getOutgoingOpQueue()));
 		camelContext.addRoutes(createRoutes());
 		camelContext.start();
 
@@ -71,16 +72,27 @@ public class App {
 		 */
 		camelartif.setListenCamelRoute(false);
 
+		List<Object> params  = new ArrayList<Object>();
+		params.add(4);
+		camelartif.sendMsg("TestArtifact", "Op1", params);
+		camelartif.sendMsg("TestArtifact", "Op2", params);
+		camelartif.sendMsg("TestArtifact", "Op3", params);
+
 		LOG.debug("Running testing loop...");
-		ProducerTemplate template = camelContext.createProducerTemplate();
+		ProducerTemplate prodtemplate = camelContext.createProducerTemplate();
+		ConsumerTemplate constemplate = camelContext.createConsumerTemplate();
+		//constemplate.start();
 		while (msgCount > 0) {
-			template.sendBody("direct:start", "");
+			prodtemplate.sendBody("direct:start", "");
 			msgCount--;
 		}
+		//constemplate.receiveBody("direct:start2");
 		LOG.info("Testing loop finished!");
-
+		
+		constemplate.stop();
+		
 		camelartif = null;
-
+		
 		camelContext.stop();
 
 		// return 0 means successful!
@@ -92,10 +104,22 @@ public class App {
 		return new RouteBuilder() {
 			@Override
 			public void configure() {
+
+				LOG.trace("...");
+				
+				from("artifact:cartago").process(new Processor() {
+					@Override
+					public void process(Exchange exchange) throws Exception {
+						LOG.trace("Processing sending msgs...");
+					}
+				}).to("log:CamelArtifactLogger?level=info");            				
+				
+				LOG.trace("....");
+				
 				from("direct:start").process(new Processor() {
 					public void process(Exchange exchange) throws Exception {
 
-						LOG.trace("Processing msgs...");
+						LOG.trace("Processing receiving msgs...");
 
 						exchange.getIn().setHeader("ArtifactName", "NotInTest");
 						exchange.getIn().setHeader("OperationName", "inc");
@@ -111,6 +135,8 @@ public class App {
 						LOG.trace("msg processed!");
 					}
 				}).to("artifact:cartago");
+			
+				LOG.trace(".....");
 			}
 		};
 	}
