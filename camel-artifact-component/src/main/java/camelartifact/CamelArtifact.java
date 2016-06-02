@@ -120,9 +120,43 @@ public class CamelArtifact extends Artifact {
 			 */
 			if (this.getId() != aid) {
 
-				LOG.debug("The message is being forwarded to another artifact called: " + aid.toString());
-				callLinkedArtifactOperation(artifactName, operationName, parameters);
+                LOG.debug("artifact name/id/type: " + aid.getName() + "/" + aid.getId() + "/" + aid.getArtifactType());
 
+                /**
+                 * To avoid error, if the parameters are null the InternalOp will receive it The list o Objects inside of
+                 * OpRequest is always created, but if is empty none Objects was received
+                 */
+                if (parameters.isEmpty()) {
+                    LOG.debug("Forwarding " + operationName + " without parameters.");
+                    LOG.debug("..");
+                    try {
+                        execLinkedOp(aid, operationName);
+                    } catch (OperationException e) {
+                        LOG.error("Error on execLinkedOp without parameters!");
+                        e.printStackTrace();
+                    } finally {
+                        LOG.debug("...");    
+                    }
+                    LOG.debug("....");
+                    
+                } else {
+                    /**
+                     * execLinkedOp is waiting for a set of objects, not a list o objects (ArtifactId aid, String opName,
+                     * Object... params)
+                     */
+                    LOG.debug("Forwarding " + operationName + " with following parameters: " + parameters);
+                    LOG.debug("..");
+                    try {
+                        execLinkedOp(aid, operationName, parameters.toArray());
+                    } catch (OperationException e) {
+                        LOG.error("Error on execLinkedOp without parameters!");
+                        e.printStackTrace();
+                    } finally {
+                        LOG.debug("...");    
+                    }
+                    LOG.debug("....");
+                }
+                
 			} else {
 
 				/**
@@ -148,42 +182,7 @@ public class CamelArtifact extends Artifact {
 			LOG.error("Error receiving a message!");
 			e.printStackTrace();
 		}
-
-	}
-
-	/**
-	 * This operation is sending received data (from camel) to the destination artifact. In this case the application
-	 * must declare a @LINK method according with operatioName and parameters received
-	 */
-	@OPERATION
-	void callLinkedArtifactOperation(String artifactName, String operationName, List<Object> parameters) {
-
-		LOG.debug("CamelArtif " + artifactName + ", op: " + operationName + ", params: " + parameters.toString());
-
-		ArtifactId aid;
-		try {
-			aid = lookupArtifact(artifactName);
-			LOG.debug("artifact name/id/type: " + aid.getName() + "/" + aid.getId() + "/" + aid.getArtifactType());
-
-			/**
-			 * To avoid error, if the parameters are null the InternalOp will receive it The list o Objects inside of
-			 * OpRequest is always created, but if is empty none Objects was received
-			 */
-			if (parameters.isEmpty()) {
-				LOG.debug("Forwarding " + operationName + " without parameters.");
-				execLinkedOp(aid, operationName);
-			} else {
-				/**
-				 * execLinkedOp is waiting for a set of objects, not a list o objects (ArtifactId aid, String opName,
-				 * Object... params)
-				 */
-				LOG.debug("Forwarding " + operationName + " with following parameters: " + parameters);
-				execLinkedOp(aid, operationName, parameters.toArray());
-			}
-
-		} catch (OperationException e) {
-			e.printStackTrace();
-		}
+		
 	}
 
 	/**
