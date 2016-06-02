@@ -34,6 +34,12 @@ import org.apache.camel.impl.ScheduledPollEndpoint;
 import org.apache.camel.spi.UriEndpoint;
 import org.apache.camel.spi.UriParam;
 
+/**
+ * For JaCaMo project, use SimpleLogger instead of log4j
+ * Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
+ */
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import simplelogger.SimpleLogger;
 
 /**
@@ -46,8 +52,8 @@ import simplelogger.SimpleLogger;
 public class ArtifactEndpoint extends ScheduledPollEndpoint {
 
 	// See import comments for detalis about LOG
-	// private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
-	private static SimpleLogger LOG = new SimpleLogger();
+	private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
+	//private static SimpleLogger LOG = new SimpleLogger();
 
 	private String uriContextPath; /* Which contains workspace and artifact */
 	private String workspace;
