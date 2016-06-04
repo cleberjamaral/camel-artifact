@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="**/*.asl" kind="src" path="src/agt"/>
+	<classpathentry kind="src" path="lib"/>
+	<classpathentry excluding="*.ptl" kind="src" path="src/int"/>
+	<classpathentry excluding="*.xml" kind="src" path="src/org"/>
+	<classpathentry excluding="resources/" kind="src" path="src/env"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JaCaMo"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/camel-artifact-component"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.7.5.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-simple-1.6.6.jar"/>
+	<classpathentry kind="lib" path="lib/camel-core-2.12.3.jar"/>
+	<classpathentry kind="lib" path="lib/camel-test-2.12.3.jar"/>
+	<classpathentry kind="lib" path="lib/corn-cps-1.1.7.jar"/>
+	<classpathentry kind="lib" path="lib/junit-4.11.jar"/>
+	<classpathentry kind="lib" path="/camel-artifact-component/src/main/java/camelartifact"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>
