@@ -29,10 +29,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import org.apache.camel.Consumer;
 import org.apache.camel.Processor;
 import org.apache.camel.Producer;
-import org.apache.camel.impl.DefaultEndpoint;
 import org.apache.camel.impl.ScheduledPollEndpoint;
 import org.apache.camel.spi.UriEndpoint;
-import org.apache.camel.spi.UriParam;
 
 /**
  * For JaCaMo project, use SimpleLogger instead of log4j
@@ -84,27 +82,8 @@ public class ArtifactEndpoint extends ScheduledPollEndpoint {
 	}
 
 	/**
-	 * TODO Cleber: talk with Cranefield, it seems to be very different the conception of agent and opc endpoints. This
-	 * last one seems to have only one connection with the server and treat almost everything as variable So actually,
-	 * the context sounds to be more interesting if we use to address the workspace and the artifact, than, we can use
-	 * operation to read and write doing like: tag=value means write and tag=_ means read (may be we gotta avoid "?" for
-	 * this function)
-	 * 
-	 * This uri concept is still not very clear, how the variables are transmited? like opcda, sounds that there is only
-	 * configuration params, it is not very clear how tags are transmitted: String uriString =
-	 * "opcda2:opcdaTest/Simulation Items/Random/String?delay=1000&
-	 * host=" + host + "&clsId=" + clsid + "&username=" + user + "&password=" + password + "&domain=" + domain;
-	 * 
-	 * A message to be processed should be something like Some examples of commons URIs: "file:data/inbox?delay=5000"
-	 * based on "scheme:context_path?options" "agent:percept?persistent=false&updateMode=replace"
-	 * "timer:test?period=200"
-	 * 
-	 * On this first approach the proposed URI was "artifact:shopfloor/loader" which means
-	 * "://artifact:workspace/artifact_name?options" In a meeting with Cranefield another concept was proposed by him:
-	 * On consumer side: "://artifact:operation?...", "://artifact:property?..." On producer side:
-	 * "://artifact:event?...", "://artifact:property?..."
-	 * 
-	 * Identifies the context (contextpath) of URI which can be WRITE or READ, for producer and consumer respectively
+	 * A common URI is like "artifact:cartago//workspace" artifact name, operation and extra parameters are sent by
+	 * header and body of the message
 	 */
 	private void setUriContextPath() {
 
@@ -148,12 +127,6 @@ public class ArtifactEndpoint extends ScheduledPollEndpoint {
 	public Producer createProducer() throws Exception {
 		return new ArtifactProducer(this);
 	}
-
-	@UriParam
-	private String tst_param = "tst";
-
-	@UriParam
-	private int length = 10;
 
 	/**
 	 * This component is prepared to create multiples consumers, but its is not managing this list in a container (for

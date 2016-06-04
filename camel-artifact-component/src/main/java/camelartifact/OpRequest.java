@@ -28,12 +28,10 @@ import java.util.List;
 /**
  * @author Cleber
  * 
- *         This OpRequest class represents the request messages that came from
- *         the route and must be executed by the artifacts. Main fields:
- *         artifactName: Means for what artifact this request is addressed
- *         opName: Means which operation should be executed (represents a
- *         method) params: Arguments of the operations in generic objects (list
- *         of) format
+ *         This OpRequest class represents the request messages that came from the route and must be executed by the
+ *         artifacts. Main fields: artifactName: Means for what artifact this request is addressed opName: Means which
+ *         operation should be executed (represents a method) params: Arguments of the operations in generic objects
+ *         (list of) format
  */
 
 public class OpRequest {
@@ -76,8 +74,7 @@ public class OpRequest {
 	}
 
 	/**
-	 * Set an operation that must be executed by an artifact. It probably means
-	 * a method known by the artifact
+	 * Set an operation that must be executed by an artifact. It probably means a method known by the artifact
 	 * 
 	 * @param opName
 	 *            the name of the operation (probably a method of the artifact)
@@ -96,8 +93,7 @@ public class OpRequest {
 	}
 
 	/**
-	 * Set parameters of an operation. This method is using variable-length
-	 * argument lists to fill List<object> params
+	 * Set parameters of an operation. This method is using variable-length argument lists to fill List<object> params
 	 * 
 	 * @param params
 	 *            represents the arguments of an operation
