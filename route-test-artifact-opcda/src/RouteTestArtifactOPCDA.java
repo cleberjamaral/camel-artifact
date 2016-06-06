@@ -7,6 +7,7 @@ import org.apache.camel.test.junit4.CamelTestSupport;
 import com.summit.camel.opc.Opcda2Component;
 
 import camelartifact.ArtifactComponent;
+import camelartifact.CamelArtifact;
 
 public class RouteTestArtifactOPCDA extends CamelTestSupport{
 
@@ -15,14 +16,17 @@ public class RouteTestArtifactOPCDA extends CamelTestSupport{
 	
 	static String domain = "localhost";
 	static String user = "cleber";
-	static String password = "tna24hps";
+	static String password = "MAS4opc2016";
 	static String clsid = "f8582cf2-88fb-11d0-b850-00c0f0104305";
-	static String host = "139.80.75.139";
+	static String host = "192.168.0.107";
     
 	public static void main(String[] args) throws Exception {
 
 		final CamelContext camel = new DefaultCamelContext();
-		camel.addComponent("artifact", new ArtifactComponent());
+//		camel.addComponent("artifact", new ArtifactComponent());
+		CamelArtifact camelartif = new CamelArtifact();
+		camel.addComponent("artifact", new ArtifactComponent(camelartif.getIncomingOpQueue(),camelartif.getOutgoingOpQueue()));
+		
 		camel.addComponent("opcda2", new Opcda2Component());
 		
 		/* Create the routes */
@@ -31,7 +35,7 @@ public class RouteTestArtifactOPCDA extends CamelTestSupport{
             public void configure() {
                 String uriString = "opcda2:Matrikon.OPC.Simulation.1?delay=1000&host=" + host + "&clsId=" + clsid + "&username=" + user + "&password=" + password + "&domain=" + domain;
                 from(uriString)
-                .to("artifact:shopfloor/loader");
+                .to("artifact:cartago");
             }
 		});
 		

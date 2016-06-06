@@ -18,6 +18,34 @@
 		<camel-version>2.12.3</camel-version>
 	</properties>
 
+	<url>https://github.com/clebercbr/camel-artifact</url>
+
+	<scm>
+		<developerConnection>scm:git:https://github.com/clebercbr/camel-artifact.git</developerConnection>
+		<connection>scm:git:https://github.com/clebercbr/camel-artifact.git</connection>
+		<url>https://github.com/clebercbr/camel-artifact</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>clebercbr</id>
+			<name>Cleber Jorge Amaral</name>
+			<organization>IFSC - Instituto Federal de Educação de Santa Catarina</organization>
+			<organizationUrl>http://www.ifsc.edu.br</organizationUrl>
+			<email>cleber.amaral@ifsc.edu.br</email>
+			<url>https://github.com/clebercbr</url>
+		</developer>
+		<developer>
+			<id>scranefield</id>
+			<name>Stephen Cranefield</name>
+			<organization>University of Otago</organization>
+			<organizationUrl>http://otago.ac.nz</organizationUrl>
+			<email>stephen.cranefield@otago.ac.nz</email>
+			<url>https://github.com/scranefield</url>
+		</developer>
+	</developers>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
@@ -79,7 +107,6 @@
 	</dependencies>
 
 	<build>
-
 		<defaultGoal>install</defaultGoal>
 		<!-- <sourceDirectory>${basedir}/src/main/java/camelartifact/</sourceDirectory> -->
 		<sourceDirectory>.</sourceDirectory>
