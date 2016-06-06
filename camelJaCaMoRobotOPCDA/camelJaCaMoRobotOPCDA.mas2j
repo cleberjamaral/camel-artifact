@@ -1,0 +1,13 @@
+MAS cameljacamorobot {
+
+	infrastructure: JaCaMo
+
+	agents:
+		robot;
+		owner;
+		
+	aslSourcePath:
+		"src/agt";
+    
+}
+

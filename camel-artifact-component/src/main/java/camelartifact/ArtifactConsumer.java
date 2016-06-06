@@ -53,8 +53,8 @@ import org.slf4j.LoggerFactory;
 public class ArtifactConsumer extends ScheduledPollConsumer {
 
 	// See import comments for detalis about LOG
-	private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactConsumer.class);
-	//private static SimpleLogger LOG = new SimpleLogger();
+	//private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactConsumer.class);
+	private static SimpleLogger LOG = new SimpleLogger();
 	private ConcurrentLinkedQueue<OpRequest> outgoingOpQueue;
 	private final ArtifactEndpoint endpoint;
 

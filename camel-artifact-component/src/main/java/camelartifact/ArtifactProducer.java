@@ -49,8 +49,8 @@ import simplelogger.SimpleLogger;
 public class ArtifactProducer extends DefaultProducer {
 
 	// See import comments for detalis about LOG
-	private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
-	//private static SimpleLogger LOG = new SimpleLogger();
+	//private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
+	private static SimpleLogger LOG = new SimpleLogger();
 	private ConcurrentLinkedQueue<OpRequest> incomingOpQueue;
 	ArtifactEndpoint endpoint;
 

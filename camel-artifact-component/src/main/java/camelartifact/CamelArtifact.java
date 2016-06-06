@@ -49,8 +49,8 @@ import simplelogger.SimpleLogger;
 public class CamelArtifact extends Artifact {
 
 	// See import comments for detalis about LOG
-	private static final transient Logger LOG = LoggerFactory.getLogger(CamelArtifact.class);
-	//private static SimpleLogger LOG = new SimpleLogger();
+	//private static final transient Logger LOG = LoggerFactory.getLogger(CamelArtifact.class);
+	private static SimpleLogger LOG = new SimpleLogger();
 	protected static ConcurrentLinkedQueue<OpRequest> incomingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
 	protected static ConcurrentLinkedQueue<OpRequest> outgoingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
 	private boolean listenCamelRoutes = false;
@@ -112,6 +112,7 @@ public class CamelArtifact extends Artifact {
 			/**
 			 * Lookup command is here used to get the ArtifactID by the artifactName received
 			 */
+			LOG.debug("Getting artifact id of " + artifactName);
 			ArtifactId aid = lookupArtifact(artifactName);
 
 			/**
