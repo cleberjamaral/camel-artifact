@@ -49,7 +49,7 @@ import simplelogger.SimpleLogger;
 public class CamelArtifact extends Artifact {
 
 	// See import comments for detalis about LOG
-	private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
+	private static final transient Logger LOG = LoggerFactory.getLogger(CamelArtifact.class);
 	//private static SimpleLogger LOG = new SimpleLogger();
 	protected static ConcurrentLinkedQueue<OpRequest> incomingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
 	protected static ConcurrentLinkedQueue<OpRequest> outgoingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
