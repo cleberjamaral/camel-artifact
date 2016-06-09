@@ -8,14 +8,14 @@ stock(beer,3).
 
 /* Plans */
 @r1
-+!bringbeer(owner,beer)
++!bringbeer(owner_,beer)
 	: available(beer,fridge)
-	<- -at(robot,owner); // Have sure this old belief is out
+	<- -at(robot,owner_); // Have sure this old belief is out
 	!at(robot,fridge);
 	.print("Grabbing a beer to my master.");
-	!at(robot,owner);
+	!at(robot,owner_);
 	.date(YY,MM,DD); .time(HH,NN,SS);
-	.send(owner, tell, has(owner,beer));
+	.send(owner_, tell, has(owner_,beer));
 	.print("Here is your beer my master.");
 	?stock(beer,Inventory);
 	!updateStock(beer,Inventory);
@@ -23,7 +23,7 @@ stock(beer,3).
 	+consumed(YY,MM,DD,HH,NN,SS,beer).
 
 @r2
-+!bringbeer(owner,beer)
++!bringbeer(owner_,beer)
 	: not available(beer,fridge)
 	<- .print("Sorry, there is no beer!").
 	
@@ -33,8 +33,8 @@ stock(beer,3).
 	+at(robot,P);
 	.print("Robot is at ",P).	
 @r4	
-+!masterdrunkabeer(owner) : true
-	<- .send(owner, untell, has(owner,beer)).
++!masterdrunkabeer(owner_) : true
+	<- .send(owner_, untell, has(owner_,beer)).
 	
 @r5
 +!updateStock(beer,Inventory) : Inventory > 1

@@ -31,8 +31,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;//Operation queue
  * For JaCaMo project, use SimpleLogger instead of log4j
  * Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
  */
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import simplelogger.SimpleLogger;
 
 /**
@@ -58,7 +58,6 @@ public class CamelArtifact extends Artifact {
 	/**
 	 * Since it is an operation, means it can be accessed by agents It is also public to be accessed by java code of a
 	 * host class
-	 * 
 	 */
 	@OPERATION
 	public void setListenCamelRoute(final boolean value) {

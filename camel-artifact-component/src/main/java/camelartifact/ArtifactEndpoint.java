@@ -36,15 +36,13 @@ import org.apache.camel.spi.UriEndpoint;
  * For JaCaMo project, use SimpleLogger instead of log4j
  * Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
  */
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import simplelogger.SimpleLogger;
 
 /**
- * TODO: Cleber: Some functions and variables are related with jason agents, must replace by cartago artifacts stuffs In
- * case of "INOUT" messages we can use setExchangePattern(ExchangePattern exchangePattern) of
+ * TODO: The "INOUT" messages were not treated, we can use setExchangePattern(ExchangePattern exchangePattern) of
  * org.apache.camel.support.ServiceSupport
- * 
  */
 @UriEndpoint(scheme = "artifact")
 public class ArtifactEndpoint extends ScheduledPollEndpoint {
@@ -83,7 +81,7 @@ public class ArtifactEndpoint extends ScheduledPollEndpoint {
 
 	/**
 	 * A common URI is like "artifact:cartago//workspace" artifact name, operation and extra parameters are sent by
-	 * header and body of the message
+	 * header and body of the message. The workspace param is not mandatory.
 	 */
 	private void setUriContextPath() {
 
@@ -107,6 +105,13 @@ public class ArtifactEndpoint extends ScheduledPollEndpoint {
 		return uriContextPath;
 	}
 
+	/**
+	 * The workspace is not working yet but the plan is about some projects that can have agents and artifacts in
+	 * multiple workspaces, so this camel-artifact can live in more than one environment, to have sure that it is
+	 * talking with right artifacts we need to know the workspace
+	 * 
+	 * @return workspace that this artifact is running.
+	 */
 	public String getWorkspace() {
 		return workspace;
 	}

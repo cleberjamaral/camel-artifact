@@ -21,10 +21,6 @@
  */
 package camelartifact;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.camel.Exchange;
@@ -37,8 +33,8 @@ import simplelogger.SimpleLogger;
  * For JaCaMo project, use SimpleLogger instead of log4j
  * Log allows: Trace, Debug, Info, Warn, Error and Fatal messages
  */
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 /**
  * @author Cleber

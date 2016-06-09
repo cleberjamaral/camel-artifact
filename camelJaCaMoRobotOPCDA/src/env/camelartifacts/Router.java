@@ -24,7 +24,6 @@ package camelartifacts;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;

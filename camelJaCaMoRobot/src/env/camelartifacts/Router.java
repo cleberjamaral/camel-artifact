@@ -61,6 +61,7 @@ public class Router extends CamelArtifact {
 				@Override
 				public void configure() {
 
+					//Testing a message to be consumed by the router
 					log("Generating a 'local' test message without parameters...");
 					from("timer:test?period=900").process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
@@ -71,31 +72,7 @@ public class Router extends CamelArtifact {
 						}
 					}).to("artifact:cartago");// .to("log:CamelArtifactLogger?level=info");
 
-					log("Generating a 'local' test message with parameters...");
-					from("timer:test?period=1200").process(new Processor() {
-						public void process(Exchange exchange) throws Exception {
-
-							exchange.getIn().setHeader("ArtifactName", "router");
-							exchange.getIn().setHeader("OperationName", "inc3");
-							List<Object> throwData = new ArrayList<Object>();
-							throwData.add("string...test...router");
-							Random rand = new Random();
-							throwData.add(rand.nextInt(50));
-							exchange.getIn().setBody(throwData);
-
-						}
-					}).to("artifact:cartago");// .to("log:CamelArtifactLogger?level=info");
-/*				
-					log("Generating a test message to be forwarded without parameters...");
-					from("timer:test?period=800").process(new Processor() {
-						public void process(Exchange exchange) throws Exception {
-
-							exchange.getIn().setHeader("ArtifactName", "counter");
-							exchange.getIn().setHeader("OperationName", "inc2");
-
-						}
-					}).to("artifact:cartago");// .to("log:CamelArtifactLogger?level=info");
-
+					//Testing a message to be forwarded to counter artifact
 					log("Generating a test message to be forwarded with parameters...");
 					from("timer:test?period=1000").process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
@@ -110,22 +87,8 @@ public class Router extends CamelArtifact {
 
 						}
 					}).to("artifact:cartago");// .to("log:CamelArtifactLogger?level=info");
-					log("Generating a test message to be forwarded with parameters...");
-					from("timer:test?period=500").process(new Processor() {
-						public void process(Exchange exchange) throws Exception {
 
-							exchange.getIn().setHeader("ArtifactName", "counter");
-							exchange.getIn().setHeader("OperationName", "inc3");
-							List<Object> throwData = new ArrayList<Object>();
-							throwData.add("string...test");
-							Random rand = new Random();
-							throwData.add(rand.nextInt(50));
-							exchange.getIn().setBody(throwData);
-
-						}
-					}).to("artifact:cartago");// .to("log:CamelArtifactLogger?level=info");
-*/
-					
+					//Sending a message to the route
 					from("artifact:cartago").process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
 							log.trace("Processing sending msgs...");
