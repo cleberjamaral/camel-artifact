@@ -24,6 +24,8 @@ package camelartifacts;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
@@ -72,22 +74,68 @@ public class Router extends CamelArtifact {
 				public void configure() {
 
 					log("Receiving opc messages...");
-	                String uriString = "opcda2:Matrikon.OPC.Simulation.1?delay=1000&host=" + host + "&clsId=" + clsid + "&username=" + user + "&password=" + password + "&domain=" + domain;
+	                /**
+	                 * The Matrikon simulation server is sending a unique message continuously without any asking proccess
+	                 * Bellow this project is testing camel artifact producer with this feature of matrikon server
+	                 *     
+	                 * Using .to("log:CamelArtifactLoggerIn?level=info") I had following response:
+	                 * 
+	                 * 5757 [Camel (camel-1) thread #0 - opcda2://Matrikon.OPC.Simulation.1] 
+	                 * INFO CamelArtifactLoggerIn - Exchange[ExchangePattern: InOnly, BodyType: 
+	                 * java.util.TreeMap, Body: {#MonitorACLFile={value=true}, 
+	                 * @Clients={value=[Ljava.lang.String;@68662676}, Bucket Brigade.ArrayOfReal8={value=[Ljava.lang.Double;@a674286}, 
+	                 * Bucket Brigade.ArrayOfString={value=[Ljava.lang.String;@14070c0}, Bucket Brigade.Boolean={value=false}, 
+	                 * Bucket Brigade.Int1={value=1}, Bucket Brigade.Int2={value=2}, Bucket Brigade.Int4={value=4}, 
+	                 * ... 
+	                 * Write Only.UInt4={value=org.jinterop.dcom.core.VariantBody$EMPTY@1d3d888e}}] 
+	                 */
+					
+					String uriString = "opcda2:Matrikon.OPC.Simulation.1?delay=2000&host=" 
+	                		+ host + "&clsId=" + clsid + "&username=" + user + "&password=" + password + "&domain=" 
+	                		+ domain + "&diffOnly=false";
 	                from(uriString).process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
-
 							exchange.getIn().setHeader("ArtifactName", "router");
-							exchange.getIn().setHeader("OperationName", "inc2");
+							exchange.getIn().setHeader("OperationName", "inc4");
+							Map<String, Map<String, Object>> body = exchange.getIn().getBody(Map.class);
+							List<Object> listObj = new ArrayList<Object>();
+							for (String tagName : body.keySet()) {
+								Object value = body.get(tagName).get("value");
+								log("Tag received: " + tagName + " = " + value.toString());
+								/**
+								 * For this test we are looking for Bucket Brigade.Int1 tag. It is simulating
+								 * a receiving process of a tag, so this tagname and tagvalue are being added
+								 * in the object list to be processed be producer
+								 */
+								if (tagName.equals("Bucket Brigade.Int1")){
+									log("Adding tag" + tagName + " = " + value.toString() + " in the queue");
+									listObj.add("Bucket Brigade.Int1");
+									listObj.add(value);
+								}
+							}
+							exchange.getIn().setBody(listObj);
 						}
 					})
-	                .to("artifact:cartago");
-/*					
+	                .to("artifact:cartago");//to("log:CamelArtifactLoggerIn?level=info");
+					
 					from("artifact:cartago").process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
+
 							log.trace("Processing sending msgs...");
+
+							//The expected format is something like: "Bucket Brigade.Int1={value=1}"
+							Map<String, Map<String, Object>> data = new TreeMap<String, Map<String, Object>>();
+							Map<String, Object> dataItems = new TreeMap<String, Object>();
+
+							List<Object> params  = exchange.getIn().getBody(List.class);
+							dataItems.put("value",params.get(1));
+							data.put(params.get(0).toString(),dataItems);
+							
+							exchange.getIn().setBody(data);
+
 						}
-					}).to("log:CamelArtifactLogger?level=info");
-*/					
+					}).to(uriString).to("log:CamelArtifactLoggerOut?level=info");
+					
 				}
 			});
 		} catch (Exception e) {
@@ -118,10 +166,12 @@ public class Router extends CamelArtifact {
 	}
 
 	@INTERNAL_OPERATION
-	void inc4() {
+	void inc4(String str, int i) {
 		log("Router:inc4 called!");
 		List<Object> params  = new ArrayList<Object>();
-		params.add(4);
+		params.add("Bucket Brigade.Int1");
+		params.add(3);
 		sendMsg("Router","inc4",params);
 	}
 }
+

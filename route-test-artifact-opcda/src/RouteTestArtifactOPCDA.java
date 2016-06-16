@@ -40,7 +40,9 @@ public class RouteTestArtifactOPCDA extends CamelTestSupport{
 		camel.addRoutes(new RouteBuilder() {
             @Override
             public void configure() {
-                String uriString = "opcda2:Matrikon.OPC.Simulation.1?delay=1000&host=" + host + "&clsId=" + clsid + "&username=" + user + "&password=" + password + "&domain=" + domain;
+                String uriString = "opcda2:Matrikon.OPC.Simulation.1?delay=1000&host=" + host + 
+                		"&clsId=" + clsid + "&username=" + user + "&password=" + password + 
+                		"&domain=" + domain + "&diffOnly=false";
                 from(uriString).process(new Processor() {
 					public void process(Exchange exchange) throws Exception {
 

@@ -22,7 +22,9 @@
 
 package camelartifact;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.camel.Exchange;
@@ -52,12 +54,12 @@ public class ArtifactProducer extends DefaultProducer {
 	//private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
 	private static SimpleLogger LOG = new SimpleLogger();
 	private ConcurrentLinkedQueue<OpRequest> incomingOpQueue;
-	private final ArtifactEndpoint endpoint;
+//	private final ArtifactEndpoint endpoint;
 
 	public ArtifactProducer(ArtifactEndpoint endpoint) {
 		super(endpoint);
 		LOG.trace("Creating artifact producer endpoint...");
-		this.endpoint = endpoint;
+//		this.endpoint = endpoint;
 		LOG.info("Artifact producer endpoint created successfully!");
 
 		incomingOpQueue = endpoint.getIncomingOpQueue();
@@ -71,7 +73,6 @@ public class ArtifactProducer extends DefaultProducer {
 	public void process(Exchange exchange) throws Exception {
 
 		try {
-
 			String artifactName = exchange.getIn().getHeader("ArtifactName").toString();
 			String operationName = exchange.getIn().getHeader("OperationName").toString();
 			LOG.debug("InOpRequest received! Artifact: " + artifactName + ", " + operationName);
@@ -95,6 +96,7 @@ public class ArtifactProducer extends DefaultProducer {
 			newOp.setOpName(operationName);
 			
 			//Do not add a null object!
+			LOG.debug("Body received: " + exchange.getIn().getBody().toString());
 			if (exchange.getIn().getBody(List.class) != null)
 			{
 				@SuppressWarnings("unchecked") //List.class is a raw type, this warning is not critical
