@@ -15,7 +15,7 @@ mas cameljacamorobot {
     }
 
 	agent owner_ {
-		source: owner.asl
+		source: owner_.asl
 	}
 	    
     asl-path: src/agt

@@ -1,13 +1,13 @@
 MAS cameljacamorobot {
 
-	infrastructure: JaCaMo
+	//infrastructure: JaCaMo
+	environment: c4jason.CartagoEnvironment
 
 	agents:
-		robot;
-		owner;
-		
-	aslSourcePath:
-		"src/agt";
+		robot agentArchClass c4jason.CAgentArch;
+		owner_ agentArchClass c4jason.CAgentArch;
+	
+	aslSourcePath: "src/agt";
     
 }
 

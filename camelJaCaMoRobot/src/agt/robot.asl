@@ -63,7 +63,7 @@ stock(beer,3).
 @r9
 +!makeCounter: true 
 	<-.print("Making artifact counter..."); 
-	makeArtifact("counter","artifacts.Counter",[10],C);
+	makeArtifact("counter","artifacts.Counter",[5],C);
 	focus(C);
 	.print("Artifact counter made!").
 	
@@ -98,12 +98,11 @@ stock(beer,3).
 	setListenCamelRoute(true);
 	.print("Router and counter are linked!").
 
-
 @r15
 +!makeArtifs : true
-	<- !makeCounter;
+	<- !makeRouter;
+	!makeCounter;
 	!setCounter;
-	!makeRouter;
 	!linkArtifacts;
 	!receive_msgs.
 
@@ -116,8 +115,8 @@ stock(beer,3).
 	setListenCamelRoute(true);
 	lookupArtifact("counter",CounterId);
 	focus(CounterId);
-	inc3("d",0);
-	inc2;
+	rinc3("d",0);
+	rinc2;
 	.print("Robot is ready to receive messages!").
 	
 +new_msg(Msg,Sender)

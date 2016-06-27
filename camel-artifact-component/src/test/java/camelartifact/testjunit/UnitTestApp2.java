@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import org.apache.camel.builder.AdviceWithRouteBuilder;
 import org.apache.camel.CamelContext;
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.Exchange;
@@ -34,16 +33,12 @@ import org.apache.camel.Processor;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
-import org.apache.camel.component.mock.MockEndpoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import camelartifact.*;
-import camelartifact.test.App;
-import camelartifact.OpRequest;
 
 /**
  * This simple testing app is creating artificial operations for the CamelArtifact. Since it is not a MultiAgent System

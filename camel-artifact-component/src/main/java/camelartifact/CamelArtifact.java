@@ -25,7 +25,7 @@ package camelartifact;
 import cartago.*;
 
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;//Operation queue
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * For JaCaMo project, use SimpleLogger instead of log4j
@@ -104,7 +104,7 @@ public class CamelArtifact extends Artifact {
 	 * Some message was received by the route
 	 */
 	@OPERATION
-	void receiveMsg(String artifactName, String operationName, List<Object> parameters) {
+	public void receiveMsg(String artifactName, String operationName, List<Object> parameters) {
 
 		try {
 
@@ -148,7 +148,7 @@ public class CamelArtifact extends Artifact {
                     try {
                         execLinkedOp(aid, operationName, parameters.toArray());
                     } catch (OperationException e) {
-                        LOG.error("Error on execLinkedOp without parameters!");
+                        LOG.error("Error on execLinkedOp with parameters!");
                         e.printStackTrace();
                     } finally {
                         LOG.debug("...");    

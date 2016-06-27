@@ -44,7 +44,8 @@ import cartago.OUTPORT;
  * a gateway which means that some messages that are addressed to Router will be processed here using internal
  * operations and messages addressed to others artifacts will be forwarded
  */
-@ARTIFACT_INFO(outports = { @OUTPORT(name = "out-1"), @OUTPORT(name = "in-1") })
+@ARTIFACT_INFO(outports = { @OUTPORT(name = "out-1") })
+
 public class Router extends CamelArtifact {
 
 	void init() {
@@ -111,23 +112,23 @@ public class Router extends CamelArtifact {
 	}
 
 	@INTERNAL_OPERATION
-	void inc2() {
-		log("Router:inc2 called! A tick signal is going to be send.");
+	void rinc2() {
+		log("Router:rinc2 called! A tick signal is going to be send.");
 		signal("tick");
 	}
 
 	@INTERNAL_OPERATION
-	void inc3(String str, int i) {
-		log("Router:inc3 called! A tick signal is going to be send. Parameters: " + str + ", " + i);
+	void rinc3(String str, int i) {
+		log("Router:rinc3 called! A tick signal is going to be send. Parameters: " + str + ", " + i);
 		signal("tick");
-		execInternalOp("inc4");
+		execInternalOp("rinc4");
 	}
 
 	@INTERNAL_OPERATION
-	void inc4() {
-		log("Router:inc4 called!");
+	void rinc4() {
+		log("Router:rinc4 called!");
 		List<Object> params  = new ArrayList<Object>();
 		params.add(4);
-		sendMsg("Router","inc4",params);
+		sendMsg("Router","rinc3",params);
 	}
 }

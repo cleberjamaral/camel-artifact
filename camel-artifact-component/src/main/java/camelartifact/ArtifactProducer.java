@@ -22,9 +22,7 @@
 
 package camelartifact;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.camel.Exchange;
@@ -96,9 +94,9 @@ public class ArtifactProducer extends DefaultProducer {
 			newOp.setOpName(operationName);
 			
 			//Do not add a null object!
-			LOG.debug("Body received: " + exchange.getIn().getBody().toString());
 			if (exchange.getIn().getBody(List.class) != null)
 			{
+				LOG.debug("Body received: " + exchange.getIn().getBody().toString());
 				@SuppressWarnings("unchecked") //List.class is a raw type, this warning is not critical
 				List<Object> body = (List<Object>) exchange.getIn().getBody(List.class);
 				newOp.setParams(body);
