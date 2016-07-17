@@ -70,7 +70,7 @@ public class App {
 		/**
 		 * This method should be called to say: start listening the route, so the producer will process the messages
 		 */
-		camelartif.setListenCamelRoute(false);
+		//camelartif.setListenCamelRoute(false);
 
 		List<Object> params  = new ArrayList<Object>();
 		params.add(4);

@@ -64,28 +64,9 @@ public class CamelArtifact extends Artifact {
 
 		listenCamelRoutes = value;
 		LOG.trace("Camel Artifact 'listenCamelRoutes' is " + listenCamelRoutes);
-
-		Thread thread = new Thread() {
-
-			public void run() {
-				try {
-					OpRequest newOp;
-					LOG.debug("Listening by reading the incoming queue...");
-					while (value) {
-						if ((newOp = incomingOpQueue.poll()) != null) {
-							LOG.debug("A message was founded in the incoming queue! Artifact:" + newOp.getArtifactName()
-									+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
-							receiveMsg(newOp.getArtifactName(), newOp.getOpName(), newOp.getParams());
-						}
-					}
-					LOG.debug("Listening process stopped!");
-				} catch (Exception ex) {
-					LOG.error("Error on listening incoming queue!");
-				}
-			}
-		};
-		thread.start();
-
+		
+		ReadCmd cmd = new ReadCmd();
+		await(cmd);
 	}
 
 	public ConcurrentLinkedQueue<OpRequest> getIncomingOpQueue() {
@@ -127,16 +108,15 @@ public class CamelArtifact extends Artifact {
                  */
                 if (parameters.isEmpty()) {
                     LOG.debug("Forwarding " + operationName + " without parameters.");
-                    LOG.debug("..");
+
                     try {
                         execLinkedOp(aid, operationName);
                     } catch (OperationException e) {
                         LOG.error("Error on execLinkedOp without parameters!");
                         e.printStackTrace();
                     } finally {
-                        LOG.debug("...");    
+                        LOG.debug("Forwarding without parameters done!");    
                     }
-                    LOG.debug("....");
                     
                 } else {
                     /**
@@ -144,16 +124,14 @@ public class CamelArtifact extends Artifact {
                      * Object... params)
                      */
                     LOG.debug("Forwarding " + operationName + " with following parameters: " + parameters);
-                    LOG.debug("..");
                     try {
                         execLinkedOp(aid, operationName, parameters.toArray());
                     } catch (OperationException e) {
                         LOG.error("Error on execLinkedOp with parameters!");
                         e.printStackTrace();
                     } finally {
-                        LOG.debug("...");    
+                        LOG.debug("Forwarding with parameters done!");    
                     }
-                    LOG.debug("....");
                 }
                 
 			} else {
@@ -208,4 +186,27 @@ public class CamelArtifact extends Artifact {
 
 	}
 
+	class ReadCmd implements IBlockingCmd {
+
+		public ReadCmd() {
+		}
+
+		public void exec() {
+
+			try {
+				LOG.debug("Listening by reading the incoming queue...");
+				OpRequest newOp;
+				while (listenCamelRoutes) {
+					if ((newOp = incomingOpQueue.poll()) != null) {
+						LOG.debug("A message was founded in the incoming queue! Artifact:" + newOp.getArtifactName()
+								+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
+						receiveMsg(newOp.getArtifactName(), newOp.getOpName(), newOp.getParams());
+					}
+				}
+			} catch (Exception ex) {
+				LOG.error("Error on listening incoming queue!");
+			}
+		}
+	}
+	
 }
