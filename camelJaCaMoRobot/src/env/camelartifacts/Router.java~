@@ -32,15 +32,11 @@ import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
 
-//import org.jboss.netty.*;
-import org.apache.camel.component.netty4.*;
-import org.jboss.netty.*; 
-import org.jboss.netty.buffer.*;
-import io.netty.buffer.*;
-import io.netty.util.*;
+import org.jboss.netty.*;
 
-
+//import org.apache.camel.component.netty4.*;
 /*
+import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.ByteBufOutputStream;
 import io.netty.buffer.Unpooled;
@@ -60,9 +56,9 @@ import cartago.OUTPORT;
 @ARTIFACT_INFO(outports = { @OUTPORT(name = "out-1") })
 
 public class Router extends CamelArtifact {
-	
+
 	void init() {
-		
+
 		// final Random rand = new Random();
 		final CamelContext camelContext = new DefaultCamelContext();
 
@@ -72,7 +68,6 @@ public class Router extends CamelArtifact {
 		/* Create the routes */
 		try {
 			camelContext.addRoutes(new RouteBuilder() {
-				int testAsimov = 0;
 				@Override
 				public void configure() {
 
@@ -82,7 +77,7 @@ public class Router extends CamelArtifact {
 						public void process(Exchange exchange) throws Exception {
 
 							exchange.getIn().setHeader("ArtifactName", "router");
-							exchange.getIn().setHeader("OperationName", "rinc2");
+							exchange.getIn().setHeader("OperationName", "inc2");
 
 						}
 					}).to("artifact:cartago");// .to("log:CamelArtifactLogger?level=info");
@@ -103,7 +98,6 @@ public class Router extends CamelArtifact {
 						}
 					}).to("artifact:cartago");// .to("log:CamelArtifactLogger?level=info");
 
-					
 					//Testing a message to be consumed by the router
 					log("Generating a 'remote' test message without parameters...");
 					from("timer:test?period=2500").process(new Processor() {
@@ -111,34 +105,14 @@ public class Router extends CamelArtifact {
 
 							exchange.getIn().setHeader("ArtifactName", "router");
 							exchange.getIn().setHeader("OperationName", "inc2");
-							exchange.getIn().setBody("Oioioioi");
-						}
-					}).to("mqtt:camelArtifact?host=tcp://192.168.0.113:1883&publishTopicName=test.mqtt.topic")
-					.to("log:CamelArtifactLoggerOut?level=info");
-					
-					from("mqtt:camelArtifact?host=tcp://192.168.0.113:1883&subscribeTopicName=test.mqtt.topic")
-					.transform(body().convertToString())
-					.to("log:CamelArtifactLoggerOut?level=info");
 
-					from("netty4:tcp://192.168.0.114:2000?textline=true&sync=false&delimiter=NULL")
-						.to("log:CamelArtifactLoggerOut?level=info");
-	
-					from("timer:test?period=2000").process(new Processor() {					
-						public void process(Exchange exchange) throws Exception {
-							
-							exchange.getIn().setHeader("ArtifactName", "router");
-							exchange.getIn().setHeader("OperationName", "inc2");
-							if (testAsimov == 1) //Anda para direita
-								exchange.getIn().setBody("       100         0         5         0         0         0        30         0       100        90");
-							else if (testAsimov == 2) //Anda para esquerda
-								exchange.getIn().setBody("       100         0         5         0         0         0        30         0       100       270");
-							else //Fica parado
-								exchange.getIn().setBody("       100         0         5         0         0         0         0         0         0         0");
-														//1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-							if (testAsimov < 2) testAsimov++; else testAsimov = 0; 
-							
 						}
-					}).to("netty4:tcp://192.168.0.114:2000?textline=true&sync=false&delimiter=NULL");					
+					}).to("mqtt:cheese?publishTopicName=mqtt_test");//to("mqtt://192.168.0.113:1883?publishTopicName=mqtt_test");
+
+/*					
+					from("netty:tcp://localhost:2000?textline=true&sync=false")
+						.to("log:CamelArtifactLoggerOut?level=info");
+*/					
 					
 					//Sending a message to the route
 					from("artifact:cartago").process(new Processor() {

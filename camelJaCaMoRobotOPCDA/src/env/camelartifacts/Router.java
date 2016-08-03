@@ -25,13 +25,13 @@ package camelartifacts;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
+import org.apache.camel.component.netty4.*;
 
 import com.summit.camel.opc.Opcda2Component;
 
@@ -65,7 +65,8 @@ public class Router extends CamelArtifact {
 		final CamelContext camelContext = new DefaultCamelContext();
 
 		// This simple application has only one component receiving messages from the route and producing operations
-		camelContext.addComponent("artifact", new ArtifactComponent(this.getIncomingOpQueue(),this.getOutgoingOpQueue()));
+		//camelContext.addComponent("artifact", new ArtifactComponent(this.getIncomingOpQueue(),this.getOutgoingOpQueue()));
+
 
 		/* Create the routes */
 		try {
@@ -90,7 +91,7 @@ public class Router extends CamelArtifact {
 	                 * Write Only.UInt4={value=org.jinterop.dcom.core.VariantBody$EMPTY@1d3d888e}}] 
 	                 */
 					
-					String uriString = "opcda2:Matrikon.OPC.Simulation.1?delay=2000&host=" 
+/*					String uriString = "opcda2:Matrikon.OPC.Simulation.1?delay=2000&host=" 
 	                		+ host + "&clsId=" + clsid + "&username=" + user + "&password=" + password + "&domain=" 
 	                		+ domain + "&diffOnly=false";
 	                from(uriString).process(new Processor() {
@@ -101,12 +102,12 @@ public class Router extends CamelArtifact {
 							List<Object> listObj = new ArrayList<Object>();
 							for (String tagName : body.keySet()) {
 								Object value = body.get(tagName).get("value");
-								log("Tag received: " + tagName + " = " + value.toString());
-								/**
+								//log("Tag received: " + tagName + " = " + value.toString());
+								*//**
 								 * For this test we are looking for Bucket Brigade.Int1 tag. It is simulating
 								 * a receiving process of a tag, so this tagname and tagvalue are being added
 								 * in the object list to be processed be producer
-								 */
+								 *//*
 								if (tagName.equals("Bucket Brigade.Int1")){
 									log("Adding tag" + tagName + " = " + value.toString() + " in the queue");
 									listObj.add("Bucket Brigade.Int1");
@@ -117,8 +118,36 @@ public class Router extends CamelArtifact {
 						}
 					})
 	                .to("artifact:cartago");//to("log:CamelArtifactLoggerIn?level=info");
-					
+*/	                
+/*					
 					from("artifact:cartago").process(new Processor() {
+						public void process(Exchange exchange) throws Exception {
+
+							log.trace("Processing sending msgs...");
+
+							//The expected format is something like: "Bucket Brigade.Int1={value=1}"
+							String data = "       100         0         5         0         0         0         0         0       100        -1";
+//							"       100         0         5         0         0         0         0         0       100        -1"
+//							1 valor: tamanho total
+//							2 valor: tamanho vetor mensagem (char)
+//							3 valor: tamanho vetor inteiro (int)
+//							4 valor: tamanho vetor real (float)
+//							5 valor: tamanho imagem
+//							6 valor = VetorInt[0] = codigo da acao
+//							7 valor = VetorInt[1] = intensidade farol (0-255)
+//							8 valor = VetorInt[2] = intensidade cooler (0-255)
+//							9 valor = VetorInt[3] = velocidade (0-255)
+//							10 valor = VetorInt[4] = direcao (0-360) - em graus, onde 90 faz ir para frente e -1 fica parado
+//							*entre o valor menos significativo de cada numero e o numero anterior tem 10 espacos
+							exchange.getIn().setBody(data);
+
+						}
+					}).to("netty4:tcp://localhost:2000?textline=true&sync=false");
+*/
+					from("netty:tcp://localhost:2000?textline=true&sync=false")
+						.to("log:CamelArtifactLoggerOut?level=info");
+
+/*					from("artifact:cartago").process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
 
 							log.trace("Processing sending msgs...");
@@ -134,8 +163,8 @@ public class Router extends CamelArtifact {
 							exchange.getIn().setBody(data);
 
 						}
-					}).to(uriString).to("log:CamelArtifactLoggerOut?level=info");
-					
+					}).to(uriString);//.to("log:CamelArtifactLoggerOut?level=info");
+*/					
 				}
 			});
 		} catch (Exception e) {

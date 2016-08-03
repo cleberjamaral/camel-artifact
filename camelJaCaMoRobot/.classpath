@@ -11,9 +11,16 @@
 	<classpathentry kind="lib" path="lib/slf4j-api-1.7.5.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-simple-1.6.6.jar"/>
 	<classpathentry kind="lib" path="lib/camel-core-2.12.3.jar"/>
-	<classpathentry kind="lib" path="lib/camel-test-2.12.3.jar"/>
 	<classpathentry kind="lib" path="lib/corn-cps-1.1.7.jar"/>
 	<classpathentry kind="lib" path="lib/junit-4.11.jar"/>
 	<classpathentry kind="lib" path="/camel-artifact-component/src/main/java/camelartifact"/>
+	<classpathentry kind="lib" path="lib/camel-test-2.17.2.jar"/>
+	<classpathentry kind="lib" path="lib/camel-mqtt-2.17.0.jar"/>
+	<classpathentry kind="lib" path="lib/netty-3.10.6.Final.jar"/>
+	<classpathentry kind="lib" path="lib/camel-netty4-2.14.4.jar"/>
+	<classpathentry kind="lib" path="lib/netty-buffer-4.0.39.Final.jar"/>
+	<classpathentry kind="lib" path="lib/netty-common-4.0.39.Final.jar"/>
+	<classpathentry kind="lib" path="lib/mqtt-client-1.12.jar"/>
+	<classpathentry kind="lib" path="lib/hawtdispatch-1.21.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
