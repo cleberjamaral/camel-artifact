@@ -73,9 +73,10 @@ public class Router extends CamelArtifact {
 		try {
 			camelContext.addRoutes(new RouteBuilder() {
 				int testAsimov = 0;
+				
 				@Override
 				public void configure() {
-
+					/*
 					//Testing a message to be consumed by the router
 					log("Generating a 'local' test message without parameters...");
 					from("timer:test?period=900").process(new Processor() {
@@ -111,7 +112,7 @@ public class Router extends CamelArtifact {
 
 							exchange.getIn().setHeader("ArtifactName", "router");
 							exchange.getIn().setHeader("OperationName", "inc2");
-							exchange.getIn().setBody("Oioioioi");
+							exchange.getIn().setBody("Hello MosQuiTTo! I am the router sending you a message!");
 						}
 					}).to("mqtt:camelArtifact?host=tcp://192.168.0.113:1883&publishTopicName=test.mqtt.topic")
 					.to("log:CamelArtifactLoggerOut?level=info");
@@ -146,6 +147,16 @@ public class Router extends CamelArtifact {
 							log.trace("Processing sending msgs...");
 						}
 					}).to("log:CamelArtifactLogger?level=info");
+*/
+					from("timer:test?period=2000").process(new Processor() {					
+						public void process(Exchange exchange) throws Exception {
+							exchange.getIn().setBody("Olá Mundo!");
+						}
+					}).to("log:CamelArtifactLoggerOut?level=info");
+
+					from("timer:test?period=1000")//.transform(body().prepend("Olá Mundo! "))
+					  .to("mqtt:mytest?host=tcp://192.168.0.113:1883&publishTopicName=test.mqtt.topic");
+
 				}
 			});
 		} catch (Exception e) {

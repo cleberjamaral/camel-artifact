@@ -95,9 +95,7 @@ stock(beer,3).
 	lookupArtifact("counter",CounterId);
 	lookupArtifact("router",RouterId);
 	linkArtifacts(RouterId,"out-1",CounterId);
-	setListenCamelRoute(true);
 	.print("Router and counter are linked!").
-
 
 @r15
 +!makeArtifs : true
@@ -109,15 +107,17 @@ stock(beer,3).
 
 @r14
 +!receive_msgs
-	<- lookupArtifact("router",RouterId);
+	<- .print("Setting router..."); 
+	//lookupArtifact("counter",CounterId);
+	//focus(CounterId);
+	//inc3("d",0);
+	//inc2;
+	lookupArtifact("router",RouterId);
 	focus(RouterId);
 	//receiveMessage(Msg,Sender);
 	//startReceiving;
+	.print("Setting router to start the routes and receive messages");
 	setListenCamelRoute(true);
-	lookupArtifact("counter",CounterId);
-	focus(CounterId);
-	inc3("d",0);
-	inc2;
 	.print("Robot is ready to receive messages!").
 	
 +new_msg(Msg,Sender)

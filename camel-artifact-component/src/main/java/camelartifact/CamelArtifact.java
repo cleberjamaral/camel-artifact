@@ -174,7 +174,8 @@ public class CamelArtifact extends Artifact {
 			OpRequest newOp = new OpRequest();
 			newOp.setArtifactName(artifactName);
 			newOp.setOpName(operationName);
-			newOp.setParams(parameters);
+			if (parameters != null)
+				newOp.setParams(parameters);
 			outgoingOpQueue.add(newOp);
 			
 			LOG.debug("Message added in the outgoing queue!");
