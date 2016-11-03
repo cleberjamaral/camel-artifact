@@ -43,7 +43,6 @@ import simplelogger.SimpleLogger;
  *         there are two queue lists for messages that the artifact received and for the ones to me send. Here the
  *         meaning adopted is: "Incoming" refers to packets which originate elsewhere and arrive at the artifact, while
  *         "outgoing" refers to packets which originate at the artifact and arrive elsewhere.
- *         http://serverfault.com/questions/443038/what-does-incoming-and-outgoing-traffic-mean
  */
 
 public class CamelArtifact extends Artifact {
@@ -187,6 +186,9 @@ public class CamelArtifact extends Artifact {
 
 	}
 
+	/**
+	 * As CArtAgO community suggest, blocking functions are using await method and IBlockingCmb class
+	 */
 	class ReadCmd implements IBlockingCmd {
 
 		public ReadCmd() {

@@ -44,7 +44,9 @@ import simplelogger.SimpleLogger;
  *         for this "translation" to "artifact world" what means that messages must be converted in operations calls to
  *         be performed by artifacts. Here the meaning adopted is: "Incoming" refers to packets which originate
  *         elsewhere and arrive at the artifact, while "outgoing" refers to packets which originate at the artifact and
- *         arrive elsewhere. http://serverfault.com/questions/443038/what-does-incoming-and-outgoing-traffic-mean
+ *         arrive elsewhere. 
+ *         
+ *         Source: http://serverfault.com/questions/443038/what-does-incoming-and-outgoing-traffic-mean
  */
 public class ArtifactProducer extends DefaultProducer {
 
@@ -52,12 +54,10 @@ public class ArtifactProducer extends DefaultProducer {
 	//private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
 	private static SimpleLogger LOG = new SimpleLogger();
 	private ConcurrentLinkedQueue<OpRequest> incomingOpQueue;
-//	private final ArtifactEndpoint endpoint;
 
 	public ArtifactProducer(ArtifactEndpoint endpoint) {
 		super(endpoint);
 		LOG.trace("Creating artifact producer endpoint...");
-//		this.endpoint = endpoint;
 		LOG.info("Artifact producer endpoint created successfully!");
 
 		incomingOpQueue = endpoint.getIncomingOpQueue();

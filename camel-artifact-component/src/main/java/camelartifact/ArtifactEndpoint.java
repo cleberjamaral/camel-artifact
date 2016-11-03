@@ -43,19 +43,26 @@ import simplelogger.SimpleLogger;
 /**
  * TODO: The "INOUT" messages were not treated, we can use setExchangePattern(ExchangePattern exchangePattern) of
  * org.apache.camel.support.ServiceSupport
+ * TODO: Treat different workspaces. The main idea is that it is possible to have artifacts with same name in different
+ * workspaces
+ * TODO: Treat artifact observable properties. This feature would allow an artifact in a JaCaMo instance be 
+ * observed by an agent in another instance. The same for observable events.
+ * TODO: Treat multiple consumers. The current version is not allowed by Camel to make multiple consumers.
  */
 @UriEndpoint(scheme = "artifact")
 public class ArtifactEndpoint extends ScheduledPollEndpoint {
 
-	// See import comments for detalis about LOG
+	// See import comments for details about LOG
 	//private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactEndpoint.class);
 	private static SimpleLogger LOG = new SimpleLogger();
 
+	//workspaces is not working in the current version!
 	private String uriContextPath; /* Which contains workspace and artifact */
 	private String workspace;
 
-	private final Map<String, String> artifactProperties = new TreeMap<String, String>();
-	public static final String VALUE = "value";
+	//Artifact properties are not working in the current version!
+	//private final Map<String, String> artifactProperties = new TreeMap<String, String>();
+	
 	private ConcurrentLinkedQueue<OpRequest> incomingOpQueue;
 	private ConcurrentLinkedQueue<OpRequest> outgoingOpQueue;
 
@@ -75,9 +82,9 @@ public class ArtifactEndpoint extends ScheduledPollEndpoint {
 		super(endpointUri);
 	}
 
-	public Map<String, String> getArtifactProperties() {
-		return artifactProperties;
-	}
+	//public Map<String, String> getArtifactProperties() {
+    //		return artifactProperties;
+	//}
 
 	/**
 	 * A common URI is like "artifact:cartago//workspace" artifact name, operation and extra parameters are sent by
@@ -135,7 +142,9 @@ public class ArtifactEndpoint extends ScheduledPollEndpoint {
 
 	/**
 	 * This component is prepared to create multiples consumers, but its is not managing this list in a container (for
-	 * example). It must be managed by an external class
+	 * example). Some tests on managing by an external class also show that it is not allowed by camel.
+	 * There is something to think about how to deal with data (from artifacts) that should be delivered to
+	 * different datatypes/endpoints. Nowadays, it should bring compatibility problems.    
 	 * 
 	 * @param processor
 	 * @return consumer

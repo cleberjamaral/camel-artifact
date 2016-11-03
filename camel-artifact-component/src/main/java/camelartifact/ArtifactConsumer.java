@@ -40,15 +40,16 @@ import simplelogger.SimpleLogger;
  * @author Cleber
  * 
  *         Consumer side of CamelArtifact class. This is the side responsible for transmissions of artifact messages to
- *         the route, which will be delivered to any camel endpoint (to a producer). The message to be send is in
+ *         the route, which will be delivered to any camel end point (to a producer). The message to be send is in
  *         "OpRequest" format, which is mainly formed by an artifact identification, operation and parameters. Here the
  *         meaning adopted is: "Incoming" refers to packets which originate elsewhere and arrive at the artifact, while
  *         "outgoing" refers to packets which originate at the artifact and arrive elsewhere.
- *         http://serverfault.com/questions/443038/what-does-incoming-and-outgoing-traffic-mean
+ *         
+ *         Source: http://serverfault.com/questions/443038/what-does-incoming-and-outgoing-traffic-mean
  */
 public class ArtifactConsumer extends ScheduledPollConsumer {
 
-	// See import comments for detalis about LOG
+	// See import comments for details about LOG
 	//private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactConsumer.class);
 	private static SimpleLogger LOG = new SimpleLogger();
 	private ConcurrentLinkedQueue<OpRequest> outgoingOpQueue;
