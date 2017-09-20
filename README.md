@@ -1,4 +1,4 @@
-#camel-artifact
+# camel-artifact
 
 camel-artifact is an Apache Camel component to connect Artifacts (virtual entities) from MultiAgent Systems to other systems and devices. The corrent version is only compatible with CArtAgO (http://cartago.sourceforge.net/) artifacts. All tests were done using JaCaMo (http://jacamo.sourceforge.net/) platform.
 
