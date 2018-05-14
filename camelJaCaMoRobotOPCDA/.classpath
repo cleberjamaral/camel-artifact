@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry excluding="**/*.asl" kind="src" path="src/agt"/>
 	<classpathentry kind="src" path="lib"/>
 	<classpathentry excluding="*.ptl" kind="src" path="src/int"/>
 	<classpathentry excluding="*.xml" kind="src" path="src/org"/>
 	<classpathentry excluding="resources/" kind="src" path="src/env"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JaCaMo"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.7.5.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-simple-1.6.6.jar"/>
@@ -17,5 +21,6 @@
 	<classpathentry kind="lib" path="lib/camel-netty4-2.14.4.jar"/>
 	<classpathentry kind="lib" path="lib/camel-test-2.17.2.jar"/>
 	<classpathentry kind="lib" path="lib/camelartifact-0.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/cleber/jason-2.2a/libs/cartago-2.3-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
