@@ -24,7 +24,6 @@ package camelartifacts;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
@@ -32,19 +31,6 @@ import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
 
-//import org.jboss.netty.*;
-import org.apache.camel.component.netty4.*;
-import org.jboss.netty.*; 
-import org.jboss.netty.buffer.*;
-import io.netty.buffer.*;
-import io.netty.util.*;
-
-
-/*
-import io.netty.buffer.ByteBufInputStream;
-import io.netty.buffer.ByteBufOutputStream;
-import io.netty.buffer.Unpooled;
-*/
 import camelartifact.ArtifactComponent;
 import camelartifact.CamelArtifact;
 import cartago.ARTIFACT_INFO;
@@ -72,7 +58,7 @@ public class Router extends CamelArtifact {
 		/* Create the routes */
 		try {
 			camelContext.addRoutes(new RouteBuilder() {
-				int testAsimov = 0;
+				//int testAsimov = 0;
 				
 				@Override
 				public void configure() {
