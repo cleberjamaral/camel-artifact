@@ -24,8 +24,6 @@ package camelartifacts;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
@@ -39,7 +37,6 @@ import camelartifact.CamelArtifact;
 import camelartifact.ArtifactComponent;
 import cartago.ARTIFACT_INFO;
 import cartago.INTERNAL_OPERATION;
-import cartago.LINK;
 import cartago.OUTPORT;
 
 /**
