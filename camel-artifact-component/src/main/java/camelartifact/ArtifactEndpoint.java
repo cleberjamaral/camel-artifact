@@ -22,8 +22,6 @@
 
 package camelartifact;
 
-import java.util.Map;
-import java.util.TreeMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import org.apache.camel.Consumer;
