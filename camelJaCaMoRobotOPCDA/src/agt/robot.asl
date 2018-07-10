@@ -34,7 +34,7 @@ stock(beer,3).
 	.print("Robot is at ",P).	
 @r4	
 +!masterdrunkabeer(owner_) : true
-	<- .send(owner_, untell, has(owner_,beer)).
+	<- .send(owner_, tell, has(owner_,beer)).
 	
 @r5
 +!updateStock(beer,Inventory) : Inventory > 1

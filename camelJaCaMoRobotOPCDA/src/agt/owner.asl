@@ -16,8 +16,10 @@
 		!ask(beer).	
 
 @o3
-+!drink(beer) : has(owner_,beer)
-	<- .send(robot, achieve, masterdrunkabeer(owner_));
-	.print("Yeah, I have drunk a cold beer!").
++!drink(beer) : true//has(owner_,beer)
+	<- .print("Yeah, I have drunk a cold beer!");
+	.send(robot, achieve, masterdrunkabeer(owner_)).
 
-	
+@o4
+-has(owner_,beer)
+	<- .print(":( There is no beer.").
