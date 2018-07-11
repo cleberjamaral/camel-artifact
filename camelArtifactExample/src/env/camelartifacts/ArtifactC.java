@@ -25,8 +25,6 @@ package camelartifacts;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
@@ -36,7 +34,6 @@ import org.apache.camel.impl.DefaultCamelContext;
 import camelartifact.ArtifactComponent;
 import camelartifact.CamelArtifact;
 import cartago.ARTIFACT_INFO;
-import cartago.INTERNAL_OPERATION;
 import cartago.OPERATION;
 import cartago.OUTPORT;
 

@@ -33,7 +33,6 @@ import org.apache.camel.impl.DefaultCamelContext;
 
 import camelartifact.ArtifactComponent;
 import camelartifact.CamelArtifact;
-import cartago.INTERNAL_OPERATION;
 import cartago.OPERATION;
 
 /**

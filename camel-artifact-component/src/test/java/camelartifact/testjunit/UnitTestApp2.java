@@ -76,7 +76,7 @@ public class UnitTestApp2 extends CamelTestSupport {
 		/**
 		 * This method should be called to say: start listening the route, so the producer will process the messages
 		 */
-		camelartif.setListenCamelRoute(false);
+		camelartif.listenRoutes(false);
 
 		List<Object> params1  = new ArrayList<Object>();
 		List<Object> params2  = new ArrayList<Object>();

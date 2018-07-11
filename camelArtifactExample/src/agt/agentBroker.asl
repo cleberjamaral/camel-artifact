@@ -1,21 +1,19 @@
-// Agent sample_agent in project camelArtifactExample
-/* Initial beliefs and rules */
-
 /* Initial goals */
 !start.
 !listenA.
 !listenC.
 
-@r9
 +!start: true <-
 	.print("Building artifacts..."); 
 	makeArtifact("ArtifactB","artifacts.ArtifactB",[],ArtifactBid);
 	makeArtifact("ArtifactC","camelartifacts.ArtifactC",[],ArtifactCid);
 	.print("Linking artifacts..."); 
 	linkArtifacts(ArtifactCid,"out-1",ArtifactBid);
+	linkArtifacts(ArtifactBid,"out-1",ArtifactCid);
 	makeArtifact("ArtifactA","camelartifacts.ArtifactA",[],ArtifactAid);
 	.print("Artifact are ready for use!");
 	!!sayHelloPlanA;
+	!!sayHelloPlanB;
 	!!sayHelloPlanC.
 	
 +!listenA: true <-
@@ -23,8 +21,8 @@
 	.print("Start listening on artifact A..."); 
 	lookupArtifact("ArtifactA",ArtifactAid);
 	focus(ArtifactAid);
-	setListenCamelRoute(true)[artifact_id(ArtifactAid)]; //Start listening on artifact A
-	.print("Listening on artifact A ready!").
+	listenRoutes(true)[artifact_id(ArtifactAid)]; //Start listening on artifact A (blocking command)
+	.print("Listening process on Artifact A finished!").
 	
 +!listenC: true <-
 	focusWhenAvailable("ArtifactB");
@@ -32,8 +30,8 @@
 	.print("Start listening on artifact C..."); 
 	lookupArtifact("ArtifactC",ArtifactCid);
 	focus(ArtifactCid);
-	setListenCamelRoute(true)[artifact_id(ArtifactCid)]; //Start listening on artifact A
-	.print("Listening on artifact C ready!").
+	listenRoutes(true)[artifact_id(ArtifactCid)]; //Start listening on artifact C (blocking command)
+	.print("Listening process on Artifact C finished!").
 
 +!sayHelloPlanA: true <- 
 	focusWhenAvailable("ArtifactA");
@@ -43,6 +41,15 @@
 	sayHelloA[artifact_id(ArtifactAid)];
 	.wait(2000);
 	!!sayHelloPlanA.
+
++!sayHelloPlanB: true <- 
+	focusWhenAvailable("ArtifactB");
+	lookupArtifact("ArtifactB",ArtifactBid);
+	.print("Say hello ArtifactB!");
+	focus(ArtifactBid);
+	sayHelloB[artifact_id(ArtifactBid)];
+	.wait(2000);
+	!!sayHelloPlanB.
 
 +!sayHelloPlanC: true <- 
 	focusWhenAvailable("ArtifactC");

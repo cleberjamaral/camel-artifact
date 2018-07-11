@@ -22,50 +22,34 @@
 
 package artifacts;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cartago.*;
 
 /**
  * Artifact out ports
  */
+
+@ARTIFACT_INFO(outports = { @OUTPORT(name = "out-1") })
+
 public class ArtifactB extends Artifact {
 
-	void init(int initialValue) throws Exception {
-		defineObsProperty("count", initialValue);
+	void init() throws Exception {
+	}
+	
+	@OPERATION
+	void sayHelloB() throws OperationException {
+		log("ArtifactB: trying to say hello...");
+		List<Object> params  = new ArrayList<Object>();
+		params.add("ArtifactB says hello!!!");
+		execLinkedOp("out-1","sendMsg","ArtifactB","Hello",params);
 	}
 	
 	@LINK
-	void inc2() {
-		log("Counter:inc2 called! A tick signal is going to be send.");
-		signal("tick");
-	}
-
-	@LINK
-	void inc3(String str, int i) {
-		log("Counter:inc3 called! A tick signal is going to be send. Parameters: " + str + ", " + i);
-		signal("tick");
-	}
-
-	@LINK
-	void inc(OpFeedbackParam<String> value) {
-		defineObsProperty("count", 1);
-		ObsProperty prop = getObsProperty("count");
-		prop.updateValue(prop.intValue()+1);
-		signal("tick");
-		value.set(prop.toString());
-	}
-
-	@LINK
-	void setValue(int newValue, OpFeedbackParam<String> oldValue) {
-		ObsProperty prop = getObsProperty("count");
-		prop.updateValue(newValue);
-		log("setValue invoked sucessfully! old: "+prop.toString()+", received: "+ newValue +" opid:"+thisOpId.toString());
-		oldValue.set(prop.toString());
-	}
-
-	@LINK
-	void writeinputAr(String v) {
-		log("writeinputAr invoked sucessfully! received: "+ v +" opid:"+thisOpId.toString());
-	}
-
+	void helloBackB() {
+		log("ArtifactB: received hello back!");
+		System.out.println("ArtifactB: received hello back!");
+	}	
 }
 

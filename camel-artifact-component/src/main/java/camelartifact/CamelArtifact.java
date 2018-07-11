@@ -59,7 +59,7 @@ public class CamelArtifact extends Artifact {
 	 * host class
 	 */
 	@OPERATION
-	public void setListenCamelRoute(final boolean value) {
+	public void listenRoutes(final boolean value) {
 
 		listenCamelRoutes = value;
 		LOG.trace("("+this.getId().getName()+") Camel Artifact 'listenCamelRoutes' is " + listenCamelRoutes);
@@ -163,6 +163,7 @@ public class CamelArtifact extends Artifact {
 	/**
 	 * Add a message to the outgoing queue
 	 */
+	@OPERATION
 	public void sendMsg(String artifactName, String operationName, List<Object> parameters) {
 
 		try {
