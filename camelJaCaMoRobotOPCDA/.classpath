@@ -21,6 +21,6 @@
 	<classpathentry kind="lib" path="lib/camel-netty4-2.14.4.jar"/>
 	<classpathentry kind="lib" path="lib/camel-test-2.17.2.jar"/>
 	<classpathentry kind="lib" path="lib/camelartifact-0.0.1.jar"/>
-	<classpathentry kind="lib" path="/Users/cleber/jason-2.2a/libs/cartago-2.3-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/cartago.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
