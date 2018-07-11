@@ -37,6 +37,7 @@ import camelartifact.ArtifactComponent;
 import camelartifact.CamelArtifact;
 import cartago.ARTIFACT_INFO;
 import cartago.INTERNAL_OPERATION;
+import cartago.OPERATION;
 import cartago.OUTPORT;
 
 /**
@@ -93,7 +94,7 @@ public class ArtifactC extends CamelArtifact {
 		log("Starting artifact...");
 	}
 
-	@INTERNAL_OPERATION
+	@OPERATION
 	void sayHelloC() {
 		log("ArtifactC: trying to say hello...");
 		List<Object> params  = new ArrayList<Object>();
@@ -101,7 +102,7 @@ public class ArtifactC extends CamelArtifact {
 		sendMsg("ArtifactC","Hello",params);
 	}
 
-	@INTERNAL_OPERATION
+	@OPERATION
 	void helloBackC() {
 		log("ArtifactC: received hello back!");
 		System.out.println("ArtifactC: received hello back!");

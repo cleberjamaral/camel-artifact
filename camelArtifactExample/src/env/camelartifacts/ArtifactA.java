@@ -34,6 +34,7 @@ import org.apache.camel.impl.DefaultCamelContext;
 import camelartifact.ArtifactComponent;
 import camelartifact.CamelArtifact;
 import cartago.INTERNAL_OPERATION;
+import cartago.OPERATION;
 
 /**
  * CArtAgO artifact code for project camelJaCaMoRobot This is just an application of CamelArtifact component showing a
@@ -88,7 +89,7 @@ public class ArtifactA extends CamelArtifact {
 		log("Starting artifact...");
 	}
 
-	@INTERNAL_OPERATION
+	@OPERATION
 	void sayHelloA() {
 		log("ArtifactA: trying to say hello...");
 		List<Object> params  = new ArrayList<Object>();
@@ -96,7 +97,7 @@ public class ArtifactA extends CamelArtifact {
 		sendMsg("ArtifactA","Hello",params);
 	}
 	
-	@INTERNAL_OPERATION
+	@OPERATION
 	void helloBackA() {
 		log("ArtifactA: received hello back!");
 		System.out.println("ArtifactA: received hello back!");
