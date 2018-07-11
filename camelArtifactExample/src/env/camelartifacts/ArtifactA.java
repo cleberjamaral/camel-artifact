@@ -65,6 +65,7 @@ public class ArtifactA extends CamelArtifact {
 					.to("mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactA")
 					.to("log:CamelArtifactLoggerOut?level=info");
 					
+					
 					from("mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactA")
 					.process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
@@ -73,6 +74,7 @@ public class ArtifactA extends CamelArtifact {
 							exchange.getIn().setBody(null);
 					}})
 					.to("artifact:cartagoA").to("log:CamelArtifactLoggerOut?level=info");
+					
 				}
 			});
 		} catch (Exception e) {
@@ -80,7 +82,7 @@ public class ArtifactA extends CamelArtifact {
 		}
 
 		// start routing
-		log("Starting camel...");
+		log("Starting camel... (context: "+camelContext+") "+camelContext.getRouteDefinitions().toString());
 		try {
 			camelContext.start();
 		} catch (Exception e) {

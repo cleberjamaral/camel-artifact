@@ -85,7 +85,7 @@ public class ArtifactC extends CamelArtifact {
 		}
 
 		// start routing
-		log("Starting camel...");
+		log("Starting camel... (context: "+camelContext+") "+camelContext.getRouteDefinitions().toString());
 		try {
 			camelContext.start();
 		} catch (Exception e) {

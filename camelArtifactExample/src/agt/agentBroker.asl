@@ -15,6 +15,7 @@
 	linkArtifacts(ArtifactCid,"out-1",ArtifactBid);
 	makeArtifact("ArtifactA","camelartifacts.ArtifactA",[],ArtifactAid);
 	.print("Artifact are ready for use!");
+	!!sayHelloPlanA;
 	!!sayHelloPlanC.
 	
 +!listenA: true <-
@@ -39,7 +40,6 @@
 	lookupArtifact("ArtifactA",ArtifactAid);
 	.print("Say hello ArtifactA!");
 	focus(ArtifactAid);
-	.wait(100);
 	sayHelloA[artifact_id(ArtifactAid)];
 	.wait(2000);
 	!!sayHelloPlanA.
@@ -49,7 +49,6 @@
 	lookupArtifact("ArtifactC",ArtifactCid);
 	.print("Say hello ArtifactC!");
 	focus(ArtifactCid);
-	.wait(100);
 	sayHelloC[artifact_id(ArtifactCid)];
 	.wait(2000);
 	!!sayHelloPlanC.

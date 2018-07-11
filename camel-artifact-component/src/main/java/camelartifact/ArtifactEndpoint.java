@@ -154,7 +154,7 @@ public class ArtifactEndpoint extends ScheduledPollEndpoint {
 	}
 
 	public boolean isSingleton() {
-		return true;
+		return false;
 	}
 
 }

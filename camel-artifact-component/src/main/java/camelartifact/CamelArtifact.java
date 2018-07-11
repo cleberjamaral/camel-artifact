@@ -50,8 +50,8 @@ public class CamelArtifact extends Artifact {
 	// See import comments for detalis about LOG
 	//private static final transient Logger LOG = LoggerFactory.getLogger(CamelArtifact.class);
 	private static SimpleLogger LOG = new SimpleLogger();
-	protected static ConcurrentLinkedQueue<OpRequest> incomingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
-	protected static ConcurrentLinkedQueue<OpRequest> outgoingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
+	protected ConcurrentLinkedQueue<OpRequest> incomingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
+	protected ConcurrentLinkedQueue<OpRequest> outgoingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
 	private boolean listenCamelRoutes = false;
 
 	/**
@@ -62,7 +62,7 @@ public class CamelArtifact extends Artifact {
 	public void setListenCamelRoute(final boolean value) {
 
 		listenCamelRoutes = value;
-		LOG.trace("Camel Artifact 'listenCamelRoutes' is " + listenCamelRoutes);
+		LOG.trace("("+this.getId().getName()+") Camel Artifact 'listenCamelRoutes' is " + listenCamelRoutes);
 		
 		ReadCmd cmd = new ReadCmd();
 		await(cmd);
@@ -90,7 +90,7 @@ public class CamelArtifact extends Artifact {
 			/**
 			 * Lookup command is here used to get the ArtifactID by the artifactName received
 			 */
-			LOG.debug("Getting artifact id of " + artifactName);
+			LOG.debug("("+this.getId().getName()+") Getting artifact id of " + artifactName);
 			ArtifactId aid = lookupArtifact(artifactName);
 
 			/**
@@ -98,22 +98,22 @@ public class CamelArtifact extends Artifact {
 			 */
 			if (this.getId() != aid) {
 
-                LOG.debug("artifact name/id/type: " + aid.getName() + "/" + aid.getId() + "/" + aid.getArtifactType());
+                LOG.debug("("+this.getId().getName()+") artifact name/id/type: " + aid.getName() + "/" + aid.getId() + "/" + aid.getArtifactType());
 
                 /**
                  * To avoid error, if the parameters are null the InternalOp will receive it The list o Objects inside of
                  * OpRequest is always created, but if is empty none Objects was received
                  */
                 if (parameters.isEmpty()) {
-                    LOG.debug("Forwarding " + operationName + " without parameters.");
+                    LOG.debug("("+this.getId().getName()+") Forwarding " + operationName + " without parameters.");
 
                     try {
                         execLinkedOp(aid, operationName);
                     } catch (OperationException e) {
-                        LOG.error("Error on execLinkedOp without parameters!");
+                        LOG.error("("+this.getId().getName()+") Error on execLinkedOp without parameters!");
                         e.printStackTrace();
                     } finally {
-                        LOG.debug("Forwarding without parameters done!");    
+                        LOG.debug("("+this.getId().getName()+") Forwarding without parameters done!");    
                     }
                     
                 } else {
@@ -121,14 +121,14 @@ public class CamelArtifact extends Artifact {
                      * execLinkedOp is waiting for a set of objects, not a list o objects (ArtifactId aid, String opName,
                      * Object... params)
                      */
-                    LOG.debug("Forwarding " + operationName + " with following parameters: " + parameters);
+                    LOG.debug("("+this.getId().getName()+") Forwarding " + operationName + " with following parameters: " + parameters);
                     try {
                         execLinkedOp(aid, operationName, parameters.toArray());
                     } catch (OperationException e) {
-                        LOG.error("Error on execLinkedOp with parameters!");
+                        LOG.error("("+this.getId().getName()+") Error on execLinkedOp with parameters!");
                         e.printStackTrace();
                     } finally {
-                        LOG.debug("Forwarding with parameters done!");    
+                        LOG.debug("("+this.getId().getName()+") Forwarding with parameters done!");    
                     }
                 }
                 
@@ -139,7 +139,7 @@ public class CamelArtifact extends Artifact {
 				 * inside of OpRequest is always created, but if is empty none Objects was received
 				 */
 				if (parameters.isEmpty()) {
-					LOG.debug("Executing " + operationName + " without parameters.");
+					LOG.debug("("+this.getId().getName()+") Executing " + operationName + " without parameters.");
 					execInternalOp(operationName);
 				} else {
 					/**
@@ -147,14 +147,14 @@ public class CamelArtifact extends Artifact {
 					 * operationName = inc; parameters[] = {"testString", 4}. So, the inc() @INTERNAL_OPERATION may
 					 * looks like: inc(String st, int i)
 					 */
-					LOG.debug("Executing " + operationName + " with following parameters: " + parameters);
+					LOG.debug("("+this.getId().getName()+") Executing " + operationName + " with following parameters: " + parameters);
 					execInternalOp(operationName, parameters.toArray());
 				}
 
 			}
 
 		} catch (OperationException e) {
-			LOG.error("Error receiving a message!");
+			LOG.error("("+this.getId().getName()+") Error receiving a message!");
 			e.printStackTrace();
 		}
 		
@@ -166,7 +166,7 @@ public class CamelArtifact extends Artifact {
 	public void sendMsg(String artifactName, String operationName, List<Object> parameters) {
 
 		try {
-			LOG.debug("A message is being send to camel route...");
+			LOG.debug("("+this.getId().getName()+") A message is being send to camel route...");
 			
 			OpRequest newOp = new OpRequest();
 			newOp.setArtifactName(artifactName);
@@ -175,10 +175,10 @@ public class CamelArtifact extends Artifact {
 				newOp.setParams(parameters);
 			outgoingOpQueue.add(newOp);
 			
-			LOG.debug("Message added in the outgoing queue!");
+			LOG.debug("("+this.getId().getName()+") Message added in the outgoing queue!");
 			
 		} catch (Exception e) {
-			LOG.error("Error adding a message in the outgoing queue!");
+			LOG.error("("+this.getId().getName()+") Error adding a message in the outgoing queue!");
 			e.printStackTrace();
 		}
 
