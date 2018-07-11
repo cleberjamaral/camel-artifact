@@ -83,7 +83,7 @@ public class CamelArtifact extends Artifact {
 	/**
 	 * Some message was received by the route
 	 */
-	@OPERATION
+	@INTERNAL_OPERATION
 	public void receiveMsg(String artifactName, String operationName, List<Object> parameters) {
 
 		try {
@@ -164,7 +164,7 @@ public class CamelArtifact extends Artifact {
 	/**
 	 * Add a message to the outgoing queue
 	 */
-	@OPERATION
+	@INTERNAL_OPERATION
 	public void sendMsg(String artifactName, String operationName, List<Object> parameters) {
 
 		try {
