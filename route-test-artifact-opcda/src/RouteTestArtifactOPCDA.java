@@ -26,7 +26,7 @@ public class RouteTestArtifactOPCDA extends CamelTestSupport{
 		final CamelContext camel = new DefaultCamelContext();
 //		camel.addComponent("artifact", new ArtifactComponent());
 		CamelArtifact camelartif = new CamelArtifact();
-		camelartif.setListenCamelRoute(true);
+		camelartif.listenRoutes(true);
 		
 		camel.addComponent("artifact", new ArtifactComponent(camelartif.getIncomingOpQueue(),camelartif.getOutgoingOpQueue()));
 		

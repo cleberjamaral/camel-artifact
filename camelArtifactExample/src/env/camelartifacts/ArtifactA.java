@@ -57,7 +57,7 @@ public class ArtifactA extends CamelArtifact {
 			camelContext.addRoutes(new RouteBuilder() {
 				@Override
 				public void configure() {
-					from("artifact:cartagoA")
+					from("artifact:cartago")
 					.process(new Processor() { 
 						public void process(Exchange exchange) throws Exception {exchange.getIn().setBody(exchange.getIn().getBody().toString());}
 					})
@@ -69,10 +69,10 @@ public class ArtifactA extends CamelArtifact {
 					.process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
 							exchange.getIn().setHeader("ArtifactName", "ArtifactA");
-							exchange.getIn().setHeader("OperationName", "helloBackA");
+							exchange.getIn().setHeader("OperationName", "kaBackA");
 							exchange.getIn().setBody(null);
 					}})
-					.to("artifact:cartagoA").to("log:CamelArtifactLoggerOut?level=info");
+					.to("artifact:cartago").to("log:CamelArtifactLoggerOut?level=info");
 					
 				}
 			});
@@ -81,7 +81,7 @@ public class ArtifactA extends CamelArtifact {
 		}
 
 		// start routing
-		log("Starting camel... (context: "+camelContext+") "+camelContext.getRouteDefinitions().toString());
+		log("Starting camel... (context: "+camelContext+" route definitions: "+camelContext.getRouteDefinitions().toString()+") ");
 		try {
 			camelContext.start();
 		} catch (Exception e) {
@@ -91,16 +91,15 @@ public class ArtifactA extends CamelArtifact {
 	}
 
 	@OPERATION
-	void sayHelloA() {
-		log("ArtifactA: trying to say hello...");
+	void sendKAA() {
+		log("trying to send keepalive message...");
 		List<Object> params  = new ArrayList<Object>();
-		params.add("ArtifactA says hello!!!");
-		sendMsg("ArtifactA","Hello",params);
+		params.add("ArtifactA: Keep alive!");
+		sendMsg("ArtifactA","KA",params);
 	}
 	
 	@OPERATION
-	void helloBackA() {
-		log("ArtifactA: received hello back!");
-		System.out.println("ArtifactA: received hello back!");
+	void kaBackA() {
+		log("received keepalive back!");
 	}	
 }

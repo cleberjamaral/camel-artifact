@@ -31,7 +31,7 @@ import cartago.*;
  * Artifact out ports
  */
 
-@ARTIFACT_INFO(outports = { @OUTPORT(name = "out-1") })
+@ARTIFACT_INFO(outports = { @OUTPORT(name = "out-2") })
 
 public class ArtifactB extends Artifact {
 
@@ -39,17 +39,21 @@ public class ArtifactB extends Artifact {
 	}
 	
 	@OPERATION
-	void sayHelloB() throws OperationException {
-		log("ArtifactB: trying to say hello...");
+	void sendKAB() throws OperationException {
+		log("trying to send keepalive message...");
 		List<Object> params  = new ArrayList<Object>();
-		params.add("ArtifactB says hello!!!");
-		execLinkedOp("out-1","sendMsg","ArtifactB","Hello",params);
+		params.add("ArtifactB: Keep alive!");
+		execLinkedOp("out-2","sendMsg","ArtifactB","KA",params);
 	}
 	
-	@LINK
-	void helloBackB() {
-		log("ArtifactB: received hello back!");
-		System.out.println("ArtifactB: received hello back!");
+	@LINK 
+	void kaBackB() throws OperationException {
+		try {
+			log("received keepalive back!");
+		} catch (Exception e) {
+			log("("+this.getId().getName()+") Error receiving keepalive back!");
+			e.printStackTrace();
+		}
 	}	
 }
 

@@ -83,6 +83,7 @@ public class CamelArtifact extends Artifact {
 	/**
 	 * Some message was received by the route
 	 */
+	@INTERNAL_OPERATION
 	private void receiveMsg(String artifactName, String operationName, List<Object> parameters) {
 
 		try {
@@ -202,7 +203,7 @@ public class CamelArtifact extends Artifact {
 					if ((newOp = incomingOpQueue.poll()) != null) {
 						LOG.debug("A message was founded in the incoming queue! Artifact:" + newOp.getArtifactName()
 								+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
-						receiveMsg(newOp.getArtifactName(), newOp.getOpName(), newOp.getParams());
+						execInternalOp("receiveMsg",newOp.getArtifactName(), newOp.getOpName(), newOp.getParams());
 					}
 				}
 			} catch (Exception ex) {

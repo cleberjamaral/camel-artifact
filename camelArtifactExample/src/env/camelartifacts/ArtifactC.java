@@ -24,6 +24,8 @@ package camelartifacts;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
@@ -60,21 +62,45 @@ public class ArtifactC extends CamelArtifact {
 			camelContext.addRoutes(new RouteBuilder() {
 				@Override
 				public void configure() {
-					from("artifact:cartagoC")
+					
+					interceptSendToEndpoint("mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB")
+					.when(body().contains("ArtifactC")).skipSendToOriginalEndpoint();								
+
+					interceptSendToEndpoint("mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC")
+					.when(body().contains("ArtifactB")).skipSendToOriginalEndpoint();
+					
+					from("artifact:cartago")
 					.process(new Processor() { 
-						public void process(Exchange exchange) throws Exception {exchange.getIn().setBody(exchange.getIn().getBody().toString());}
+						public void process(Exchange exchange) throws Exception {
+							Map<String, Object> headerItems = new TreeMap<String, Object>();
+							headerItems.putAll(exchange.getIn().getHeaders());
+							if (headerItems.get("ArtifactName").toString().equals("ArtifactC"))
+								exchange.getIn().setBody(exchange.getIn().getBody().toString()+" - ResourceC do something!");
+							if (headerItems.get("ArtifactName").toString().equals("ArtifactB"))
+								exchange.getIn().setBody(exchange.getIn().getBody().toString()+" - ResourceB do otherthing!");								
+						}
 					})
+					.to("mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB")
 					.to("mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC")
 					.to("log:CamelArtifactLoggerOut?level=info");
+					
+					from("mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactB")
+					.process(new Processor() {
+						public void process(Exchange exchange) throws Exception {
+							exchange.getIn().setHeader("ArtifactName", "ArtifactB");
+							exchange.getIn().setHeader("OperationName", "kaBackB");
+							exchange.getIn().setBody(null);
+					}})
+					.to("artifact:cartago").to("log:CamelArtifactLoggerOut?level=info");
 					
 					from("mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactC")
 					.process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
 							exchange.getIn().setHeader("ArtifactName", "ArtifactC");
-							exchange.getIn().setHeader("OperationName", "helloBackC");
+							exchange.getIn().setHeader("OperationName", "kaBackC");
 							exchange.getIn().setBody(null);
 					}})
-					.to("artifact:cartagoC").to("log:CamelArtifactLoggerOut?level=info");
+					.to("artifact:cartago").to("log:CamelArtifactLoggerOut?level=info");
 				}
 			});
 		} catch (Exception e) {
@@ -82,7 +108,7 @@ public class ArtifactC extends CamelArtifact {
 		}
 
 		// start routing
-		log("Starting camel... (context: "+camelContext+") "+camelContext.getRouteDefinitions().toString());
+		log("Starting camel... (context: "+camelContext+" route definitions: "+camelContext.getRouteDefinitions().toString()+") ");
 		try {
 			camelContext.start();
 		} catch (Exception e) {
@@ -92,17 +118,16 @@ public class ArtifactC extends CamelArtifact {
 	}
 
 	@OPERATION
-	void sayHelloC() {
-		log("ArtifactC: trying to say hello...");
+	void sendKAC() {
+		log("trying to send keepalive message...");
 		List<Object> params  = new ArrayList<Object>();
-		params.add("ArtifactC says Hello!!!");
-		sendMsg("ArtifactC","Hello",params);
+		params.add("ArtifactC: Keep alive!");
+		sendMsg("ArtifactC","KA",params);
 	}
 
 	@OPERATION
-	void helloBackC() {
-		log("ArtifactC: received hello back!");
-		System.out.println("ArtifactC: received hello back!");
+	void kaBackC() {
+		log("received keepalive back!");
 	}	
 
 }

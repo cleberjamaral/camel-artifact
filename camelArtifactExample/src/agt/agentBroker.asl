@@ -9,15 +9,15 @@
 	makeArtifact("ArtifactC","camelartifacts.ArtifactC",[],ArtifactCid);
 	.print("Linking artifacts..."); 
 	linkArtifacts(ArtifactCid,"out-1",ArtifactBid);
-	linkArtifacts(ArtifactBid,"out-1",ArtifactCid);
+	linkArtifacts(ArtifactBid,"out-2",ArtifactCid);
 	makeArtifact("ArtifactA","camelartifacts.ArtifactA",[],ArtifactAid);
 	.print("Artifact are ready for use!");
-	!!sayHelloPlanA;
-	!!sayHelloPlanB;
-	!!sayHelloPlanC.
+	!!sendKAmsgA;
+	!!sendKAmsgB;
+	!!sendKAmsgC.
 	
 +!listenA: true <-
-	focusWhenAvailable("ArtifactA");
+	focusWhenAvailable("ArtifactA"); //Just to make sure the artifact was already created
 	.print("Start listening on artifact A..."); 
 	lookupArtifact("ArtifactA",ArtifactAid);
 	focus(ArtifactAid);
@@ -25,40 +25,40 @@
 	.print("Listening process on Artifact A finished!").
 	
 +!listenC: true <-
-	focusWhenAvailable("ArtifactB");
-	focusWhenAvailable("ArtifactC");
+	focusWhenAvailable("ArtifactB"); //Just to make sure the artifact was already created
+	focusWhenAvailable("ArtifactC"); //Just to make sure the artifact was already created
 	.print("Start listening on artifact C..."); 
 	lookupArtifact("ArtifactC",ArtifactCid);
 	focus(ArtifactCid);
 	listenRoutes(true)[artifact_id(ArtifactCid)]; //Start listening on artifact C (blocking command)
 	.print("Listening process on Artifact C finished!").
 
-+!sayHelloPlanA: true <- 
-	focusWhenAvailable("ArtifactA");
++!sendKAmsgA: true <- 
+	focusWhenAvailable("ArtifactA"); //Just to make sure the artifact was already created
 	lookupArtifact("ArtifactA",ArtifactAid);
-	.print("Say hello ArtifactA!");
+	.print("Sending keepalive message to ArtifactA!");
 	focus(ArtifactAid);
-	sayHelloA[artifact_id(ArtifactAid)];
+	sendKAA[artifact_id(ArtifactAid)];
 	.wait(2000);
-	!!sayHelloPlanA.
+	!!sendKAmsgA.
 
-+!sayHelloPlanB: true <- 
-	focusWhenAvailable("ArtifactB");
++!sendKAmsgB: true <- 
+	focusWhenAvailable("ArtifactB"); //Just to make sure the artifact was already created
 	lookupArtifact("ArtifactB",ArtifactBid);
-	.print("Say hello ArtifactB!");
+	.print("Sending keepalive message to ArtifactB!");
 	focus(ArtifactBid);
-	sayHelloB[artifact_id(ArtifactBid)];
+	sendKAB[artifact_id(ArtifactBid)];
 	.wait(2000);
-	!!sayHelloPlanB.
+	!!sendKAmsgB.
 
-+!sayHelloPlanC: true <- 
-	focusWhenAvailable("ArtifactC");
++!sendKAmsgC: true <- 
+	focusWhenAvailable("ArtifactC"); //Just to make sure the artifact was already created 
 	lookupArtifact("ArtifactC",ArtifactCid);
-	.print("Say hello ArtifactC!");
+	.print("Sending keepalive message to ArtifactC!");
 	focus(ArtifactCid);
-	sayHelloC[artifact_id(ArtifactCid)];
+	sendKAC[artifact_id(ArtifactCid)];
 	.wait(2000);
-	!!sayHelloPlanC.
+	!!sendKAmsgC.
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }
