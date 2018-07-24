@@ -15,6 +15,7 @@
 mas camelArtifactExample {
 
     agent agentBroker
-
+    
+    asl-path: src/agt
 }
 

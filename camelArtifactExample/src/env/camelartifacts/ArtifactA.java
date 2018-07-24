@@ -91,7 +91,7 @@ public class ArtifactA extends CamelArtifact {
 	}
 
 	@OPERATION
-	void sendKAA() {
+	void sendKA() {
 		log("trying to send keepalive message...");
 		List<Object> params  = new ArrayList<Object>();
 		params.add("ArtifactA: Keep alive!");

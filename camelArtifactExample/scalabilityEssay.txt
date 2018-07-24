@@ -1,3 +1,30 @@
+Teste de escalabilidade. Tinha o intuito de verificar o uso de memoria usando roteamento (artefatos linkados).
+Foram testados dois cenarios baseados no codigo Jason do final deste texto. Em um deles foram criados artefatos
+tipo A e no outro tipo B (linkados).
+
+Cenario A
+ - ArtefatoA camel artifact
+ - ArtefatoB artefato normal cartago
+ - ArtefatoC camel artifact (roteador)
+ - 10 x Artefatos do tipo A (camel artifact) cada um instanciando camel e criando suas rotas
+
+Cenario B
+ - ArtefatoA camel artifact
+ - ArtefatoB artefato normal cartago
+ - ArtefatoC camel artifact (roteador)
+ - 10 x Artefatos do tipo A (camel artifact) cada um instanciando camel e criando suas rotas
+
+Foram tomadas 3 medidas de memoria heap e stack. Para obter estes valores foi utilizado o script 
+https://github.com/amarjeetanandsingh/jps_stat que por sua vez utiliza o aplicativo jstat com opcao gc.
+A aplicacao JaCaMo rodou por 2 minutos em cada tomada de uso de memoria, este tempo foi o suficiente para
+o MAS entrar em "regime".
+
+Dados (Heap+Stack em MB):
+		Tomada1	Tomada2	Tomada3
+CenarioA	81+50	73+47	82+50
+CenarioB	49+40	56+39	48+41
+
+
 /* Initial goals */
 !start.
 !listen("ArtifactA").

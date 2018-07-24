@@ -1,3 +1,30 @@
+Teste de escalabilidade, usou o codigo copiado abaixo na condicao de criacao dos seguintes cenarios:
+Cenario A
+- ArtefatoA camel artifact
+ - ArtefatoB artefato normal cartago
+ - ArtefatoC camel artifact (roteador)
+ - 10 x Artefatos do tipo A (camel artifact) cada um instanciando camel e criando suas rotas - ArtefatoA camel artifact
+ - ArtefatoB artefato normal cartago
+ - ArtefatoC camel artifact (roteador)
+ - 10 x Artefatos do tipo A (camel artifact) cada um instanciando camel e criando suas rotas
+Cenario B
+ - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Initial goals */
 !start.
 !listen("ArtifactA").

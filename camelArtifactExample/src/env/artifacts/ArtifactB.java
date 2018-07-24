@@ -39,7 +39,7 @@ public class ArtifactB extends Artifact {
 	}
 	
 	@OPERATION
-	void sendKAB() throws OperationException {
+	void sendKA() throws OperationException {
 		log("trying to send keepalive message...");
 		List<Object> params  = new ArrayList<Object>();
 		params.add("ArtifactB: Keep alive!");
