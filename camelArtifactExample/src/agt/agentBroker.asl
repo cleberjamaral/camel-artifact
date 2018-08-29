@@ -1,8 +1,7 @@
-scenarioBtest(true).
+scenarioBtest(false).
 
 /* Initial goals */
 !start.
-!listen("ArtifactC").
 
 +!start: scenarioBtest(L) <-
 	.print("Building and linking artifacts..."); 
@@ -15,35 +14,38 @@ scenarioBtest(true).
  		//- ArtefatoB artefato normal cartago
  		//- ArtefatoC camel artifact (roteador)
  		//- 10 x Artefatos do tipo B linkados com C
-    	for ( .range(I,0,9) ) {
+    	for ( .range(I,0,9999) ) {
        		.concat("ArtifactB",I,X);
        	 	makeArtifact(X,"artifacts.ArtifactB",[],Artid0);
 			linkArtifacts(ArtifactCid,"out-1",Artid0);
 			linkArtifacts(Artid0,"out-2",ArtifactCid);        
 			!!sendKAmsg(X);
      	}
-     	!!sendKAmsg("ArtifactA");
-     	!!listen("ArtifactA");
-		makeArtifact("ArtifactA","camelartifacts.ArtifactA",[],ArtifactAid);
+		makeArtifact("ArtifactA0","camelartifacts.ArtifactA",[],ArtifactAid);
+     	!!listen("ArtifactA0");
+     	!!sendKAmsg("ArtifactA0");
+     	!!listen("ArtifactC");
+     	!!sendKAmsg("ArtifactC")
 	} else {
 		//Cenario A
  		//- ArtefatoA camel artifact
  		//- ArtefatoB artefato normal cartago
  		//- ArtefatoC camel artifact (roteador)
  		//- 10 x Artefatos do tipo A (camel artifact) cada um instanciando camel e criando suas rotas
-		for ( .range(I,0,9) ) {
+		for ( .range(I,0,9999) ) {
        		.concat("ArtifactA",I,X);
        		makeArtifact(X,"camelartifacts.ArtifactA",[],Artid0);
        		!!sendKAmsg(X);	
-       		!listen(X)
+       		!!listen(X)
        	}
-		makeArtifact("ArtifactB","artifacts.ArtifactB",[],ArtifactBid);
+		makeArtifact("ArtifactB0","artifacts.ArtifactB",[],ArtifactBid);
 		linkArtifacts(ArtifactCid,"out-1",ArtifactBid);
 		linkArtifacts(ArtifactBid,"out-2",ArtifactCid);
-       	!!sendKAmsg("ArtifactB");
+       	!!sendKAmsg("ArtifactB0");
+       	!!listen("ArtifactC");
+       	!!sendKAmsg("ArtifactC")
 	}	
-	.print("Artifact are ready for use!");
-	!!sendKAmsg("ArtifactC").
+	.print("Artifact are ready for use!").
 	
 +!listen(Art): true <-
 	focusWhenAvailable(Art); //Just to make sure the artifact was already created

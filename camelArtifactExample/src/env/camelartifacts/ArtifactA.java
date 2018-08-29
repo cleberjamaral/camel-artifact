@@ -68,7 +68,7 @@ public class ArtifactA extends CamelArtifact {
 					from("mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactA")
 					.process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
-							exchange.getIn().setHeader("ArtifactName", "ArtifactA");
+							exchange.getIn().setHeader("ArtifactName", "ArtifactA0");
 							exchange.getIn().setHeader("OperationName", "kaBackA");
 							exchange.getIn().setBody(null);
 					}})
