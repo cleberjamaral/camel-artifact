@@ -12,7 +12,7 @@ Cenario B
  - ArtefatoA camel artifact
  - ArtefatoB artefato normal cartago
  - ArtefatoC camel artifact (roteador)
- - 10 x Artefatos do tipo A (camel artifact) cada um instanciando camel e criando suas rotas
+ - 10 x Artefatos do tipo B linkados com C
 
 Foram tomadas 3 medidas de memoria heap e stack. Para obter estes valores foi utilizado o script 
 https://github.com/amarjeetanandsingh/jps_stat que por sua vez utiliza o aplicativo jstat com opcao gc.
