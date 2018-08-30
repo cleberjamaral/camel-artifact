@@ -76,8 +76,8 @@ public class ArtifactC extends CamelArtifact {
 							headerItems.putAll(exchange.getIn().getHeaders());
 							if (headerItems.get("ArtifactName").toString().equals("ArtifactC"))
 								exchange.getIn().setBody(exchange.getIn().getBody().toString()+" - ResourceC do something!");
-							if (headerItems.get("ArtifactName").toString().equals("ArtifactB"))
-								exchange.getIn().setBody(exchange.getIn().getBody().toString()+" - ResourceB do otherthing!");								
+							else
+								exchange.getIn().setBody(exchange.getIn().getBody().toString());
 						}
 					})
 					.to("mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB")
@@ -87,7 +87,10 @@ public class ArtifactC extends CamelArtifact {
 					from("mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactB")
 					.process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
-							exchange.getIn().setHeader("ArtifactName", "ArtifactB0");
+							System.out.println(exchange.getIn().getBody().toString().replaceAll("\\[", "").replaceAll("\\]",""));
+							System.out.println(exchange.getIn().getBody().toString());
+							System.out.println(exchange.getIn().getBody());
+							exchange.getIn().setHeader("ArtifactName", exchange.getIn().getBody().toString().replaceAll("\\[", "").replaceAll("\\]",""));
 							exchange.getIn().setHeader("OperationName", "kaBackB");
 							exchange.getIn().setBody(null);
 					}})
