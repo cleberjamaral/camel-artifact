@@ -85,11 +85,9 @@ public class ArtifactC extends CamelArtifact {
 					.to("log:CamelArtifactLoggerOut?level=info");
 					
 					from("mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactB")
+					.transform(body().convertToString())
 					.process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
-							System.out.println(exchange.getIn().getBody().toString().replaceAll("\\[", "").replaceAll("\\]",""));
-							System.out.println(exchange.getIn().getBody().toString());
-							System.out.println(exchange.getIn().getBody());
 							exchange.getIn().setHeader("ArtifactName", exchange.getIn().getBody().toString().replaceAll("\\[", "").replaceAll("\\]",""));
 							exchange.getIn().setHeader("OperationName", "kaBackB");
 							exchange.getIn().setBody(null);
