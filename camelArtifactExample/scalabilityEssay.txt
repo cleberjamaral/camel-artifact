@@ -19,11 +19,20 @@ https://github.com/amarjeetanandsingh/jps_stat que por sua vez utiliza o aplicat
 A aplicacao JaCaMo rodou por 2 minutos em cada tomada de uso de memoria, este tempo foi o suficiente para
 o MAS entrar em "regime".
 
+Testados com 10, 20 e 100 artefatos (+ 1 ArtefatoC + 1 ArtefatoX)
+
 Dados (Heap+Stack em MB):
 		Tomada1	Tomada2	Tomada3
-CenarioA	81+50	73+47	82+50
-CenarioB	49+40	56+39	48+41
-
+CenarioA10	81+50	73+47	82+50
+CenarioB10	49+40	56+39	48+41
+CenarioA20	84+60	95+58	99+58
+CenarioB20	43+37	48+40	53+41
+CenarioA100	138+78	166+77	121+77
+CenarioB100	73+47	78+50	91+53
+CenarioA1000	183+83
+CenarioB1000	194+82
+CenarioA10000	151+81	
+CenarioB10000	232+92
 
 /* Initial goals */
 !start.
