@@ -1,7 +1,7 @@
-scenarioBtest(true).
+scenarioBtest(false).
 nArtifacts(10).
 startTime(_).
-maxElapsedTime(30000). //120.000 = 2 segundos
+maxElapsedTime(120000). //120.000 = 2 segundos
 
 /* Initial goals */
 !start.
