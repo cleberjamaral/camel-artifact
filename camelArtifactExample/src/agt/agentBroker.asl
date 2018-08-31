@@ -1,13 +1,14 @@
 scenarioBtest(false).
 nArtifacts(10).
 startTime(_).
-maxElapsedTime(120000). //120.000 = 2 segundos
+zero(0).
 
 /* Initial goals */
 !start.
 
 +!start: scenarioBtest(L) & nArtifacts(N) <-
 	-+startTime(system.time);
+	?startTime(T);
 	!!stopTest;
 	.print("Building and linking artifacts..."); 
 	makeArtifact("ArtifactC","camelartifacts.ArtifactC",[],ArtifactCid);
@@ -16,9 +17,8 @@ maxElapsedTime(120000). //120.000 = 2 segundos
 	{
 		//Cenario B
  		//- ArtefatoA camel artifact
- 		//- ArtefatoB artefato normal cartago
+ 		//- n x ArtefatoB artefato normal cartago linkado com C
  		//- ArtefatoC camel artifact (roteador)
- 		//- 10 x Artefatos do tipo B linkados com C
 	    	for ( .range(I,0,N-1) ) {
        			.concat("ArtifactB",I,X);
        	 		makeArtifact(X,"artifacts.ArtifactB",[],Artid0);
@@ -29,19 +29,17 @@ maxElapsedTime(120000). //120.000 = 2 segundos
 			.concat("ArtifactB",I,X);
                         !!sendKAmsg(X);
                 }
-
 		makeArtifact("ArtifactA0","camelartifacts.ArtifactA",[],ArtifactAid);
-
      		!!listen("ArtifactA0");
+		.print("Starting sending (B): ",system.time - T);
      		!!sendKAmsg("ArtifactA0");
      		!!listen("ArtifactC");
      		!!sendKAmsg("ArtifactC")
 	} else {
 		//Cenario A
- 		//- ArtefatoA camel artifact
+ 		//- n x ArtefatoA camel artifact com suas proprias rotas
  		//- ArtefatoB artefato normal cartago
  		//- ArtefatoC camel artifact (roteador)
- 		//- 10 x Artefatos do tipo A (camel artifact) cada um instanciando camel e criando suas rotas
 		for ( .range(I,0,N-1) ) {
 	       		.concat("ArtifactA",I,X);
        			makeArtifact(X,"camelartifacts.ArtifactA",[],Artid0);
@@ -57,6 +55,7 @@ maxElapsedTime(120000). //120.000 = 2 segundos
 		makeArtifact("ArtifactB0","artifacts.ArtifactB",[],ArtifactBid);
 		linkArtifacts(ArtifactCid,"out-1",ArtifactBid);
 		linkArtifacts(ArtifactBid,"out-2",ArtifactCid);
+		.print("Start sending (A): ",system.time - T);
        		!!sendKAmsg("ArtifactB0");
        		!!listen("ArtifactC");
        		!!sendKAmsg("ArtifactC")
@@ -72,17 +71,24 @@ maxElapsedTime(120000). //120.000 = 2 segundos
 +!sendKAmsg(Art): true <- 
 	focusWhenAvailable(Art); //Just to make sure the artifact was already created
 	lookupArtifact(Art,Aid);
-	.print("Sending keepalive message to ",Art,"!");
+	.wait(3000);
 	sendKA[artifact_id(Aid)];
-	.wait(2000);
+	.print("Keepalive message sent to ",Art,"!");
+	.wait(3000);
 	!!sendKAmsg(Art).
 
-+!stopTest: startTime(T) & maxElapsedTime(M) <-
-	if (system.time - T > M)
++!stopTest: startTime(T) & scenarioBtest(L) & nArtifacts(M) <-
+	.print("Elapsed time: ",system.time - T);
+	if ((L) & (system.time - T > 110000))
 	{
-		.print("* * * * FIM * * * * *");
+		.print("* * * * FIM scenario B * * * * *");
 		.stopMAS;
-	} 
+	}
+	if ((not L) & ((system.time - T) > (M * 700 + 110000)))
+	{
+		.print("* * * * FIM scenario A * * * * *");
+		.stopMAS;
+	}
 	.wait(1000);
 	!stopTest.
 	

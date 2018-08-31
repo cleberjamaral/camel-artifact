@@ -90,7 +90,7 @@ do
         #output for current pid
         cpuuse=$( (ps -p $pid -o %cpu 2>/dev/null || echo "0") | tail -n 1 )
         cpuuse=${cpuuse%.*}
-        printf "%-6s %-30s %8i %8i %7d %7d  %5i\n" $pid ${curr_pid_name["$pid"]:0:30} $HEAP_MEMORY ${curr_pid_max_heap["$pid"]} $RAM_MEMORY ${curr_pid_max_ram["$pid"]} $cpuuse | sort 
+        printf "%-6s %-30s %8i %8i %7d %7d  %5i\n" $pid ${curr_pid_name["$pid"]:0:30} $HEAP_MEMORY ${curr_pid_max_heap["$pid"]} $RAM_MEMORY ${curr_pid_max_ram["$pid"]} $cpuuse | sort >> log.log 
     done
 
     
@@ -111,5 +111,5 @@ do
         prev_pid_max_ram[$pid]=${curr_pid_max_ram[$pid]}
     done
     
-    sleep 0.3
+    sleep 0.1
 done
