@@ -1,5 +1,5 @@
 scenarioBtest(false).
-nArtifacts(10).
+nArtifacts(100).
 startTime(_).
 zero(0).
 
