@@ -1,0 +1,2807 @@
+JaCaMo home is /home/cleber/jacamo-0.7
+JDK_HOME is not properly set!
+file camelArtifactExample.jcm parsed successfully!
+
+Executing /usr/lib/jvm/java-8-openjdk-amd64/bin/java -classpath /home/cleber/jacamo-0.7/libs/ant-launcher-1.10.1.jar org.apache.tools.ant.launch.Launcher -e -f bin/camelArtifactExample.xml run
+Buildfile: /home/cleber/Projetos/camel-artifact/camelArtifactExample/bin/camelArtifactExample.xml
+
+init:
+
+user-init:
+
+compile:
+Compiling 3 source files to /home/cleber/Projetos/camel-artifact/camelArtifactExample/bin/classes
+
+run:
+Running project camelArtifactExample
+CArtAgO Http Server running on http://191.36.8.42:3273
+Jason Http Server running on http://191.36.8.42:3272
+[ArtifactC] Starting camel... (context: CamelContext(camel-1) route definitions: [Route[[From[artifact:cartago]] -> [InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactB} -> []]]], InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactC} -> []]]], process[Processor@0x7691dcfc], To[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce], To[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce], To[log:CamelArtifactLoggerOut?level=info]]], Route[[From[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce]] -> [InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactB} -> []]]], InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactC} -> []]]], Transform[{simple{${body}}}], process[Processor@0x156ff322], To[artifact:cartago], To[log:CamelArtifactLoggerOut?level=info]]], Route[[From[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce]] -> [InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactB} -> []]]], InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactC} -> []]]], process[Processor@0x727d2590], To[artifact:cartago], To[log:CamelArtifactLoggerOut?level=info]]]]) 
+272 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Apache Camel 2.17.2 (CamelContext: camel-1) is starting
+273 [Thread-1] INFO org.apache.camel.management.ManagedManagementStrategy - JMX is enabled
+670 [Thread-1] INFO org.apache.camel.impl.converter.DefaultTypeConverter - Loaded 184 type converters
+702 [Thread-1] INFO org.apache.camel.impl.DefaultRuntimeEndpointRegistry - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
+DEBUG: uriContextPath:://cartago
+DEBUG: uriContextPathLessColonSlashs:cartago
+925 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+925 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+996 [Thread-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
+1766 [hawtdispatch-DEFAULT-2] WARN org.apache.camel.component.mqtt.MQTTEndpoint - No topic subscriptions were specified in configuration
+1768 [Thread-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
+1768 [hawtdispatch-DEFAULT-2] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
+2285 [hawtdispatch-DEFAULT-1] WARN org.apache.camel.component.mqtt.MQTTEndpoint - No topic subscriptions were specified in configuration
+2286 [hawtdispatch-DEFAULT-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+2454 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Route: route1 started and consuming from: Endpoint[artifact://cartago]
+2460 [Thread-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
+2958 [hawtdispatch-DEFAULT-2] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
+3213 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Route: route2 started and consuming from: Endpoint[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce]
+3214 [Thread-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
+3787 [hawtdispatch-DEFAULT-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
+[ArtifactC] Starting artifact...
+4038 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Route: route3 started and consuming from: Endpoint[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce]
+4038 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Total 3 routes, of which 3 are started.
+4044 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Apache Camel 2.17.2 (CamelContext: camel-1) started in 3.767 seconds
+[ArtifactA0] Starting camel... (context: CamelContext(camel-2) route definitions: [Route[[From[artifact:cartago]] -> [process[Processor@0x361b1751], To[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactA&mqttQosPropertyName=ExactlyOnce], To[log:CamelArtifactLoggerOut?level=info]]], Route[[From[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactA&mqttQosPropertyName=ExactlyOnce]] -> [Transform[{simple{${body}}}], process[Processor@0x73199ff6], To[artifact:cartago], To[log:CamelArtifactLoggerOut?level=info]]]]) 
+DEBUG: uriContextPath:://cartago
+DEBUG: uriContextPathLessColonSlashs:cartago
+DEBUG: uriContextPath:://cartago
+DEBUG: uriContextPathLessColonSlashs:cartago
+4130 [Thread-4] INFO org.apache.camel.impl.DefaultCamelContext - Apache Camel 2.17.2 (CamelContext: camel-2) is starting
+4130 [Thread-4] INFO org.apache.camel.management.ManagedManagementStrategy - JMX is enabled
+4142 [Thread-4] INFO org.apache.camel.impl.converter.DefaultTypeConverter - Loaded 184 type converters
+4149 [Thread-4] INFO org.apache.camel.impl.DefaultRuntimeEndpointRegistry - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
+4166 [Thread-4] INFO org.apache.camel.impl.DefaultCamelContext - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+4166 [Thread-4] INFO org.apache.camel.impl.DefaultCamelContext - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+4170 [Thread-4] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+4662 [hawtdispatch-DEFAULT-2] WARN org.apache.camel.component.mqtt.MQTTEndpoint - No topic subscriptions were specified in configuration
+4662 [hawtdispatch-DEFAULT-2] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
+4715 [Thread-4] INFO org.apache.camel.impl.DefaultCamelContext - Route: route4 started and consuming from: Endpoint[artifact://cartago]
+4727 [Thread-4] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
+5219 [hawtdispatch-DEFAULT-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
+[ArtifactA0] Starting artifact...
+TRACE: (ArtifactA0) Camel Artifact 'listenCamelRoutes' is true
+DEBUG: Listening by reading the incoming queue...
+5465 [Thread-4] INFO org.apache.camel.impl.DefaultCamelContext - Route: route5 started and consuming from: Endpoint[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactA&mqttQosPropertyName=ExactlyOnce]
+5465 [Thread-4] INFO org.apache.camel.impl.DefaultCamelContext - Total 2 routes, of which 2 are started.
+5465 [Thread-4] INFO org.apache.camel.impl.DefaultCamelContext - Apache Camel 2.17.2 (CamelContext: camel-2) started in 1.336 seconds
+TRACE: (ArtifactC) Camel Artifact 'listenCamelRoutes' is true
+DEBUG: Listening by reading the incoming queue...
+[ArtifactB0] trying to send keepalive message...
+[ArtifactB1] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB2] trying to send keepalive message...
+[ArtifactB3] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB4] trying to send keepalive message...
+[ArtifactB5] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB0]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+7742 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+7798 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB1]
+[ArtifactB6] trying to send keepalive message...
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB8] trying to send keepalive message...
+[ArtifactB9] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+8515 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+8517 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB2]
+8978 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+8991 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+9271 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+9273 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB3]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+10022 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+10024 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB4]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+10774 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+10776 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB5]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+11524 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+11526 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB6]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+12281 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+12284 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB7]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+13029 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+13033 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+[ArtifactB0] trying to send keepalive message...
+[ArtifactB1] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB3] trying to send keepalive message...
+[ArtifactB2] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB5] trying to send keepalive message...
+[ArtifactB4] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB8]
+13819 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB8]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB8, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB8: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB8, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB8
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB8/17/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB8] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+13854 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB9]
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+[ArtifactB9] trying to send keepalive message...
+[ArtifactB8] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+14587 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB9]]
+14589 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB9, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB9: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB9, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB9
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB9/18/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB9] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactC, op:KA, body [ArtifactC: Keep alive!]
+15247 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+15248 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+15354 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+15355 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactC, kaBackC
+DEBUG: Adding in the inQueue: ArtifactC: kaBackC
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactC, op:kaBackC, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactC
+DEBUG: (ArtifactC) Executing kaBackC without parameters.
+[ArtifactC] received keepalive back!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB0]
+16111 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+16119 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB1]
+16890 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+16896 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB3]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+17640 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+17647 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB2]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+18394 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+18396 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB5]
+[ArtifactB1] trying to send keepalive message...
+[ArtifactB0] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB3] trying to send keepalive message...
+[ArtifactB2] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+19150 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+19152 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] trying to send keepalive message...
+[ArtifactB4] trying to send keepalive message...
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB4]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+19903 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+19913 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB7]
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB9] trying to send keepalive message...
+[ArtifactB8] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+20664 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+20665 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+21003 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+21108 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB6]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+21415 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+21416 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB9]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB9, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB9: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB9, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB9
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB9/18/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB9] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+22166 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB9]]
+22167 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB8]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB8, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB8: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB8, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB8
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB8/17/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB8] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+22927 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB8]]
+22927 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactC, op:KA, body [ArtifactC: Keep alive!]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactC, kaBackC
+DEBUG: Adding in the inQueue: ArtifactC: kaBackC
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactC, op:kaBackC, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactC
+DEBUG: (ArtifactC) Executing kaBackC without parameters.
+[ArtifactC] received keepalive back!
+23676 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+23686 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB1]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+24431 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+24432 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB0]
+[ArtifactB0] trying to send keepalive message...
+[ArtifactB1] trying to send keepalive message...
+[ArtifactB2] trying to send keepalive message...
+[ArtifactB3] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB4] trying to send keepalive message...
+[ArtifactB5] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+25191 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+25192 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB3]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+25949 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+25960 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB2]
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB8] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB9] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+26704 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+26705 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB5]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+27251 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+27255 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+27454 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+27454 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB4]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+28211 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+28226 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB7]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+28967 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+28969 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB9]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB9, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB9: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB9, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB9
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB9/18/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB9] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+29731 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB9]]
+29732 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB8]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB8, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB8: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB8, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB8
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB8/17/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB8] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+30481 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB8]]
+30482 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB6]
+[ArtifactB1] trying to send keepalive message...
+[ArtifactB3] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB2] trying to send keepalive message...
+[ArtifactB0] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB5] trying to send keepalive message...
+[ArtifactB4] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+31239 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+31240 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactC, op:KA, body [ArtifactC: Keep alive!]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactC, kaBackC
+DEBUG: Adding in the inQueue: ArtifactC: kaBackC
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactC, op:kaBackC, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactC
+DEBUG: (ArtifactC) Executing kaBackC without parameters.
+[ArtifactC] received keepalive back!
+32003 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+32027 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB0]
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB8] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB9] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+32763 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+32791 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+33002 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+33024 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB1]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+33508 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+33512 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB2]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+34263 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+34264 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB3]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+35018 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+35023 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB4]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+35775 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+35775 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB5]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+36524 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+36524 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB7]
+[ArtifactB3] trying to send keepalive message...
+[ArtifactB1] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB0] trying to send keepalive message...
+[ArtifactB2] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB4] trying to send keepalive message...
+[ArtifactB5] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+37268 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+37298 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB8]
+38013 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB8]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB8, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB8: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB8, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB8
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB8/17/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB8] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+38093 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB9]
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB8] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB9] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+38757 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB9]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB9, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB9: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB9, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB9
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB9/18/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB9] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+39008 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB6]
+39249 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+39252 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+39502 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+39507 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactC, op:KA, body [ArtifactC: Keep alive!]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactC, kaBackC
+DEBUG: Adding in the inQueue: ArtifactC: kaBackC
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactC, op:kaBackC, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactC
+DEBUG: (ArtifactC) Executing kaBackC without parameters.
+[ArtifactC] received keepalive back!
+40251 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+40255 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB1]
+40996 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+41000 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB3]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+41743 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+41748 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB2]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+42488 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+42493 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB0]
+[ArtifactB1] trying to send keepalive message...
+[ArtifactB3] trying to send keepalive message...
+[ArtifactB2] trying to send keepalive message...
+[ArtifactB0] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB5] trying to send keepalive message...
+[ArtifactB4] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+43233 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+43237 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB5]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+43978 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+43982 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB4]
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB8] trying to send keepalive message...
+[ArtifactB9] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+44722 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+44727 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+44998 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+44999 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB7]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+45467 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+45472 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB8]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB8, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB8: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB8, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB8
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB8/17/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB8] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+46212 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB8]]
+46217 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB9]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB9, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB9: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB9, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB9
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB9/18/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB9] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+46957 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB9]]
+46967 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB6]
+47702 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+47706 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactC, op:KA, body [ArtifactC: Keep alive!]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactC, kaBackC
+DEBUG: Adding in the inQueue: ArtifactC: kaBackC
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactC, op:kaBackC, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactC
+DEBUG: (ArtifactC) Executing kaBackC without parameters.
+[ArtifactC] received keepalive back!
+48450 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+48451 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB3]
+[ArtifactB2] trying to send keepalive message...
+[ArtifactB0] trying to send keepalive message...
+[ArtifactB3] trying to send keepalive message...
+[ArtifactB1] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB5] trying to send keepalive message...
+[ArtifactB4] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+49195 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+49200 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB1]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+49942 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+49945 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB0]
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB9] trying to send keepalive message...
+[ArtifactB8] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+50691 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+50692 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB2]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+51244 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+51245 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+51436 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+51441 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB4]
+52190 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB5]
+52935 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB7]
+53679 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB8]
+54424 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB8]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB9]
+[ArtifactB3] trying to send keepalive message...
+[ArtifactB0] trying to send keepalive message...
+[ArtifactB2] trying to send keepalive message...
+[ArtifactB1] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB4] trying to send keepalive message...
+[ArtifactB5] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+55168 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB9]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB6]
+55913 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactC, op:KA, body [ArtifactC: Keep alive!]
+56391 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB9] trying to send keepalive message...
+[ArtifactB8] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactC, kaBackC
+DEBUG: Adding in the inQueue: ArtifactC: kaBackC
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactC, op:kaBackC, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactC
+DEBUG: (ArtifactC) Executing kaBackC without parameters.
+[ArtifactC] received keepalive back!
+56638 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+56661 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+56663 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+56885 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+56995 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+56995 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB8, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB8: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB8, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB8
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB8/17/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB8] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB1]
+57139 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB9, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB9: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB9, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB9
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB9/18/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB9] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+57386 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+57405 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+57633 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB3]
+57880 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+58150 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+58154 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB2]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+58895 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+58900 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB0]
+59640 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+59750 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB5]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+60385 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+60391 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB4]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+[ArtifactB1] trying to send keepalive message...
+[ArtifactB2] trying to send keepalive message...
+[ArtifactB0] trying to send keepalive message...
+[ArtifactB3] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB5] trying to send keepalive message...
+[ArtifactB4] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+61131 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+61135 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB7]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+61877 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+61882 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB8]
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB8] trying to send keepalive message...
+[ArtifactB9] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+62621 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB8]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB8, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB8: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB8, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB8
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB8/17/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB8] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+62632 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB9]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+63242 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+63244 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB9, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB9: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB9, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB9
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB9/18/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB9] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+63366 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB9]]
+63370 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB6]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+64111 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+64115 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactC, op:KA, body [ArtifactC: Keep alive!]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactC, kaBackC
+DEBUG: Adding in the inQueue: ArtifactC: kaBackC
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactC, op:kaBackC, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactC
+DEBUG: (ArtifactC) Executing kaBackC without parameters.
+[ArtifactC] received keepalive back!
+64859 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+64862 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB2]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+65607 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+65611 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB0]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+66351 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+66361 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB3]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+67097 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+67111 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+[ArtifactB3] trying to send keepalive message...
+[ArtifactB0] trying to send keepalive message...
+[ArtifactB2] trying to send keepalive message...
+[ArtifactB1] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB4] trying to send keepalive message...
+[ArtifactB5] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB1]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+67842 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+67846 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB5]
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB8] trying to send keepalive message...
+[ArtifactB9] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+68591 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+68597 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+69023 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+69025 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB4]
+69336 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+69340 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB7]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+70081 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+70086 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB9]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB9, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB9: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB9, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB9
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB9/18/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB9] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+70826 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB9]]
+70830 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB8]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB8, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB8: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB8, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB8
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB8/17/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB8] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+71570 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB8]]
+71577 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB6]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+72319 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+72320 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactC, op:KA, body [ArtifactC: Keep alive!]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactC, kaBackC
+DEBUG: Adding in the inQueue: ArtifactC: kaBackC
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactC, op:kaBackC, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactC
+DEBUG: (ArtifactC) Executing kaBackC without parameters.
+[ArtifactC] received keepalive back!
+73067 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+73069 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+[ArtifactB1] trying to send keepalive message...
+[ArtifactB0] trying to send keepalive message...
+[ArtifactB2] trying to send keepalive message...
+[ArtifactB3] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB5] trying to send keepalive message...
+[ArtifactB4] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB3]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+73812 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+73819 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB0]
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB8] trying to send keepalive message...
+[ArtifactB9] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+74557 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+74565 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB2]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+75273 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+75274 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+75301 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+75318 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB1]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+76046 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+76050 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB4]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+76790 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+76797 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB5]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+77535 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+77541 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB7]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+78279 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+78284 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB9]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB9, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB9: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB9, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB9
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB9/18/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB9] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+79024 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB9]]
+79028 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+[ArtifactB3] trying to send keepalive message...
+[ArtifactB2] trying to send keepalive message...
+[ArtifactB0] trying to send keepalive message...
+[ArtifactB1] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB4] trying to send keepalive message...
+[ArtifactB5] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB8]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB8, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB8: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB8, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB8
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB8/17/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB8] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+79768 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB8]]
+79772 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB6]
+80513 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+80518 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB9] trying to send keepalive message...
+[ArtifactB8] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+81019 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+81021 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactC, op:KA, body [ArtifactC: Keep alive!]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+81260 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+81267 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactC, kaBackC
+DEBUG: Adding in the inQueue: ArtifactC: kaBackC
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactC, op:kaBackC, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactC
+DEBUG: (ArtifactC) Executing kaBackC without parameters.
+[ArtifactC] received keepalive back!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB1]
+82005 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+82010 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB2]
+82761 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+82766 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB0]
+83506 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+83510 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB3]
+84268 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+84275 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB5]
+85013 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+85017 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+[ArtifactB2] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB1] trying to send keepalive message...
+[ArtifactB0] trying to send keepalive message...
+[ArtifactB3] trying to send keepalive message...
+[ArtifactB4] trying to send keepalive message...
+[ArtifactB5] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB4]
+85757 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+85761 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB7]
+86502 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+86506 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB8] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB9] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB8]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+87246 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB8]]
+87250 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB8, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB8: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB8, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB8
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB8/17/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB8] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+87292 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+87294 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB9]
+87991 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB9]]
+87995 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB9, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB9: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB9, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB9
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB9/18/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB9] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB6]
+88736 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+89238 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactC, op:KA, body [ArtifactC: Keep alive!]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+89484 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+89486 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactC, kaBackC
+DEBUG: Adding in the inQueue: ArtifactC: kaBackC
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactC, op:kaBackC, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactC
+DEBUG: (ArtifactC) Executing kaBackC without parameters.
+[ArtifactC] received keepalive back!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB3]
+90229 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+90233 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB0]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+90973 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+90977 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+[ArtifactB2] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB1] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB0] trying to send keepalive message...
+[ArtifactB3] trying to send keepalive message...
+[ArtifactB4] trying to send keepalive message...
+[ArtifactB5] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB2]
+91718 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+91722 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB1]
+92463 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+92467 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB8] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB9] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB4]
+93038 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+93040 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+93211 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+93215 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB5]
+93955 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+93959 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB7]
+94699 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+94705 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB8]
+95447 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB8]]
+95448 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB8, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB8: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB8, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB8
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB8/17/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB8] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB9]
+96191 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB9]]
+96196 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB9, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB9: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB9, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB9
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB9/18/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB9] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB6]
+96936 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+96940 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+[ArtifactB2] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB1] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB5] trying to send keepalive message...
+[ArtifactB4] trying to send keepalive message...
+[ArtifactB3] trying to send keepalive message...
+[ArtifactB0] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactC, op:KA, body [ArtifactC: Keep alive!]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactC, kaBackC
+DEBUG: Adding in the inQueue: ArtifactC: kaBackC
+DEBUG: Message added in the incoming queue!
+97684 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+97685 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactC, op:kaBackC, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactC
+DEBUG: (ArtifactC) Executing kaBackC without parameters.
+[ArtifactC] received keepalive back!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB1]
+98429 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+98433 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB8] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB9] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB0]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+99173 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+99178 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+99285 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+99286 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB2]
+99918 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+99923 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB3]
+100664 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+100668 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB5]
+101408 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+101412 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB4]
+102153 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+102157 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB7]
+102897 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+103134 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+[ArtifactB2] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB1] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB0] trying to send keepalive message...
+[ArtifactB3] trying to send keepalive message...
+[ArtifactB4] trying to send keepalive message...
+[ArtifactB5] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB8]
+103642 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB8]]
+103686 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB8, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB8: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB8, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB8
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB8/17/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB8] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB9]
+104387 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB9]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB9, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB9: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB9, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB9
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB9/18/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB9] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+104391 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+[ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB8] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB9] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being send to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue!
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB6]
+105031 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+105031 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+105131 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+105170 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactC, op:KA, body [ArtifactC: Keep alive!]
+105879 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+105887 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactC, kaBackC
+DEBUG: Adding in the inQueue: ArtifactC: kaBackC
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactC, op:kaBackC, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactC
+DEBUG: (ArtifactC) Executing kaBackC without parameters.
+[ArtifactC] received keepalive back!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB3]
+106630 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+106631 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB2]
+107374 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+107379 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB0]
+108119 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+108123 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB1]
+108863 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+109007 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+[ArtifactB2] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB1] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+[ArtifactB5] trying to send keepalive message...
+[ArtifactB4] trying to send keepalive message...
+[ArtifactB3] trying to send keepalive message...
+[ArtifactB0] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: (ArtifactC) A message is being send to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue!
+DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactB, op:KA, body [ArtifactB5]
+109615 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+109672 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+
+user-end:
+
+BUILD SUCCESSFUL
+Total time: 1 minute 53 seconds

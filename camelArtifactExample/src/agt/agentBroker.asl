@@ -1,5 +1,5 @@
-scenarioBtest(false).
-nArtifacts(100).
+scenarioBtest(true).
+nArtifacts(10).
 startTime(_).
 zero(0).
 
@@ -84,7 +84,7 @@ zero(0).
 		.print("* * * * FIM scenario B * * * * *");
 		.stopMAS;
 	}
-	if ((not L) & ((system.time - T) > (M * 700 + 110000)))
+	if ((not L) & ((system.time - T) > (M * 1200 + 110000)))
 	{
 		.print("* * * * FIM scenario A * * * * *");
 		.stopMAS;

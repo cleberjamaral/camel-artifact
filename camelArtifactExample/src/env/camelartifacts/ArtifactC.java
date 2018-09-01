@@ -63,10 +63,10 @@ public class ArtifactC extends CamelArtifact {
 				@Override
 				public void configure() {
 					
-					interceptSendToEndpoint("mqtt:mytest?host=tcp://127.0.0.1:1883&publishTopicName=camelArtifactB")
+					interceptSendToEndpoint("mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce")
 					.when(body().contains("ArtifactC")).skipSendToOriginalEndpoint();								
 
-					interceptSendToEndpoint("mqtt:mytest?host=tcp://127.0.0.1:1883&publishTopicName=camelArtifactC")
+					interceptSendToEndpoint("mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce")
 					.when(body().contains("ArtifactB")).skipSendToOriginalEndpoint();
 					
 					from("artifact:cartago")
@@ -80,11 +80,11 @@ public class ArtifactC extends CamelArtifact {
 								exchange.getIn().setBody(exchange.getIn().getBody().toString());
 						}
 					})
-					.to("mqtt:mytest?host=tcp://127.0.0.1:1883&publishTopicName=camelArtifactB")
-					.to("mqtt:mytest?host=tcp://127.0.0.1:1883&publishTopicName=camelArtifactC")
+					.to("mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce")
+					.to("mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce")
 					.to("log:CamelArtifactLoggerOut?level=info");
 					
-					from("mqtt:camelArtifact?host=tcp://127.0.0.1:1883&subscribeTopicName=camelArtifactB")
+					from("mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce")
 					.transform(body().convertToString())
 					.process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
@@ -94,7 +94,7 @@ public class ArtifactC extends CamelArtifact {
 					}})
 					.to("artifact:cartago").to("log:CamelArtifactLoggerOut?level=info");
 					
-					from("mqtt:camelArtifact?host=tcp://127.0.0.1:1883&subscribeTopicName=camelArtifactC")
+					from("mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce")
 					.process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
 							exchange.getIn().setHeader("ArtifactName", "ArtifactC");
