@@ -28,9 +28,10 @@ import org.junit.Test;
 import camelartifact.test.App;
 
 /**
- * This simple testing app is creating artificial operations for the CamelArtifact. Since it is not a MultiAgent System
- * project, actually our camel artifact is not running as an artifact (in an environment with Agents, etc) It is only a
- * Java class processing testing methods.
+ * This simple testing app is creating artificial operations for the
+ * CamelArtifact. Since it is not a MultiAgent System project, actually our
+ * camel artifact is not running as an artifact (in an environment with Agents,
+ * etc) It is only a Java class processing testing methods.
  * 
  * @author cleber
  * 

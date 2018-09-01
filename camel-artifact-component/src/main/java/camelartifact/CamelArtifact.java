@@ -38,32 +38,36 @@ import simplelogger.SimpleLogger;
 /**
  * @author cleber
  * 
- *         This "camel-artifact" should exists in a MAS project to allow communication between artifacts and external
- *         sources. It can also be a router, sending and receiving messages from other (linked) artifacts. For this
- *         there are two queue lists for messages that the artifact received and for the ones to me send. Here the
- *         meaning adopted is: "Incoming" refers to packets which originate elsewhere and arrive at the artifact, while
- *         "outgoing" refers to packets which originate at the artifact and arrive elsewhere.
+ *         This "camel-artifact" should exists in a MAS project to allow
+ *         communication between artifacts and external sources. It can also be
+ *         a router, sending and receiving messages from other (linked)
+ *         artifacts. For this there are two queue lists for messages that the
+ *         artifact received and for the ones to me send. Here the meaning
+ *         adopted is: "Incoming" refers to packets which originate elsewhere
+ *         and arrive at the artifact, while "outgoing" refers to packets which
+ *         originate at the artifact and arrive elsewhere.
  */
 
 public class CamelArtifact extends Artifact {
 
 	// See import comments for detalis about LOG
-	//private static final transient Logger LOG = LoggerFactory.getLogger(CamelArtifact.class);
+	// private static final transient Logger LOG =
+	// LoggerFactory.getLogger(CamelArtifact.class);
 	private static SimpleLogger LOG = new SimpleLogger();
 	protected ConcurrentLinkedQueue<OpRequest> incomingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
 	protected ConcurrentLinkedQueue<OpRequest> outgoingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
 	private boolean listenCamelRoutes = false;
 
 	/**
-	 * Since it is an operation, means it can be accessed by agents It is also public to be accessed by java code of a
-	 * host class
+	 * Since it is an operation, means it can be accessed by agents It is also
+	 * public to be accessed by java code of a host class
 	 */
 	@OPERATION
 	public void listenRoutes(final boolean value) {
 
 		listenCamelRoutes = value;
-		LOG.trace("("+this.getId().getName()+") Camel Artifact 'listenCamelRoutes' is " + listenCamelRoutes);
-		
+		LOG.trace("(" + this.getId().getName() + ") Camel Artifact 'listenCamelRoutes' is " + listenCamelRoutes);
+
 		ReadCmd cmd = new ReadCmd();
 		await(cmd);
 	}
@@ -89,9 +93,10 @@ public class CamelArtifact extends Artifact {
 		try {
 
 			/**
-			 * Lookup command is here used to get the ArtifactID by the artifactName received
+			 * Lookup command is here used to get the ArtifactID by the artifactName
+			 * received
 			 */
-			LOG.debug("("+this.getId().getName()+") Getting artifact id of " + artifactName);
+			LOG.debug("(" + this.getId().getName() + ") Getting artifact id of " + artifactName);
 			ArtifactId aid = lookupArtifact(artifactName);
 
 			/**
@@ -99,66 +104,71 @@ public class CamelArtifact extends Artifact {
 			 */
 			if (this.getId() != aid) {
 
-                LOG.debug("("+this.getId().getName()+") artifact name/id/type: " + aid.getName() + "/" + aid.getId() + "/" + aid.getArtifactType());
+				LOG.debug("(" + this.getId().getName() + ") artifact name/id/type: " + aid.getName() + "/" + aid.getId()
+						+ "/" + aid.getArtifactType());
 
-                /**
-                 * To avoid error, if the parameters are null the InternalOp will receive it The list o Objects inside of
-                 * OpRequest is always created, but if is empty none Objects was received
-                 */
-                if (parameters.isEmpty()) {
-                    LOG.debug("("+this.getId().getName()+") Forwarding " + operationName + " without parameters.");
+				/**
+				 * To avoid error, if the parameters are null the InternalOp will receive it The
+				 * list o Objects inside of OpRequest is always created, but if is empty none
+				 * Objects was received
+				 */
+				if (parameters.isEmpty()) {
+					LOG.debug("(" + this.getId().getName() + ") Forwarding " + operationName + " without parameters.");
 
-                    try {
-                        execLinkedOp(aid, operationName);
-                    } catch (OperationException e) {
-                        LOG.error("("+this.getId().getName()+") Error on execLinkedOp without parameters!");
-                        e.printStackTrace();
-                    } finally {
-                        LOG.debug("("+this.getId().getName()+") Forwarding without parameters done!");    
-                    }
-                    
-                } else {
-                    /**
-                     * execLinkedOp is waiting for a set of objects, not a list o objects (ArtifactId aid, String opName,
-                     * Object... params)
-                     */
-                    LOG.debug("("+this.getId().getName()+") Forwarding " + operationName + " with following parameters: " + parameters);
-                    try {
-                        execLinkedOp(aid, operationName, parameters.toArray());
-                    } catch (OperationException e) {
-                        LOG.error("("+this.getId().getName()+") Error on execLinkedOp with parameters!");
-                        e.printStackTrace();
-                    } finally {
-                        LOG.debug("("+this.getId().getName()+") Forwarding with parameters done!");    
-                    }
-                }
-                
+					try {
+						execLinkedOp(aid, operationName);
+					} catch (OperationException e) {
+						LOG.error("(" + this.getId().getName() + ") Error on execLinkedOp without parameters!");
+						e.printStackTrace();
+					} finally {
+						LOG.debug("(" + this.getId().getName() + ") Forwarding without parameters done!");
+					}
+
+				} else {
+					/**
+					 * execLinkedOp is waiting for a set of objects, not a list o objects
+					 * (ArtifactId aid, String opName, Object... params)
+					 */
+					LOG.debug("(" + this.getId().getName() + ") Forwarding " + operationName
+							+ " with following parameters: " + parameters);
+					try {
+						execLinkedOp(aid, operationName, parameters.toArray());
+					} catch (OperationException e) {
+						LOG.error("(" + this.getId().getName() + ") Error on execLinkedOp with parameters!");
+						e.printStackTrace();
+					} finally {
+						LOG.debug("(" + this.getId().getName() + ") Forwarding with parameters done!");
+					}
+				}
+
 			} else {
 
 				/**
-				 * To avoid error, if the parameters are null so, the InternalOp cannot receive it The list o Objects
-				 * inside of OpRequest is always created, but if is empty none Objects was received
+				 * To avoid error, if the parameters are null so, the InternalOp cannot receive
+				 * it The list o Objects inside of OpRequest is always created, but if is empty
+				 * none Objects was received
 				 */
 				if (parameters.isEmpty()) {
-					LOG.debug("("+this.getId().getName()+") Executing " + operationName + " without parameters.");
+					LOG.debug("(" + this.getId().getName() + ") Executing " + operationName + " without parameters.");
 					execInternalOp(operationName);
 				} else {
 					/**
-					 * It is expect that the called InternalOp has the number and type of parameters declared, example:
-					 * operationName = inc; parameters[] = {"testString", 4}. So, the inc() @INTERNAL_OPERATION may
-					 * looks like: inc(String st, int i)
+					 * It is expect that the called InternalOp has the number and type of parameters
+					 * declared, example: operationName = inc; parameters[] = {"testString", 4}. So,
+					 * the inc() @INTERNAL_OPERATION may looks like: inc(String st, int i)
 					 */
-					LOG.debug("("+this.getId().getName()+") Executing " + operationName + " with following parameters: " + parameters);
+					LOG.debug("(" + this.getId().getName() + ") Executing " + operationName
+							+ " with following parameters: " + parameters);
 					execInternalOp(operationName, parameters.toArray());
 				}
 
 			}
 
 		} catch (OperationException e) {
-			LOG.error("("+this.getId().getName()+") Error receiving a message!");
+			LOG.error("(" + this.getId().getName() + ") Error receiving a message!");
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	/**
@@ -168,9 +178,9 @@ public class CamelArtifact extends Artifact {
 	public void sendMsg(String artifactName, String operationName, List<Object> parameters) {
 
 		try {
-			LOG.debug("("+this.getId().getName()+") A message is being send to camel route...");
-		
-			synchronized (outgoingOpQueue) {	
+			LOG.debug("(" + this.getId().getName() + ") A message is being send to camel route...");
+
+			synchronized (outgoingOpQueue) {
 				OpRequest newOp = new OpRequest();
 				newOp.setArtifactName(artifactName);
 				newOp.setOpName(operationName);
@@ -178,18 +188,19 @@ public class CamelArtifact extends Artifact {
 					newOp.setParams(parameters);
 				outgoingOpQueue.add(newOp);
 			}
-			
-			LOG.debug("("+this.getId().getName()+") Message added in the outgoing queue!");
-			
+
+			LOG.debug("(" + this.getId().getName() + ") Message added in the outgoing queue!");
+
 		} catch (Exception e) {
-			LOG.error("("+this.getId().getName()+") Error adding a message in the outgoing queue!");
+			LOG.error("(" + this.getId().getName() + ") Error adding a message in the outgoing queue!");
 			e.printStackTrace();
 		}
 
 	}
 
 	/**
-	 * As CArtAgO community suggest, blocking functions are using await method and IBlockingCmb class
+	 * As CArtAgO community suggest, blocking functions are using await method and
+	 * IBlockingCmb class
 	 */
 	class ReadCmd implements IBlockingCmd {
 
@@ -207,7 +218,7 @@ public class CamelArtifact extends Artifact {
 							newOp = incomingOpQueue.poll();
 							LOG.debug("A message was founded in the incoming queue! Artifact:" + newOp.getArtifactName()
 									+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
-							execInternalOp("receiveMsg",newOp.getArtifactName(), newOp.getOpName(), newOp.getParams());
+							execInternalOp("receiveMsg", newOp.getArtifactName(), newOp.getOpName(), newOp.getParams());
 						}
 					}
 				}
@@ -216,5 +227,5 @@ public class CamelArtifact extends Artifact {
 			}
 		}
 	}
-	
+
 }

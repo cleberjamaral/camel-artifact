@@ -39,28 +39,32 @@ import org.apache.camel.spi.UriEndpoint;
 import simplelogger.SimpleLogger;
 
 /**
- * TODO: The "INOUT" messages were not treated, we can use setExchangePattern(ExchangePattern exchangePattern) of
- * org.apache.camel.support.ServiceSupport
- * TODO: Treat different workspaces. The main idea is that it is possible to have artifacts with same name in different
- * workspaces
- * TODO: Treat artifact observable properties. This feature would allow an artifact in a JaCaMo instance be 
- * observed by an agent in another instance. The same for observable events.
- * TODO: Treat multiple consumers. The current version is not allowed by Camel to make multiple consumers.
+ * TODO: The "INOUT" messages were not treated, we can use
+ * setExchangePattern(ExchangePattern exchangePattern) of
+ * org.apache.camel.support.ServiceSupport TODO: Treat different workspaces. The
+ * main idea is that it is possible to have artifacts with same name in
+ * different workspaces TODO: Treat artifact observable properties. This feature
+ * would allow an artifact in a JaCaMo instance be observed by an agent in
+ * another instance. The same for observable events. TODO: Treat multiple
+ * consumers. The current version is not allowed by Camel to make multiple
+ * consumers.
  */
 @UriEndpoint(scheme = "artifact")
 public class ArtifactEndpoint extends ScheduledPollEndpoint {
 
 	// See import comments for details about LOG
-	//private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactEndpoint.class);
+	// private static final transient Logger LOG =
+	// LoggerFactory.getLogger(ArtifactEndpoint.class);
 	private static SimpleLogger LOG = new SimpleLogger();
 
-	//workspaces is not working in the current version!
+	// workspaces is not working in the current version!
 	private String uriContextPath; /* Which contains workspace and artifact */
 	private String workspace;
 
-	//Artifact properties are not working in the current version!
-	//private final Map<String, String> artifactProperties = new TreeMap<String, String>();
-	
+	// Artifact properties are not working in the current version!
+	// private final Map<String, String> artifactProperties = new TreeMap<String,
+	// String>();
+
 	private ConcurrentLinkedQueue<OpRequest> incomingOpQueue;
 	private ConcurrentLinkedQueue<OpRequest> outgoingOpQueue;
 
@@ -80,13 +84,14 @@ public class ArtifactEndpoint extends ScheduledPollEndpoint {
 		super(endpointUri);
 	}
 
-	//public Map<String, String> getArtifactProperties() {
-    //		return artifactProperties;
-	//}
+	// public Map<String, String> getArtifactProperties() {
+	// return artifactProperties;
+	// }
 
 	/**
-	 * A common URI is like "artifact:cartago//workspace" artifact name, operation and extra parameters are sent by
-	 * header and body of the message. The workspace param is not mandatory.
+	 * A common URI is like "artifact:cartago//workspace" artifact name, operation
+	 * and extra parameters are sent by header and body of the message. The
+	 * workspace param is not mandatory.
 	 */
 	private void setUriContextPath() {
 
@@ -97,7 +102,7 @@ public class ArtifactEndpoint extends ScheduledPollEndpoint {
 			uriContextPath = uri;
 
 		LOG.debug("uriContextPath:" + uriContextPath);
-		
+
 		String uriContextPathLessColonSlashs = uriContextPath.substring(uriContextPath.indexOf("://") + 3,
 				uriContextPath.length());
 		if (uriContextPathLessColonSlashs.contains("/")) {
@@ -111,9 +116,10 @@ public class ArtifactEndpoint extends ScheduledPollEndpoint {
 	}
 
 	/**
-	 * The workspace is not working yet but the plan is about some projects that can have agents and artifacts in
-	 * multiple workspaces, so this camel-artifact can live in more than one environment, to have sure that it is
-	 * talking with right artifacts we need to know the workspace
+	 * The workspace is not working yet but the plan is about some projects that can
+	 * have agents and artifacts in multiple workspaces, so this camel-artifact can
+	 * live in more than one environment, to have sure that it is talking with right
+	 * artifacts we need to know the workspace
 	 * 
 	 * @return workspace that this artifact is running.
 	 */
@@ -139,10 +145,12 @@ public class ArtifactEndpoint extends ScheduledPollEndpoint {
 	}
 
 	/**
-	 * This component is prepared to create multiples consumers, but its is not managing this list in a container (for
-	 * example). Some tests on managing by an external class also show that it is not allowed by camel.
-	 * There is something to think about how to deal with data (from artifacts) that should be delivered to
-	 * different datatypes/endpoints. Nowadays, it should bring compatibility problems.    
+	 * This component is prepared to create multiples consumers, but its is not
+	 * managing this list in a container (for example). Some tests on managing by an
+	 * external class also show that it is not allowed by camel. There is something
+	 * to think about how to deal with data (from artifacts) that should be
+	 * delivered to different datatypes/endpoints. Nowadays, it should bring
+	 * compatibility problems.
 	 * 
 	 * @param processor
 	 * @return consumer

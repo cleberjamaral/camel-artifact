@@ -39,19 +39,24 @@ import simplelogger.SimpleLogger;
 /**
  * @author Cleber
  * 
- *         Producer side of CamelArtifact class. This is the side responsible for receive new messages from the route
- *         and deliver it to the artifact. The message can come in any format from some consumer, the app is responsible
- *         for this "translation" to "artifact world" what means that messages must be converted in operations calls to
- *         be performed by artifacts. Here the meaning adopted is: "Incoming" refers to packets which originate
- *         elsewhere and arrive at the artifact, while "outgoing" refers to packets which originate at the artifact and
- *         arrive elsewhere. 
- *         
- *         Source: http://serverfault.com/questions/443038/what-does-incoming-and-outgoing-traffic-mean
+ *         Producer side of CamelArtifact class. This is the side responsible
+ *         for receive new messages from the route and deliver it to the
+ *         artifact. The message can come in any format from some consumer, the
+ *         app is responsible for this "translation" to "artifact world" what
+ *         means that messages must be converted in operations calls to be
+ *         performed by artifacts. Here the meaning adopted is: "Incoming"
+ *         refers to packets which originate elsewhere and arrive at the
+ *         artifact, while "outgoing" refers to packets which originate at the
+ *         artifact and arrive elsewhere.
+ * 
+ *         Source:
+ *         http://serverfault.com/questions/443038/what-does-incoming-and-outgoing-traffic-mean
  */
 public class ArtifactProducer extends DefaultProducer {
 
 	// See import comments for detalis about LOG
-	//private static final transient Logger LOG = LoggerFactory.getLogger(ArtifactProducer.class);
+	// private static final transient Logger LOG =
+	// LoggerFactory.getLogger(ArtifactProducer.class);
 	private static SimpleLogger LOG = new SimpleLogger();
 	private ConcurrentLinkedQueue<OpRequest> incomingOpQueue;
 
@@ -64,9 +69,10 @@ public class ArtifactProducer extends DefaultProducer {
 	}
 
 	/**
-	 * Get a new message from the route and try to add it as an OperationRequest to be performed by some artifact. The
-	 * expected message has in the reader two fields: "ArtifactName" and "OperationName" This message also has in the
-	 * body a set of object that represents parameters of the related operation
+	 * Get a new message from the route and try to add it as an OperationRequest to
+	 * be performed by some artifact. The expected message has in the reader two
+	 * fields: "ArtifactName" and "OperationName" This message also has in the body
+	 * a set of object that represents parameters of the related operation
 	 */
 	public void process(Exchange exchange) throws Exception {
 
@@ -92,17 +98,16 @@ public class ArtifactProducer extends DefaultProducer {
 			OpRequest newOp = new OpRequest();
 			newOp.setArtifactName(artifactName);
 			newOp.setOpName(operationName);
-			
-			//Do not add a null object!
-			if (exchange.getIn().getBody(List.class) != null)
-			{
+
+			// Do not add a null object!
+			if (exchange.getIn().getBody(List.class) != null) {
 				LOG.debug("Body received: " + exchange.getIn().getBody().toString());
-				@SuppressWarnings("unchecked") //List.class is a raw type, this warning is not critical
+				@SuppressWarnings("unchecked") // List.class is a raw type, this warning is not critical
 				List<Object> body = (List<Object>) exchange.getIn().getBody(List.class);
 				newOp.setParams(body);
 				LOG.debug("Parameters details: " + newOp.getParams().toString());
 			}
-			
+
 			incomingOpQueue.add(newOp);
 			LOG.debug("Message added in the incoming queue!");
 

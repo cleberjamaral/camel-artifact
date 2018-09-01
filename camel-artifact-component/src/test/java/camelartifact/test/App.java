@@ -38,9 +38,10 @@ import org.slf4j.LoggerFactory;
 import camelartifact.*;
 
 /**
- * This simple testing app is creating artificial operations for the CamelArtifact. Since it is not a MultiAgent System
- * project, actually our camel artifact is not running as an artifact (in an environment with Agents, etc) It is only a
- * Java class processing testing methods.
+ * This simple testing app is creating artificial operations for the
+ * CamelArtifact. Since it is not a MultiAgent System project, actually our
+ * camel artifact is not running as an artifact (in an environment with Agents,
+ * etc) It is only a Java class processing testing methods.
  * 
  * @author cleber
  * 
@@ -57,22 +58,24 @@ public class App {
 	}
 
 	public static int runSimulation() throws Exception, InterruptedException {
-		
+
 		CamelArtifact camelartif = new CamelArtifact();
 
 		// Add routes and start camel
 		LOG.debug("Adding routes and starting camel...");
 		CamelContext camelContext = new DefaultCamelContext();
-		camelContext.addComponent("artifact", new ArtifactComponent(camelartif.getIncomingOpQueue(),camelartif.getOutgoingOpQueue()));
+		camelContext.addComponent("artifact",
+				new ArtifactComponent(camelartif.getIncomingOpQueue(), camelartif.getOutgoingOpQueue()));
 		camelContext.addRoutes(createRoutes());
 		camelContext.start();
 
 		/**
-		 * This method should be called to say: start listening the route, so the producer will process the messages
+		 * This method should be called to say: start listening the route, so the
+		 * producer will process the messages
 		 */
-		//camelartif.setListenCamelRoute(false);
+		// camelartif.setListenCamelRoute(false);
 
-		List<Object> params  = new ArrayList<Object>();
+		List<Object> params = new ArrayList<Object>();
 		params.add(4);
 		camelartif.sendMsg("TestArtifact", "Op1", params);
 		camelartif.sendMsg("TestArtifact", "Op2", params);
@@ -81,18 +84,18 @@ public class App {
 		LOG.debug("Running testing loop...");
 		ProducerTemplate prodtemplate = camelContext.createProducerTemplate();
 		ConsumerTemplate constemplate = camelContext.createConsumerTemplate();
-		//constemplate.start();
+		// constemplate.start();
 		while (msgCount > 0) {
 			prodtemplate.sendBody("direct:start", "");
 			msgCount--;
 		}
-		//constemplate.receiveBody("direct:start2");
+		// constemplate.receiveBody("direct:start2");
 		LOG.info("Testing loop finished!");
-		
+
 		constemplate.stop();
-		
+
 		camelartif = null;
-		
+
 		camelContext.stop();
 
 		// return 0 means successful!
@@ -106,16 +109,16 @@ public class App {
 			public void configure() {
 
 				LOG.trace("...");
-				
+
 				from("artifact:cartago").process(new Processor() {
 					@Override
 					public void process(Exchange exchange) throws Exception {
 						LOG.trace("Processing sending msgs...");
 					}
-				}).to("log:CamelArtifactLogger?level=info");            				
-				
+				}).to("log:CamelArtifactLogger?level=info");
+
 				LOG.trace("....");
-				
+
 				from("direct:start").process(new Processor() {
 					public void process(Exchange exchange) throws Exception {
 
@@ -135,7 +138,7 @@ public class App {
 						LOG.trace("msg processed!");
 					}
 				}).to("artifact:cartago");
-			
+
 				LOG.trace(".....");
 			}
 		};
