@@ -1,327 +1,321 @@
 [agentBroker] Building and linking artifacts...
-[agentBroker] Elapsed time: 2
-[agentBroker] Elapsed time: 1019
-[agentBroker] Elapsed time: 2020
-[agentBroker] Elapsed time: 3022
-[agentBroker] Elapsed time: 4023
-[agentBroker] Elapsed time: 5024
-[agentBroker] Starting sending (B): 5580
+[agentBroker] Elapsed time: 11
+[agentBroker] Elapsed time: 1021
+[agentBroker] Elapsed time: 2022
+[agentBroker] Elapsed time: 3023
+[agentBroker] Elapsed time: 4024
+[agentBroker] Elapsed time: 5025
+[agentBroker] Starting sending (B): 5700
 [agentBroker] Artifact are ready for use!
 [agentBroker] Start listening on ArtifactA0...
 [agentBroker] Start listening on ArtifactC...
-[agentBroker] Elapsed time: 6025
-[agentBroker] Elapsed time: 7025
+[agentBroker] Elapsed time: 6026
+[agentBroker] Elapsed time: 7026
 [agentBroker] Keepalive message sent to ArtifactB0!
 [agentBroker] Keepalive message sent to ArtifactB1!
-[agentBroker] Keepalive message sent to ArtifactB3!
 [agentBroker] Keepalive message sent to ArtifactB2!
-[agentBroker] Keepalive message sent to ArtifactB5!
+[agentBroker] Keepalive message sent to ArtifactB3!
 [agentBroker] Keepalive message sent to ArtifactB4!
-[agentBroker] Elapsed time: 8026
-[agentBroker] Keepalive message sent to ArtifactB7!
 [agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Keepalive message sent to ArtifactB5!
+[agentBroker] Elapsed time: 8027
 [agentBroker] Keepalive message sent to ArtifactB9!
 [agentBroker] Keepalive message sent to ArtifactB8!
-[agentBroker] Keepalive message sent to ArtifactA0!
-[agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 9026
-[agentBroker] Elapsed time: 10027
-[agentBroker] Elapsed time: 11028
-[agentBroker] Elapsed time: 12028
-[agentBroker] Elapsed time: 13029
-[agentBroker] Keepalive message sent to ArtifactB1!
-[agentBroker] Keepalive message sent to ArtifactB0!
-[agentBroker] Keepalive message sent to ArtifactB3!
-[agentBroker] Keepalive message sent to ArtifactB2!
-[agentBroker] Keepalive message sent to ArtifactB5!
-[agentBroker] Keepalive message sent to ArtifactB4!
-[agentBroker] Elapsed time: 14030
 [agentBroker] Keepalive message sent to ArtifactB7!
-[agentBroker] Keepalive message sent to ArtifactB9!
-[agentBroker] Keepalive message sent to ArtifactB8!
-[agentBroker] Keepalive message sent to ArtifactB6!
 [agentBroker] Keepalive message sent to ArtifactA0!
 [agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 15030
-[agentBroker] Elapsed time: 16031
-[agentBroker] Elapsed time: 17032
-[agentBroker] Elapsed time: 18032
-[agentBroker] Elapsed time: 19033
+[agentBroker] Elapsed time: 9028
+[agentBroker] Elapsed time: 10028
+[agentBroker] Elapsed time: 11029
+[agentBroker] Elapsed time: 12030
+[agentBroker] Elapsed time: 13030
 [agentBroker] Keepalive message sent to ArtifactB0!
 [agentBroker] Keepalive message sent to ArtifactB1!
 [agentBroker] Keepalive message sent to ArtifactB2!
 [agentBroker] Keepalive message sent to ArtifactB3!
 [agentBroker] Keepalive message sent to ArtifactB4!
 [agentBroker] Keepalive message sent to ArtifactB5!
-[agentBroker] Elapsed time: 20033
-[agentBroker] Keepalive message sent to ArtifactB7!
-[agentBroker] Keepalive message sent to ArtifactB8!
-[agentBroker] Keepalive message sent to ArtifactB9!
 [agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Elapsed time: 14031
 [agentBroker] Keepalive message sent to ArtifactA0!
+[agentBroker] Keepalive message sent to ArtifactB8!
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Keepalive message sent to ArtifactB9!
 [agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 21034
-[agentBroker] Elapsed time: 22034
-[agentBroker] Elapsed time: 23036
+[agentBroker] Elapsed time: 15032
+[agentBroker] Elapsed time: 16032
+[agentBroker] Elapsed time: 17033
+[agentBroker] Elapsed time: 18034
+[agentBroker] Elapsed time: 19034
+[agentBroker] Keepalive message sent to ArtifactB0!
+[agentBroker] Keepalive message sent to ArtifactB1!
+[agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Keepalive message sent to ArtifactB3!
+[agentBroker] Keepalive message sent to ArtifactB4!
+[agentBroker] Keepalive message sent to ArtifactB5!
+[agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Elapsed time: 20035
+[agentBroker] Keepalive message sent to ArtifactA0!
+[agentBroker] Keepalive message sent to ArtifactB8!
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Keepalive message sent to ArtifactB9!
+[agentBroker] Keepalive message sent to ArtifactC!
+[agentBroker] Elapsed time: 21036
+[agentBroker] Elapsed time: 22036
+[agentBroker] Elapsed time: 23037
 [agentBroker] Elapsed time: 24037
-[agentBroker] Elapsed time: 25037
+[agentBroker] Elapsed time: 25038
+[agentBroker] Keepalive message sent to ArtifactB0!
 [agentBroker] Keepalive message sent to ArtifactB1!
 [agentBroker] Keepalive message sent to ArtifactB3!
-[agentBroker] Keepalive message sent to ArtifactB2!
-[agentBroker] Keepalive message sent to ArtifactB0!
-[agentBroker] Keepalive message sent to ArtifactB5!
 [agentBroker] Keepalive message sent to ArtifactB4!
-[agentBroker] Elapsed time: 26038
-[agentBroker] Keepalive message sent to ArtifactB7!
-[agentBroker] Keepalive message sent to ArtifactB8!
-[agentBroker] Keepalive message sent to ArtifactB9!
+[agentBroker] Keepalive message sent to ArtifactB5!
 [agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Elapsed time: 26039
 [agentBroker] Keepalive message sent to ArtifactA0!
+[agentBroker] Elapsed time: 27039
 [agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 27038
-[agentBroker] Elapsed time: 28039
-[agentBroker] Elapsed time: 29039
-[agentBroker] Elapsed time: 30040
+[agentBroker] Keepalive message sent to ArtifactB8!
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Keepalive message sent to ArtifactB9!
+[agentBroker] Elapsed time: 28040
+[agentBroker] Elapsed time: 29040
+[agentBroker] Elapsed time: 30041
 [agentBroker] Elapsed time: 31041
+[agentBroker] Keepalive message sent to ArtifactB0!
 [agentBroker] Keepalive message sent to ArtifactB3!
 [agentBroker] Keepalive message sent to ArtifactB1!
-[agentBroker] Keepalive message sent to ArtifactB0!
-[agentBroker] Keepalive message sent to ArtifactB2!
 [agentBroker] Keepalive message sent to ArtifactB4!
 [agentBroker] Keepalive message sent to ArtifactB5!
-[agentBroker] Elapsed time: 32041
-[agentBroker] Keepalive message sent to ArtifactB7!
-[agentBroker] Keepalive message sent to ArtifactB8!
-[agentBroker] Keepalive message sent to ArtifactB9!
 [agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Elapsed time: 32042
 [agentBroker] Keepalive message sent to ArtifactA0!
+[agentBroker] Elapsed time: 33043
 [agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 33042
-[agentBroker] Elapsed time: 34042
+[agentBroker] Keepalive message sent to ArtifactB8!
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Keepalive message sent to ArtifactB9!
+[agentBroker] Elapsed time: 34044
 [agentBroker] Elapsed time: 35044
-[agentBroker] Elapsed time: 36044
-[agentBroker] Elapsed time: 37045
-[agentBroker] Keepalive message sent to ArtifactB1!
-[agentBroker] Keepalive message sent to ArtifactB3!
-[agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Elapsed time: 36045
+[agentBroker] Elapsed time: 37046
 [agentBroker] Keepalive message sent to ArtifactB0!
-[agentBroker] Keepalive message sent to ArtifactB5!
+[agentBroker] Keepalive message sent to ArtifactB3!
+[agentBroker] Keepalive message sent to ArtifactB1!
 [agentBroker] Keepalive message sent to ArtifactB4!
-[agentBroker] Elapsed time: 38045
-[agentBroker] Keepalive message sent to ArtifactB7!
-[agentBroker] Keepalive message sent to ArtifactB8!
-[agentBroker] Keepalive message sent to ArtifactB9!
+[agentBroker] Keepalive message sent to ArtifactB5!
 [agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Elapsed time: 38046
 [agentBroker] Keepalive message sent to ArtifactA0!
-[agentBroker] Keepalive message sent to ArtifactC!
 [agentBroker] Elapsed time: 39046
-[agentBroker] Elapsed time: 40046
+[agentBroker] Keepalive message sent to ArtifactC!
+[agentBroker] Keepalive message sent to ArtifactB8!
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Keepalive message sent to ArtifactB9!
+[agentBroker] Elapsed time: 40047
 [agentBroker] Elapsed time: 41047
-[agentBroker] Elapsed time: 42047
+[agentBroker] Elapsed time: 42048
 [agentBroker] Elapsed time: 43048
-[agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Elapsed time: 44049
 [agentBroker] Keepalive message sent to ArtifactB0!
 [agentBroker] Keepalive message sent to ArtifactB3!
 [agentBroker] Keepalive message sent to ArtifactB1!
-[agentBroker] Keepalive message sent to ArtifactB5!
 [agentBroker] Keepalive message sent to ArtifactB4!
-[agentBroker] Elapsed time: 44048
+[agentBroker] Keepalive message sent to ArtifactB5!
+[agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Keepalive message sent to ArtifactA0!
+[agentBroker] Elapsed time: 45049
+[agentBroker] Keepalive message sent to ArtifactC!
+[agentBroker] Keepalive message sent to ArtifactB8!
 [agentBroker] Keepalive message sent to ArtifactB7!
 [agentBroker] Keepalive message sent to ArtifactB9!
-[agentBroker] Keepalive message sent to ArtifactB8!
-[agentBroker] Keepalive message sent to ArtifactB6!
-[agentBroker] Keepalive message sent to ArtifactA0!
-[agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 45049
-[agentBroker] Elapsed time: 46049
+[agentBroker] Elapsed time: 46050
 [agentBroker] Elapsed time: 47050
 [agentBroker] Elapsed time: 48051
 [agentBroker] Elapsed time: 49051
-[agentBroker] Keepalive message sent to ArtifactB3!
-[agentBroker] Keepalive message sent to ArtifactB0!
+[agentBroker] Elapsed time: 50052
 [agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Keepalive message sent to ArtifactB0!
+[agentBroker] Keepalive message sent to ArtifactB3!
 [agentBroker] Keepalive message sent to ArtifactB1!
 [agentBroker] Keepalive message sent to ArtifactB4!
 [agentBroker] Keepalive message sent to ArtifactB5!
-[agentBroker] Elapsed time: 50052
-[agentBroker] Keepalive message sent to ArtifactB7!
-[agentBroker] Keepalive message sent to ArtifactB9!
-[agentBroker] Keepalive message sent to ArtifactB8!
 [agentBroker] Keepalive message sent to ArtifactB6!
 [agentBroker] Keepalive message sent to ArtifactA0!
-[agentBroker] Keepalive message sent to ArtifactC!
 [agentBroker] Elapsed time: 51052
+[agentBroker] Keepalive message sent to ArtifactC!
+[agentBroker] Keepalive message sent to ArtifactB8!
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Keepalive message sent to ArtifactB9!
 [agentBroker] Elapsed time: 52053
 [agentBroker] Elapsed time: 53053
 [agentBroker] Elapsed time: 54054
-[agentBroker] Elapsed time: 55056
-[agentBroker] Keepalive message sent to ArtifactB1!
+[agentBroker] Elapsed time: 55054
+[agentBroker] Elapsed time: 56055
+[agentBroker] Keepalive message sent to ArtifactB3!
 [agentBroker] Keepalive message sent to ArtifactB2!
 [agentBroker] Keepalive message sent to ArtifactB0!
-[agentBroker] Keepalive message sent to ArtifactB3!
+[agentBroker] Keepalive message sent to ArtifactB1!
 [agentBroker] Keepalive message sent to ArtifactB5!
 [agentBroker] Keepalive message sent to ArtifactB4!
-[agentBroker] Elapsed time: 56056
-[agentBroker] Keepalive message sent to ArtifactB7!
-[agentBroker] Keepalive message sent to ArtifactB8!
-[agentBroker] Keepalive message sent to ArtifactB9!
 [agentBroker] Keepalive message sent to ArtifactB6!
 [agentBroker] Keepalive message sent to ArtifactA0!
+[agentBroker] Elapsed time: 57055
 [agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 57056
-[agentBroker] Elapsed time: 58057
-[agentBroker] Elapsed time: 59057
-[agentBroker] Elapsed time: 60058
-[agentBroker] Elapsed time: 61058
-[agentBroker] Keepalive message sent to ArtifactB3!
-[agentBroker] Keepalive message sent to ArtifactB0!
-[agentBroker] Keepalive message sent to ArtifactB2!
-[agentBroker] Keepalive message sent to ArtifactB1!
-[agentBroker] Keepalive message sent to ArtifactB4!
-[agentBroker] Keepalive message sent to ArtifactB5!
-[agentBroker] Elapsed time: 62059
-[agentBroker] Keepalive message sent to ArtifactB7!
 [agentBroker] Keepalive message sent to ArtifactB8!
-[agentBroker] Keepalive message sent to ArtifactB9!
-[agentBroker] Keepalive message sent to ArtifactB6!
-[agentBroker] Keepalive message sent to ArtifactA0!
-[agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 63059
-[agentBroker] Elapsed time: 64060
-[agentBroker] Elapsed time: 65060
-[agentBroker] Elapsed time: 66061
-[agentBroker] Elapsed time: 67061
-[agentBroker] Keepalive message sent to ArtifactB1!
-[agentBroker] Keepalive message sent to ArtifactB2!
-[agentBroker] Keepalive message sent to ArtifactB0!
-[agentBroker] Keepalive message sent to ArtifactB3!
-[agentBroker] Keepalive message sent to ArtifactB5!
-[agentBroker] Keepalive message sent to ArtifactB4!
-[agentBroker] Elapsed time: 68062
-[agentBroker] Keepalive message sent to ArtifactB7!
-[agentBroker] Keepalive message sent to ArtifactB8!
-[agentBroker] Keepalive message sent to ArtifactB9!
-[agentBroker] Keepalive message sent to ArtifactB6!
-[agentBroker] Keepalive message sent to ArtifactA0!
-[agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 69062
-[agentBroker] Elapsed time: 70063
-[agentBroker] Elapsed time: 71063
-[agentBroker] Elapsed time: 72064
-[agentBroker] Elapsed time: 73064
-[agentBroker] Keepalive message sent to ArtifactB3!
-[agentBroker] Keepalive message sent to ArtifactB2!
-[agentBroker] Keepalive message sent to ArtifactB0!
-[agentBroker] Keepalive message sent to ArtifactB1!
-[agentBroker] Keepalive message sent to ArtifactB4!
-[agentBroker] Keepalive message sent to ArtifactB5!
-[agentBroker] Elapsed time: 74064
 [agentBroker] Keepalive message sent to ArtifactB7!
 [agentBroker] Keepalive message sent to ArtifactB9!
-[agentBroker] Keepalive message sent to ArtifactB8!
+[agentBroker] Elapsed time: 58056
+[agentBroker] Elapsed time: 59059
+[agentBroker] Elapsed time: 60059
+[agentBroker] Elapsed time: 61060
+[agentBroker] Elapsed time: 62060
+[agentBroker] Keepalive message sent to ArtifactB3!
+[agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Keepalive message sent to ArtifactB0!
+[agentBroker] Keepalive message sent to ArtifactB1!
+[agentBroker] Keepalive message sent to ArtifactB5!
+[agentBroker] Keepalive message sent to ArtifactB4!
 [agentBroker] Keepalive message sent to ArtifactB6!
 [agentBroker] Keepalive message sent to ArtifactA0!
+[agentBroker] Elapsed time: 63061
 [agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 75065
-[agentBroker] Elapsed time: 76065
-[agentBroker] Elapsed time: 77066
-[agentBroker] Elapsed time: 78066
-[agentBroker] Elapsed time: 79067
-[agentBroker] Keepalive message sent to ArtifactB2!
-[agentBroker] Keepalive message sent to ArtifactB1!
-[agentBroker] Keepalive message sent to ArtifactB0!
-[agentBroker] Keepalive message sent to ArtifactB3!
-[agentBroker] Keepalive message sent to ArtifactB4!
-[agentBroker] Keepalive message sent to ArtifactB5!
-[agentBroker] Elapsed time: 80067
-[agentBroker] Keepalive message sent to ArtifactB7!
 [agentBroker] Keepalive message sent to ArtifactB8!
 [agentBroker] Keepalive message sent to ArtifactB9!
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Elapsed time: 64061
+[agentBroker] Elapsed time: 65062
+[agentBroker] Elapsed time: 66062
+[agentBroker] Elapsed time: 67062
+[agentBroker] Elapsed time: 68063
+[agentBroker] Keepalive message sent to ArtifactB3!
+[agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Keepalive message sent to ArtifactB0!
+[agentBroker] Keepalive message sent to ArtifactB1!
+[agentBroker] Keepalive message sent to ArtifactB5!
+[agentBroker] Keepalive message sent to ArtifactB4!
 [agentBroker] Keepalive message sent to ArtifactB6!
 [agentBroker] Keepalive message sent to ArtifactA0!
+[agentBroker] Elapsed time: 69063
 [agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 81068
-[agentBroker] Elapsed time: 82068
-[agentBroker] Elapsed time: 83069
-[agentBroker] Elapsed time: 84069
-[agentBroker] Elapsed time: 85070
-[agentBroker] Keepalive message sent to ArtifactB2!
-[agentBroker] Keepalive message sent to ArtifactB1!
-[agentBroker] Keepalive message sent to ArtifactB0!
-[agentBroker] Keepalive message sent to ArtifactB3!
-[agentBroker] Keepalive message sent to ArtifactB4!
-[agentBroker] Keepalive message sent to ArtifactB5!
-[agentBroker] Elapsed time: 86071
-[agentBroker] Keepalive message sent to ArtifactB7!
 [agentBroker] Keepalive message sent to ArtifactB8!
 [agentBroker] Keepalive message sent to ArtifactB9!
-[agentBroker] Keepalive message sent to ArtifactB6!
-[agentBroker] Keepalive message sent to ArtifactA0!
-[agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 87071
-[agentBroker] Elapsed time: 88072
-[agentBroker] Elapsed time: 89072
-[agentBroker] Elapsed time: 90073
-[agentBroker] Elapsed time: 91073
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Elapsed time: 70064
+[agentBroker] Elapsed time: 71064
+[agentBroker] Elapsed time: 72065
+[agentBroker] Elapsed time: 73065
+[agentBroker] Elapsed time: 74066
+[agentBroker] Keepalive message sent to ArtifactB3!
+[agentBroker] Keepalive message sent to ArtifactB0!
 [agentBroker] Keepalive message sent to ArtifactB2!
 [agentBroker] Keepalive message sent to ArtifactB1!
 [agentBroker] Keepalive message sent to ArtifactB5!
 [agentBroker] Keepalive message sent to ArtifactB4!
-[agentBroker] Keepalive message sent to ArtifactB3!
-[agentBroker] Keepalive message sent to ArtifactB0!
-[agentBroker] Elapsed time: 92073
-[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Keepalive message sent to ArtifactA0!
+[agentBroker] Elapsed time: 75066
+[agentBroker] Keepalive message sent to ArtifactC!
 [agentBroker] Keepalive message sent to ArtifactB8!
 [agentBroker] Keepalive message sent to ArtifactB9!
-[agentBroker] Keepalive message sent to ArtifactB6!
-[agentBroker] Keepalive message sent to ArtifactA0!
-[agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 93074
-[agentBroker] Elapsed time: 94074
-[agentBroker] Elapsed time: 95075
-[agentBroker] Elapsed time: 96075
-[agentBroker] Elapsed time: 97075
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Elapsed time: 76067
+[agentBroker] Elapsed time: 77067
+[agentBroker] Elapsed time: 78068
+[agentBroker] Elapsed time: 79068
+[agentBroker] Elapsed time: 80068
+[agentBroker] Keepalive message sent to ArtifactB3!
+[agentBroker] Keepalive message sent to ArtifactB0!
 [agentBroker] Keepalive message sent to ArtifactB2!
 [agentBroker] Keepalive message sent to ArtifactB1!
-[agentBroker] Keepalive message sent to ArtifactB0!
-[agentBroker] Keepalive message sent to ArtifactB3!
-[agentBroker] Keepalive message sent to ArtifactB4!
 [agentBroker] Keepalive message sent to ArtifactB5!
-[agentBroker] Elapsed time: 98076
-[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Keepalive message sent to ArtifactB4!
+[agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Keepalive message sent to ArtifactA0!
+[agentBroker] Elapsed time: 81069
+[agentBroker] Elapsed time: 82069
+[agentBroker] Keepalive message sent to ArtifactC!
 [agentBroker] Keepalive message sent to ArtifactB8!
 [agentBroker] Keepalive message sent to ArtifactB9!
-[agentBroker] Keepalive message sent to ArtifactB6!
-[agentBroker] Keepalive message sent to ArtifactA0!
-[agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 99076
-[agentBroker] Elapsed time: 100077
-[agentBroker] Elapsed time: 101077
-[agentBroker] Elapsed time: 102078
-[agentBroker] Elapsed time: 103078
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Elapsed time: 83070
+[agentBroker] Elapsed time: 84070
+[agentBroker] Elapsed time: 85071
+[agentBroker] Elapsed time: 86073
+[agentBroker] Keepalive message sent to ArtifactB3!
+[agentBroker] Keepalive message sent to ArtifactB0!
 [agentBroker] Keepalive message sent to ArtifactB2!
 [agentBroker] Keepalive message sent to ArtifactB1!
 [agentBroker] Keepalive message sent to ArtifactB5!
 [agentBroker] Keepalive message sent to ArtifactB4!
-[agentBroker] Keepalive message sent to ArtifactB3!
-[agentBroker] Keepalive message sent to ArtifactB0!
-[agentBroker] Elapsed time: 104078
-[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Keepalive message sent to ArtifactA0!
+[agentBroker] Elapsed time: 87074
+[agentBroker] Elapsed time: 88074
+[agentBroker] Keepalive message sent to ArtifactC!
 [agentBroker] Keepalive message sent to ArtifactB8!
 [agentBroker] Keepalive message sent to ArtifactB9!
-[agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Elapsed time: 89075
+[agentBroker] Elapsed time: 90075
+[agentBroker] Elapsed time: 91076
+[agentBroker] Elapsed time: 92076
 [agentBroker] Keepalive message sent to ArtifactA0!
-[agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 105079
-[agentBroker] Elapsed time: 106079
-[agentBroker] Elapsed time: 107080
-[agentBroker] Elapsed time: 108080
-[agentBroker] Elapsed time: 109081
+[agentBroker] Keepalive message sent to ArtifactB3!
+[agentBroker] Keepalive message sent to ArtifactB0!
 [agentBroker] Keepalive message sent to ArtifactB2!
 [agentBroker] Keepalive message sent to ArtifactB1!
-[agentBroker] Keepalive message sent to ArtifactB0!
-[agentBroker] Keepalive message sent to ArtifactB3!
-[agentBroker] Keepalive message sent to ArtifactB4!
 [agentBroker] Keepalive message sent to ArtifactB5!
-[agentBroker] Elapsed time: 110081
+[agentBroker] Keepalive message sent to ArtifactB4!
+[agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Elapsed time: 93077
+[agentBroker] Elapsed time: 94077
+[agentBroker] Keepalive message sent to ArtifactC!
+[agentBroker] Keepalive message sent to ArtifactB8!
+[agentBroker] Keepalive message sent to ArtifactB9!
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Elapsed time: 95077
+[agentBroker] Elapsed time: 96078
+[agentBroker] Elapsed time: 97078
+[agentBroker] Elapsed time: 98079
+[agentBroker] Keepalive message sent to ArtifactA0!
+[agentBroker] Keepalive message sent to ArtifactB3!
+[agentBroker] Keepalive message sent to ArtifactB0!
+[agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Keepalive message sent to ArtifactB1!
+[agentBroker] Keepalive message sent to ArtifactB5!
+[agentBroker] Keepalive message sent to ArtifactB4!
+[agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Elapsed time: 99079
+[agentBroker] Elapsed time: 100080
+[agentBroker] Keepalive message sent to ArtifactC!
+[agentBroker] Keepalive message sent to ArtifactB8!
+[agentBroker] Keepalive message sent to ArtifactB9!
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Elapsed time: 101080
+[agentBroker] Elapsed time: 102080
+[agentBroker] Elapsed time: 103081
+[agentBroker] Elapsed time: 104081
+[agentBroker] Keepalive message sent to ArtifactA0!
+[agentBroker] Keepalive message sent to ArtifactB3!
+[agentBroker] Keepalive message sent to ArtifactB0!
+[agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Keepalive message sent to ArtifactB1!
+[agentBroker] Keepalive message sent to ArtifactB5!
+[agentBroker] Keepalive message sent to ArtifactB4!
+[agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Elapsed time: 105082
+[agentBroker] Elapsed time: 106082
+[agentBroker] Keepalive message sent to ArtifactC!
+[agentBroker] Keepalive message sent to ArtifactB8!
+[agentBroker] Keepalive message sent to ArtifactB9!
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Elapsed time: 107083
+[agentBroker] Elapsed time: 108083
+[agentBroker] Elapsed time: 109083
+[agentBroker] Elapsed time: 110084
 [agentBroker] * * * * FIM scenario B * * * * *

@@ -165,17 +165,19 @@ public class CamelArtifact extends Artifact {
 	 * Add a message to the outgoing queue
 	 */
 	@OPERATION
-	public synchronized void sendMsg(String artifactName, String operationName, List<Object> parameters) {
+	public void sendMsg(String artifactName, String operationName, List<Object> parameters) {
 
 		try {
 			LOG.debug("("+this.getId().getName()+") A message is being send to camel route...");
-			
-			OpRequest newOp = new OpRequest();
-			newOp.setArtifactName(artifactName);
-			newOp.setOpName(operationName);
-			if (parameters != null)
-				newOp.setParams(parameters);
-			outgoingOpQueue.add(newOp);
+		
+			synchronized (outgoingOpQueue) {	
+				OpRequest newOp = new OpRequest();
+				newOp.setArtifactName(artifactName);
+				newOp.setOpName(operationName);
+				if (parameters != null)
+					newOp.setParams(parameters);
+				outgoingOpQueue.add(newOp);
+			}
 			
 			LOG.debug("("+this.getId().getName()+") Message added in the outgoing queue!");
 			
@@ -200,10 +202,13 @@ public class CamelArtifact extends Artifact {
 				LOG.debug("Listening by reading the incoming queue...");
 				OpRequest newOp;
 				while (listenCamelRoutes) {
-					if ((newOp = incomingOpQueue.poll()) != null) {
-						LOG.debug("A message was founded in the incoming queue! Artifact:" + newOp.getArtifactName()
-								+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
-						execInternalOp("receiveMsg",newOp.getArtifactName(), newOp.getOpName(), newOp.getParams());
+					synchronized (incomingOpQueue) {
+						if (!incomingOpQueue.isEmpty()) {
+							newOp = incomingOpQueue.poll();
+							LOG.debug("A message was founded in the incoming queue! Artifact:" + newOp.getArtifactName()
+									+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
+							execInternalOp("receiveMsg",newOp.getArtifactName(), newOp.getOpName(), newOp.getParams());
+						}
 					}
 				}
 			} catch (Exception ex) {

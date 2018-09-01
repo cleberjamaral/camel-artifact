@@ -67,17 +67,18 @@ public class ArtifactConsumer extends ScheduledPollConsumer {
         Exchange exchange = endpoint.createExchange();
 
         try {
-        	
-            // send message to next processor in the route
-			OpRequest newOp;
-			if ((newOp = outgoingOpQueue.poll()) != null) {
-				LOG.debug("A message was founded in the outgoing queue! Artifact:" + newOp.getArtifactName()
-						+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
-				exchange.getIn().setHeader("ArtifactName", newOp.getArtifactName());
-				exchange.getIn().setHeader("OperationName", newOp.getOpName());
-				exchange.getIn().setBody(newOp.getParams());
-	            getProcessor().process(exchange);
-	            return 1; // number of messages polled
+			// send message to next processor in the route
+			synchronized (outgoingOpQueue) {
+				OpRequest newOp;
+				if ((newOp = outgoingOpQueue.poll()) != null) {
+					LOG.debug("A message was founded in the outgoing queue! Artifact:" + newOp.getArtifactName()
+							+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
+					exchange.getIn().setHeader("ArtifactName", newOp.getArtifactName());
+					exchange.getIn().setHeader("OperationName", newOp.getOpName());
+					exchange.getIn().setBody(newOp.getParams());
+		            		getProcessor().process(exchange);
+		            		return 1; // number of messages polled
+				}
 			}
             return 0; // number of messages polled
 			
