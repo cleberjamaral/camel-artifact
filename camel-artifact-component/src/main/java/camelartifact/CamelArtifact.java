@@ -165,7 +165,7 @@ public class CamelArtifact extends Artifact {
 	 * Add a message to the outgoing queue
 	 */
 	@OPERATION
-	public void sendMsg(String artifactName, String operationName, List<Object> parameters) {
+	public synchronized void sendMsg(String artifactName, String operationName, List<Object> parameters) {
 
 		try {
 			LOG.debug("("+this.getId().getName()+") A message is being send to camel route...");
