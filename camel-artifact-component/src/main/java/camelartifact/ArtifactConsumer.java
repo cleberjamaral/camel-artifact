@@ -26,6 +26,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.impl.ScheduledPollConsumer;
+import org.apache.camel.impl.DefaultConsumer;
 
 import simplelogger.SimpleLogger;
 
@@ -63,13 +64,13 @@ public class ArtifactConsumer extends ScheduledPollConsumer {
 	public ArtifactConsumer(ArtifactEndpoint endpoint, Processor processor) {
 		super(endpoint, processor);
 		this.endpoint = endpoint;
-		this.setDelay(100);
+		//this.setDelay(100);
 
 		outgoingOpQueue = endpoint.getOutgoingOpQueue();
 	}
 
 	@Override
-	protected synchronized int poll() throws Exception {
+	protected int poll() throws Exception {
 		Exchange exchange = endpoint.createExchange();
 
 		try {
@@ -77,7 +78,7 @@ public class ArtifactConsumer extends ScheduledPollConsumer {
 			// send message to next processor in the route
 			synchronized (outgoingOpQueue) {
 				OpRequest newOp;
-				if (!outgoingOpQueue.isEmpty()) {
+				while (!outgoingOpQueue.isEmpty()) {
 					nPooledMsgs++;
 					newOp = outgoingOpQueue.poll();
 					LOG.debug("Message founded in outgoing queue! Artifact:" + newOp.getArtifactName()

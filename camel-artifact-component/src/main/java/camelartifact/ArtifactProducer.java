@@ -79,7 +79,6 @@ public class ArtifactProducer extends DefaultProducer {
 		try {
 			String artifactName = exchange.getIn().getHeader("ArtifactName").toString();
 			String operationName = exchange.getIn().getHeader("OperationName").toString();
-			LOG.debug("InOpRequest received! Artifact: " + artifactName + ", " + operationName);
 
 			// A null artifact is forbidden, there is no meaning and nobody to call
 			if (artifactName == null) {
@@ -93,23 +92,23 @@ public class ArtifactProducer extends DefaultProducer {
 				throw new Exception("No operation name found!");
 			}
 
-			// Add in the queue a neu OperationRequest to be performed by related artifact
-			LOG.debug("Adding in the inQueue: " + artifactName + ": " + operationName);
-			OpRequest newOp = new OpRequest();
-			newOp.setArtifactName(artifactName);
-			newOp.setOpName(operationName);
+			synchronized (incomingOpQueue) {
+				OpRequest newOp = new OpRequest();
+				newOp.setArtifactName(artifactName);
+				newOp.setOpName(operationName);
 
-			// Do not add a null object!
-			if (exchange.getIn().getBody(List.class) != null) {
-				LOG.debug("Body received: " + exchange.getIn().getBody().toString());
-				@SuppressWarnings("unchecked") // List.class is a raw type, this warning is not critical
-				List<Object> body = (List<Object>) exchange.getIn().getBody(List.class);
-				newOp.setParams(body);
-				LOG.debug("Parameters details: " + newOp.getParams().toString());
+				// Do not add a null object!
+				if (exchange.getIn().getBody(List.class) != null) {
+					LOG.debug("Body received: " + exchange.getIn().getBody().toString());
+					@SuppressWarnings("unchecked") // List.class is a raw type, this warning is not critical
+					List<Object> body = (List<Object>) exchange.getIn().getBody(List.class);
+					newOp.setParams(body);
+					LOG.debug("Parameters details: " + newOp.getParams().toString());
+				}
+			
+				incomingOpQueue.add(newOp);
 			}
-
-			incomingOpQueue.add(newOp);
-			LOG.debug("Message added in the incoming queue!");
+			LOG.debug("Message added in the incoming queue! Artifact: " + artifactName + ", " + operationName);
 
 		} catch (Exception e) {
 			e.printStackTrace();

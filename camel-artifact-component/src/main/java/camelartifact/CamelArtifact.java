@@ -188,13 +188,13 @@ public class CamelArtifact extends Artifact {
 				if (parameters != null)
 					newOp.setParams(parameters);
 				if (outgoingOpQueue.offer(newOp))
-					LOG.debug("(" + this.getId().getName() + ") Message added in the outgoing queue! Artifact:" + artifactName);
+					LOG.debug("(" + this.getId().getName() + ") Message added in the outgoing queue! Params:" + parameters.toString());
 				else
-					LOG.debug("(" + this.getId().getName() + ") Error offering a message to the outgoing queue! Artifact: " + artifactName);		
+					LOG.debug("(" + this.getId().getName() + ") Error offering a message to the outgoing queue! Params: " + parameters.toString());		
 			}
 
 		} catch (Exception e) {
-			LOG.error("(" + this.getId().getName() + ") Error adding a message in the outgoing queue! Artifact: " + artifactName);
+			LOG.error("(" + this.getId().getName() + ") Error adding a message in the outgoing queue! Params: " + parameters.toString());
 			e.printStackTrace();
 		}
 
@@ -214,13 +214,14 @@ public class CamelArtifact extends Artifact {
 			try {
 				LOG.debug("Listening by reading the incoming queue...");
 				while (listenCamelRoutes) {
-					//synchronized (incomingOpQueue) 
+					synchronized (incomingOpQueue) 
 					{
 						if (!incomingOpQueue.isEmpty()) {
 							OpRequest newOp;
 							newOp = incomingOpQueue.poll();
-							LOG.debug("A message was founded in the incoming queue! Artifact:" + newOp.getArtifactName()
-									+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
+							LOG.debug("Message founded in incoming queue! Artifact:" + newOp.getArtifactName()
+									+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString()
+									+ ", size: " + incomingOpQueue.size());
 							execInternalOp("receiveMsg", newOp.getArtifactName(), newOp.getOpName(), newOp.getParams());
 						}
 					}

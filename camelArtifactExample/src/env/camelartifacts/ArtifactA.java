@@ -61,11 +61,11 @@ public class ArtifactA extends CamelArtifact {
 					.process(new Processor() { 
 						public void process(Exchange exchange) throws Exception {exchange.getIn().setBody(exchange.getIn().getBody().toString());}
 					})
-					.to("mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactA&mqttQosPropertyName=ExactlyOnce")
+					.to("mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camel"+getId()+"&mqttQosPropertyName=ExactlyOnce")
 					.to("log:CamelArtifactLoggerOut?level=info");
 					
 					
-					from("mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactA&mqttQosPropertyName=ExactlyOnce")
+					from("mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camel"+getId()+"&mqttQosPropertyName=ExactlyOnce")
 					.transform(body().convertToString())
 					.process(new Processor() {
 						public void process(Exchange exchange) throws Exception {

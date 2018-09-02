@@ -1,5 +1,5 @@
-scenarioBtest(true).
-nArtifacts(10).
+scenarioBtest(false).
+nArtifacts(200).
 startTime(_).
 zero(0).
 
@@ -79,18 +79,14 @@ zero(0).
 
 +!stopTest: startTime(T) & scenarioBtest(L) & nArtifacts(M) <-
 	.print("Elapsed time: ",system.time - T);
-	if ((L) & (system.time - T > 20000))
+	if ((L) & (system.time - T > 110000))
 	{
 		.print("* * * * FIM scenario B * * * * *");
-		.drop_all_intentions;
-		.wait(10000);
 		.stopMAS;
 	}
-	if ((not L) & ((system.time - T) > (M * 1200 + 110000)))
+	if ((not L) & ((system.time - T) > (M * 1700 + 110000)))
 	{
 		.print("* * * * FIM scenario A * * * * *");
-		.drop_all_intentions;
-		.wait(10000);
 		.stopMAS;
 	}
 	.wait(1000);

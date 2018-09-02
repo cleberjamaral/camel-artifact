@@ -21,20 +21,6 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-echo "/**"
-echo " * PID    : Process Id"
-echo " * Name   : Process Name"
-echo " * CurHeap: Heap memory(MB) currently in use"
-echo " * MaxHeap: Max Heap memory(MB) used by now"
-echo " * CurRAM : Current RAM(MB) used"
-echo " * MaxRAM : Max RAM(MB) used by now"
-echo " * %_CPU  : Current CPU use by PID"
-echo " */"
-echo "=====  ==============================  =======  =======  ======  ======  ====="
-echo " PID                Name               CurHeap  MaxHeap  CurRAM  MaxRAM  %_CPU"
-echo "=====  ==============================  =======  =======  ======  ======  ====="
-
-
 declare -A prev_pid_max_heap=()
 declare -A prev_pid_max_ram=()
 
@@ -90,9 +76,13 @@ do
         #output for current pid
         cpuuse=$( (ps -p $pid -o %cpu 2>/dev/null || echo "0") | tail -n 1 )
         cpuuse=${cpuuse%.*}
-        printf "%-6s %-30s %8i %8i %7d %7d  %5i\n" $pid ${curr_pid_name["$pid"]:0:30} $HEAP_MEMORY ${curr_pid_max_heap["$pid"]} $RAM_MEMORY ${curr_pid_max_ram["$pid"]} $cpuuse | sort >> log.log 
-    done
 
+
+        printf "%-6s %-30s %8i %8i %7d %7d  %5i\n" $pid ${curr_pid_name["$pid"]:0:30} $HEAP_MEMORY ${curr_pid_max_heap["$pid"]} $RAM_MEMORY ${curr_pid_max_ram["$pid"]} $cpuuse | sort
+        printf "%-6s %-30s %8i %8i %7d %7d  %5i\n" $pid ${curr_pid_name["$pid"]:0:30} $HEAP_MEMORY ${curr_pid_max_heap["$pid"]} $RAM_MEMORY ${curr_pid_max_ram["$pid"]} $cpuuse | sort >> log.log
+ 
+    done
+ 
     
     # clean stuff of previous iteration
     unset prev_pid_max_heap

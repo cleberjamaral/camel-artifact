@@ -27,7 +27,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import org.apache.camel.Consumer;
 import org.apache.camel.Processor;
 import org.apache.camel.Producer;
-import org.apache.camel.impl.ScheduledPollEndpoint;
+import org.apache.camel.impl.DefaultEndpoint;
 import org.apache.camel.spi.UriEndpoint;
 
 /**
@@ -50,7 +50,7 @@ import simplelogger.SimpleLogger;
  * consumers.
  */
 @UriEndpoint(scheme = "artifact")
-public class ArtifactEndpoint extends ScheduledPollEndpoint {
+public class ArtifactEndpoint extends DefaultEndpoint {
 
 	// See import comments for details about LOG
 	// private static final transient Logger LOG =
