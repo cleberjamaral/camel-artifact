@@ -68,16 +68,16 @@ public class ArtifactConsumer extends ScheduledPollConsumer {
 	}
 
 	@Override
-	protected int poll() throws Exception {
+	protected synchronized int poll() throws Exception {
 		Exchange exchange = endpoint.createExchange();
 
 		try {
-			int nPooledMesgs = 0;
+			int nPooledMsgs = 0;
 			// send message to next processor in the route
 			synchronized (outgoingOpQueue) {
 				OpRequest newOp;
 				if (!outgoingOpQueue.isEmpty()) {
-					nPooledMesgs++;
+					nPooledMsgs++;
 					newOp = outgoingOpQueue.poll();
 					LOG.debug("A message was founded in the outgoing queue! Artifact:" + newOp.getArtifactName()
 							+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
@@ -87,7 +87,7 @@ public class ArtifactConsumer extends ScheduledPollConsumer {
 					getProcessor().process(exchange);
 				}
 			}
-			return nPooledMesgs; // number of messages polled
+			return nPooledMsgs; // number of messages polled
 
 		} finally {
 			// log exception if an exception occurred and was not handled

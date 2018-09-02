@@ -211,10 +211,10 @@ public class CamelArtifact extends Artifact {
 
 			try {
 				LOG.debug("Listening by reading the incoming queue...");
-				OpRequest newOp;
 				while (listenCamelRoutes) {
 					synchronized (incomingOpQueue) {
 						if (!incomingOpQueue.isEmpty()) {
+							OpRequest newOp;
 							newOp = incomingOpQueue.poll();
 							LOG.debug("A message was founded in the incoming queue! Artifact:" + newOp.getArtifactName()
 									+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
