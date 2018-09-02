@@ -43,7 +43,7 @@ public class ArtifactB extends Artifact {
 		log("trying to send keepalive message...");
 		List<Object> params  = new ArrayList<Object>();
 		params.add(getId());
-		execLinkedOp("out-2","sendMsg","ArtifactB","KA",params);
+		execLinkedOp("out-2","sendMsg",getId(),"KA",params);
 	}
 	
 	@LINK 

@@ -178,21 +178,23 @@ public class CamelArtifact extends Artifact {
 	public void sendMsg(String artifactName, String operationName, List<Object> parameters) {
 
 		try {
-			LOG.debug("(" + this.getId().getName() + ") A message is being send to camel route...");
+			LOG.debug("(" + this.getId().getName() + ") A message is being sent to camel route...");
 
-			synchronized (outgoingOpQueue) {
+			//synchronized (outgoingOpQueue) 
+			{
 				OpRequest newOp = new OpRequest();
 				newOp.setArtifactName(artifactName);
 				newOp.setOpName(operationName);
 				if (parameters != null)
 					newOp.setParams(parameters);
-				outgoingOpQueue.add(newOp);
+				if (outgoingOpQueue.add(newOp))
+					LOG.debug("(" + this.getId().getName() + ") Message added in the outgoing queue! Artifact:" + artifactName);
+				else
+					LOG.debug("(" + this.getId().getName() + ") Error offering a message to the outgoing queue! Artifact: " + artifactName);		
 			}
 
-			LOG.debug("(" + this.getId().getName() + ") Message added in the outgoing queue!");
-
 		} catch (Exception e) {
-			LOG.error("(" + this.getId().getName() + ") Error adding a message in the outgoing queue!");
+			LOG.error("(" + this.getId().getName() + ") Error adding a message in the outgoing queue! Artifact: " + artifactName);
 			e.printStackTrace();
 		}
 
@@ -212,7 +214,8 @@ public class CamelArtifact extends Artifact {
 			try {
 				LOG.debug("Listening by reading the incoming queue...");
 				while (listenCamelRoutes) {
-					synchronized (incomingOpQueue) {
+					//synchronized (incomingOpQueue) 
+					{
 						if (!incomingOpQueue.isEmpty()) {
 							OpRequest newOp;
 							newOp = incomingOpQueue.poll();
