@@ -1,59 +1,60 @@
 [agentBroker] Building and linking artifacts...
-[agentBroker] Elapsed time: 14
-[agentBroker] Elapsed time: 1018
+[agentBroker] Elapsed time: 13
+[agentBroker] Elapsed time: 1016
 [agentBroker] Elapsed time: 2019
 [agentBroker] Elapsed time: 3020
 [agentBroker] Elapsed time: 4021
-[agentBroker] Elapsed time: 5023
-[agentBroker] Starting sending (B): 5845
+[agentBroker] Elapsed time: 5022
+[agentBroker] Starting sending (B): 5369
 [agentBroker] Artifact are ready for use!
 [agentBroker] Start listening on ArtifactA0...
 [agentBroker] Start listening on ArtifactC...
-[agentBroker] Elapsed time: 6024
-[agentBroker] Elapsed time: 7026
-[agentBroker] No failure event was generated for +!sendKAmsg("ArtifactB2")[code(sendKA[artifact_id(cobj_5)]),code_line(75),code_src("/home/cleber/Projetos/camel-artifact/camelArtifactExample/src/agt/agentBroker.asl"),env_failure_reason(unknown_operation("sendKA/0")),error(action_failed),error_msg("Unknown Operation"),source(self)]
-intention 5: 
-    +!sendKAmsg("ArtifactB2")[source(self)] <- ... sendKA[artifact_id(Aid)]; .print("Keepalive message sent to ",Art,"!"); .wait(3000); !!sendKAmsg(Art) / {Art="ArtifactB2", Aid=cobj_5}
-
-[agentBroker] No failure event was generated for +!sendKAmsg("ArtifactB1")[code(sendKA[artifact_id(cobj_4)]),code_line(75),code_src("/home/cleber/Projetos/camel-artifact/camelArtifactExample/src/agt/agentBroker.asl"),env_failure_reason(unknown_operation("sendKA/0")),error(action_failed),error_msg("Unknown Operation"),source(self)]
-intention 4: 
-    +!sendKAmsg("ArtifactB1")[source(self)] <- ... sendKA[artifact_id(Aid)]; .print("Keepalive message sent to ",Art,"!"); .wait(3000); !!sendKAmsg(Art) / {Art="ArtifactB1", Aid=cobj_4}
-
-[agentBroker] No failure event was generated for +!sendKAmsg("ArtifactB0")[code(sendKA[artifact_id(cobj_3)]),code_line(75),code_src("/home/cleber/Projetos/camel-artifact/camelArtifactExample/src/agt/agentBroker.asl"),env_failure_reason(unknown_operation("sendKA/0")),error(action_failed),error_msg("Unknown Operation"),source(self)]
-intention 3: 
-    +!sendKAmsg("ArtifactB0")[source(self)] <- ... sendKA[artifact_id(Aid)]; .print("Keepalive message sent to ",Art,"!"); .wait(3000); !!sendKAmsg(Art) / {Art="ArtifactB0", Aid=cobj_3}
-
-[agentBroker] No failure event was generated for +!sendKAmsg("ArtifactB3")[code(sendKA[artifact_id(cobj_6)]),code_line(75),code_src("/home/cleber/Projetos/camel-artifact/camelArtifactExample/src/agt/agentBroker.asl"),env_failure_reason(unknown_operation("sendKA/0")),error(action_failed),error_msg("Unknown Operation"),source(self)]
-intention 6: 
-    +!sendKAmsg("ArtifactB3")[source(self)] <- ... sendKA[artifact_id(Aid)]; .print("Keepalive message sent to ",Art,"!"); .wait(3000); !!sendKAmsg(Art) / {Art="ArtifactB3", Aid=cobj_6}
-
-[agentBroker] No failure event was generated for +!sendKAmsg("ArtifactB4")[code(sendKA[artifact_id(cobj_7)]),code_line(75),code_src("/home/cleber/Projetos/camel-artifact/camelArtifactExample/src/agt/agentBroker.asl"),env_failure_reason(unknown_operation("sendKA/0")),error(action_failed),error_msg("Unknown Operation"),source(self)]
-intention 7: 
-    +!sendKAmsg("ArtifactB4")[source(self)] <- ... sendKA[artifact_id(Aid)]; .print("Keepalive message sent to ",Art,"!"); .wait(3000); !!sendKAmsg(Art) / {Art="ArtifactB4", Aid=cobj_7}
-
-[agentBroker] No failure event was generated for +!sendKAmsg("ArtifactB5")[code(sendKA[artifact_id(cobj_8)]),code_line(75),code_src("/home/cleber/Projetos/camel-artifact/camelArtifactExample/src/agt/agentBroker.asl"),env_failure_reason(unknown_operation("sendKA/0")),error(action_failed),error_msg("Unknown Operation"),source(self)]
-intention 8: 
-    +!sendKAmsg("ArtifactB5")[source(self)] <- ... sendKA[artifact_id(Aid)]; .print("Keepalive message sent to ",Art,"!"); .wait(3000); !!sendKAmsg(Art) / {Art="ArtifactB5", Aid=cobj_8}
-
-[agentBroker] No failure event was generated for +!sendKAmsg("ArtifactB6")[code(sendKA[artifact_id(cobj_9)]),code_line(75),code_src("/home/cleber/Projetos/camel-artifact/camelArtifactExample/src/agt/agentBroker.asl"),env_failure_reason(unknown_operation("sendKA/0")),error(action_failed),error_msg("Unknown Operation"),source(self)]
-intention 9: 
-    +!sendKAmsg("ArtifactB6")[source(self)] <- ... sendKA[artifact_id(Aid)]; .print("Keepalive message sent to ",Art,"!"); .wait(3000); !!sendKAmsg(Art) / {Art="ArtifactB6", Aid=cobj_9}
-
-[agentBroker] No failure event was generated for +!sendKAmsg("ArtifactB7")[code(sendKA[artifact_id(cobj_10)]),code_line(75),code_src("/home/cleber/Projetos/camel-artifact/camelArtifactExample/src/agt/agentBroker.asl"),env_failure_reason(unknown_operation("sendKA/0")),error(action_failed),error_msg("Unknown Operation"),source(self)]
-intention 10: 
-    +!sendKAmsg("ArtifactB7")[source(self)] <- ... sendKA[artifact_id(Aid)]; .print("Keepalive message sent to ",Art,"!"); .wait(3000); !!sendKAmsg(Art) / {Art="ArtifactB7", Aid=cobj_10}
-
-[agentBroker] No failure event was generated for +!sendKAmsg("ArtifactB8")[code(sendKA[artifact_id(cobj_11)]),code_line(75),code_src("/home/cleber/Projetos/camel-artifact/camelArtifactExample/src/agt/agentBroker.asl"),env_failure_reason(unknown_operation("sendKA/0")),error(action_failed),error_msg("Unknown Operation"),source(self)]
-intention 11: 
-    +!sendKAmsg("ArtifactB8")[source(self)] <- ... sendKA[artifact_id(Aid)]; .print("Keepalive message sent to ",Art,"!"); .wait(3000); !!sendKAmsg(Art) / {Art="ArtifactB8", Aid=cobj_11}
-
-[agentBroker] Elapsed time: 8026
-[agentBroker] No failure event was generated for +!sendKAmsg("ArtifactB9")[code(sendKA[artifact_id(cobj_12)]),code_line(75),code_src("/home/cleber/Projetos/camel-artifact/camelArtifactExample/src/agt/agentBroker.asl"),env_failure_reason(unknown_operation("sendKA/0")),error(action_failed),error_msg("Unknown Operation"),source(self)]
-intention 12: 
-    +!sendKAmsg("ArtifactB9")[source(self)] <- ... sendKA[artifact_id(Aid)]; .print("Keepalive message sent to ",Art,"!"); .wait(3000); !!sendKAmsg(Art) / {Art="ArtifactB9", Aid=cobj_12}
-
+[agentBroker] Elapsed time: 6023
+[agentBroker] Keepalive message sent to ArtifactB0!
+[agentBroker] Keepalive message sent to ArtifactB1!
+[agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Keepalive message sent to ArtifactB3!
+[agentBroker] Keepalive message sent to ArtifactB4!
+[agentBroker] Keepalive message sent to ArtifactB5!
+[agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Keepalive message sent to ArtifactB8!
+[agentBroker] Elapsed time: 7024
+[agentBroker] Elapsed time: 8025
+[agentBroker] Keepalive message sent to ArtifactB9!
 [agentBroker] Keepalive message sent to ArtifactA0!
 [agentBroker] Keepalive message sent to ArtifactC!
-[agentBroker] Elapsed time: 9027
-[agentBroker] Elapsed time: 10028
-[agentBroker] Elapsed time: 11029
+[agentBroker] Elapsed time: 9025
+[agentBroker] Elapsed time: 10026
+[agentBroker] Elapsed time: 11026
+[agentBroker] Elapsed time: 12027
+[agentBroker] Keepalive message sent to ArtifactB1!
+[agentBroker] Keepalive message sent to ArtifactB0!
+[agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Keepalive message sent to ArtifactB3!
+[agentBroker] Keepalive message sent to ArtifactB4!
+[agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Keepalive message sent to ArtifactB8!
+[agentBroker] Keepalive message sent to ArtifactB5!
+[agentBroker] Elapsed time: 13028
+[agentBroker] Elapsed time: 14028
+[agentBroker] Keepalive message sent to ArtifactB9!
+[agentBroker] Keepalive message sent to ArtifactA0!
+[agentBroker] Keepalive message sent to ArtifactC!
+[agentBroker] Elapsed time: 15036
+[agentBroker] Elapsed time: 16036
+[agentBroker] Elapsed time: 17037
+[agentBroker] Elapsed time: 18037
+[agentBroker] Keepalive message sent to ArtifactB1!
+[agentBroker] Keepalive message sent to ArtifactB0!
+[agentBroker] Keepalive message sent to ArtifactB2!
+[agentBroker] Keepalive message sent to ArtifactB3!
+[agentBroker] Keepalive message sent to ArtifactB8!
+[agentBroker] Keepalive message sent to ArtifactB7!
+[agentBroker] Keepalive message sent to ArtifactB6!
+[agentBroker] Keepalive message sent to ArtifactB4!
+[agentBroker] Keepalive message sent to ArtifactB5!
+[agentBroker] Elapsed time: 19038
+[agentBroker] Elapsed time: 20038
+[agentBroker] * * * * FIM scenario B * * * * *

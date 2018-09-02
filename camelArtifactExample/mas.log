@@ -16,242 +16,288 @@ run:
 Running project camelArtifactExample
 CArtAgO Http Server running on http://191.36.8.42:3273
 Jason Http Server running on http://191.36.8.42:3272
-217 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Apache Camel 2.17.2 (CamelContext: camel-1) is starting
-219 [Thread-1] INFO org.apache.camel.management.ManagedManagementStrategy - JMX is enabled
-[ArtifactC] Starting camel... (context: CamelContext(camel-1) route definitions: [Route[[From[artifact:cartago]] -> [InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactB} -> []]]], InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactC} -> []]]], process[Processor@0x4d2f69f5], To[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce], To[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce], To[log:CamelArtifactLoggerOut?level=info]]], Route[[From[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce]] -> [InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactB} -> []]]], InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactC} -> []]]], Transform[{simple{${body}}}], process[Processor@0x6a234cfb], To[artifact:cartago], To[log:CamelArtifactLoggerOut?level=info]]], Route[[From[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce]] -> [InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactB} -> []]]], InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactC} -> []]]], process[Processor@0x90691ba], To[artifact:cartago], To[log:CamelArtifactLoggerOut?level=info]]]]) 
-421 [Thread-1] INFO org.apache.camel.impl.converter.DefaultTypeConverter - Loaded 184 type converters
-471 [Thread-1] INFO org.apache.camel.impl.DefaultRuntimeEndpointRegistry - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
+[ArtifactC] Starting camel... (context: CamelContext(camel-1) route definitions: [Route[[From[artifact:cartago]] -> [InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactB} -> []]]], InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactC} -> []]]], process[Processor@0x108005c], To[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce], To[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce], To[log:CamelArtifactLoggerOut?level=info]]], Route[[From[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce]] -> [InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactB} -> []]]], InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactC} -> []]]], Transform[{simple{${body}}}], process[Processor@0xb41573], To[artifact:cartago], To[log:CamelArtifactLoggerOut?level=info]]], Route[[From[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce]] -> [InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactB} -> []]]], InterceptSendToEndpoint[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce -> [When[{simple{${body}} contains ArtifactC} -> []]]], process[Processor@0x19551a1b], To[artifact:cartago], To[log:CamelArtifactLoggerOut?level=info]]]]) 
+204 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Apache Camel 2.17.2 (CamelContext: camel-1) is starting
+205 [Thread-1] INFO org.apache.camel.management.ManagedManagementStrategy - JMX is enabled
 DEBUG: uriContextPath:://cartago
 DEBUG: uriContextPathLessColonSlashs:cartago
-692 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
-692 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
-787 [Thread-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
-1668 [hawtdispatch-DEFAULT-2] WARN org.apache.camel.component.mqtt.MQTTEndpoint - No topic subscriptions were specified in configuration
-1670 [Thread-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
-1670 [hawtdispatch-DEFAULT-2] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
-2217 [hawtdispatch-DEFAULT-1] WARN org.apache.camel.component.mqtt.MQTTEndpoint - No topic subscriptions were specified in configuration
-2217 [hawtdispatch-DEFAULT-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
-2280 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Route: route1 started and consuming from: Endpoint[artifact://cartago]
-2281 [Thread-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
+423 [Thread-1] INFO org.apache.camel.impl.converter.DefaultTypeConverter - Loaded 184 type converters
+451 [Thread-1] INFO org.apache.camel.impl.DefaultRuntimeEndpointRegistry - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
+628 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+628 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+726 [Thread-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
+1482 [hawtdispatch-DEFAULT-2] WARN org.apache.camel.component.mqtt.MQTTEndpoint - No topic subscriptions were specified in configuration
+1484 [Thread-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
+1485 [hawtdispatch-DEFAULT-2] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
 TRACE: Creating artifact producer endpoint...
 INFO: Artifact producer endpoint created successfully!
 TRACE: Creating artifact producer endpoint...
 INFO: Artifact producer endpoint created successfully!
-2820 [hawtdispatch-DEFAULT-2] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
-3091 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Route: route2 started and consuming from: Endpoint[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce]
-3094 [Thread-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
-3727 [hawtdispatch-DEFAULT-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
-3993 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Route: route3 started and consuming from: Endpoint[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce]
-3994 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Total 3 routes, of which 3 are started.
-3998 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Apache Camel 2.17.2 (CamelContext: camel-1) started in 3.776 seconds
+2015 [hawtdispatch-DEFAULT-1] WARN org.apache.camel.component.mqtt.MQTTEndpoint - No topic subscriptions were specified in configuration
+2015 [hawtdispatch-DEFAULT-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
+2095 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Route: route1 started and consuming from: Endpoint[artifact://cartago]
+2096 [Thread-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
+2638 [hawtdispatch-DEFAULT-2] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
+2915 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Route: route2 started and consuming from: Endpoint[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce]
+2916 [Thread-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
+3458 [hawtdispatch-DEFAULT-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
 [ArtifactC] Starting artifact...
-4358 [Thread-11] INFO org.apache.camel.impl.DefaultCamelContext - Apache Camel 2.17.2 (CamelContext: camel-2) is starting
-4358 [Thread-11] INFO org.apache.camel.management.ManagedManagementStrategy - JMX is enabled
-4365 [Thread-11] INFO org.apache.camel.impl.converter.DefaultTypeConverter - Loaded 184 type converters
-4369 [Thread-11] INFO org.apache.camel.impl.DefaultRuntimeEndpointRegistry - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
-4383 [Thread-11] INFO org.apache.camel.impl.DefaultCamelContext - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
-4383 [Thread-11] INFO org.apache.camel.impl.DefaultCamelContext - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
-4385 [Thread-11] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
-[ArtifactA0] Starting camel... (context: CamelContext(camel-2) route definitions: [Route[[From[artifact:cartago]] -> [process[Processor@0x921af53], To[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactA&mqttQosPropertyName=ExactlyOnce], To[log:CamelArtifactLoggerOut?level=info]]], Route[[From[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactA&mqttQosPropertyName=ExactlyOnce]] -> [Transform[{simple{${body}}}], process[Processor@0x4c232013], To[artifact:cartago], To[log:CamelArtifactLoggerOut?level=info]]]]) 
+3729 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Route: route3 started and consuming from: Endpoint[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce]
+3729 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Total 3 routes, of which 3 are started.
+3733 [Thread-1] INFO org.apache.camel.impl.DefaultCamelContext - Apache Camel 2.17.2 (CamelContext: camel-1) started in 3.527 seconds
+[ArtifactA0] Starting camel... (context: CamelContext(camel-2) route definitions: [Route[[From[artifact:cartago]] -> [process[Processor@0x6636a854], To[mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactA&mqttQosPropertyName=ExactlyOnce], To[log:CamelArtifactLoggerOut?level=info]]], Route[[From[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactA&mqttQosPropertyName=ExactlyOnce]] -> [Transform[{simple{${body}}}], process[Processor@0x23342af6], To[artifact:cartago], To[log:CamelArtifactLoggerOut?level=info]]]]) 
 DEBUG: uriContextPath:://cartago
 DEBUG: uriContextPathLessColonSlashs:cartago
+3834 [Thread-11] INFO org.apache.camel.impl.DefaultCamelContext - Apache Camel 2.17.2 (CamelContext: camel-2) is starting
+3834 [Thread-11] INFO org.apache.camel.management.ManagedManagementStrategy - JMX is enabled
+3840 [Thread-11] INFO org.apache.camel.impl.converter.DefaultTypeConverter - Loaded 184 type converters
+3848 [Thread-11] INFO org.apache.camel.impl.DefaultRuntimeEndpointRegistry - Runtime endpoint registry is in extended mode gathering usage statistics of all incoming and outgoing endpoints (cache limit: 1000)
+3885 [Thread-11] INFO org.apache.camel.impl.DefaultCamelContext - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+3885 [Thread-11] INFO org.apache.camel.impl.DefaultCamelContext - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
 DEBUG: uriContextPath:://cartago
 DEBUG: uriContextPathLessColonSlashs:cartago
-4922 [hawtdispatch-DEFAULT-2] WARN org.apache.camel.component.mqtt.MQTTEndpoint - No topic subscriptions were specified in configuration
-4923 [hawtdispatch-DEFAULT-2] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
-4986 [Thread-11] INFO org.apache.camel.impl.DefaultCamelContext - Route: route4 started and consuming from: Endpoint[artifact://cartago]
+3893 [Thread-11] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
 TRACE: Creating artifact producer endpoint...
 INFO: Artifact producer endpoint created successfully!
-4992 [Thread-11] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
-5521 [hawtdispatch-DEFAULT-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
-5785 [Thread-11] INFO org.apache.camel.impl.DefaultCamelContext - Route: route5 started and consuming from: Endpoint[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactA&mqttQosPropertyName=ExactlyOnce]
-5785 [Thread-11] INFO org.apache.camel.impl.DefaultCamelContext - Total 2 routes, of which 2 are started.
-5786 [Thread-11] INFO org.apache.camel.impl.DefaultCamelContext - Apache Camel 2.17.2 (CamelContext: camel-2) started in 1.428 seconds
+4430 [hawtdispatch-DEFAULT-2] WARN org.apache.camel.component.mqtt.MQTTEndpoint - No topic subscriptions were specified in configuration
+4431 [hawtdispatch-DEFAULT-2] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
+4502 [Thread-11] INFO org.apache.camel.impl.DefaultCamelContext - Route: route4 started and consuming from: Endpoint[artifact://cartago]
+4504 [Thread-11] INFO org.apache.camel.component.mqtt.MQTTEndpoint - Connecting to tcp://broker.mqttdashboard.com:1883 using 10 seconds timeout
+5047 [hawtdispatch-DEFAULT-1] INFO org.apache.camel.component.mqtt.MQTTEndpoint - MQTT Connection connected to tcp://broker.mqttdashboard.com:1883
 [ArtifactA0] Starting artifact...
 TRACE: (ArtifactA0) Camel Artifact 'listenCamelRoutes' is true
 DEBUG: Listening by reading the incoming queue...
+5318 [Thread-11] INFO org.apache.camel.impl.DefaultCamelContext - Route: route5 started and consuming from: Endpoint[mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactA&mqttQosPropertyName=ExactlyOnce]
+5318 [Thread-11] INFO org.apache.camel.impl.DefaultCamelContext - Total 2 routes, of which 2 are started.
+5318 [Thread-11] INFO org.apache.camel.impl.DefaultCamelContext - Apache Camel 2.17.2 (CamelContext: camel-2) started in 1.484 seconds
 TRACE: (ArtifactC) Camel Artifact 'listenCamelRoutes' is true
 DEBUG: Listening by reading the incoming queue...
-java.lang.reflect.InvocationTargetException
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cartago.ArtifactOpMethod.exec(ArtifactOpMethod.java:39)
-	at cartago.Artifact.doOperation(Artifact.java:407)
-	at cartago.Artifact.access$200(Artifact.java:32)
-	at cartago.Artifact$ArtifactAdapter.doOperation(Artifact.java:1275)
-	at cartago.WorkspaceKernel.serveOperation(WorkspaceKernel.java:1136)
-	at cartago.WorkspaceKernel.access$000(WorkspaceKernel.java:48)
-	at cartago.WorkspaceKernel$EnvironmentController.run(WorkspaceKernel.java:1477)
-Caused by: cartago.OperationException: op failed.
-	at cartago.Artifact.execLinkedOp(Artifact.java:902)
-	at artifacts.ArtifactB.sendKA(ArtifactB.java:46)
-	... 11 more
-java.lang.reflect.InvocationTargetException
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cartago.ArtifactOpMethod.exec(ArtifactOpMethod.java:39)
-	at cartago.Artifact.doOperation(Artifact.java:407)
-	at cartago.Artifact.access$200(Artifact.java:32)
-	at cartago.Artifact$ArtifactAdapter.doOperation(Artifact.java:1275)
-	at cartago.WorkspaceKernel.serveOperation(WorkspaceKernel.java:1136)
-	at cartago.WorkspaceKernel.access$000(WorkspaceKernel.java:48)
-	at cartago.WorkspaceKernel$EnvironmentController.run(WorkspaceKernel.java:1477)
-Caused by: cartago.OperationException: op failed.
-	at cartago.Artifact.execLinkedOp(Artifact.java:902)
-	at artifacts.ArtifactB.sendKA(ArtifactB.java:46)
-	... 11 more
-java.lang.reflect.InvocationTargetException
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cartago.ArtifactOpMethod.exec(ArtifactOpMethod.java:39)
-	at cartago.Artifact.doOperation(Artifact.java:407)
-	at cartago.Artifact.access$200(Artifact.java:32)
-	at cartago.Artifact$ArtifactAdapter.doOperation(Artifact.java:1275)
-	at cartago.WorkspaceKernel.serveOperation(WorkspaceKernel.java:1136)
-	at cartago.WorkspaceKernel.access$000(WorkspaceKernel.java:48)
-	at cartago.WorkspaceKernel$EnvironmentController.run(WorkspaceKernel.java:1477)
-Caused by: cartago.OperationException: op failed.
-	at cartago.Artifact.execLinkedOp(Artifact.java:902)
-	at artifacts.ArtifactB.sendKA(ArtifactB.java:46)
-	... 11 more
-java.lang.reflect.InvocationTargetException
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cartago.ArtifactOpMethod.exec(ArtifactOpMethod.java:39)
-	at cartago.Artifact.doOperation(Artifact.java:407)
-	at cartago.Artifact.access$200(Artifact.java:32)
-	at cartago.Artifact$ArtifactAdapter.doOperation(Artifact.java:1275)
-	at cartago.WorkspaceKernel.serveOperation(WorkspaceKernel.java:1136)
-	at cartago.WorkspaceKernel.access$000(WorkspaceKernel.java:48)
-	at cartago.WorkspaceKernel$EnvironmentController.run(WorkspaceKernel.java:1477)
-Caused by: cartago.OperationException: op failed.
-	at cartago.Artifact.execLinkedOp(Artifact.java:902)
-	at artifacts.ArtifactB.sendKA(ArtifactB.java:46)
-	... 11 more
-java.lang.reflect.InvocationTargetException
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cartago.ArtifactOpMethod.exec(ArtifactOpMethod.java:39)
-	at cartago.Artifact.doOperation(Artifact.java:407)
-	at cartago.Artifact.access$200(Artifact.java:32)
-	at cartago.Artifact$ArtifactAdapter.doOperation(Artifact.java:1275)
-	at cartago.WorkspaceKernel.serveOperation(WorkspaceKernel.java:1136)
-	at cartago.WorkspaceKernel.access$000(WorkspaceKernel.java:48)
-	at cartago.WorkspaceKernel$EnvironmentController.run(WorkspaceKernel.java:1477)
-Caused by: cartago.OperationException: op failed.
-	at cartago.Artifact.execLinkedOp(Artifact.java:902)
-	at artifacts.ArtifactB.sendKA(ArtifactB.java:46)
-	... 11 more
-java.lang.reflect.InvocationTargetException
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cartago.ArtifactOpMethod.exec(ArtifactOpMethod.java:39)
-	at cartago.Artifact.doOperation(Artifact.java:407)
-	at cartago.Artifact.access$200(Artifact.java:32)
-	at cartago.Artifact$ArtifactAdapter.doOperation(Artifact.java:1275)
-	at cartago.WorkspaceKernel.serveOperation(WorkspaceKernel.java:1136)
-	at cartago.WorkspaceKernel.access$000(WorkspaceKernel.java:48)
-	at cartago.WorkspaceKernel$EnvironmentController.run(WorkspaceKernel.java:1477)
-Caused by: cartago.OperationException: op failed.
-	at cartago.Artifact.execLinkedOp(Artifact.java:902)
-	at artifacts.ArtifactB.sendKA(ArtifactB.java:46)
-	... 11 more
-java.lang.reflect.InvocationTargetException
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cartago.ArtifactOpMethod.exec(ArtifactOpMethod.java:39)
-	at cartago.Artifact.doOperation(Artifact.java:407)
-	at cartago.Artifact.access$200(Artifact.java:32)
-	at cartago.Artifact$ArtifactAdapter.doOperation(Artifact.java:1275)
-	at cartago.WorkspaceKernel.serveOperation(WorkspaceKernel.java:1136)
-	at cartago.WorkspaceKernel.access$000(WorkspaceKernel.java:48)
-	at cartago.WorkspaceKernel$EnvironmentController.run(WorkspaceKernel.java:1477)
-Caused by: cartago.OperationException: op failed.
-	at cartago.Artifact.execLinkedOp(Artifact.java:902)
-	at artifacts.ArtifactB.sendKA(ArtifactB.java:46)
-	... 11 more
-java.lang.reflect.InvocationTargetException
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cartago.ArtifactOpMethod.exec(ArtifactOpMethod.java:39)
-	at cartago.Artifact.doOperation(Artifact.java:407)
-	at cartago.Artifact.access$200(Artifact.java:32)
-	at cartago.Artifact$ArtifactAdapter.doOperation(Artifact.java:1275)
-	at cartago.WorkspaceKernel.serveOperation(WorkspaceKernel.java:1136)
-	at cartago.WorkspaceKernel.access$000(WorkspaceKernel.java:48)
-	at cartago.WorkspaceKernel$EnvironmentController.run(WorkspaceKernel.java:1477)
-Caused by: cartago.OperationException: op failed.
-	at cartago.Artifact.execLinkedOp(Artifact.java:902)
-	at artifacts.ArtifactB.sendKA(ArtifactB.java:46)
-	... 11 more
-java.lang.reflect.InvocationTargetException
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cartago.ArtifactOpMethod.exec(ArtifactOpMethod.java:39)
-	at cartago.Artifact.doOperation(Artifact.java:407)
-	at cartago.Artifact.access$200(Artifact.java:32)
-	at cartago.Artifact$ArtifactAdapter.doOperation(Artifact.java:1275)
-	at cartago.WorkspaceKernel.serveOperation(WorkspaceKernel.java:1136)
-	at cartago.WorkspaceKernel.access$000(WorkspaceKernel.java:48)
-	at cartago.WorkspaceKernel$EnvironmentController.run(WorkspaceKernel.java:1477)
-Caused by: cartago.OperationException: op failed.
-	at cartago.Artifact.execLinkedOp(Artifact.java:902)
-	at artifacts.ArtifactB.sendKA(ArtifactB.java:46)
-	... 11 more
 [ArtifactB0] trying to send keepalive message...
 [ArtifactB1] trying to send keepalive message...
 [ArtifactB2] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB0
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB1
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB2
 [ArtifactB3] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB3
 [ArtifactB4] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB4
 [ArtifactB5] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB5
 [ArtifactB6] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB6
 [ArtifactB7] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB7
 [ArtifactB8] trying to send keepalive message...
-java.lang.reflect.InvocationTargetException
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at cartago.ArtifactOpMethod.exec(ArtifactOpMethod.java:39)
-	at cartago.Artifact.doOperation(Artifact.java:407)
-	at cartago.Artifact.access$200(Artifact.java:32)
-	at cartago.Artifact$ArtifactAdapter.doOperation(Artifact.java:1275)
-	at cartago.WorkspaceKernel.serveOperation(WorkspaceKernel.java:1136)
-	at cartago.WorkspaceKernel.access$000(WorkspaceKernel.java:48)
-	at cartago.WorkspaceKernel$EnvironmentController.run(WorkspaceKernel.java:1477)
-Caused by: cartago.OperationException: op failed.
-	at cartago.Artifact.execLinkedOp(Artifact.java:902)
-	at artifacts.ArtifactB.sendKA(ArtifactB.java:46)
-	... 11 more
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB8
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB0, op:KA, body: [ArtifactB0], size:8
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+7417 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+7421 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB1, op:KA, body: [ArtifactB1], size:7
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+8206 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+8209 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
 [ArtifactB9] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB9
 [ArtifactA0] trying to send keepalive message...
 DEBUG: (ArtifactA0) A message is being sent to camel route...
 DEBUG: (ArtifactA0) Message added in the outgoing queue! Artifact:ArtifactA
 [ArtifactC] trying to send keepalive message...
 DEBUG: (ArtifactC) A message is being sent to camel route...
 DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactC
-DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactA, op:KA, body [ArtifactA0]
-DEBUG: A message was founded in the outgoing queue! Artifact:ArtifactC, op:KA, body [ArtifactC: Keep alive!]
-9312 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
-9337 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactA, op:KA, body: [ArtifactA0], size:0
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB2, op:KA, body: [ArtifactB2], size:8
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
+DEBUG: Adding in the inQueue: ArtifactA0: kaBackA
+DEBUG: Message added in the incoming queue!
+8766 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+8790 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBackA, body []
+DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
+DEBUG: (ArtifactA0) Executing kaBackA without parameters.
+[ArtifactA0] received keepalive back!
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+9002 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+9015 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB3, op:KA, body: [ArtifactB3], size:7
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+9790 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+9792 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB4, op:KA, body: [ArtifactB4], size:6
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+10571 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+10574 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB5, op:KA, body: [ArtifactB5], size:5
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+11344 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+11347 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB6, op:KA, body: [ArtifactB6], size:4
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+12113 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+12118 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB7, op:KA, body: [ArtifactB7], size:3
+[ArtifactB0] trying to send keepalive message...
+[ArtifactB1] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB0
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB1
+[ArtifactB2] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB2
+[ArtifactB3] trying to send keepalive message...
+[ArtifactB4] trying to send keepalive message...
+[ArtifactB6] trying to send keepalive message...
+[ArtifactB7] trying to send keepalive message...
+[ArtifactB8] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB3
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB4
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB6
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB7
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB8
+[ArtifactB5] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB5
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+12910 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+12916 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB8, op:KA, body: [ArtifactB8], size:11
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB8, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB8: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB8, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB8
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB8/17/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB8] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+13689 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB8]]
+13690 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB9, op:KA, body: [ArtifactB9], size:10
+[ArtifactB9] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB9
+[ArtifactA0] trying to send keepalive message...
+DEBUG: (ArtifactA0) A message is being sent to camel route...
+DEBUG: (ArtifactA0) Message added in the outgoing queue! Artifact:ArtifactA
+[ArtifactC] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactC
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB9, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB9: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB9, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB9
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB9/18/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB9] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+14472 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB9]]
+14476 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactA, op:KA, body: [ArtifactA0], size:0
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactC, op:KA, body: [ArtifactC: Keep alive!], size:11
 TRACE: Creating artifact producer endpoint...
 INFO: Artifact producer endpoint created successfully!
 DEBUG: InOpRequest received! Artifact: ArtifactA0, kaBackA
@@ -261,8 +307,8 @@ DEBUG: A message was founded in the incoming queue! Artifact:ArtifactA0, op:kaBa
 DEBUG: (ArtifactA0) Getting artifact id of ArtifactA0
 DEBUG: (ArtifactA0) Executing kaBackA without parameters.
 [ArtifactA0] received keepalive back!
-9604 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
-9609 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+15036 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactA0]]
+15045 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
 TRACE: Creating artifact producer endpoint...
 INFO: Artifact producer endpoint created successfully!
 DEBUG: InOpRequest received! Artifact: ArtifactC, kaBackC
@@ -272,3 +318,288 @@ DEBUG: A message was founded in the incoming queue! Artifact:ArtifactC, op:kaBac
 DEBUG: (ArtifactC) Getting artifact id of ArtifactC
 DEBUG: (ArtifactC) Executing kaBackC without parameters.
 [ArtifactC] received keepalive back!
+15266 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+15268 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB0, op:KA, body: [ArtifactB0], size:10
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+16054 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+16066 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB1, op:KA, body: [ArtifactB1], size:9
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+16852 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+16853 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB2, op:KA, body: [ArtifactB2], size:8
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+17639 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+17641 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB3, op:KA, body: [ArtifactB3], size:7
+18420 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+18423 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+[ArtifactB1] trying to send keepalive message...
+[ArtifactB0] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB1
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB0
+[ArtifactB2] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB2
+[ArtifactB3] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB3
+[ArtifactB4] trying to send keepalive message...
+[ArtifactB6] trying to send keepalive message...
+[ArtifactB7] trying to send keepalive message...
+[ArtifactB8] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB4
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB6
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB7
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB8
+[ArtifactB5] trying to send keepalive message...
+DEBUG: (ArtifactC) A message is being sent to camel route...
+DEBUG: (ArtifactC) Message added in the outgoing queue! Artifact:ArtifactB5
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB4, op:KA, body: [ArtifactB4], size:15
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+19226 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+19234 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB6, op:KA, body: [ArtifactB6], size:14
+20014 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+20018 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB7, op:KA, body: [ArtifactB7], size:13
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+20802 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+20804 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB8, op:KA, body: [ArtifactB8], size:12
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB8, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB8: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB8, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB8
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB8/17/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB8] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+21573 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB8]]
+21576 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB5, op:KA, body: [ArtifactB5], size:11
+22346 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB5]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB9, op:KA, body: [ArtifactB9], size:10
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB5, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB5: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB5, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB5
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB5/14/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB5] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+22883 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+23119 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB9]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB9, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB9: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB9, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB9
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB9/18/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB9] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+23151 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactC, op:KA, body: [ArtifactC: Keep alive!], size:9
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactC, kaBackC
+DEBUG: Adding in the inQueue: ArtifactC: kaBackC
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactC, op:kaBackC, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactC
+DEBUG: (ArtifactC) Executing kaBackC without parameters.
+[ArtifactC] received keepalive back!
+23898 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactC: Keep alive!] - ResourceC do something!]
+23899 [hawtdispatch-DEFAULT-1] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB1, op:KA, body: [ArtifactB1], size:8
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB1, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB1: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB1, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB1
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB1/10/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB1] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+24669 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB1]]
+24669 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB0, op:KA, body: [ArtifactB0], size:7
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB0, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB0: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB0, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB0
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB0/9/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB0] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+25446 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB0]]
+25447 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB2, op:KA, body: [ArtifactB2], size:6
+26221 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB2]]
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB2, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB2: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB2, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB2
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB2/11/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB2] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+26241 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB3, op:KA, body: [ArtifactB3], size:5
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB3, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB3: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB3, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB3
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB3/12/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB3] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+27011 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB3]]
+27011 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB4, op:KA, body: [ArtifactB4], size:4
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB4, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB4: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB4, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB4
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB4/13/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB4] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+27784 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB4]]
+27785 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB6, op:KA, body: [ArtifactB6], size:3
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB6, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB6: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB6, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB6
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB6/15/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB6] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+28562 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB6]]
+28563 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB7, op:KA, body: [ArtifactB7], size:2
+TRACE: Creating artifact producer endpoint...
+INFO: Artifact producer endpoint created successfully!
+DEBUG: InOpRequest received! Artifact: ArtifactB7, kaBackB
+DEBUG: Adding in the inQueue: ArtifactB7: kaBackB
+DEBUG: Message added in the incoming queue!
+DEBUG: A message was founded in the incoming queue! Artifact:ArtifactB7, op:kaBackB, body []
+DEBUG: (ArtifactC) Getting artifact id of ArtifactB7
+DEBUG: (ArtifactC) artifact name/id/type: ArtifactB7/16/artifacts.ArtifactB
+DEBUG: (ArtifactC) Forwarding kaBackB without parameters.
+[ArtifactB7] received keepalive back!
+DEBUG: (ArtifactC) Forwarding without parameters done!
+29338 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: String, Body: [ArtifactB7]]
+29340 [hawtdispatch-DEFAULT-2] INFO CamelArtifactLoggerOut - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+DEBUG: Message founded in outgoing queue! Artifact:ArtifactB8, op:KA, body: [ArtifactB8], size:1
+
+user-end:
+
+BUILD SUCCESSFUL
+Total time: 32 seconds

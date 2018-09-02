@@ -187,7 +187,7 @@ public class CamelArtifact extends Artifact {
 				newOp.setOpName(operationName);
 				if (parameters != null)
 					newOp.setParams(parameters);
-				if (outgoingOpQueue.add(newOp))
+				if (outgoingOpQueue.offer(newOp))
 					LOG.debug("(" + this.getId().getName() + ") Message added in the outgoing queue! Artifact:" + artifactName);
 				else
 					LOG.debug("(" + this.getId().getName() + ") Error offering a message to the outgoing queue! Artifact: " + artifactName);		

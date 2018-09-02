@@ -63,6 +63,7 @@ public class ArtifactConsumer extends ScheduledPollConsumer {
 	public ArtifactConsumer(ArtifactEndpoint endpoint, Processor processor) {
 		super(endpoint, processor);
 		this.endpoint = endpoint;
+		this.setDelay(100);
 
 		outgoingOpQueue = endpoint.getOutgoingOpQueue();
 	}
@@ -79,8 +80,9 @@ public class ArtifactConsumer extends ScheduledPollConsumer {
 				if (!outgoingOpQueue.isEmpty()) {
 					nPooledMsgs++;
 					newOp = outgoingOpQueue.poll();
-					LOG.debug("A message was founded in the outgoing queue! Artifact:" + newOp.getArtifactName()
-							+ ", op:" + newOp.getOpName() + ", body " + newOp.getParams().toString());
+					LOG.debug("Message founded in outgoing queue! Artifact:" + newOp.getArtifactName()
+						+ ", op:" + newOp.getOpName() + ", body: " + newOp.getParams().toString() 
+						+ ", size:" + outgoingOpQueue.size());
 					exchange.getIn().setHeader("ArtifactName", newOp.getArtifactName());
 					exchange.getIn().setHeader("OperationName", newOp.getOpName());
 					exchange.getIn().setBody(newOp.getParams());
