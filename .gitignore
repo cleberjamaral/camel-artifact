@@ -1,16 +1,16 @@
-*.mas2j~
-*.asl~
+**.mas2j~
+**.asl~
 
-*.class
-*.log
-*.zip
-*.rar
-*.war
-*.tar.gz
+**.class
+**.log
+**.zip
+**.rar
+**.war
+**.tar.gz
 
-hs_err_pid*
+**/hs_err_pid*
 
-target/*
-bin/classes/*
-bin/*
-log/*
+**/target/*
+**/bin/classes/*
+**/bin/*
+**/log/*
