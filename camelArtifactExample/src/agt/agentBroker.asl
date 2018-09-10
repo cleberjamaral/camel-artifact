@@ -1,7 +1,6 @@
 scenarioBtest(false).
-nArtifacts(200).
-startTime(_).
-zero(0).
+nArtifacts(10).
+startTime(0).
 
 /* Initial goals */
 !start.
@@ -17,8 +16,8 @@ zero(0).
 	{
 		//Cenario B
  		//- ArtefatoA camel artifact
- 		//- n x ArtefatoB artefato normal cartago linkado com C
- 		//- ArtefatoC camel artifact (roteador)
+ 		//- n x ArtefatoB default cartago artefact linked to C
+ 		//- ArtefatoC camel artifact (router)
 	    	for ( .range(I,0,N-1) ) {
        			.concat("ArtifactB",I,X);
        	 		makeArtifact(X,"artifacts.ArtifactB",[],Artid0);
@@ -37,9 +36,9 @@ zero(0).
      		!!sendKAmsg("ArtifactC")
 	} else {
 		//Cenario A
- 		//- n x ArtefatoA camel artifact com suas proprias rotas
- 		//- ArtefatoB artefato normal cartago
- 		//- ArtefatoC camel artifact (roteador)
+ 		//- n x ArtefatoA camel artifact with its own routes
+ 		//- ArtefatoB default cartago artefact
+ 		//- ArtefatoC camel artifact (router)
 		for ( .range(I,0,N-1) ) {
 	       		.concat("ArtifactA",I,X);
        			makeArtifact(X,"camelartifacts.ArtifactA",[],Artid0);
@@ -76,22 +75,19 @@ zero(0).
 	.print("Keepalive message sent to ",Art,"!");
 	.wait(3000);
 	!!sendKAmsg(Art).
+	
++!stopTest: startTime(T) & scenarioBtest(L) & L & (system.time - T > 110000) <-
+	.print("* * * * END scenario B * * * * *");
+	.stopMAS.
 
-+!stopTest: startTime(T) & scenarioBtest(L) & nArtifacts(M) <-
++!stopTest: startTime(T) & nArtifacts(M) & scenarioBtest(L) & not L & ((system.time - T) > (M * 1700 + 110000)) <-
+	.print("* * * * END scenario A * * * * *");
+	.stopMAS.
+
++!stopTest: startTime(T) <-
 	.print("Elapsed time: ",system.time - T);
-	if ((L) & (system.time - T > 110000))
-	{
-		.print("* * * * FIM scenario B * * * * *");
-		.stopMAS;
-	}
-	if ((not L) & ((system.time - T) > (M * 1700 + 110000)))
-	{
-		.print("* * * * FIM scenario A * * * * *");
-		.stopMAS;
-	}
 	.wait(1000);
 	!stopTest.
-	
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }
