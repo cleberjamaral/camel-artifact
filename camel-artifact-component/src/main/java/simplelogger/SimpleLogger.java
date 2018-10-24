@@ -1,3 +1,5 @@
+
+
 package simplelogger;
 
 public class SimpleLogger {
