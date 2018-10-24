@@ -1,0 +1,59 @@
+/*
+    camelArtifactExample
+    ---------------------------
+
+    JaCaMo Project File
+
+    This file defines the initial state of the MAS (initial agents, environment, organisation, ....)
+
+    (see jacamo/doc/jcm.html for more information about what can be defined in this file)
+
+    JaCaMo <VERSION>
+    <DATE>
+*/
+
+mas auctiontelegram {
+
+	agent a	: auctioneer.asl {
+    	beliefs: 	total(3)
+    				product(diamond_ring)
+    				tokeTelegram("tokenBot0")
+    				chatIdTelegram("-274694619")
+    	goals:		start
+		focus:		auction1
+					telegramBot0
+	}
+	 
+    agent p1 : participant.asl {
+    	beliefs:	tokeTelegram("tokenBot1")
+    				chatIdTelegram("-274694619")
+		focus:		auction1
+					telegramBot1
+	}
+     
+    agent p2 : participant.asl {
+    	beliefs:	tokeTelegram("tokenBot2")
+    				chatIdTelegram("-274694619")
+		focus:		auction1
+					telegramBot2
+	}
+	
+    agent p3 : participant.asl {
+    	beliefs:	chatIdTelegram("-274694619")
+    				tokeTelegram("tokenBot3")
+		focus:		auction1
+					telegramBot3
+	}
+
+ 	workspace market_place {
+        artifact auction1 : auction.AuctionArtifact()
+        artifact telegramBot0 : telegram.BotArtifact()
+        artifact telegramBot1 : telegram.BotArtifact()
+        artifact telegramBot2 : telegram.BotArtifact()
+        artifact telegramBot3 : telegram.BotArtifact()
+    }
+ 
+    asl-path: src/agt
+              src/agt/inc
+}
+
