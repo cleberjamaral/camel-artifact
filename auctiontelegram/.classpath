@@ -1,32 +1,205 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry excluding="**/*.asl" kind="src" path="src/agt"/>
 	<classpathentry excluding="*.ptl" kind="src" path="src/int"/>
 	<classpathentry excluding="*.xml" kind="src" path="src/org"/>
 	<classpathentry kind="src" path="src/env"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JaCaMo"/>
-	<classpathentry kind="lib" path="lib/camel-core-2.17.2.jar"/>
-	<classpathentry kind="lib" path="lib/camel-telegram-2.22.0.jar"/>
-	<classpathentry kind="lib" path="lib/camel-test-2.12.3.jar"/>
-	<classpathentry kind="lib" path="lib/camelartifact-0.0.1.jar"/>
-	<classpathentry kind="lib" path="lib/commons-pool-1.6.jar"/>
-	<classpathentry kind="lib" path="lib/commons-pool2-2.4.2.jar"/>
-	<classpathentry kind="lib" path="lib/corn-cps-1.1.7.jar"/>
-	<classpathentry kind="lib" path="lib/hawtbuf-1.10.jar"/>
-	<classpathentry kind="lib" path="lib/hawtdispatch-1.21.jar"/>
-	<classpathentry kind="lib" path="lib/hawtdispatch-transport-1.21.jar"/>
-	<classpathentry kind="lib" path="lib/jaxb-api-2.3.0.jar"/>
-	<classpathentry kind="lib" path="lib/junit-4.11.jar"/>
-	<classpathentry kind="lib" path="lib/slf4j-api-1.7.5.jar"/>
-	<classpathentry kind="lib" path="lib/slf4j-simple-1.6.6.jar"/>
-	<classpathentry kind="lib" path="lib/camel-telegram-2.22.1-sources.jar"/>
-	<classpathentry kind="lib" path="lib/javax.activation-api-1.2.0.jar"/>
-	<classpathentry kind="lib" path="lib/javax.xml.soap-api-1.4.0.jar"/>
-	<classpathentry kind="lib" path="lib/jaxb-api-2.3.1.jar"/>
-	<classpathentry kind="lib" path="lib/javax.ws.rs-api-2.1.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-databind-2.9.6.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-core-2.9.6.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-annotations-2.9.6.jar"/>
-	<classpathentry kind="output" path="bin/classes"/>
+	<classpathentry kind="con" path="GROOVY_DSL_SUPPORT" exported="true"/>
+	<classpathentry kind="output" path="bin/default"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/"/>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-math3/3.6.1/8fab23986ea8886af34818daf32a718e81dc98ba/commons-math3-3.6.1-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-math3/3.6.1/e4ba98f1d4b3c80ec46392f25e094a6a2e58fcbf/commons-math3-3.6.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-math3/3.6.1/2e894b7acae199b5dff08bb596334594b5f23c28/commons-math3-3.6.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.6/67313d715fbf0ea4fd0bdb69217fb77f807a8ce5/commons-lang-2.6-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.6/ce1edb914c94ebc388f086c6827e8bdeec71ac2/commons-lang-2.6.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/commons-lang/commons-lang/2.6/2519e88918ab30dcdee1b1b66f0a1014b0e055ec/commons-lang-2.6-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.camel/camel-telegram/2.22.1/ebba06c0ac78a9e698765e93c41ae46bfdf592d3/camel-telegram-2.22.1-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.camel/camel-telegram/2.22.1/16f5488815c9e8e4ee7e11055acbb21a747bbbf6/camel-telegram-2.22.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.camel/camel-telegram/2.22.1/35a67c250e92a90fd5e496e6f233bba1a4ef67c3/camel-telegram-2.22.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.camel/camel-core/2.22.1/b7024ba196e5cffa55d538eb21c21a8aa7b1d544/camel-core-2.22.1-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.camel/camel-core/2.22.1/7b02ce7d84cf6fd98085227411e7d867d7c7e855/camel-core-2.22.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.camel/camel-core/2.22.1/ae1a4ab10a165b6e2845763a229bb053eec28b74/camel-core-2.22.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/javax.xml.soap/javax.xml.soap-api/1.4.0/e98dcd4b25ebe7202fd0a5bf798f9c3ca231997c/javax.xml.soap-api-1.4.0-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/javax.xml.soap/javax.xml.soap-api/1.4.0/667ef2eee594ca7e05a1cbe0b37a428f7b57778f/javax.xml.soap-api-1.4.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/javax.xml.soap/javax.xml.soap-api/1.4.0/53ec1ff2e6fd6962584112450bdc5035f965c46a/javax.xml.soap-api-1.4.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/javax.xml.bind/jaxb-api/2.3.1/e47264d065cecbc572ba99856fcc7da19a470ae3/jaxb-api-2.3.1-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/javax.xml.bind/jaxb-api/2.3.1/8531ad5ac454cc2deb9d4d32c40c4d7451939b5d/jaxb-api-2.3.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/javax.xml.bind/jaxb-api/2.3.1/22a0f33c1fd75548cb4338161a73434d34d84124/jaxb-api-2.3.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/javax.activation/activation/1.1.1/159e45688875fdabff19c9ceb7335aefe4df8339/activation-1.1.1-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/javax.activation/activation/1.1.1/485de3a253e23f645037828c07f1d7f1af40763a/activation-1.1.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/cleber/Projetos/camel-artifact/auctiontelegram/lib/cartago-2.3-SNAPSHOT.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/cleber/Projetos/camel-artifact/auctiontelegram/lib/camelartifact-0.0.1.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/23.0/ed233607c5c11e1a13a3fd760033ed5d9fe525c2/guava-23.0-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/23.0/c947004bb13d18182be60077ade044099e4f26f1/guava-23.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/23.0/2fa613f8f6125a8ad7c395396dc5852265ca70ef/guava-23.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/962153db4a9ea71b79d047dfd1b2a0d80d8f4739/slf4j-api-1.7.25-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/da76ca59f6a57ee3102f8f9bd9cee742973efa8a/slf4j-api-1.7.25.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/f003e89ddebdbaca5cf3fc7cc0c67c88c2ca1a3c/slf4j-api-1.7.25-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-rt-rs-client/3.2.5/247c2af69abca7fcaba50a9364a41d89955d009b/cxf-rt-rs-client-3.2.5-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-rt-rs-client/3.2.5/9a2fb46779c819fd8c1f0ecfeb0d76162da7a084/cxf-rt-rs-client-3.2.5.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-rt-rs-client/3.2.5/4ad345a731ea479ffc15529ea50ce1f18372cd2f/cxf-rt-rs-client-3.2.5-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.9.6/5c01ad3995b02c474847df0c55a26e05f64e1924/jackson-jaxrs-json-provider-2.9.6-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.9.6/f7b8ccdd851c2ea43f04636a1396a242479571b3/jackson-jaxrs-json-provider-2.9.6.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider/2.9.6/1789e67c3a9e25dd78cc805ae4da74d84f500e9d/jackson-jaxrs-json-provider-2.9.6-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/2.9.6/901b12b77f052e8eea7ac95b2e18f6549167ed58/jackson-jaxrs-base-2.9.6-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/2.9.6/30341c6f8a6f2d65acc37c31b570bf09403ea69e/jackson-jaxrs-base-2.9.6.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.jaxrs/jackson-jaxrs-base/2.9.6/d412fc5f4ca8aec716af4e462ea6a6ef42b119e7/jackson-jaxrs-base-2.9.6-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.module/jackson-module-jaxb-annotations/2.9.6/84ffce5f287aa6a4be068e80b795af2ad52f10b6/jackson-module-jaxb-annotations-2.9.6-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.module/jackson-module-jaxb-annotations/2.9.6/9a4641aa784374e36b0436b707507e52997ef91c/jackson-module-jaxb-annotations-2.9.6.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.module/jackson-module-jaxb-annotations/2.9.6/819cf2148ac2617c13d8d3b6a5545c3272b0d7f/jackson-module-jaxb-annotations-2.9.6-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.9.6/dad3a9fbbedf8781dfd138539cd82638ebad5678/jackson-databind-2.9.6-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.9.6/cfa4f316351a91bfd95cb0644c6a2c95f52db1fc/jackson-databind-2.9.6.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.9.6/214f3515d948e7944bea7105aa2645027a1e6ab3/jackson-databind-2.9.6-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.9.6/772e16a32ed9ced658618e931847f260446803f9/jackson-annotations-2.9.6-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.9.6/6a0f0f154edaba00067772ce02e24f8c0973d84c/jackson-annotations-2.9.6.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.9.6/1cc88feb33166214cc9746d073334badfb04594e/jackson-annotations-2.9.6-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/javax.activation/javax.activation-api/1.2.0/1b4c6e77d35adab19794746d8ea753df30d77dca/javax.activation-api-1.2.0-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/javax.activation/javax.activation-api/1.2.0/85262acf3ca9816f9537ca47d5adeabaead7cb16/javax.activation-api-1.2.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/javax.activation/javax.activation-api/1.2.0/f57a44738d7616e2cca92e1c4f2b5199a0901e27/javax.activation-api-1.2.0-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/1.3.9/40719ea6961c0cb6afaeb6a921eaa1f6afd4cfdf/jsr305-1.3.9.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.0.18/220c1232fa6d13b427c10ccc1243a87f5f501d31/error_prone_annotations-2.0.18-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.0.18/5f65affce1684999e2f4024983835efc3504012e/error_prone_annotations-2.0.18.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.0.18/b83913bf63b4b89001fd5ab82e8167ca33c12e7c/error_prone_annotations-2.0.18-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.1/dcd31de68a90e41e336f6b7afce0d39285c433d7/j2objc-annotations-1.1-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.1/976d8d30bebc251db406f2bdb3eb01962b5685b3/j2objc-annotations-1.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.1/2e1e0c8db5be95ec85d19d456186f8989ea263fa/j2objc-annotations-1.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/org.codehaus.mojo/animal-sniffer-annotations/1.14/886474da3f761d39fcbb723d97ecc5089e731f42/animal-sniffer-annotations-1.14-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/org.codehaus.mojo/animal-sniffer-annotations/1.14/775b7e22fb10026eed3f86e8dc556dfafe35f2d5/animal-sniffer-annotations-1.14.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/org.codehaus.mojo/animal-sniffer-annotations/1.14/d90e19c7bc3a594aac2307bcfe9f2362ec4108ea/animal-sniffer-annotations-1.14-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/com.sun.xml.bind/jaxb-core/2.3.0.1/7caea34258154d7264652b8f049409634819d663/jaxb-core-2.3.0.1-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/com.sun.xml.bind/jaxb-core/2.3.0.1/23574ca124d0a694721ce3ef13cd720095f18fdd/jaxb-core-2.3.0.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/com.sun.xml.bind/jaxb-core/2.3.0.1/6b6331c570bf8450571904b3e69948a1b92e51fb/jaxb-core-2.3.0.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/com.sun.xml.bind/jaxb-impl/2.3.0.1/27a6596f544184d2129f057027fda440b49410b3/jaxb-impl-2.3.0.1-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/com.sun.xml.bind/jaxb-impl/2.3.0.1/2e979dabb3e5e74a0686115075956391a14dece8/jaxb-impl-2.3.0.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/com.sun.xml.bind/jaxb-impl/2.3.0.1/1304784bae3e898a12fd52d9a4bd041ea12de14d/jaxb-impl-2.3.0.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-rt-frontend-jaxrs/3.2.5/346ea36788b0647a747001eb23a77cdd8d3debde/cxf-rt-frontend-jaxrs-3.2.5-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-rt-frontend-jaxrs/3.2.5/18eaaa3c72afbea2854d5ef1b60dabd8f4c41e7/cxf-rt-frontend-jaxrs-3.2.5.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-rt-frontend-jaxrs/3.2.5/300aacf6adf229618cd9ed44978a70c0a5b983b6/cxf-rt-frontend-jaxrs-3.2.5-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-rt-transports-http/3.2.5/86226a030f4e17600253f1f62fc2a7a63275b6a1/cxf-rt-transports-http-3.2.5-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-rt-transports-http/3.2.5/57d6a6c9f8c756c3346f65814137c3b79179dd94/cxf-rt-transports-http-3.2.5.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-rt-transports-http/3.2.5/f563aedf6ea4c268db324e8b4332499cfc1e212c/cxf-rt-transports-http-3.2.5-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-core/3.2.5/3e36e94d569d6405c04942b5c9822b08f2798efd/cxf-core-3.2.5-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-core/3.2.5/97ef733f24a22275974b78f557a70334508f9404/cxf-core-3.2.5.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.cxf/cxf-core/3.2.5/669a97757df850bcb2b59eead71d0394665fdf2e/cxf-core-3.2.5-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.9.6/297b561cc2ca89e07bf4cb6445c08260b524aa4d/jackson-core-2.9.6-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.9.6/4e393793c37c77e042ccc7be5a914ae39251b365/jackson-core-2.9.6.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.9.6/142f5d92646bc32aee6d157ec21e408600866f67/jackson-core-2.9.6-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.woodstox/woodstox-core/5.0.3/f38482e8b060d9e5354c10103f4c4db53c58db7d/woodstox-core-5.0.3-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.woodstox/woodstox-core/5.0.3/10aa199207fda142eff01cd61c69244877d71770/woodstox-core-5.0.3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/com.fasterxml.woodstox/woodstox-core/5.0.3/7f5316fa0b4e68daa353bb2df3c546bfd854d54f/woodstox-core-5.0.3-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.ws.xmlschema/xmlschema-core/2.2.3/8061327e49c976d022d47744430e7f211a21983/xmlschema-core-2.2.3-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.ws.xmlschema/xmlschema-core/2.2.3/920a9a3132f925554ae8432d9473c8806734a8ec/xmlschema-core-2.2.3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/org.apache.ws.xmlschema/xmlschema-core/2.2.3/5a232d556c748d97da9e6ae4306da25909e5dab1/xmlschema-core-2.2.3-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/javax.ws.rs/javax.ws.rs-api/2.1/b693d737250f57da3bbc0fbfccf6917de18ae200/javax.ws.rs-api-2.1-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/javax.ws.rs/javax.ws.rs-api/2.1/426a0862406536e690c7caa8bb6ed32191986fac/javax.ws.rs-api-2.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/javax.ws.rs/javax.ws.rs-api/2.1/db39e809544513e51fe375530c0ebceeeca0dfba/javax.ws.rs-api-2.1-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.3/7bb3cc03e089c54ba9a996ad75cafda663a89bd3/javax.annotation-api-1.3-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.3/67747496d8b5c1f300ed3cde4ba69d6f453ba984/javax.annotation-api-1.3.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.3/2091c8c91826a1a4415d15aaf027439ce6803c0f/javax.annotation-api-1.3-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry sourcepath="/home/cleber/.gradle/caches/modules-2/files-2.1/org.codehaus.woodstox/stax2-api/3.1.4/b40604d61c01cc081a4a7bdfc562aa9847ee8857/stax2-api-3.1.4-sources.jar" kind="lib" path="/home/cleber/.gradle/caches/modules-2/files-2.1/org.codehaus.woodstox/stax2-api/3.1.4/ac19014b1e6a7c08aad07fe114af792676b685b7/stax2-api-3.1.4.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/cleber/.gradle/caches/modules-2/files-2.1/org.codehaus.woodstox/stax2-api/3.1.4/819aa74f907d379c6afc2e0376808ca9feadcbb1/stax2-api-3.1.4-javadoc.jar!/"/>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
 </classpath>
