@@ -3,9 +3,8 @@ my_price(2000+math.random*200).
 +!focus(A) <- 
 	lookupArtifact(A,ToolId);
     focus(ToolId);
-    ?tokeTelegram(T);
     ?chatIdTelegram(C);
-    startCamel(T,C);
+    startCamel(C);
     +present;
     sendString(getIn);
     getIn.

@@ -1,8 +1,7 @@
 +!start <- 
     .print("Auction artifact created for ",product(diamond_ring));
-    ?tokeTelegram(T);
     ?chatIdTelegram(C);
-    startCamel(T,C);
+    startCamel(C);
     sendString("Auction artifact created");
     .broadcast(achieve,focus(auction1)). 
 

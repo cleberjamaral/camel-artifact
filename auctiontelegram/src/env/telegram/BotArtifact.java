@@ -1,6 +1,10 @@
 package telegram;
 
 import cartago.*;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,13 +20,17 @@ import camelartifact.CamelArtifact;
 
 public class BotArtifact extends CamelArtifact {
 
-	public void init() {
-		
+	private String token = null;
+	private BufferedReader brTest;
+	
+	public void init() throws IOException {
+		brTest = new BufferedReader(new FileReader("../../sensitiveData/" + getId().toString() + ".token"));
+		token = brTest.readLine();
 	}
 
 	@OPERATION
-	public void startCamel(String token, String chatId) {
-		String telegramURI = "telegram:bots/" + token + "?" + "chatId=" + chatId;
+	public void startCamel(String chatId) {
+		String telegramURI = "telegram:bots/" + this.token + "?" + "chatId=" + chatId;
 		final CamelContext camelContext = new DefaultCamelContext();
 
 		// This simple application has only one component receiving messages from the route and producing operations

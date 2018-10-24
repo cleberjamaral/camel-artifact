@@ -17,7 +17,6 @@ mas auctiontelegram {
 	agent a	: auctioneer.asl {
     	beliefs: 	total(3)
     				product(diamond_ring)
-    				tokeTelegram("tokenBot0")
     				chatIdTelegram("-274694619")
     	goals:		start
 		focus:		auction1
@@ -25,22 +24,19 @@ mas auctiontelegram {
 	}
 	 
     agent p1 : participant.asl {
-    	beliefs:	tokeTelegram("tokenBot1")
-    				chatIdTelegram("-274694619")
+    	beliefs:	chatIdTelegram("-274694619")
 		focus:		auction1
 					telegramBot1
 	}
      
     agent p2 : participant.asl {
-    	beliefs:	tokeTelegram("tokenBot2")
-    				chatIdTelegram("-274694619")
+    	beliefs:	chatIdTelegram("-274694619")
 		focus:		auction1
 					telegramBot2
 	}
 	
     agent p3 : participant.asl {
     	beliefs:	chatIdTelegram("-274694619")
-    				tokeTelegram("tokenBot3")
 		focus:		auction1
 					telegramBot3
 	}
