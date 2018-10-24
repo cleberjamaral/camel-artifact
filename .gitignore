@@ -1,16 +1,35 @@
-**.mas2j~
-**.asl~
+bin
+build
+target
+APDescription.txt
+MTPs-Main-Container.txt
 
-**.class
-**.log
-**.zip
-**.rar
-**.war
-**.tar.gz
+*.log
+.stop___MAS
+*~
+.gradle
+.settings
+doc/*.html
+gradle
+gradlew
+gradlew.bat
 
-**/hs_err_pid*
+*.class
 
-**/target/*
-**/bin/classes/*
-**/bin/*
-**/log/*
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+readme.html
+release-notes.html
+
+src/test/java/project/log
+
+.classpath
+.project
