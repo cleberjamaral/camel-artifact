@@ -107,7 +107,7 @@ public class Router extends CamelArtifact {
 					//MQTT Tests END
 					//***********************************************************************************
 */
-/*					
+					
 					//***********************************************************************************
 					//OPC-DA Tests step 1: Receiving a message from OPC-DA
 					//Matrikon simulation server is sending a unique message continuously without any asking proccess
@@ -154,7 +154,7 @@ public class Router extends CamelArtifact {
 					}).to(uriString).to("log:OPCDALogger2?level=info");
 					//OPC-DA Tests END
 					//***********************************************************************************
-*/				
+/*				
 					
 					//***********************************************************************************
 					//Asimov Tests step 1: Generate a temporized message coming from a route invoking goRobot
@@ -192,7 +192,7 @@ public class Router extends CamelArtifact {
 						}
 					})
 					.to("artifact:cartago").to("log:ASIMOVLogger3?level=info");
-
+*/
 					//Testing a message to be consumed by the router
 					log("Generating a 'remote' test message without parameters...");
 					//ASIMOV Tests END
