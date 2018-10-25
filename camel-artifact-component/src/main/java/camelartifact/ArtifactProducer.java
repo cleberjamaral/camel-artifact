@@ -62,7 +62,7 @@ public class ArtifactProducer extends DefaultProducer {
 
 	public ArtifactProducer(ArtifactEndpoint endpoint) {
 		super(endpoint);
-		LOG.info("Artifact producer endpoint created successfully! To receive message listenCamelRoutes must be 'true'.");
+		LOG.info("Artifact producer endpoint created successfully! To receive message listenCamelRoutes must be 'true' what is done by default on artifact's 'init()'.");
 
 		incomingOpQueue = endpoint.getIncomingOpQueue();
 	}

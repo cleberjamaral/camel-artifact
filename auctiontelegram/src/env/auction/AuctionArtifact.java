@@ -38,6 +38,9 @@ public class AuctionArtifact extends Artifact {
 		
 		if (opParticipants.intValue() == 1) {
 			 currentWinner = participants.get(0);
+			 //TODO: When the winner is a human from Telegram chat, it is 
+			 // causing error because there is no agent to send the winner message
+			 // it needs to check if the agent exists, if no, it should send through camel
 			 getObsProperty("winner").updateValue(new Atom(currentWinner));
 		}
 	}

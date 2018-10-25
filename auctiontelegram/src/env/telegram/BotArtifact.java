@@ -3,6 +3,7 @@ package telegram;
 import cartago.*;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,18 +22,20 @@ import camelartifact.CamelArtifact;
 @ARTIFACT_INFO(outports = { @OUTPORT(name = "out-1") })
 
 public class BotArtifact extends CamelArtifact {
-
-	private String token = null;
-	private BufferedReader telegramtoken;
 	
-	public void init() throws IOException {
-		telegramtoken = new BufferedReader(new FileReader("../../sensitiveData/" + getId().toString() + ".token"));
-		this.token = telegramtoken.readLine();
-	}
-
 	@OPERATION
 	public void startCamel(String chatId) {
-		String telegramURI = "telegram:bots/" + this.token + "?" + "chatId=" + chatId;
+		String token = null;
+		BufferedReader telegramtoken;
+		try {
+			telegramtoken = new BufferedReader(new FileReader("../../sensitiveData/" + getId().toString() + ".token"));
+			token = telegramtoken.readLine();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String telegramURI = "telegram:bots/" + token + "?" + "chatId=" + chatId;
 		final CamelContext camelContext = new DefaultCamelContext();
 
 		// This simple application has only one component receiving messages from the route and producing operations
@@ -72,8 +75,8 @@ public class BotArtifact extends CamelArtifact {
 							//System.out.println("Map:" + body.toString());
 
 							exchange.getIn().setHeader("ArtifactName", getId().toString());
-							exchange.getIn().setHeader("OperationName", "sendString");
-							exchange.getIn().setBody("teste string");
+							exchange.getIn().setHeader("OperationName", str);
+							exchange.getIn().setBody(null);
 					}})
 					//.transform(body().convertToString())
 					.to("artifact:cartago");
@@ -109,17 +112,17 @@ public class BotArtifact extends CamelArtifact {
 
 	@OPERATION
 	public void getIn() {
-		log("test 1...");
-
 		List<Object> params  = new ArrayList<Object>();
 		params.add(getId().toString());
 		params.add("getIn");
 		sendMsg(getId().toString(),"telegram",params);
 		
 		try {
-			execLinkedOp("out-1","getInAuction",getCurrentOpAgentId().getAgentName());
+			if (getCurrentOpAgentId() != null)
+				execLinkedOp("out-1","getInAuction",getCurrentOpAgentId().getAgentName());
+			else
+				execLinkedOp("out-1","getInAuction","human");
 		} catch (OperationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -132,9 +135,12 @@ public class BotArtifact extends CamelArtifact {
 		sendMsg(getId().toString(),"telegram",params);
 
 		try {
-			execLinkedOp("out-1","getOutAuction",getCurrentOpAgentId().getAgentName());
+			if (getCurrentOpAgentId() != null)
+				execLinkedOp("out-1","getOutAuction",getCurrentOpAgentId().getAgentName());
+			else
+				execLinkedOp("out-1","getOutAuction","human");
+
 		} catch (OperationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

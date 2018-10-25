@@ -47,7 +47,6 @@ import simplelogger.SimpleLogger;
  *         and arrive at the artifact, while "outgoing" refers to packets which
  *         originate at the artifact and arrive elsewhere.
  */
-
 public class CamelArtifact extends Artifact {
 
 	// See import comments for detalis about LOG
@@ -57,16 +56,23 @@ public class CamelArtifact extends Artifact {
 	protected ConcurrentLinkedQueue<OpRequest> incomingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
 	protected ConcurrentLinkedQueue<OpRequest> outgoingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
 	private boolean listenCamelRoutes = false;
-
 	
 	public CamelArtifact() {
-		// By default, the component is listening
-		listenRoutes(true);
+	
+	}
+
+	/**
+	 * Init method starts by default the listening thread to receive from the routes 
+	 */
+	void init() {
+		// By default start to listen routes on artifact initialization
+		execInternalOp("listenRoutes", true);
 	}
 	
 	/**
 	 * Since it is an operation, means it can be accessed by agents It is also
 	 * public to be accessed by java code of a host class
+	 * @param value is a boolen, true turn the thread on for look for new messages in the IncomingOpQueue
 	 */
 	@OPERATION
 	public void listenRoutes(final boolean value) {
@@ -78,20 +84,35 @@ public class CamelArtifact extends Artifact {
 		await(cmd);
 	}
 
+	/**
+	 * A getter for the unique IncomingOpQueue
+	 * @return queue handler
+	 */
 	public ConcurrentLinkedQueue<OpRequest> getIncomingOpQueue() {
 		return incomingOpQueue;
 	}
 
+	/**
+	 * A getter for the unique OutgoingOpQueue
+	 * @return queue handler
+	 */
 	public ConcurrentLinkedQueue<OpRequest> getOutgoingOpQueue() {
 		return outgoingOpQueue;
 	}
-
+	
+	/**
+	 * Informs the state of the property listenCamelRoutes
+	 * @return boolean, if true the thread is looking for messages in the IncomingOpQueue
+	 */
 	public boolean getListenCamelRoute() {
 		return listenCamelRoutes;
 	}
 
 	/**
 	 * Some message was received by the route
+	 * @param artifactName informs the name of the artifact addressed by this message
+	 * @param operationName specifies an operation to be performed by the addressee
+	 * @param parameters a list of objects as parameters of operation method
 	 */
 	@INTERNAL_OPERATION
 	private void receiveMsg(String artifactName, String operationName, List<Object> parameters) {
@@ -179,6 +200,9 @@ public class CamelArtifact extends Artifact {
 
 	/**
 	 * Add a message to the outgoing queue
+	 * @param artifactName specifies the name of the recipient
+	 * @param operationName specifies an operation to be performed by the recipient
+	 * @param parameters a list of objects as parameters of operation method
 	 */
 	@OPERATION
 	public void sendMsg(String artifactName, String operationName, List<Object> parameters) {

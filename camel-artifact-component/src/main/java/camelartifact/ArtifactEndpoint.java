@@ -49,7 +49,7 @@ import simplelogger.SimpleLogger;
  * consumers. The current version is not allowed by Camel to make multiple
  * consumers.
  */
-@UriEndpoint(scheme = "artifact")
+@UriEndpoint(scheme = "artifact", syntax = "scheme:host:port/path", title = "[redacted]")
 public class ArtifactEndpoint extends DefaultEndpoint {
 
 	// See import comments for details about LOG
