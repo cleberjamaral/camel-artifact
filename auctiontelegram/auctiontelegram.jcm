@@ -15,38 +15,42 @@
 mas auctiontelegram {
 
 	agent a	: auctioneer.asl {
-    	beliefs: 	total(3)
+    	beliefs: 	total(4)
     				product(diamond_ring)
     				chatIdTelegram("-274694619")
     	goals:		start
+    				link(auction1, telegrambot0)
 		focus:		auction1
-					telegramBot0
+					telegrambot0
 	}
 	 
-    agent p1 : participant.asl {
+    agent bot1 : participant.asl {
     	beliefs:	chatIdTelegram("-274694619")
+    	goals:		link(auction1, telegrambot1)
 		focus:		auction1
-					telegramBot1
+					telegrambot1
 	}
      
-    agent p2 : participant.asl {
+    agent bot2 : participant.asl {
     	beliefs:	chatIdTelegram("-274694619")
+    	goals:		link(auction1, telegrambot2)
 		focus:		auction1
-					telegramBot2
+					telegrambot2
 	}
 	
-    agent p3 : participant.asl {
+    agent bot3 : participant.asl {
     	beliefs:	chatIdTelegram("-274694619")
+    	goals:		link(auction1, telegrambot3)
 		focus:		auction1
-					telegramBot3
+					telegrambot3
 	}
 
  	workspace market_place {
         artifact auction1 : auction.AuctionArtifact()
-        artifact telegramBot0 : telegram.BotArtifact()
-        artifact telegramBot1 : telegram.BotArtifact()
-        artifact telegramBot2 : telegram.BotArtifact()
-        artifact telegramBot3 : telegram.BotArtifact()
+        artifact telegrambot0 : telegram.BotArtifact()
+        artifact telegrambot1 : telegram.BotArtifact()
+        artifact telegrambot2 : telegram.BotArtifact()
+        artifact telegrambot3 : telegram.BotArtifact()
     }
  
     asl-path: src/agt

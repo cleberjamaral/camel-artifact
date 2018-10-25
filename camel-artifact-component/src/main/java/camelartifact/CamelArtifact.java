@@ -58,6 +58,12 @@ public class CamelArtifact extends Artifact {
 	protected ConcurrentLinkedQueue<OpRequest> outgoingOpQueue = new ConcurrentLinkedQueue<OpRequest>();
 	private boolean listenCamelRoutes = false;
 
+	
+	public CamelArtifact() {
+		// By default, the component is listening
+		listenRoutes(true);
+	}
+	
 	/**
 	 * Since it is an operation, means it can be accessed by agents It is also
 	 * public to be accessed by java code of a host class

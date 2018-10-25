@@ -3,7 +3,14 @@
     ?chatIdTelegram(C);
     startCamel(C);
     sendString("Auction artifact created");
-    .broadcast(achieve,focus(auction1)). 
+    .broadcast(achieve, confirmYouAreIn). 
+
++!link(A, B) <-
+	lookupArtifact(A,Aid);
+	lookupArtifact(B,Bid);
+	linkArtifacts(Bid,"out-1",Aid);
+	linkArtifacts(Aid,"out-1",Bid);
+	.print("Artifacts linked: ", A, " and ", B).
 
 +participants(N): total(NT) & N == NT <- !setOffer.
     

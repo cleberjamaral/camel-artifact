@@ -18,14 +18,16 @@ import org.apache.camel.impl.DefaultCamelContext;
 import camelartifact.ArtifactComponent;
 import camelartifact.CamelArtifact;
 
+@ARTIFACT_INFO(outports = { @OUTPORT(name = "out-1") })
+
 public class BotArtifact extends CamelArtifact {
 
 	private String token = null;
-	private BufferedReader brTest;
+	private BufferedReader telegramtoken;
 	
 	public void init() throws IOException {
-		brTest = new BufferedReader(new FileReader("../../sensitiveData/" + getId().toString() + ".token"));
-		token = brTest.readLine();
+		telegramtoken = new BufferedReader(new FileReader("../../sensitiveData/" + getId().toString() + ".token"));
+		this.token = telegramtoken.readLine();
 	}
 
 	@OPERATION
@@ -39,10 +41,42 @@ public class BotArtifact extends CamelArtifact {
 		/* Create the routes */
 		try {
 			camelContext.addRoutes(new RouteBuilder() {
+//			Telegram message structure
+//				IncomingMessage{
+//				messageId=139, 
+//				date=2018-10-25T14:24:22Z, 
+//				from=User{
+//					id=NNNNN, 
+//					firstName='Cleber', 
+//					lastName='null', 
+//					username='cleberjamaral'
+//				}, 
+//				text='getIn', 
+//				chat=Chat{id='NNNNN', title='null', type='private'}, 
+//				photo=null, video=null, audio=null, document=null
+//				}					
 				@Override
 				public void configure() {
 					from(telegramURI)
-							.transform(body().convertToString()).to("artifact:cartago");
+					.process(new Processor() {
+						public void process(Exchange exchange) {
+							String str = exchange.getIn().getBody(String.class);
+							//System.out.println("String:" + str);
+							
+							//System.out.println("String2:" + exchange.getIn().getBody().toString());
+							
+							//Map<String,Object> head = exchange.getIn().getHeaders();
+							//System.out.println("Head:" + head);
+							
+							//HashMap<String, Object> body = exchange.getIn().getBody(HashMap.class);
+							//System.out.println("Map:" + body.toString());
+
+							exchange.getIn().setHeader("ArtifactName", getId().toString());
+							exchange.getIn().setHeader("OperationName", "sendString");
+							exchange.getIn().setBody("teste string");
+					}})
+					//.transform(body().convertToString())
+					.to("artifact:cartago");
 
 					from("artifact:cartago").process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
@@ -73,4 +107,35 @@ public class BotArtifact extends CamelArtifact {
 		sendMsg(getId().toString(),"telegram",params);
 	}	
 
+	@OPERATION
+	public void getIn() {
+		log("test 1...");
+
+		List<Object> params  = new ArrayList<Object>();
+		params.add(getId().toString());
+		params.add("getIn");
+		sendMsg(getId().toString(),"telegram",params);
+		
+		try {
+			execLinkedOp("out-1","getInAuction",getCurrentOpAgentId().getAgentName());
+		} catch (OperationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@OPERATION
+	public void getOut() {
+		List<Object> params  = new ArrayList<Object>();
+		params.add(getId().toString());
+		params.add("getOut");
+		sendMsg(getId().toString(),"telegram",params);
+
+		try {
+			execLinkedOp("out-1","getOutAuction",getCurrentOpAgentId().getAgentName());
+		} catch (OperationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

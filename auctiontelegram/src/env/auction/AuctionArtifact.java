@@ -6,7 +6,7 @@ import java.util.List;
 
 import jason.asSyntax.Atom;
 
-@ARTIFACT_INFO(outports = { @OUTPORT(name = "out-2") })
+@ARTIFACT_INFO(outports = { @OUTPORT(name = "out-1") })
 
 public class AuctionArtifact extends Artifact {
 
@@ -22,18 +22,18 @@ public class AuctionArtifact extends Artifact {
 	}
 
 	@OPERATION
-	public void getIn() {
+	public void getInAuction(String ag) throws OperationException {
 		ObsProperty opParticipants  = getObsProperty("participants");
 		opParticipants.updateValue(opParticipants.intValue()+1);
-		participants.add(getCurrentOpAgentId().getAgentName());
+		participants.add(ag);
 	}
 
 	@OPERATION
-	public void getOut() {
+	public void getOutAuction(String ag) throws OperationException {
 		ObsProperty opParticipants  = getObsProperty("participants");
 		if (opParticipants.intValue() > 1) {
 			opParticipants.updateValue(opParticipants.intValue()-1);
-			participants.remove(getCurrentOpAgentId().getAgentName());
+			participants.remove(ag);
 		}
 		
 		if (opParticipants.intValue() == 1) {

@@ -62,8 +62,7 @@ public class ArtifactProducer extends DefaultProducer {
 
 	public ArtifactProducer(ArtifactEndpoint endpoint) {
 		super(endpoint);
-		LOG.trace("Creating artifact producer endpoint...");
-		LOG.info("Artifact producer endpoint created successfully!");
+		LOG.info("Artifact producer endpoint created successfully! To receive message listenCamelRoutes must be 'true'.");
 
 		incomingOpQueue = endpoint.getIncomingOpQueue();
 	}

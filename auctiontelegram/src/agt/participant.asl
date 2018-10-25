@@ -1,18 +1,21 @@
 my_price(2000+math.random*200).
 
-+!focus(A) <- 
-	lookupArtifact(A,ToolId);
-    focus(ToolId);
++!confirmYouAreIn <- 
     ?chatIdTelegram(C);
     startCamel(C);
     +present;
-    sendString(getIn);
     getIn.
 
++!link(A, B) <-
+	lookupArtifact(A,Aid);
+	lookupArtifact(B,Bid);
+	linkArtifacts(Bid,"out-1",Aid);
+	linkArtifacts(Aid,"out-1",Bid);
+	.print("Artifacts linked: ", A, " and ", B).
+	
 +minOffer(N) : my_price(MP) & present <-
 	if (N > MP) {
 		-present;
-		sendString(getOut);
 		getOut;
 	}.
 
