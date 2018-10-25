@@ -19,16 +19,6 @@
  * GNU Lesser General Public License for more details.                             
  * You should have received a copy of the GNU Lesser General Public License        
  * along with camel_jason.  If not, see <http://www.gnu.org/licenses/>.            
-=======
- * Resumo:  este artefato �� a forma como o agente planner interage com o ambiente.
- * O agente tem como objetivo definir qual ser�� a sequ��ncia de produtos a serem produzidos
- * a partir do in��cio da opera����o do Sistema Multiagente. Ele receber�� uma lista de produtos
- * a serem produzidos selecionados pelo usu��rio na interface do ScadaBR. O agente dever�� criar uma
- * lista ordenada dos produtos e ap��s enviar o produto a ser produzido para o agente configurador no
- * momento oportuno.
- *  
- * 2013-05-06 - MAS initial infrastructure for SSP 
->>>>>>> b0dfc791e54fb279f7b8c1e295b9eba40245044c
  */
 
 package artifacts;

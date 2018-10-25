@@ -24,6 +24,8 @@ package camelartifacts;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
@@ -154,8 +156,13 @@ public class Router extends CamelArtifact {
 					}).to(uriString).to("log:OPCDALogger2?level=info");
 					//OPC-DA Tests END
 					//***********************************************************************************
+<<<<<<< HEAD
+				
+/*					
+=======
 /*				
 					
+>>>>>>> b5a92aed8b9ed96090b4e850296869dd36f23111
 					//***********************************************************************************
 					//Asimov Tests step 1: Generate a temporized message coming from a route invoking goRobot
 					from("timer:test?period=5000").process(new Processor() {
@@ -197,6 +204,8 @@ public class Router extends CamelArtifact {
 					log("Generating a 'remote' test message without parameters...");
 					//ASIMOV Tests END
 					//***********************************************************************************
+*/
+					 
 				}
 			});
 		} catch (Exception e) {
