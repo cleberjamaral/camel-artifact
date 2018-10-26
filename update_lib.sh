@@ -12,7 +12,7 @@ cp camel-artifact-component/target/camelartifact-0.0.2.jar auctiontelegram/lib
 
 
 cp camel-artifact-component/target/camelartifact-0.0.2.jar maven2/nz/ac/otago/camelartifact/0.0.2/.
-cp camel-artifact-component/pom.xml maven2/nz/ac/otago/camelartifact/0.0.2/camelartifact-0.0.2.pom
+#cp camel-artifact-component/pom.xml maven2/nz/ac/otago/camelartifact/0.0.2/camelartifact-0.0.2.pom
 
 read -p "Press [ENTER] to return"
 
