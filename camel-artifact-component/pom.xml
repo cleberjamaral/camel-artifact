@@ -5,7 +5,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>nz.ac.otago.infosci.camelartifact.component</groupId>
+	<groupId>nz.ac.otago</groupId>
 	<artifactId>camelartifact</artifactId>
 	<packaging>jar</packaging>
 	<version>0.0.2</version>
@@ -22,9 +22,9 @@
 	<url>https://github.com/clebercbr/camel-artifact</url>
 
 	<scm>
-		<developerConnection>scm:git:https://github.com/clebercbr/camel-artifact.git</developerConnection>
-		<connection>scm:git:https://github.com/clebercbr/camel-artifact.git</connection>
-		<url>https://github.com/clebercbr/camel-artifact</url>
+		<developerConnection>scm:git:https://github.com/cleberjamaral/camel-artifact.git</developerConnection>
+		<connection>scm:git:https://github.com/cleberjamaral/camel-artifact.git</connection>
+		<url>https://github.com/cleberjamaral/camel-artifact</url>
 		<tag>HEAD</tag>
 	</scm>
 

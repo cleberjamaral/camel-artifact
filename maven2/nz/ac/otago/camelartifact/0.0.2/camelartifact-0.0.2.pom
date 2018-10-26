@@ -3,7 +3,7 @@
 
   <modelVersion>4.0.0</modelVersion>
   
-  <groupId>nz.ac.otago.camelartifact</groupId>
+  <groupId>nz.ac.otago.infosci.camelartifact</groupId>
   <artifactId>parent</artifactId>
   <packaging>pom</packaging>
   <version>1.1.2</version>
