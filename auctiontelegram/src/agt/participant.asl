@@ -26,22 +26,7 @@ my_price(2000+math.random*200).
 
 +winnerag[source(Z)]: true <- 
 	.print("I am so so Happy because I am the winner!");
-	sendString("I am so so Happy because I am the winner!");
-	?auctionArt(A);
-	?telegramArt(B);
-	focusWhenAvailable(A);
-	lookupArtifact(B,Bid);
-	focusWhenAvailable(B);
-	focus(Bid);
-	focus(Bid);
-	focus(Bid);
-	focus(Bid);
-	focus(Bid);
-	stopFocus(Bid);
-	stopFocus(Bid);
-	stopFocus(Bid);
-	stopFocus(Bid);
-	sendString("(((((((((((((((((( stop focus ))))))))))))))").
+	sendString("I am so so Happy because I am the winner!").
 	//.stopMAS.
 
 { include("$jacamoJar/templates/common-cartago.asl") }
