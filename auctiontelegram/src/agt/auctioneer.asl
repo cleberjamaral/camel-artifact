@@ -6,10 +6,7 @@
     .broadcast(achieve, confirmYouAreIn). 
 
 +!link(A, B) <-
-	lookupArtifact(A,Aid);
-	lookupArtifact(B,Bid);
-	linkArtifacts(Bid,"out-1",Aid);
-	linkArtifacts(Aid,"out-1",Bid);
+	linkArtifactsMutually(A,"out-1",B,"out-1");
 	.print("Artifacts linked: ", A, " and ", B).
 
 +participants(N): total(NT) & N == NT <- !setOffer.
@@ -27,7 +24,9 @@
    <- .concat("Winner for ", product(diamond_ring), " is ", W, X);
    	  .print(X);
    	  sendString(X);
-	  .send(W, tell, winnerag).
+	  .send(W, tell, winnerag);
+	  //writeEnvironmentGraphInFile;	  
+	  .
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }

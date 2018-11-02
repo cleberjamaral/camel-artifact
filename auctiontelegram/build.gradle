@@ -19,12 +19,13 @@ targetCompatibility = 1.8
 repositories {
   mavenCentral()
 
+  //maven { url "https://github.com/cleberjamaral/cartago/raw/maven2" }
+  
+  //flatDir { dirs 'lib' }
+  maven { url "https://github.com/cleberjamaral/camel-artifact/raw/maven2" }
   maven { url "http://jacamo.sourceforge.net/maven2" }
   maven { url "http://jade.tilab.com/maven/" }
 
-  flatDir {
-	 dirs 'lib'
-  }
 }
 
 ext {
@@ -34,7 +35,10 @@ ext {
 }
 
 dependencies {
-  compile group: 'org.jacamo', name: 'jacamo', version: '0.7'
+  compile name: 'cartago', version: '2.4-SNAPSHOT', changing: true , transitive: true, group: 'org.jacamo'
+  compile name: 'jaca', version: '2.4-SNAPSHOT', changing: true , transitive: true, group: 'org.jacamo'
+  
+  compile group: 'org.jacamo', name: 'jacamo', version: '0.8-SNAPSHOT'
   // https://mvnrepository.com/artifact/commons-lang/commons-lang
   compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
   // https://mvnrepository.com/artifact/org.apache.camel/camel-core
@@ -47,8 +51,9 @@ dependencies {
   compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
   // https://mvnrepository.com/artifact/javax.activation/activation
   compile group: 'javax.activation', name: 'activation', version: '1.1.1'
-  
-  compile group: 'nz.ac.otago.camelagent.component', name: 'camelartifact-0.0.2'
+ 
+  //https://github.com/cleberjamaral/camel-artifact/blob/maven2/nz/ac/otago/camelartifact/0.0.2/camelartifact-0.0.2.jar
+  compile group: 'nz.ac.otago', name: 'camelartifact', version: '0.0.2'
 
 }
 
