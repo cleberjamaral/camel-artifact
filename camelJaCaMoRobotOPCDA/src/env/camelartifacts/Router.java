@@ -53,11 +53,12 @@ public class Router extends CamelArtifact {
 	static Opcda2Component opcda2;
 	static String containerId;
 	
-	static String domain = "localhost";
-	static String user = "cleber";
-	static String password = "MAS4opc2016";
+	static String domain = "ADMINISTRADOR";
+	static String user = "Administrador";
+	static String password = "administrador";
 	static String clsid = "f8582cf2-88fb-11d0-b850-00c0f0104305";
-	static String host = "192.168.0.107";
+					   //"{F8582CF2-88FB-11D0-B850-00C0F0104305}"
+	static String host = "192.168.56.101";
 
 	int contagem = 0;
 
@@ -78,7 +79,7 @@ public class Router extends CamelArtifact {
 				@Override
 				public void configure() {
 					
-					log("Receiving opc messages...");
+					log("\n\nReceiving opc messages...\n\n");
 /*					
 					//***********************************************************************************
 					//MQTT Tests step 1: Generate a temporized message coming from a route invoking inc
@@ -156,13 +157,10 @@ public class Router extends CamelArtifact {
 					}).to(uriString).to("log:OPCDALogger2?level=info");
 					//OPC-DA Tests END
 					//***********************************************************************************
-<<<<<<< HEAD
 				
 /*					
 =======
 /*				
-					
->>>>>>> b5a92aed8b9ed96090b4e850296869dd36f23111
 					//***********************************************************************************
 					//Asimov Tests step 1: Generate a temporized message coming from a route invoking goRobot
 					from("timer:test?period=5000").process(new Processor() {
@@ -199,7 +197,7 @@ public class Router extends CamelArtifact {
 						}
 					})
 					.to("artifact:cartago").to("log:ASIMOVLogger3?level=info");
-*/
+
 					//Testing a message to be consumed by the router
 					log("Generating a 'remote' test message without parameters...");
 					//ASIMOV Tests END

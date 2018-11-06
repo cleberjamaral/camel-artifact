@@ -1,0 +1,138 @@
+/*
+ Gradle build file for JaCaMo Applications
+*/
+
+defaultTasks 'run'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+version '1.0'
+group   'org.jacamo'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+
+  maven { url "http://jacamo.sourceforge.net/maven2" }
+  maven { url "http://jade.tilab.com/maven/" }
+  maven { url "https://github.com/cleberjamaral/camel-artifact/raw/maven2" }
+  flatDir { dirs 'lib' }
+}
+
+ext {
+	versions = [
+		camel       : '2.17.6',
+		utgard		: '1.5.0'
+	]
+}
+
+dependencies {
+  compile group: 'org.jacamo', name: 'jacamo', version: '0.7'
+  // https://mvnrepository.com/artifact/commons-lang/commons-lang
+  compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
+  // https://mvnrepository.com/artifact/org.apache.camel/camel-core
+  compile group: 'org.apache.camel', name: 'camel-core', version: versions.camel
+  // https://mvnrepository.com/artifact/javax.xml.soap/javax.xml.soap-api
+  compile group: 'javax.xml.soap', name: 'javax.xml.soap-api', version: '1.4.0'
+  // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+  compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+  // https://mvnrepository.com/artifact/javax.activation/activation
+  compile group: 'javax.activation', name: 'activation', version: '1.1.1'
+
+  compile group: 'org.slf4j', name: 'slf4j-api', version: '1.6.6'
+  compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.6'
+  compile group: 'javax.xml', name: 'jaxrpc-api', version: '1.1'
+  // https://mvnrepository.com/artifact/org.openscada.utgard/org.openscada.opc.lib
+  compile group: 'org.openscada.utgard', name: 'org.openscada.opc.lib', version: versions.utgard
+  // https://mvnrepository.com/artifact/org.openscada.utgard/org.openscada.opc.dcom
+  compile group: 'org.openscada.utgard', name: 'org.openscada.opc.dcom', version: versions.utgard
+  // https://mvnrepository.com/artifact/org.openscada.jinterop/org.openscada.jinterop.core
+  compile group: 'org.openscada.jinterop', name: 'org.openscada.jinterop.core', version: '2.1.8'
+  //compile group: 'org.openscada.jinterop', name: 'org.openscada.jinterop.core', version: versions.utgard
+  // https://mvnrepository.com/artifact/org.openscada.jinterop/org.openscada.jinterop.deps
+  compile group: 'org.openscada.jinterop', name: 'org.openscada.jinterop.deps', version: versions.utgard
+  // https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on
+  compile group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.60'
+  
+  compile group: 'org.samba.jcifs', name: 'jcifs', version: '1.3.14-kohsuke-1'
+  compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.6.6'
+  compile group: 'log4j', name: 'log4j', version: '1.2.17'
+
+  compile name: 'camel-opc_da2', version: '1.0-SNAPSHOT' //, group: 'com.summitsystemsinc.camel.opc'
+  compile group: 'org.apache.camel', name: 'camel-netty4', version: '2.14.4'
+  // https://github.com/cleberjamaral/camel-artifact/raw/maven2/
+  compile group: 'nz.ac.otago', name: 'camelartifact', version: '0.0.2'
+  compile group: 'net.sf.corn', name: 'corn-cps', version: '1.1.7'
+  
+  testCompile group: 'org.apache.camel', name: 'camel-test', version: versions.camel
+  testCompile group: 'junit', name: 'junit-dep', version: '4.5'
+  testCompile group: 'org.apache.camel', name: 'camel-cxf', version: versions.camel
+  testCompile group: 'org.apache.camel', name: 'camel-script', version: versions.camel
+
+  
+  
+}
+
+sourceSets {
+  main {
+	  java {
+		  srcDir 'src/env'
+		  srcDir 'src/agt'
+		  srcDir 'src/org'
+		  srcDir 'src/java'
+	  }
+	  resources {
+		  srcDir 'src/resources'
+	  }
+  }
+}
+
+task run (type: JavaExec, dependsOn: 'classes') {
+  group       ' JaCaMo'
+  description 'runs the JaCaMo application'
+  doFirst {
+	  mkdir 'log'
+  }
+  main 'jacamo.infra.JaCaMoLauncher'
+  args 'camelJaCaMoRobotOPCDA.jcm'
+  classpath sourceSets.main.runtimeClasspath
+}
+
+
+task uberJar(type: Jar, dependsOn: 'classes') {
+  group      ' JaCaMo'
+  description 'creates a single runnable jar file with all dependencies'
+
+  manifest {
+	  attributes 'Main-Class': 'jacamo.infra.JaCaMoLauncher'
+  }
+  baseName = 'jacamo-camelJaCaMoRobotOPCDA' // the name must start with jacamo so that jacamo...jar is found in the classpath
+  from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+  from (project.projectDir.absolutePath) {
+	  include '**/*.asl'
+	  include '**/*.xml'
+	  include '**/*.jcm'
+	  include '*.properties'
+  }
+  from (project.buildDir.absolutePath + '/jcm') {
+	  include '**/*'
+  }
+  with jar
+
+  doFirst {
+	  copy {
+		  from 'camelJaCaMoRobotOPCDA.jcm'
+		  rename 'camelJaCaMoRobotOPCDA.jcm','default.jcm'
+		  into project.buildDir.absolutePath + '/jcm'
+	  }
+  }
+}
+
+clean {
+  delete 'bin'
+  delete 'build'
+  delete 'log'
+}
