@@ -1,16 +1,19 @@
 my_price(2000+math.random*200).
 
-+!confirmYouAreIn <- 
++!confirmYouAreIn : my_price(P)<- 
     ?chatIdTelegram(C);
     startCamel(C);
     +present;
+	.print("My max: ", P);
     getIn.
 
 +!link(A, B) <-
+	-+auctionArt(A);
+	-+telegramArt(B);
 	lookupArtifact(A,Aid);
 	lookupArtifact(B,Bid);
-	linkArtifacts(Bid,"out-1",Aid);
 	linkArtifacts(Aid,"out-1",Bid);
+	linkArtifacts(Bid,"out-1",Aid);
 	.print("Artifacts linked: ", A, " and ", B).
 	
 +minOffer(N) : my_price(MP) & present <-
