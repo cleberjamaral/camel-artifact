@@ -80,6 +80,7 @@ public class ArtifactC extends CamelArtifact {
 								exchange.getIn().setBody(exchange.getIn().getBody().toString());
 						}
 					})
+					//.transform().mvel("(request.body[0] * 1.8 + 32).toString()") // Tests done for the paper showing a convertion fahrenheit - celsius
 					.to("mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactB&mqttQosPropertyName=ExactlyOnce")
 					.to("mqtt:mytest?host=tcp://broker.mqttdashboard.com:1883&publishTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce")
 					.to("log:CamelArtifactLoggerOut?level=info");
@@ -91,17 +92,29 @@ public class ArtifactC extends CamelArtifact {
 							exchange.getIn().setHeader("ArtifactName", exchange.getIn().getBody().toString().replaceAll("\\[", "").replaceAll("\\]",""));
 							exchange.getIn().setHeader("OperationName", "kaBackB");
 							exchange.getIn().setBody(null);
+							/* Tests done for the paper showing a convertion fahrenheit - celsius
+							List listp = new ArrayList<Double>();
+							//listp.add(Float.valueOf(new DecimalFormat("#.##").format((exchange.getIn().getBody(Float.class) - 32) / 1.8)));
+							listp.add(Double.valueOf((exchange.getIn().getBody(Double.class) - 32) / 1.8));
+							exchange.getIn().setBody(listp);*/
+
 					}})
 					.to("artifact:cartago").to("log:CamelArtifactLoggerOut?level=info");
 					
 					from("mqtt:camelArtifact?host=tcp://broker.mqttdashboard.com:1883&subscribeTopicName=camelArtifactC&mqttQosPropertyName=ExactlyOnce")
+					.log("MQTT:::: Body class is ${body.class}")
+					//.transform().mvel("[ (request.body[0].toString() - 32) / 1.8 ]") // Tests done for the paper showing a convertion fahrenheit - celsius
 					.process(new Processor() {
 						public void process(Exchange exchange) throws Exception {
 							exchange.getIn().setHeader("ArtifactName", "ArtifactC");
 							exchange.getIn().setHeader("OperationName", "kaBackC");
 							exchange.getIn().setBody(null);
 					}})
-					.to("artifact:cartago").to("log:CamelArtifactLoggerOut?level=info");
+					//.setHeader("ArtifactName", simple("ArtifactC")) // Tests done for the paper showing a convertion fahrenheit - celsius
+					//.setHeader("OperationName", simple("kaBackC")) // Tests done for the paper showing a convertion fahrenheit - celsius
+					.to("artifact:cartago")
+					.log("CARTAGO::::: Body class is ${body.class}")
+					.to("log:CamelArtifactLoggerOut?level=info");
 				}
 			});
 		} catch (Exception e) {
@@ -131,4 +144,21 @@ public class ArtifactC extends CamelArtifact {
 		log("received keepalive back!");
 	}	
 
+	/* Tests done for the paper showing a convertion fahrenheit - celsius
+	@OPERATION
+	void sendKA() {
+		log("trying to send keepalive message...");
+		List<Object> params  = new ArrayList<Object>();
+		//params.add(getId());
+		float temperatureCelsius = 25.0f;
+		params.add(temperatureCelsius);
+		sendMsg("ArtifactC","KA",params);
+	}
+
+	@OPERATION
+	void kaBackC(double p) {
+		log("\n\n************** received keepalive back! with p=" + p + "\n\n");
+	}
+	*/
+	
 }

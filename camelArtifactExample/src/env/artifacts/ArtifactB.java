@@ -54,6 +54,29 @@ public class ArtifactB extends Artifact {
 			log("("+this.getId().getName()+") Error receiving keepalive back!");
 			e.printStackTrace();
 		}
-	}	
+	}
+	
+	
+	/* Tests done for the paper showing a convertion fahrenheit - celsius
+	@OPERATION
+	void sendKA() throws OperationException {
+		log("trying to send keepalive message...");
+		List<Object> params  = new ArrayList<Object>();
+		float temperatureCelsius = 33.0f;
+		//params.add(getId());
+		params.add(temperatureCelsius);
+		execLinkedOp("out-2","sendMsg",getId().toString(),"KA",params);
+	}
+	
+	@LINK 
+	void kaBackB(double p) throws OperationException {
+		try {
+			log("\n\n$$$$$$$$$$$$$$$$ received keepalive back! With p = " + p + "\n\n");
+		} catch (Exception e) {
+			log("("+this.getId().getName()+") Error receiving keepalive back!");
+			e.printStackTrace();
+		}
+	}
+	*/
 }
 
