@@ -31,38 +31,37 @@ ext {
 }
 
 dependencies {
-  compile group: 'org.jacamo', name: 'jacamo', version: '0.7'
-  // https://mvnrepository.com/artifact/commons-lang/commons-lang
-  compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
-  // https://mvnrepository.com/artifact/org.apache.camel/camel-core
-  compile group: 'org.apache.camel', name: 'camel-core', version: versions.camel
-  // https://mvnrepository.com/artifact/javax.xml.soap/javax.xml.soap-api
-  compile group: 'javax.xml.soap', name: 'javax.xml.soap-api', version: '1.4.0'
-  // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
-  compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
-  // https://mvnrepository.com/artifact/javax.activation/activation
-  compile group: 'javax.activation', name: 'activation', version: '1.1.1'
-  // https://mvnrepository.com/artifact/org.apache.camel/camel-mqtt
-  compile group: 'org.apache.camel', name: 'camel-mqtt', version: '2.22.2'
-  // https://mvnrepository.com/artifact/org.apache.camel/camel-mvel
-  compile group: 'org.apache.camel', name: 'camel-mvel', version: '2.23.0'
-
-  compile group: 'org.slf4j', name: 'slf4j-api', version: '1.6.6'
-  compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.6'
-  compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.6.6'
-  compile group: 'javax.xml', name: 'jaxrpc-api', version: '1.1'
-
-  compile group: 'org.samba.jcifs', name: 'jcifs', version: '1.3.14-kohsuke-1'
-  compile group: 'log4j', name: 'log4j', version: '1.2.17'
-
-    // https://github.com/cleberjamaral/camel-artifact/raw/maven2/
-  compile group: 'nz.ac.otago', name: 'camelartifact', version: '0.0.2'
-  
-  testCompile group: 'org.apache.camel', name: 'camel-test', version: versions.camel
-  testCompile group: 'junit', name: 'junit-dep', version: '4.5'
-  testCompile group: 'org.apache.camel', name: 'camel-cxf', version: versions.camel
-  testCompile group: 'org.apache.camel', name: 'camel-script', version: versions.camel
-  
+	compile group: 'org.jacamo', name: 'jacamo', version: '0.8-SNAPSHOT', changing: true, transitive: true
+	// https://mvnrepository.com/artifact/commons-lang/commons-lang
+	implementation group: 'commons-lang', name: 'commons-lang', version: '2.6'
+	// https://mvnrepository.com/artifact/org.apache.camel/camel-core
+	implementation group: 'org.apache.camel', name: 'camel-core', version: versions.camel
+	// https://mvnrepository.com/artifact/javax.xml.soap/javax.xml.soap-api
+	implementation group: 'javax.xml.soap', name: 'javax.xml.soap-api', version: '1.4.0'
+	// https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+	// https://mvnrepository.com/artifact/javax.activation/activation
+	implementation group: 'javax.activation', name: 'activation', version: '1.1.1'
+	// https://mvnrepository.com/artifact/org.apache.camel/camel-mqtt
+	implementation group: 'org.apache.camel', name: 'camel-mqtt', version: '2.22.2'
+	// https://mvnrepository.com/artifact/org.apache.camel/camel-mvel
+	implementation group: 'org.apache.camel', name: 'camel-mvel', version: '2.23.0'
+	
+	implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.6.6'
+	implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.6'
+	implementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.6.6'
+	implementation group: 'javax.xml', name: 'jaxrpc-api', version: '1.1'
+	
+	implementation group: 'org.samba.jcifs', name: 'jcifs', version: '1.3.14-kohsuke-1'
+	implementation group: 'log4j', name: 'log4j', version: '1.2.17'
+	
+	// https://github.com/cleberjamaral/camel-artifact/raw/maven2/
+	implementation group: 'nz.ac.otago', name: 'camelartifact', version: '0.0.2'
+	  
+	testImplementation group: 'org.apache.camel', name: 'camel-test', version: versions.camel
+	testImplementation group: 'junit', name: 'junit-dep', version: '4.5'
+	testImplementation group: 'org.apache.camel', name: 'camel-cxf', version: versions.camel
+	testImplementation group: 'org.apache.camel', name: 'camel-script', version: versions.camel
 }
 
 sourceSets {
