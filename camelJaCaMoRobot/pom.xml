@@ -10,7 +10,7 @@
 	<version>0.0.1</version>
 
 	<name>camelJaCaMoRobotOPCDA</name>
-	
+
 	<repositories>
 		<!-- OpenScada built repository of the latest* utgard libraries (by Justin Smith justin.smith@summitsystemsinc.com)-->
 		<repository>
@@ -25,17 +25,17 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<camel-version>2.17.2</camel-version>
+		<camel-version>3.7.1</camel-version>
         <utgard.version>1.1.0.v20130529</utgard.version>
 	</properties>
-	
+
 	<developers>
 		<developer>
-			<id>clebercbr</id>
+			<id>cleberjamaral</id>
 			<name>Cleber Jorge Amaral</name>
 			<organization>IFSC - Instituto Federal de Educação de Santa Catarina</organization>
 			<organizationUrl>http://www.ifsc.edu.br</organizationUrl>
@@ -146,8 +146,8 @@
 			<systemPath>${basedir}/lib/camel-opc_da2-1.0-SNAPSHOT.jar
 			</systemPath>
 		</dependency>
-		
-		<!-- 
+
+		<!--
 		<dependency>
     		<groupId>org.jboss.netty</groupId>
     		<artifactId>netty</artifactId>
@@ -155,7 +155,7 @@
 		</dependency>
 		 -->
 		<!-- https://mvnrepository.com/artifact/io.netty/netty -->
-		<!-- 
+		<!--
 		<dependency>
     		<groupId>io.netty</groupId>
     		<artifactId>netty</artifactId>
@@ -168,8 +168,8 @@
     		<artifactId>netty-all</artifactId>
     		<version>4.1.42.Final</version>
 		</dependency>
-		 
-		<!-- https://mvnrepository.com/artifact/io.netty/netty-buffer 
+
+		<!-- https://mvnrepository.com/artifact/io.netty/netty-buffer
 		<dependency>
     		<groupId>io.netty</groupId>
     		<artifactId>netty-buffer</artifactId>
@@ -193,8 +193,8 @@
     		<artifactId>commons-pool</artifactId>
     		<version>1.6</version>
 		</dependency>
-		
-				
+
+
 		<dependency>
     		<groupId>org.apache.camel</groupId>
     		<artifactId>camel-netty4</artifactId>
@@ -204,7 +204,7 @@
     		<groupId>org.apache.camel</groupId>
     		<artifactId>camel-mqtt</artifactId>
     		<version>2.17.0</version>
-		</dependency>		
+		</dependency>
 	</dependencies>
 
 	<build>

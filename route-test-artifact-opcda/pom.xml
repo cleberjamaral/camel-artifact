@@ -10,7 +10,7 @@
 	<version>0.0.1</version>
 
 	<name>Route Test Artifact OPCDA</name>
-	
+
 	<repositories>
 		<!-- OpenScada built repository of the latest* utgard libraries (by Justin Smith justin.smith@summitsystemsinc.com)-->
 		<repository>
@@ -25,17 +25,17 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<camel-version>2.17.6</camel-version>
+		<camel-version>3.7.1</camel-version>
         <utgard.version>1.1.0.v20130529</utgard.version>
 	</properties>
-	
+
 	<developers>
 		<developer>
-			<id>clebercbr</id>
+			<id>cleberjamaral</id>
 			<name>Cleber Jorge Amaral</name>
 			<organization>IFSC - Instituto Federal de Educação de Santa Catarina</organization>
 			<organizationUrl>http://www.ifsc.edu.br</organizationUrl>
