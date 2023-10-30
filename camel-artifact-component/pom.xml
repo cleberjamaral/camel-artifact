@@ -16,7 +16,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8
 		</project.reporting.outputEncoding>
-		<camel-version>3.21.0</camel-version>
+		<camel-version>3.21.2</camel-version>
 	</properties>
 
 	<url>https://github.com/clebercbr/camel-artifact</url>
